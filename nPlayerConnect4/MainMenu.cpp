@@ -27,13 +27,20 @@ void MainMenu::init()
 	playersMinus.alignToDrawableObject();
 
 	numPlayers = 2;
+
+	r.setPos(Game2D::Pos2(35, -40));
+	g.setPos(Game2D::Pos2(35, -40));
+	b.setPos(Game2D::Pos2(35, -40));
+	start.setRect(Game2D::Rect(35, -40, 10, 10));
+	start.addStateSprites(r,g,b,b,r);
+	start.alignToDrawableObject();
 }
 
 void MainMenu::update()
 {
 }
 
-void MainMenu::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseState)
+int MainMenu::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseState)
 {
 	//std::cout << "processing mouse\n";
 	//std::cout << mousePos << "\n";
@@ -42,13 +49,20 @@ void MainMenu::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouse
 		//std::cout << "update\n";
 		//std::cout << "plus\n";
 		numPlayers++;
+		std::cout << numPlayers << "\n";
 	}
 	if(playersMinus.update(mousePos,mouseState,1) == Game2D::ClickableObject::ClickState::CLICK) {
 		if(--numPlayers < 2){
 			numPlayers = 2;
 		}
+		std::cout << numPlayers << "\n";
 	}
 	//std::cout << numPlayers << "\n";
+	if (start.update(mousePos, mouseState, 1) == Game2D::ClickableObject::ClickState::CLICK) {
+		return 1;
+	}
+
+	return 0;
 }
 
 void MainMenu::draw()
@@ -56,4 +70,5 @@ void MainMenu::draw()
 	//std::cout << "drawing\n";
 	playersPlus.draw();
 	playersMinus.draw();
+	start.draw();
 }

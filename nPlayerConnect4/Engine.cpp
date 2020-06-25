@@ -9,6 +9,7 @@ Board Engine::board;
 MainMenu Engine::mainMenu;
 Game2D::Pos2 Engine::mousePos;
 Game2D::KeyState::State Engine::mouseState;
+Engine::State Engine::currentState;
 
 Engine::Engine()
 {
@@ -61,8 +62,23 @@ void Engine::display()
 	glLoadIdentity();
 
 	//draw stuff goes hear
+	switch (currentState)
+	{
+	case Engine::MENU:
+		mainMenu.draw();
+		break;
+	case Engine::PLAYING:
+		board.draw();
+		break;
+	case Engine::WIN:
+		break;
+	case Engine::EXIT:
+		break;
+	default:
+		break;
+	}
 	//board.draw();
-	mainMenu.draw();
+	//mainMenu.draw();
 
 	glDisable(GL_BLEND);
 	glFlush();
@@ -77,7 +93,14 @@ void Engine::init()
 
 	mouseState = Game2D::KeyState::State::UP;
 
+	std::vector<Game2D::Colour> playerColours = {
+		Game2D::Colour::Red, Game2D::Colour::Yellow,
+		Game2D::Colour::Green, Game2D::Colour::Blue,
+		Game2D::Colour::Cyan, Game2D::Colour::Magenta,
+	};
+
 	board.setBoardDims(7,6);
+	board.setPlayerColours(playerColours);
 	board.initBoard();
 	mainMenu.init();
 }
@@ -89,7 +112,35 @@ void Engine::processKeys()
 
 void Engine::processMouse()
 {
-	mainMenu.processMouse(mousePos,mouseState);
+	switch (currentState)
+	{
+	case Engine::MENU:
+		switch (mainMenu.processMouse(mousePos, mouseState)) {
+		case 1:
+			board.setNumPlayers(mainMenu.getNumPlayers());
+			board.setLineLength(4);
+			currentState = PLAYING;
+			break;
+		}
+		break;
+	case Engine::PLAYING:
+		switch (board.processMouse(mousePos,mouseState))
+		{
+		case 1:
+			std::cout << "WIN\n";
+			currentState = MENU;
+			board.initBoard();//reset the board
+			break;
+		}
+		break;
+	case Engine::WIN:
+		break;
+	case Engine::EXIT:
+		break;
+	default:
+		break;
+	}
+	//std::cout << currentState << "\n";
 }
 
 void Engine::update()

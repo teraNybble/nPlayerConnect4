@@ -11,6 +11,7 @@
 class Engine
 {
 public:
+	enum State { MENU, PLAYING, WIN, EXIT };
 private:
 	static GLFWwindow* window;
 	static int screenWidth, screenHeight;
@@ -23,6 +24,7 @@ private:
 
 	static Board board;
 	static MainMenu mainMenu;
+	static State currentState;
 public:
 	Engine();
 
