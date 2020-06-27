@@ -118,6 +118,8 @@ void Engine::init()
 	Font::insert(36);
 	Font::insert(26);
 	Font::initFonts();
+
+	ScreenCoord::init(screenWidth, screenHeight);
 }
 
 void Engine::processKeys()
@@ -194,16 +196,22 @@ bool Engine::createWindow()
 	glfwMakeContextCurrent(window);
 
 
+	ScreenCoord::init(screenWidth, screenHeight);
+	ScreenCoord::alignCentre();
+	//ScreenCoord::alignLeft();
+
+	/*
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 
 	//set screen coords
 	//glOrtho(0, 100.0f * (screenWidth / (float)screenHeight), 0, 100, 0, 100);
 	glOrtho(((-50.0f * (screenWidth / (float)screenHeight))), ((50.0f * (screenWidth / (float)screenHeight))), -50, 50, 0, 100);
+	//ScreenCoord::alignCentre();
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-
+	*/
 	//TODO add in input class
 	//input.setWindow(window);
 	return true;

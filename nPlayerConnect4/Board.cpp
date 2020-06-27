@@ -25,7 +25,7 @@ void Board::initBoard()
 {
 	circleTex = ImageLoder::loadPNG("Images/circle.png");
 	circleSprite.setTextureCoords(Game2D::Rect(0, 0, 1, 1));
-	std::cout << circleTex << "\n";
+	//std::cout << circleTex << "\n";
 	board.clear();
 	for(int i = 0; i < height; i++){
 		std::vector<int> temp;
@@ -261,8 +261,10 @@ void Board::draw()
 		}
 		if((x += segWidth + 2 ) > 50) { x = -50; }
 	}
+	ScreenCoord::alignLeft();
 	Game2D::Colour(1, 1, 1).draw();
-	freetype::print(Font::getFont(26), -50, 40, "Player %d's turn", currentPlayer + 1);
+	freetype::print(Font::getFont(26), 0, 45, "Player %d's turn", currentPlayer + 1);
+	ScreenCoord::alignCentre();
 	//test.setColour(Game2D::Colour(0, 1, 1, 0.5f));
 	//std::cout << ((segHeight + 2) * (height-1)) << "\n";
 	//test.setRect(Game2D::Rect(0, 0, segWidth, 2+(segHeight + 2) * (height - 1)));

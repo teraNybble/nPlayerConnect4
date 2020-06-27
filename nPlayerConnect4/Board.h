@@ -9,6 +9,7 @@
 #include "Fonts.h"
 #include "ImageLoder.h"
 #include <Sprite.h>
+#include "ScreenCoord.h"
 
 class Board
 {

@@ -237,8 +237,16 @@ namespace freetype {
 		float projectionMatMine[4][4];
 		float coordVec[4] = { x,y,0,1 };
 		glGetFloatv(GL_PROJECTION_MATRIX, &projectionMatMine[0][0]);
-
-		coordVec[0] = coordVec[0] * projectionMatMine[0][0];
+		/*
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 4; j++) {
+				std::cout << projectionMatMine[j][i] << " ";
+			}
+			std::cout << "\n";
+		}
+		std::cout << "\n";
+		*/
+		coordVec[0] = coordVec[0] * projectionMatMine[0][0] + coordVec[3] * projectionMatMine[3][0];
 		coordVec[1] = coordVec[1] * projectionMatMine[1][1];
 
 		// We want a coordinate system where things coresponding to window pixels.
