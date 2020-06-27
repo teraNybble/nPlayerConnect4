@@ -10,6 +10,7 @@ MainMenu Engine::mainMenu;
 Game2D::Pos2 Engine::mousePos;
 Game2D::KeyState::State Engine::mouseState;
 Engine::State Engine::currentState;
+unsigned int Engine::winningPlayer;
 
 Engine::Engine()
 {
@@ -61,16 +62,24 @@ void Engine::display()
 
 	glLoadIdentity();
 
+	Game2D::Sprite temp;
+
 	//draw stuff goes hear
 	switch (currentState)
 	{
 	case Engine::MENU:
 		mainMenu.draw();
 		break;
+	case Engine::WIN:
+		board.draw();
+		temp.setColour(Game2D::Colour(0, 0, 0, 0.5));
+		temp.setRect(Game2D::Rect(0, 0, 400, 400));
+		temp.draw();
+		Game2D::Colour(1, 1, 1).draw();
+		freetype::print(Font::getFont(40), (((((screenWidth - screenHeight) / 2.0f)) / screenHeight) * 100.0f) - 63.5f, 20, "Player %d wins!", winningPlayer + 1);
+		break;
 	case Engine::PLAYING:
 		board.draw();
-		break;
-	case Engine::WIN:
 		break;
 	case Engine::EXIT:
 		break;
@@ -103,6 +112,12 @@ void Engine::init()
 	board.setPlayerColours(playerColours);
 	board.initBoard();
 	mainMenu.init();
+
+	Font::init(screenHeight);
+	Font::insert(40);
+	Font::insert(36);
+	Font::insert(26);
+	Font::initFonts();
 }
 
 void Engine::processKeys()
@@ -119,21 +134,25 @@ void Engine::processMouse()
 		case 1:
 			board.setNumPlayers(mainMenu.getNumPlayers());
 			board.setLineLength(4);
+			board.setBoardDims(7, 6);
+			board.initBoard();//reset the board
 			currentState = PLAYING;
 			break;
 		}
 		break;
 	case Engine::PLAYING:
-		switch (board.processMouse(mousePos,mouseState))
+		switch (board.processMouse(mousePos,mouseState,winningPlayer))
 		{
 		case 1:
 			std::cout << "WIN\n";
-			currentState = MENU;
-			board.initBoard();//reset the board
+			currentState = WIN;
 			break;
 		}
 		break;
 	case Engine::WIN:
+		if (mouseState == Game2D::KeyState::DOWN) {
+			currentState = MENU;
+		}
 		break;
 	case Engine::EXIT:
 		break;

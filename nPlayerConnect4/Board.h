@@ -6,6 +6,7 @@
 #include <DrawableObject.h>
 #include <vector>
 #include <ClickableObject.h>
+#include "Fonts.h"
 
 class Board
 {
@@ -29,7 +30,7 @@ public:
 
 	void initBoard();
 
-	int processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseState);
+	int processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseState, unsigned int& winningPlayer);
 
 	bool insertPice(int x, int playerNum, Game2D::Pos2& insertPos);
 

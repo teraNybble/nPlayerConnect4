@@ -5,35 +5,37 @@ void MainMenu::init()
 	//
 	Game2D::Sprite r;
 	r.setColour(Game2D::Colour::Red);
-	r.setRect(Game2D::Rect(-35,-40,10,10));
+	r.setRect(Game2D::Rect(-35,-40,5,5));
 	Game2D::Sprite g;
 	g.setColour(Game2D::Colour::Green);
-	g.setRect(Game2D::Rect(-35,-40,10,10));
+	g.setRect(Game2D::Rect(-35,-40,5,5));
 	Game2D::Sprite b;
 	b.setColour(Game2D::Colour::Blue);
-	b.setRect(Game2D::Rect(-35,-40,10,10));
+	b.setRect(Game2D::Rect(-35,-40,5,5));
 
-	playersPlus.setRect(Game2D::Rect(-35,-40,10,10));
+	playersPlus.setRect(Game2D::Rect(-35,-40,5,5));
 	playersPlus.addStateSprites(r,g,b,b,r);
 	playersPlus.setFrameTime(1);
 	playersPlus.alignToDrawableObject();
 
-	r.setPos(Game2D::Pos2(-46,-40));
-	g.setPos(Game2D::Pos2(-46,-40));
-	b.setPos(Game2D::Pos2(-46,-40));
-	playersMinus.setRect(Game2D::Rect(-46,-40,10,10));
+	r.setPos(Game2D::Pos2(-41,-40));
+	g.setPos(Game2D::Pos2(-41,-40));
+	b.setPos(Game2D::Pos2(-41,-40));
+	playersMinus.setRect(Game2D::Rect(-41,-40,5,5));
 	playersMinus.addStateSprites(r,g,b,b,r);
 	playersMinus.setFrameTime(1);
 	playersMinus.alignToDrawableObject();
 
 	numPlayers = 2;
 
-	r.setPos(Game2D::Pos2(35, -40));
-	g.setPos(Game2D::Pos2(35, -40));
-	b.setPos(Game2D::Pos2(35, -40));
-	start.setRect(Game2D::Rect(35, -40, 10, 10));
+	r.setRect(Game2D::Rect(55, -40,10,5));
+	g.setRect(Game2D::Rect(55, -40, 10, 5));
+	b.setRect(Game2D::Rect(55, -40, 10, 5));
+	start.setRect(Game2D::Rect(55, -40, 10, 5));
 	start.addStateSprites(r,g,b,b,r);
 	start.alignToDrawableObject();
+	
+	font.init("C:/Windows/Fonts/arial.ttf", 36);
 }
 
 void MainMenu::update()
@@ -71,4 +73,6 @@ void MainMenu::draw()
 	playersPlus.draw();
 	playersMinus.draw();
 	start.draw();
+	Game2D::Colour(0, 0, 0).draw();
+	freetype::print(font, -40, -35, "%d", numPlayers);
 }

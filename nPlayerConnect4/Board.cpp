@@ -32,7 +32,7 @@ void Board::initBoard()
 	//board[5][6] = 1;
 }
 
-int Board::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseState)
+int Board::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseState, unsigned int& winningPlayer)
 {
 	int i = 0;
 	for (auto& it : clickboxes) {
@@ -42,11 +42,16 @@ int Board::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseStat
 			Game2D::Pos2 pos;
 			if (insertPice(i, currentPlayer, pos)) {
 				//std::cout << "insert time\n";
-				if (++currentPlayer >= numPlayers) {
-					currentPlayer = 0;
+				if (checkBoard(pos)) {
+					winningPlayer = currentPlayer;
+					return 1; 
 				}
-				if (checkBoard(pos))	{ return 1; }
-				else					{ return 0; }
+				else {
+					if (++currentPlayer >= numPlayers) {
+						currentPlayer = 0;
+					}
+					return 0;
+				}
 			}
 		}
 
@@ -246,7 +251,8 @@ void Board::draw()
 		}
 		if((x += segWidth + 2 ) > 50) { x = -50; }
 	}
-
+	Game2D::Colour(1, 1, 1).draw();
+	freetype::print(Font::getFont(26), -50, 40, "Player %d's turn", currentPlayer + 1);
 	//test.setColour(Game2D::Colour(0, 1, 1, 0.5f));
 	//std::cout << ((segHeight + 2) * (height-1)) << "\n";
 	//test.setRect(Game2D::Rect(0, 0, segWidth, 2+(segHeight + 2) * (height - 1)));

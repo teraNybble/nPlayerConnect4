@@ -7,6 +7,7 @@
 #include <KeyMap.h>
 #include "Board.h"
 #include "MainMenu.h"
+#include "Fonts.h"
 
 class Engine
 {
@@ -25,6 +26,8 @@ private:
 	static Board board;
 	static MainMenu mainMenu;
 	static State currentState;
+
+	static unsigned int winningPlayer;
 public:
 	Engine();
 

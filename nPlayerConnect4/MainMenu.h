@@ -2,6 +2,7 @@
 #define MAINMENU_H
 
 #include <Button.h>
+#include "freetype.h"
 
 class MainMenu
 {
@@ -11,6 +12,7 @@ private:
 	unsigned int numPlayers;
 
 	Game2D::Button start;
+	freetype::font_data font;
 public:
 	void init();
 
