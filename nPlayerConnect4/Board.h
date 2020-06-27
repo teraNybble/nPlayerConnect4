@@ -7,6 +7,8 @@
 #include <vector>
 #include <ClickableObject.h>
 #include "Fonts.h"
+#include "ImageLoder.h"
+#include <Sprite.h>
 
 class Board
 {
@@ -22,7 +24,12 @@ private:
 	void setClickboxes();
 
 	unsigned int currentPlayer;
+
+	GLuint circleTex;
+	Game2D::Sprite circleSprite;
 public:
+	Board();
+
 	inline void setBoardDims(int width, int height) { this->width = width; this->height = height; setClickboxes(); }
 	inline void setLineLength(int length) { this->lineLength = length; }
 	inline void setPlayerColours(std::vector<Game2D::Colour>& colours) { this->playerColours = colours; }

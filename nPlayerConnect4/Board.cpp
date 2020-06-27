@@ -1,5 +1,9 @@
 #include "Board.h"
 
+Board::Board() {
+	
+}
+
 void Board::setClickboxes()
 {
 	clickboxes.clear();
@@ -19,6 +23,9 @@ void Board::setClickboxes()
 
 void Board::initBoard()
 {
+	circleTex = ImageLoder::loadPNG("Images/circle.png");
+	circleSprite.setTextureCoords(Game2D::Rect(0, 0, 1, 1));
+	std::cout << circleTex << "\n";
 	board.clear();
 	for(int i = 0; i < height; i++){
 		std::vector<int> temp;
@@ -215,6 +222,8 @@ bool Board::checkBackDiag(Game2D::Pos2 pos)
 
 void Board::draw()
 {
+	glBindTexture(GL_TEXTURE_2D, circleTex);
+
 	float segWidth = 100.0f/width;
 	float segHeight = 100.0f/height;
 
@@ -222,9 +231,10 @@ void Board::draw()
 
 	//std::cout << segWidth << "\n";
 
-	Game2D::DrawableObject test;
-	test.setRect(Game2D::Rect(0,0,segDim,segDim));
-	test.setColour(Game2D::Colour::Black);
+	//Game2D::DrawableObject test;
+	circleSprite.setRect(Game2D::Rect(0,0,segDim,segDim));
+	circleSprite.setColour(Game2D::Colour::Black);
+	//std::cout << (circleSprite.textureLoaded() ? "True\n" : "False\n");
 	//test.draw();
 /*
 	for(int x = -50; x < 50; x+= segDim+2){
@@ -240,12 +250,12 @@ void Board::draw()
 	for(int i = 0; i < width; i++){
 		for(int j = 0; j < height; j++){
 			if(board[j][i] != -1){
-				test.setColour(playerColours[board[j][i]]);
+				circleSprite.setColour(playerColours[board[j][i]]);
 			} else {
-				test.setColour(Game2D::Colour::Black);
+				circleSprite.setColour(Game2D::Colour::Black);
 			}
-			test.setPos(Game2D::Pos2(x,y));
-			test.draw();
+			circleSprite.setPos(Game2D::Pos2(x,y));
+			circleSprite.draw();
 
 			if((y += segWidth + 2) > 50) { y = -50 + (segWidth/2.0f)+2; }
 		}
