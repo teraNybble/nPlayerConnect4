@@ -12,6 +12,15 @@ private:
 	Game2D::Button playersMinus;
 	unsigned int numPlayers;
 
+	unsigned int boardWidth;
+	Game2D::Button boardWidthPlus;
+	Game2D::Button boardWidthMinus;
+	unsigned int boardHeight;
+	Game2D::Button boardHeightPlus;
+	Game2D::Button boardHeightMinus;
+
+	unsigned int lineLength;
+
 	Game2D::Button start;
 	//freetype::font_data font;
 public:
@@ -20,7 +29,10 @@ public:
 	void update();
 	int processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseState);
 
-	inline unsigned int getNumPlayers() { return numPlayers; }
+	inline unsigned int getNumPlayers()  const { return numPlayers; }
+	inline unsigned int getBoardWidth()  const { return boardWidth; }
+	inline unsigned int getBoardHeight() const { return boardHeight; }
+	inline unsigned int getLineLength()  const { return lineLength; }
 
 	void draw();
 };

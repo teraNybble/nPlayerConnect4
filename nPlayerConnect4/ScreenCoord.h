@@ -16,6 +16,10 @@ public:
 		//std::cout << screenWidth << " x " << screenHeight << "\n";
 	}
 
+	inline static float getAspectRatio() {
+		return (float)screenWidth / (float)screenHeight;
+	}
+
 	inline static void alignRight() {
 
 		glMatrixMode(GL_PROJECTION);

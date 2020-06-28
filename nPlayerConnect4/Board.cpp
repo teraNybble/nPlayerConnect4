@@ -1,5 +1,15 @@
 #include "Board.h"
 
+float Board::GetSegDim()
+{
+	float segWidth = ((100.0f * ScreenCoord::getAspectRatio()) / width) - 2;
+	float segHeight = (100.0f / height) - 2;
+
+	//std::cout << segWidth << " x " << segHeight << "\n";
+
+	return (segWidth < segHeight ? segWidth : segHeight);
+}
+
 Board::Board() {
 	
 }
@@ -7,14 +17,13 @@ Board::Board() {
 void Board::setClickboxes()
 {
 	clickboxes.clear();
-	float segWidth = 100.0f / width;
-	float segHeight = 100.0f / height;
 
+	float segDim = GetSegDim();
 
-	float clickHeight = (segHeight + 2) * height;
-	for (float i = 0, x = -50; i < width; i++, x+=(segWidth+2)) {
+	float clickHeight = (segDim + 2) * height;
+	for (float i = 0, x = (0 - ((segDim + 2) * (width - 1)) / 2.0f); i < width; i++, x+=(segDim +2)) {
 		Game2D::ClickableObject temp;
-		temp.setRect(Game2D::Rect(x,0,segWidth,((segHeight + 2) * (height - 1)) + 2));
+		temp.setRect(Game2D::Rect(x,0, segDim,((segDim + 2) * (height - 1)) + 2));
 		clickboxes.push_back(temp);
 		clickboxes.back().alignToDrawableObject();
 	}
@@ -224,42 +233,35 @@ void Board::draw()
 {
 	glBindTexture(GL_TEXTURE_2D, circleTex);
 
-	float segWidth = 100.0f/width;
-	float segHeight = 100.0f/height;
-
-	float segDim = (segWidth < segHeight ? segWidth : segHeight);
+	float segDim = GetSegDim();
 
 	//std::cout << segWidth << "\n";
 
 	//Game2D::DrawableObject test;
 	circleSprite.setRect(Game2D::Rect(0,0,segDim,segDim));
 	circleSprite.setColour(Game2D::Colour::Black);
-	//std::cout << (circleSprite.textureLoaded() ? "True\n" : "False\n");
-	//test.draw();
-/*
-	for(int x = -50; x < 50; x+= segDim+2){
-		for(int y = -50; y < 50; y+=segDim+2) {
-			test.setPos(Game2D::Pos2(x, y));
-			test.draw();
-		}
-	}*/
 
-	float x = -50;
-	float y = -50 + (segWidth/2.0f)+2;
+	float x = (0 - ((segDim + 2) * (width-1)) / 2.0f);// *ScreenCoord::getAspectRatio();
+	//float x = -50 * ScreenCoord::getAspectRatio();
+	float y = -50 + (segDim/2.0f)+2;
 
 	for(int i = 0; i < width; i++){
+		y = -50 + (segDim / 2.0f) + 1;
 		for(int j = 0; j < height; j++){
 			if(board[j][i] != -1){
 				circleSprite.setColour(playerColours[board[j][i]]);
 			} else {
 				circleSprite.setColour(Game2D::Colour::Black);
 			}
+			//std::cout << i << "," << j << " at " << x << "," << y << "\n";
 			circleSprite.setPos(Game2D::Pos2(x,y));
 			circleSprite.draw();
 
-			if((y += segWidth + 2) > 50) { y = -50 + (segWidth/2.0f)+2; }
+			y += segDim + 2;
+			//if ((y += segWidth + 2) > 50) { std::cout << y <<"\n"; y = -51 + (segWidth / 2.0f) + 2; }
 		}
-		if((x += segWidth + 2 ) > 50) { x = -50; }
+		x += segDim + 2;
+		//if((x += segWidth + 2 ) > 50) { x = -50; }
 	}
 	ScreenCoord::alignLeft();
 	Game2D::Colour(1, 1, 1).draw();

@@ -117,6 +117,7 @@ void Engine::init()
 	Font::init(screenHeight);
 	Font::insert(40);
 	Font::insert(36);
+	Font::insert(30);
 	Font::insert(26);
 	Font::initFonts();
 
@@ -138,7 +139,7 @@ void Engine::processMouse()
 		case 1:
 			board.setNumPlayers(mainMenu.getNumPlayers());
 			board.setLineLength(4);
-			board.setBoardDims(7, 6);
+			board.setBoardDims(mainMenu.getBoardWidth(), mainMenu.getBoardHeight());
 			board.initBoard();//reset the board
 			currentState = PLAYING;
 			break;

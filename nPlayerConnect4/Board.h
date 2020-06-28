@@ -28,6 +28,8 @@ private:
 
 	GLuint circleTex;
 	Game2D::Sprite circleSprite;
+
+	float GetSegDim();
 public:
 	Board();
 
