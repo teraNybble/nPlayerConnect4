@@ -1,13 +1,14 @@
 #ifndef ENGINE_H
 #define ENGINE_H
 
+#include "Fonts.h"
 #include "glew.h"
 #include <GLFW/glfw3.h>
 #include <map>
 #include <KeyMap.h>
 #include "Board.h"
 #include "MainMenu.h"
-#include "Fonts.h"
+
 
 class Engine
 {

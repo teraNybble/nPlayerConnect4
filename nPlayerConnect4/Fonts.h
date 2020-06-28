@@ -3,13 +3,14 @@
 
 #include "freetype.h"
 #include <map>
-
+/*
 #ifdef _WIN32 //Windows
 constexpr const char* _SysFont = "C:/Windows/Fonts/arial.ttf";
 #endif
 #ifdef  __unix__ //Linux
-constexpr const char* _SysFont = "/usr/share/fonts/noto/NotoSans-Medium.ttf";
-#endif
+//constexpr const char* _SysFont = "/usr/share/fonts/noto/NotoSans-Medium.ttf";
+constexpr const char* _SysFont = "Fonts/NotoSans-Medium.ttf";
+#endif*/
 
 class Font
 {

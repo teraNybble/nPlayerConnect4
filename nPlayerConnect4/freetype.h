@@ -2,6 +2,7 @@
 #define FREE_NEHE_H
 
 #include <vector>
+#include "glew.h"
 #include <iostream>
 // FreeType Headers
 #include <ft2build.h>
@@ -10,7 +11,7 @@
 #include <freetype/ftoutln.h>
 #include <freetype/fttrigon.h>
 
-#include "glew.h"
+
 #ifdef _WIN32
 #include <Windows.h>
 #endif // WIN32
@@ -32,6 +33,15 @@
 // You Create Vectors Of Strings, This Pragma Gets Rid Of Them.
 #pragma warning(disable : 4786)
 #pragma warning(disable : 4996) // i couldn't give a shit if that functuon is unsafe
+
+#ifdef _WIN32 //Windows
+//#include <Windows.h>
+constexpr const char* _SysFont = "C:/Windows/Fonts/arial.ttf";
+#endif
+#ifdef  __unix__ //Linux
+constexpr const char* _SysFont = "/usr/share/fonts/noto/NotoSans-Medium.ttf";
+#endif
+
 // Wrap Everything In A Namespace, That Way We Can Use A Common
 // Function Name Like "print" Without Worrying About
 // Overlapping With Anyone Else's Code.

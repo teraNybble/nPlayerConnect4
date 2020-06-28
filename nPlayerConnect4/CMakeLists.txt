@@ -1,14 +1,14 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.15)
 project(nPlayerConnect4)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/../cmake")
 
 include_directories(/home/dan/CLionProjects/Game2D)
 link_directories(/home/dan/CLionProjects/Game2D/cmake-build-debug/)
 
-add_executable(nPlayerConnect4 main.cpp Engine.cpp Engine.h Board.cpp Board.h MainMenu.cpp MainMenu.h)
+add_executable(nPlayerConnect4 main.cpp Engine.cpp Engine.h Board.cpp Board.h MainMenu.cpp MainMenu.h ImageLoder.h ImageLoder.cpp ScreenCoord.h ScreenCoord.cpp Fonts.h Fonts.cpp freetype.h freetype.cpp)
 
 INCLUDE(FindPkgConfig)
 

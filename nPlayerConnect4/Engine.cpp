@@ -113,11 +113,13 @@ void Engine::init()
 	board.initBoard();
 	mainMenu.init();
 
+
 	Font::init(screenHeight);
 	Font::insert(40);
 	Font::insert(36);
 	Font::insert(26);
 	Font::initFonts();
+
 
 	ScreenCoord::init(screenWidth, screenHeight);
 }

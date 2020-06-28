@@ -146,22 +146,21 @@ namespace freetype {
 	}
 	*/
 
-	
+
 	void font_data::init(const char * fname, unsigned int h) {
 		//Allocate some memory to store the texture ids.
 		textures = new GLuint[128];
-		
+
 		this->h = static_cast<float>(h);
 
 		//Create and initilize a freetype font library.
 		FT_Library library;
-		
 		if (FT_Init_FreeType(&library))
 		{
 			std::cerr << "Error: FT_Init_FreeType failed\n";
 			throw std::runtime_error("FT_Init_FreeType failed");
 		}
-		
+
 		//The object in which Freetype holds information on a given
 		//font is called a "face".
 		FT_Face face;
