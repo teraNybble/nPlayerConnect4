@@ -35,7 +35,7 @@ void MainMenu::init()
 	start.addStateSprites(r,g,b,b,r);
 	start.alignToDrawableObject();
 	
-	font.init("C:/Windows/Fonts/arial.ttf", 36);
+	//font.init("C:/Windows/Fonts/arial.ttf", 36);
 }
 
 void MainMenu::update()
@@ -74,5 +74,5 @@ void MainMenu::draw()
 	playersMinus.draw();
 	start.draw();
 	Game2D::Colour(0, 0, 0).draw();
-	freetype::print(font, -40, -35, "%d", numPlayers);
+	freetype::print(Font::getFont(36), -40, -35, "%d", numPlayers);
 }
