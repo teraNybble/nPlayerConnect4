@@ -78,6 +78,7 @@ void Engine::display()
 		temp.draw();
 		Game2D::Colour(1, 1, 1).draw();
 		freetype::print(Font::getFont(40), (((((screenWidth - screenHeight) / 2.0f)) / screenHeight) * 100.0f) - 63.5f, 20, "Player %d wins!", winningPlayer + 1);
+			freetype::print(Font::getFont(20), (((((screenWidth - screenHeight) / 2.0f)) / screenHeight) * 100.0f) - 53.5f, 10, "Click to continue");
 		break;
 	case Engine::PLAYING:
 		board.draw();
@@ -107,6 +108,8 @@ void Engine::init()
 		Game2D::Colour::Red, Game2D::Colour::Yellow,
 		Game2D::Colour::Green, Game2D::Colour::Blue,
 		Game2D::Colour::Cyan, Game2D::Colour::Magenta,
+		Game2D::Colour::White, Game2D::Colour(1,0.65f,0),
+		Game2D::Colour(1,0.75f,0.8f),
 	};
 
 	board.setBoardDims(7,6);
@@ -120,6 +123,7 @@ void Engine::init()
 	Font::insert(36);
 	Font::insert(30);
 	Font::insert(26);
+	Font::insert(20);
 	Font::initFonts();
 
 
