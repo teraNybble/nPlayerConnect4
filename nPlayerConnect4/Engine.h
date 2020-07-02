@@ -20,6 +20,7 @@ private:
 	static Game2D::Pos2 mousePos;
 	static Game2D::KeyState::State mouseState;
 
+	static void resizeCallback(GLFWwindow* window, int width, int height);
 	static void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 	static void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
 	static void mouseCallback(GLFWwindow* window, double xpos, double ypos);

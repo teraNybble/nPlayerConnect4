@@ -4,6 +4,7 @@
 #include <Button.h>
 #include "Fonts.h"
 #include "ImageLoder.h"
+#include "ScreenCoord.h"
 //#include "freetype.h"
 
 class MainMenu

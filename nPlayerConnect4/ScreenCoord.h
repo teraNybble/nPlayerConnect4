@@ -22,10 +22,15 @@ public:
 
 	inline static void alignRight() {
 
+
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
 
+		//glOrtho(-100, 0, -50, 50, 0, 100);
 		glOrtho(((-100.0f * (screenWidth / (float)screenHeight))), 0, -50, 50, 0, 100);
+
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
 	}
 	inline static void alignCentre() {
 

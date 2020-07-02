@@ -18,6 +18,19 @@ Engine::Engine()
 	//screenHeight = 720;
 }
 
+void Engine::resizeCallback(GLFWwindow* window, int width, int height)
+{
+	glViewport(0, 0, width, height);
+
+	screenWidth = width;
+	screenHeight = height;
+
+	Font::init(height);
+	Font::initFonts();
+	ScreenCoord::init(width, height);
+	ScreenCoord::alignCentre();
+}
+
 void Engine::keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
 
@@ -51,6 +64,9 @@ void Engine::mouseCallback(GLFWwindow* window, double xpos, double ypos)
 	mousePos = Game2D::Pos2(
 			(((xpos - ((screenWidth - screenHeight) / 2.0f)) / screenHeight)*100.0f) - 50.0f,
 			-(((ypos / screenHeight)*100)-50));
+
+	//std::cout << mousePos.x + (screenWidth / (float)screenHeight) * 50 << "\n";
+	//std::cout << mousePos.x - (screenWidth / (float)screenHeight) * 50 << "\n";
 }
 
 void Engine::display()
@@ -98,6 +114,7 @@ void Engine::display()
 void Engine::init()
 {
 	//set callbacks
+	glfwSetWindowSizeCallback(window, resizeCallback);
 	glfwSetCursorPosCallback(window,mouseCallback);
 	glfwSetKeyCallback(window,keyCallback);
 	glfwSetMouseButtonCallback(window,mouseButtonCallback);
@@ -187,7 +204,7 @@ bool Engine::createWindow()
 		return false;
 	}
 
-	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+	//glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
 	/* Create a windowed mode window and its OpenGL context */
 	window = glfwCreateWindow(screenWidth, screenHeight, "N Player Connect 4", NULL, NULL);

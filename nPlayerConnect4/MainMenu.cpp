@@ -81,15 +81,15 @@ void MainMenu::init()
 	startHover.setTextureCoords(Game2D::Rect(0, 0.50f, 0.50f, 0.25f));
 	startClick.setTextureCoords(Game2D::Rect(0, 0.25f, 0.50f, 0.25f));
 
-	startSprite.setRect(Game2D::Rect(55, -40, 20, 10));
-	startHover.setRect(Game2D::Rect(55, -40, 20, 10));
-	startClick.setRect(Game2D::Rect(55, -40, 20, 10));
+	startSprite.setRect(Game2D::Rect(-35, -40, 20, 10));
+	startHover.setRect(Game2D::Rect(-35, -40, 20, 10));
+	startClick.setRect(Game2D::Rect(-35, -40, 20, 10));
 
 	startSprite.setColour(Game2D::Colour::White);
 	startHover.setColour(Game2D::Colour::White);
 	startClick.setColour(Game2D::Colour::White);
 
-	start.setRect(Game2D::Rect(55, -40, 20, 10));
+	start.setRect(Game2D::Rect(-35, -40, 20, 10));
 	start.addStateSprites(startSprite,startHover,startClick,startClick,startSprite);
 	start.alignToDrawableObject();
 	
@@ -129,7 +129,9 @@ int MainMenu::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseS
 			boardHeight = lineLength;
 		}
 	}
-	if (start.update(mousePos, mouseState, 1) == Game2D::ClickableObject::ClickState::CLICK) {
+	//as the start button is aligned to the right of the screen the mouse coordinats need to be aligned right as well
+	Game2D::Pos2 mousePosAlignedRight = Game2D::Pos2((mousePos.x - ScreenCoord::getAspectRatio() * 50), mousePos.y);
+	if (start.update(mousePosAlignedRight, mouseState, 1) == Game2D::ClickableObject::ClickState::CLICK) {
 		return 1;
 	}
 
@@ -148,7 +150,13 @@ void MainMenu::draw()
 	boardWidthMinus.draw();
 	boardHeightPlus.draw();
 	boardHeightMinus.draw();
+	
+	ScreenCoord::alignRight();
 	start.draw();
+
+
+	ScreenCoord::alignCentre();
+
 	Game2D::Colour(0, 0, 0).draw();
 	freetype::print(Font::getFont(36), -40, -35, "%d", numPlayers);
 	freetype::print(Font::getFont(26), -8, -33.5, "%d x %d", boardWidth,boardHeight);
