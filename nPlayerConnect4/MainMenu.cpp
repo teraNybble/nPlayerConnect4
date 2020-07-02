@@ -81,15 +81,15 @@ void MainMenu::init()
 	startHover.setTextureCoords(Game2D::Rect(0, 0.50f, 0.50f, 0.25f));
 	startClick.setTextureCoords(Game2D::Rect(0, 0.25f, 0.50f, 0.25f));
 
-	startSprite.setRect(Game2D::Rect(-35, -40, 20, 10));
-	startHover.setRect(Game2D::Rect(-35, -40, 20, 10));
-	startClick.setRect(Game2D::Rect(-35, -40, 20, 10));
+	startSprite.setRect(Game2D::Rect(-15, -40, 20, 10));
+	startHover.setRect(Game2D::Rect(-15, -40, 20, 10));
+	startClick.setRect(Game2D::Rect(-15, -40, 20, 10));
 
 	startSprite.setColour(Game2D::Colour::White);
 	startHover.setColour(Game2D::Colour::White);
 	startClick.setColour(Game2D::Colour::White);
 
-	start.setRect(Game2D::Rect(-35, -40, 20, 10));
+	start.setRect(Game2D::Rect(-15, -40, 20, 10));
 	start.addStateSprites(startSprite,startHover,startClick,startClick,startSprite);
 	start.alignToDrawableObject();
 	
