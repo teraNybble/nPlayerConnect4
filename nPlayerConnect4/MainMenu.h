@@ -3,11 +3,20 @@
 
 #include <Button.h>
 #include "Fonts.h"
+#include "ImageLoder.h"
 //#include "freetype.h"
 
 class MainMenu
 {
 private:
+	Game2D::Sprite arrow;
+	Game2D::Sprite arrowHover;
+	Game2D::Sprite arrowClick;
+
+	Game2D::Sprite startSprite;
+	Game2D::Sprite startHover;
+	Game2D::Sprite startClick;
+
 	Game2D::Button playersPlus;
 	Game2D::Button playersMinus;
 	unsigned int numPlayers;
@@ -22,6 +31,7 @@ private:
 	unsigned int lineLength;
 
 	Game2D::Button start;
+	GLuint mainMenuTex;
 	//freetype::font_data font;
 public:
 	void init();

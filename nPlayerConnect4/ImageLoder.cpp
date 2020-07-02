@@ -159,13 +159,25 @@ GLuint ImageLoder::loadPNG(const char* path)
 
 	if (ImageLoder::loadPNGFromFile(path,width,height,hasAlpha,&image))
 	{
+		/*for (int i = 0; i < width * height; i++) {
+			std::cout << (int)image[i] << " ";
+		}
+		*//*
+		for (int i = 0; i < height; i++) {
+			for (int j = 0; j < width; j++) {
+				std::cout << (int)image[width * j + i] << "\t";
+			}
+			std::cout << "\n";
+		}*/
 		//std::cout << width << " " << height << "\n";
+		//hasAlpha = false;
 		glGenTextures(1, &texID);
 		glBindTexture(GL_TEXTURE_2D, texID);
 		glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
 		//glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, /*img.getFormat()*/GL_RGBA, GL_UNSIGNED_BYTE, &image);
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, /*img.getFormat()*/(hasAlpha ? GL_RGBA : GL_RGB), GL_UNSIGNED_BYTE, image);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+		glTexImage2D(GL_TEXTURE_2D, 0, (hasAlpha ? GL_RGBA : GL_RGB), width, height, 0, /*img.getFormat()*/(hasAlpha ? GL_RGBA : GL_RGB), GL_UNSIGNED_BYTE, image);
+		//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);

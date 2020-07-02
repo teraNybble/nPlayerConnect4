@@ -59,6 +59,7 @@ void Engine::display()
 	glEnable(GL_BLEND); glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	glClearColor(0.118f, 0.118f, 0.118f,1.0f);
+	//glClearColor(1, 1, 0.118f, 1.0f);
 
 	glLoadIdentity();
 
