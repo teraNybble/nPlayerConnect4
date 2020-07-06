@@ -5,6 +5,7 @@
 #include "Fonts.h"
 #include "ImageLoder.h"
 #include "ScreenCoord.h"
+#include "FontInfo.h"
 //#include "freetype.h"
 
 class MainMenu
@@ -34,8 +35,15 @@ private:
 	Game2D::Button start;
 	GLuint mainMenuTex;
 	//freetype::font_data font;
+	TextInfo title;
+	TextInfo noPlayers;
+	TextInfo boardDims;
+	TextInfo playerCount;
+	TextInfo boardDimLabels;
 public:
 	void init();
+
+	void resize();
 
 	void update();
 	int processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseState);

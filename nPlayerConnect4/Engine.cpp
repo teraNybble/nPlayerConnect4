@@ -29,6 +29,8 @@ void Engine::resizeCallback(GLFWwindow* window, int width, int height)
 	Font::initFonts();
 	ScreenCoord::init(width, height);
 	ScreenCoord::alignCentre();
+	
+	mainMenu.resize();
 }
 
 void Engine::keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
@@ -129,12 +131,6 @@ void Engine::init()
 		Game2D::Colour(1,0.75f,0.8f),
 	};
 
-	board.setBoardDims(7,6);
-	board.setPlayerColours(playerColours);
-	board.initBoard();
-	mainMenu.init();
-
-
 	Font::init(screenHeight);
 	Font::insert(40);
 	Font::insert(36);
@@ -145,6 +141,12 @@ void Engine::init()
 
 
 	ScreenCoord::init(screenWidth, screenHeight);
+
+
+	board.setBoardDims(7, 6);
+	board.setPlayerColours(playerColours);
+	board.initBoard();
+	mainMenu.init();
 }
 
 void Engine::processKeys()

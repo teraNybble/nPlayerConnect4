@@ -74,6 +74,8 @@ namespace freetype {
 	// The Current Modelview Matrix Will Also Be Applied To The Text.
 	float print(const font_data &ft_font, float x, float y, const char *fmt, ...);
 
+	float getLength(const font_data& ft_font, const char* fmt, ...);
+
 }                                               // Close The Namespace
 
 #endif

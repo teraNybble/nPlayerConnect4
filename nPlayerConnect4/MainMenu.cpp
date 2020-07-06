@@ -97,6 +97,33 @@ void MainMenu::init()
 	lineLength = 4;
 	boardWidth = 7;
 	boardHeight = 6;
+
+	resize();
+}
+
+void MainMenu::resize()
+{
+	//TextInfo title;
+	title.fontSize = 40;
+	title.text = "N player connect 4";
+	title.width = freetype::getLength(Font::getFont(title.fontSize), title.text.c_str());
+	//freetype::print(Font::getFont(26), -50, -20, "No. Players");
+	noPlayers.fontSize = 26;
+	noPlayers.text = "No. Players";
+	noPlayers.width = freetype::getLength(Font::getFont(noPlayers.fontSize), noPlayers.text.c_str());
+	//freetype::print(Font::getFont(26), -10, -20, "Board size");
+	boardDims.fontSize = 26;
+	boardDims.text = "Board size";
+	boardDims.width = freetype::getLength(Font::getFont(boardDims.fontSize), boardDims.text.c_str());
+
+	playerCount.fontSize = 36;
+	playerCount.text = "%d";
+	playerCount.width = freetype::getLength(Font::getFont(playerCount.fontSize), playerCount.text.c_str(),numPlayers);
+	
+	boardDimLabels.fontSize = 26;
+	boardDimLabels.text = "%d x %d";
+	boardDimLabels.width = freetype::getLength(Font::getFont(boardDimLabels.fontSize), boardDimLabels.text.c_str(), boardWidth, boardHeight);
+
 }
 
 void MainMenu::update()
@@ -107,27 +134,35 @@ int MainMenu::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseS
 {
 	if(playersPlus.update(mousePos,mouseState,1) == Game2D::ClickableObject::ClickState::CLICK){
 		numPlayers++;
+		playerCount.width = freetype::getLength(Font::getFont(playerCount.fontSize), playerCount.text.c_str(), numPlayers);
+		//std::cout << playerCount.width << "\n";
 	}
 	if(playersMinus.update(mousePos,mouseState,1) == Game2D::ClickableObject::ClickState::CLICK) {
 		if(--numPlayers < 2){
 			numPlayers = 2;
 		}
+		playerCount.width = freetype::getLength(Font::getFont(playerCount.fontSize), playerCount.text.c_str(), numPlayers);
+		//std::cout << playerCount.width << "\n";
 	}
 	if (boardWidthPlus.update(mousePos, mouseState, 1) == Game2D::ClickableObject::ClickState::CLICK) {
 		boardWidth++;
+		boardDimLabels.width = freetype::getLength(Font::getFont(boardDimLabels.fontSize), boardDimLabels.text.c_str(), boardWidth, boardHeight);
 	}
 	if (boardWidthMinus.update(mousePos, mouseState, 1) == Game2D::ClickableObject::ClickState::CLICK) {
 		if (--boardWidth < lineLength) {
 			boardWidth = lineLength;
 		}
+		boardDimLabels.width = freetype::getLength(Font::getFont(boardDimLabels.fontSize), boardDimLabels.text.c_str(), boardWidth, boardHeight);
 	}
 	if (boardHeightPlus.update(mousePos, mouseState, 1) == Game2D::ClickableObject::ClickState::CLICK) {
 		boardHeight++;
+		boardDimLabels.width = freetype::getLength(Font::getFont(boardDimLabels.fontSize), boardDimLabels.text.c_str(), boardWidth, boardHeight);
 	}
 	if (boardHeightMinus.update(mousePos, mouseState, 1) == Game2D::ClickableObject::ClickState::CLICK) {
 		if (--boardHeight < lineLength) {
 			boardHeight = lineLength;
 		}
+		boardDimLabels.width = freetype::getLength(Font::getFont(boardDimLabels.fontSize), boardDimLabels.text.c_str(), boardWidth, boardHeight);
 	}
 	//as the start button is aligned to the right of the screen the mouse coordinats need to be aligned right as well
 	Game2D::Pos2 mousePosAlignedRight = Game2D::Pos2((mousePos.x - ScreenCoord::getAspectRatio() * 50), mousePos.y);
@@ -158,9 +193,13 @@ void MainMenu::draw()
 	ScreenCoord::alignCentre();
 
 	Game2D::Colour(0, 0, 0).draw();
-	freetype::print(Font::getFont(36), -40, -35, "%d", numPlayers);
-	freetype::print(Font::getFont(26), -8, -33.5, "%d x %d", boardWidth,boardHeight);
-	freetype::print(Font::getFont(26), -50, -20, "No. Players");
-	freetype::print(Font::getFont(26), -10, -20, "Board size");
-	freetype::print(Font::getFont(40), -30, 25, "N player connect 4");
+	//std::cout << noPlayers.width << "\t" << (noPlayers.width / -2.0f) << "\n";
+	freetype::print(Font::getFont(playerCount.fontSize),(playerCount.width / -2.0f) - 38, -35, playerCount.text.c_str(), numPlayers);
+	freetype::print(Font::getFont(boardDimLabels.fontSize), (boardDimLabels.width/-2.0f)-2, -33.5, boardDimLabels.text.c_str(), boardWidth,boardHeight);
+	freetype::print(Font::getFont(noPlayers.fontSize), (noPlayers.width/-2.0f)-38, -20, noPlayers.text.c_str());
+	freetype::print(Font::getFont(boardDims.fontSize), (boardDims.width/-2.0f)+1, -20, boardDims.text.c_str());
+	//std::cout << title.width << "\t" << title.width / -2.0f << "\n";
+	//std::cout << freetype::getLength(Font::getFont(title.fontSize), title.text.c_str()) << "\n";
+	//freetype::print(Font::getFont(title.fontSize), -30, 25, title.text.c_str());
+	freetype::print(Font::getFont(title.fontSize), title.width/-2.0f, 25, title.text.c_str());
 }
