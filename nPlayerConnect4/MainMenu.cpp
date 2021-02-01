@@ -192,7 +192,7 @@ void MainMenu::draw()
 
 	ScreenCoord::alignCentre();
 
-	Game2D::Colour(0, 0, 0).draw();
+	//Game2D::Colour(0, 0, 0).draw();
 	//std::cout << noPlayers.width << "\t" << (noPlayers.width / -2.0f) << "\n";
 	freetype::print(Font::getFont(playerCount.fontSize),(playerCount.width / -2.0f) - 38, -35, playerCount.text.c_str(), numPlayers);
 	freetype::print(Font::getFont(boardDimLabels.fontSize), (boardDimLabels.width/-2.0f)-2, -33.5, boardDimLabels.text.c_str(), boardWidth,boardHeight);
