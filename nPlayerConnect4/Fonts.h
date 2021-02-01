@@ -17,6 +17,7 @@ class Font
 private:
 	static std::map<unsigned int, freetype::font_data> fonts;
 	static int screenHeight;
+	static bool inited;
 public:
 	inline static void insert(unsigned int h) {
 		freetype::font_data temp;
@@ -29,8 +30,10 @@ public:
 		for (auto& it : fonts) {
 			it.second.init(_SysFont, it.first * (screenHeight / 480));
 		}
+		inited = true;
 	}
 	inline static const freetype::font_data& getFont(unsigned int h) {
+		if (!inited) { std::cerr << "Error: accesing fonts before initalisation" << std::endl; }
 		return fonts.find(h)->second;
 	}
 
