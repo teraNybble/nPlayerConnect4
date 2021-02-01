@@ -103,24 +103,25 @@ void MainMenu::init()
 
 void MainMenu::resize()
 {
+	ScreenCoord::alignCentre();
 	//TextInfo title;
-	title.fontSize = 40;
+	title.fontSize = 5;
 	title.text = "N player connect 4";
 	title.width = freetype::getLength(Font::getFont(title.fontSize), title.text.c_str());
 	//freetype::print(Font::getFont(26), -50, -20, "No. Players");
-	noPlayers.fontSize = 26;
+	noPlayers.fontSize = 4;
 	noPlayers.text = "No. Players";
 	noPlayers.width = freetype::getLength(Font::getFont(noPlayers.fontSize), noPlayers.text.c_str());
 	//freetype::print(Font::getFont(26), -10, -20, "Board size");
-	boardDims.fontSize = 26;
+	boardDims.fontSize = 4;
 	boardDims.text = "Board size";
 	boardDims.width = freetype::getLength(Font::getFont(boardDims.fontSize), boardDims.text.c_str());
 
-	playerCount.fontSize = 36;
+	playerCount.fontSize = 4;
 	playerCount.text = "%d";
 	playerCount.width = freetype::getLength(Font::getFont(playerCount.fontSize), playerCount.text.c_str(),numPlayers);
 	
-	boardDimLabels.fontSize = 26;
+	boardDimLabels.fontSize = 4;
 	boardDimLabels.text = "%d x %d";
 	boardDimLabels.width = freetype::getLength(Font::getFont(boardDimLabels.fontSize), boardDimLabels.text.c_str(), boardWidth, boardHeight);
 

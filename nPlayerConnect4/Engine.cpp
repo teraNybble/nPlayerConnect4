@@ -95,8 +95,11 @@ void Engine::display()
 		temp.setRect(Game2D::Rect(0, 0, 400, 400));
 		temp.draw();
 		Game2D::Colour(1, 1, 1).draw();
-		freetype::print(Font::getFont(40), (((((screenWidth - screenHeight) / 2.0f)) / screenHeight) * 100.0f) - 63.5f, 20, "Player %d wins!", winningPlayer + 1);
-			freetype::print(Font::getFont(20), (((((screenWidth - screenHeight) / 2.0f)) / screenHeight) * 100.0f) - 53.5f, 10, "Click to continue");
+		ScreenCoord::alignCentre();
+		freetype::print(Font::getFont(5), freetype::getLength(Font::getFont(5), "Player %d wins!", winningPlayer + 1) / -2.0, 20, "Player %d wins!", winningPlayer + 1);
+		freetype::print(Font::getFont(3), freetype::getLength(Font::getFont(3), "Click to continue") /-2.0, 10, "Click to continue");
+		//freetype::print(Font::getFont(5), (((((screenWidth - screenHeight) / 2.0f)) / screenHeight) * 100.0f) - 63.5f, 20, "Player %d wins!", winningPlayer + 1);
+		//freetype::print(Font::getFont(3), (((((screenWidth - screenHeight) / 2.0f)) / screenHeight) * 100.0f) - 53.5f, 10, "Click to continue");
 		break;
 	case Engine::PLAYING:
 		board.draw();
@@ -137,6 +140,9 @@ void Engine::init()
 	Font::insert(30);
 	Font::insert(26);
 	Font::insert(20);
+	Font::insert(5);
+	Font::insert(4);
+	Font::insert(3);
 	Font::initFonts();
 
 

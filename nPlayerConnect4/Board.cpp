@@ -294,7 +294,7 @@ void Board::draw()
 	}
 	ScreenCoord::alignLeft();
 	Game2D::Colour(1, 1, 1).draw();
-	freetype::print(Font::getFont(26), 0, 45, "Player %d's turn", currentPlayer + 1);
+	freetype::print(Font::getFont(5), 0, 45, "Player %d's turn", currentPlayer + 1);
 	ScreenCoord::alignCentre();
 	//test.setColour(Game2D::Colour(0, 1, 1, 0.5f));
 	//std::cout << ((segHeight + 2) * (height-1)) << "\n";

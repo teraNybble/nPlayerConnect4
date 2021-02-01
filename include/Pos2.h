@@ -45,6 +45,16 @@ namespace Game2D
 	{
 		return os << p.x << ", " << p.y;
 	}
+
+	inline bool operator== (const Pos2& lhs, const Pos2& rhs)
+	{
+		return (lhs.x == rhs.x && lhs.y == rhs.y);
+	}
+
+	inline bool operator!= (const Pos2& lhs, const Pos2& rhs)
+	{
+		return !(lhs == rhs);
+	}
 }
 
 #endif //POS2_H
