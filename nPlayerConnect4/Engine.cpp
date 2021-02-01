@@ -101,6 +101,18 @@ void Engine::display()
 		//freetype::print(Font::getFont(5), (((((screenWidth - screenHeight) / 2.0f)) / screenHeight) * 100.0f) - 63.5f, 20, "Player %d wins!", winningPlayer + 1);
 		//freetype::print(Font::getFont(3), (((((screenWidth - screenHeight) / 2.0f)) / screenHeight) * 100.0f) - 53.5f, 10, "Click to continue");
 		break;
+	case Engine::TIE:
+		board.draw();
+		temp.setColour(Game2D::Colour(0, 0, 0, 0.5));
+		temp.setRect(Game2D::Rect(0, 0, 400, 400));
+		temp.draw();
+		Game2D::Colour(1, 1, 1).draw();
+		ScreenCoord::alignCentre();
+		freetype::print(Font::getFont(5), freetype::getLength(Font::getFont(5), "Tie") / -2.0, 20, "Tie");
+		freetype::print(Font::getFont(3), freetype::getLength(Font::getFont(3), "Click to continue") /-2.0, 10, "Click to continue");
+		//freetype::print(Font::getFont(5), (((((screenWidth - screenHeight) / 2.0f)) / screenHeight) * 100.0f) - 63.5f, 20, "Player %d wins!", winningPlayer + 1);
+		//freetype::print(Font::getFont(3), (((((screenWidth - screenHeight) / 2.0f)) / screenHeight) * 100.0f) - 53.5f, 10, "Click to continue");
+		break;
 	case Engine::PLAYING:
 		board.draw();
 		break;
@@ -178,12 +190,16 @@ void Engine::processMouse()
 	case Engine::PLAYING:
 		switch (board.processMouse(mousePos,mouseState,winningPlayer))
 		{
+		case -1:
+			currentState = TIE;
+			break;
 		case 1:
-			std::cout << "WIN\n";
+			//std::cout << "WIN\n";
 			currentState = WIN;
 			break;
 		}
 		break;
+	case Engine::TIE:
 	case Engine::WIN:
 		if (mouseState == Game2D::KeyState::DOWN) {
 			currentState = MENU;

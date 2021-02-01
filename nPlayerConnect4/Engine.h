@@ -13,7 +13,7 @@
 class Engine
 {
 public:
-	enum State { MENU, PLAYING, WIN, EXIT };
+	enum State { MENU, PLAYING, WIN, TIE, EXIT };
 private:
 	static GLFWwindow* window;
 	static int screenWidth, screenHeight;

@@ -63,8 +63,9 @@ int Board::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseStat
 				if (checkBoard(pos)) {
 					winningPlayer = currentPlayer;
 					return 1; 
-				}
-				else {
+				} else if(boardFull()){
+					return -1;
+				} else {
 					if (++currentPlayer >= numPlayers) {
 						currentPlayer = 0;
 					}
@@ -246,6 +247,19 @@ bool Board::checkBackDiag(Game2D::Pos2 pos)
 	return false;
 }
 
+bool Board::boardFull()
+{
+	for(int y = 0; y < height; y++)	{
+		for(int x = 0; x < width; x++){
+			if(board[x][y] == -1){
+				return false;
+			}
+		}
+	}
+
+	return true;
+}
+
 void Board::draw()
 {
 	glBindTexture(GL_TEXTURE_2D, circleTex);
@@ -294,7 +308,7 @@ void Board::draw()
 	}
 	ScreenCoord::alignLeft();
 	Game2D::Colour(1, 1, 1).draw();
-	freetype::print(Font::getFont(5), 0, 45, "Player %d's turn", currentPlayer + 1);
+	freetype::print(Font::getFont(5), 1, 44, "Player %d's turn", currentPlayer + 1);
 	ScreenCoord::alignCentre();
 	//test.setColour(Game2D::Colour(0, 1, 1, 0.5f));
 	//std::cout << ((segHeight + 2) * (height-1)) << "\n";

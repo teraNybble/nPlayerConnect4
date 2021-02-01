@@ -52,6 +52,7 @@ public:
 	bool checkRow(Game2D::Pos2 pos);
 	bool checkDiag(Game2D::Pos2 pos);
 	bool checkBackDiag(Game2D::Pos2 pos);
+	bool boardFull();
 
 	void draw();
 };
