@@ -34,6 +34,7 @@ void Board::initBoard()
 {
 	circleTex = ImageLoder::loadPNG("Images/circle.png");
 	circleSprite.setTextureCoords(Game2D::Rect(0, 0, 1, 1));
+	highlightSprite.setTextureCoords(Game2D::Rect(0, 0, 1, 1));
 	//std::cout << circleTex << "\n";
 	board.clear();
 	for(int i = 0; i < height; i++){
@@ -50,6 +51,7 @@ void Board::initBoard()
 
 int Board::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseState, unsigned int& winningPlayer)
 {
+	bool newHighlight = false;
 	int i = 0;
 	for (auto& it : clickboxes) {
 		if (it.update(mousePos, mouseState) == Game2D::ClickableObject::CLICK) {
@@ -70,8 +72,23 @@ int Board::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseStat
 				}
 			}
 		}
+		if(it.update(mousePos,mouseState) == Game2D::ClickableObject::HOVER){
+			Game2D::Pos2 pos;
+			if(insertPice(i,-1,pos)){
+				newHighlight = true;
+				nextInsertPos = pos;
+			} else {
+				nextInsertPos = Game2D::Pos2(-1,-1);
+			}
+		} else {
+			//nextInsertPos = Game2D::Pos2(-1,-1);
+		}
+		//std::cout << nextInsertPos << "\n";
 
 		i++;
+	}
+	if(!newHighlight){
+		nextInsertPos = Game2D::Pos2(-1,-1);
 	}
 
 	return 0;
@@ -241,6 +258,9 @@ void Board::draw()
 	circleSprite.setRect(Game2D::Rect(0,0,segDim,segDim));
 	circleSprite.setColour(Game2D::Colour::Black);
 
+	highlightSprite.setRect(Game2D::Rect(0,0,segDim*1.1f,segDim*1.1f));
+	highlightSprite.setColour(Game2D::Colour::White);
+
 	float x = (0 - ((segDim + 2) * (width-1)) / 2.0f);// *ScreenCoord::getAspectRatio();
 	//float x = -50 * ScreenCoord::getAspectRatio();
 	float y = -50 + (segDim/2.0f)+2;
@@ -254,6 +274,15 @@ void Board::draw()
 				circleSprite.setColour(Game2D::Colour::Black);
 			}
 			//std::cout << i << "," << j << " at " << x << "," << y << "\n";
+			Game2D::Pos2 currentBoardPos(i,j);
+			//std::cout << currentBoardPos << "\t" << nextInsertPos << "\n";
+			if(currentBoardPos == nextInsertPos){
+				//std::cout << "Drawing Highlight\n";
+				highlightSprite.setPos(Game2D::Pos2(x,y));
+				highlightSprite.setColour(playerColours[currentPlayer]);
+				highlightSprite.draw();
+			}
+
 			circleSprite.setPos(Game2D::Pos2(x,y));
 			circleSprite.draw();
 

@@ -41,6 +41,7 @@ CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: /home/dan/CLionProjects/Game2D/Spri
 CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: ../Board.h
 CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: ../Engine.cpp
 CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: ../Engine.h
+CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: ../FontInfo.h
 CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: ../Fonts.h
 CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: ../ImageLoder.h
 CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: ../MainMenu.h
@@ -91,9 +92,12 @@ CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: /home/dan/CLionProjects/Game2D/Ke
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: /home/dan/CLionProjects/Game2D/Pos2.h
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: /home/dan/CLionProjects/Game2D/Rect.h
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: /home/dan/CLionProjects/Game2D/Sprite.h
+CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: ../FontInfo.h
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: ../Fonts.h
+CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: ../ImageLoder.h
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: ../MainMenu.cpp
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: ../MainMenu.h
+CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: ../ScreenCoord.h
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: ../freetype.h
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: ../glew.h
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: /usr/include/freetype2/freetype/config/ftheader.h
@@ -141,6 +145,7 @@ CMakeFiles/nPlayerConnect4.dir/main.cpp.o: /home/dan/CLionProjects/Game2D/Rect.h
 CMakeFiles/nPlayerConnect4.dir/main.cpp.o: /home/dan/CLionProjects/Game2D/Sprite.h
 CMakeFiles/nPlayerConnect4.dir/main.cpp.o: ../Board.h
 CMakeFiles/nPlayerConnect4.dir/main.cpp.o: ../Engine.h
+CMakeFiles/nPlayerConnect4.dir/main.cpp.o: ../FontInfo.h
 CMakeFiles/nPlayerConnect4.dir/main.cpp.o: ../Fonts.h
 CMakeFiles/nPlayerConnect4.dir/main.cpp.o: ../ImageLoder.h
 CMakeFiles/nPlayerConnect4.dir/main.cpp.o: ../MainMenu.h

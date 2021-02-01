@@ -28,6 +28,9 @@ private:
 
 	GLuint circleTex;
 	Game2D::Sprite circleSprite;
+	Game2D::Sprite highlightSprite;
+
+	Game2D::Pos2 nextInsertPos;//used to see highlight to the user where the next piece will be put
 
 	float GetSegDim();
 public:
