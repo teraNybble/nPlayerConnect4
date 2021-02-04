@@ -45,6 +45,8 @@ void Board::initBoard()
 		board.push_back(temp);
 	}
 
+	currentPlayer = 0;//so it starts as player 1
+
 	//board[0][0] = 0;
 	//board[5][6] = 1;
 }
