@@ -150,6 +150,60 @@ Board.cpp.s:
 	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/Board.cpp.s
 .PHONY : Board.cpp.s
 
+Client.o: Client.cpp.o
+
+.PHONY : Client.o
+
+# target to build an object file
+Client.cpp.o:
+	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/Client.cpp.o
+.PHONY : Client.cpp.o
+
+Client.i: Client.cpp.i
+
+.PHONY : Client.i
+
+# target to preprocess a source file
+Client.cpp.i:
+	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/Client.cpp.i
+.PHONY : Client.cpp.i
+
+Client.s: Client.cpp.s
+
+.PHONY : Client.s
+
+# target to generate assembly for a file
+Client.cpp.s:
+	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/Client.cpp.s
+.PHONY : Client.cpp.s
+
+ConnectMenu.o: ConnectMenu.cpp.o
+
+.PHONY : ConnectMenu.o
+
+# target to build an object file
+ConnectMenu.cpp.o:
+	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/ConnectMenu.cpp.o
+.PHONY : ConnectMenu.cpp.o
+
+ConnectMenu.i: ConnectMenu.cpp.i
+
+.PHONY : ConnectMenu.i
+
+# target to preprocess a source file
+ConnectMenu.cpp.i:
+	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/ConnectMenu.cpp.i
+.PHONY : ConnectMenu.cpp.i
+
+ConnectMenu.s: ConnectMenu.cpp.s
+
+.PHONY : ConnectMenu.s
+
+# target to generate assembly for a file
+ConnectMenu.cpp.s:
+	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/ConnectMenu.cpp.s
+.PHONY : ConnectMenu.cpp.s
+
 Engine.o: Engine.cpp.o
 
 .PHONY : Engine.o
@@ -176,33 +230,6 @@ Engine.s: Engine.cpp.s
 Engine.cpp.s:
 	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/Engine.cpp.s
 .PHONY : Engine.cpp.s
-
-Fonts.o: Fonts.cpp.o
-
-.PHONY : Fonts.o
-
-# target to build an object file
-Fonts.cpp.o:
-	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/Fonts.cpp.o
-.PHONY : Fonts.cpp.o
-
-Fonts.i: Fonts.cpp.i
-
-.PHONY : Fonts.i
-
-# target to preprocess a source file
-Fonts.cpp.i:
-	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/Fonts.cpp.i
-.PHONY : Fonts.cpp.i
-
-Fonts.s: Fonts.cpp.s
-
-.PHONY : Fonts.s
-
-# target to generate assembly for a file
-Fonts.cpp.s:
-	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/Fonts.cpp.s
-.PHONY : Fonts.cpp.s
 
 ImageLoder.o: ImageLoder.cpp.o
 
@@ -231,6 +258,33 @@ ImageLoder.cpp.s:
 	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/ImageLoder.cpp.s
 .PHONY : ImageLoder.cpp.s
 
+Lobby.o: Lobby.cpp.o
+
+.PHONY : Lobby.o
+
+# target to build an object file
+Lobby.cpp.o:
+	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.o
+.PHONY : Lobby.cpp.o
+
+Lobby.i: Lobby.cpp.i
+
+.PHONY : Lobby.i
+
+# target to preprocess a source file
+Lobby.cpp.i:
+	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.i
+.PHONY : Lobby.cpp.i
+
+Lobby.s: Lobby.cpp.s
+
+.PHONY : Lobby.s
+
+# target to generate assembly for a file
+Lobby.cpp.s:
+	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.s
+.PHONY : Lobby.cpp.s
+
 MainMenu.o: MainMenu.cpp.o
 
 .PHONY : MainMenu.o
@@ -258,59 +312,32 @@ MainMenu.cpp.s:
 	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.s
 .PHONY : MainMenu.cpp.s
 
-ScreenCoord.o: ScreenCoord.cpp.o
+Server.o: Server.cpp.o
 
-.PHONY : ScreenCoord.o
-
-# target to build an object file
-ScreenCoord.cpp.o:
-	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/ScreenCoord.cpp.o
-.PHONY : ScreenCoord.cpp.o
-
-ScreenCoord.i: ScreenCoord.cpp.i
-
-.PHONY : ScreenCoord.i
-
-# target to preprocess a source file
-ScreenCoord.cpp.i:
-	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/ScreenCoord.cpp.i
-.PHONY : ScreenCoord.cpp.i
-
-ScreenCoord.s: ScreenCoord.cpp.s
-
-.PHONY : ScreenCoord.s
-
-# target to generate assembly for a file
-ScreenCoord.cpp.s:
-	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/ScreenCoord.cpp.s
-.PHONY : ScreenCoord.cpp.s
-
-freetype.o: freetype.cpp.o
-
-.PHONY : freetype.o
+.PHONY : Server.o
 
 # target to build an object file
-freetype.cpp.o:
-	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/freetype.cpp.o
-.PHONY : freetype.cpp.o
+Server.cpp.o:
+	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/Server.cpp.o
+.PHONY : Server.cpp.o
 
-freetype.i: freetype.cpp.i
+Server.i: Server.cpp.i
 
-.PHONY : freetype.i
+.PHONY : Server.i
 
 # target to preprocess a source file
-freetype.cpp.i:
-	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/freetype.cpp.i
-.PHONY : freetype.cpp.i
+Server.cpp.i:
+	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/Server.cpp.i
+.PHONY : Server.cpp.i
 
-freetype.s: freetype.cpp.s
+Server.s: Server.cpp.s
 
-.PHONY : freetype.s
+.PHONY : Server.s
 
 # target to generate assembly for a file
-freetype.cpp.s:
-	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/freetype.cpp.s
-.PHONY : freetype.cpp.s
+Server.cpp.s:
+	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/Server.cpp.s
+.PHONY : Server.cpp.s
 
 main.o: main.cpp.o
 
@@ -351,24 +378,27 @@ help:
 	@echo "... Board.o"
 	@echo "... Board.i"
 	@echo "... Board.s"
+	@echo "... Client.o"
+	@echo "... Client.i"
+	@echo "... Client.s"
+	@echo "... ConnectMenu.o"
+	@echo "... ConnectMenu.i"
+	@echo "... ConnectMenu.s"
 	@echo "... Engine.o"
 	@echo "... Engine.i"
 	@echo "... Engine.s"
-	@echo "... Fonts.o"
-	@echo "... Fonts.i"
-	@echo "... Fonts.s"
 	@echo "... ImageLoder.o"
 	@echo "... ImageLoder.i"
 	@echo "... ImageLoder.s"
+	@echo "... Lobby.o"
+	@echo "... Lobby.i"
+	@echo "... Lobby.s"
 	@echo "... MainMenu.o"
 	@echo "... MainMenu.i"
 	@echo "... MainMenu.s"
-	@echo "... ScreenCoord.o"
-	@echo "... ScreenCoord.i"
-	@echo "... ScreenCoord.s"
-	@echo "... freetype.o"
-	@echo "... freetype.i"
-	@echo "... freetype.s"
+	@echo "... Server.o"
+	@echo "... Server.i"
+	@echo "... Server.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

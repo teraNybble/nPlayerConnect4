@@ -2,20 +2,24 @@
 #include <iostream>
 #include <iomanip>
 
+
 GLFWwindow* Engine::window;
 int Engine::screenWidth = 1280;
 int Engine::screenHeight = 720;
-Board Engine::board;
-MainMenu Engine::mainMenu;
 Game2D::Pos2 Engine::mousePos;
 Game2D::KeyState::State Engine::mouseState;
 Engine::State Engine::currentState;
-unsigned int Engine::winningPlayer;
+MainMenu Engine::mainMenu;
+ConnectMenu Engine::connectMenu;
+Client* Engine::client;
+//Server* Engine::server;
+bool Engine::serverLoop;
+bool Engine::startServer;
+bool Engine::stopServer;
+bool Engine::heatBeat;
 
 Engine::Engine()
 {
-	//screenWidth = 1280;
-	//screenHeight = 720;
 }
 
 void Engine::resizeCallback(GLFWwindow* window, int width, int height)
@@ -25,31 +29,36 @@ void Engine::resizeCallback(GLFWwindow* window, int width, int height)
 	screenWidth = width;
 	screenHeight = height;
 
-	Font::init(height);
-	Font::initFonts();
-	ScreenCoord::init(width, height);
-	ScreenCoord::alignCentre();
-	
+	Game2D::Font::init(height);
+	Game2D::Font::initFonts();
+	Game2D::ScreenCoord::init(width, height);
+	Game2D::ScreenCoord::alignCentre();
+
 	mainMenu.resize();
+	//connectMenu.resize();
 }
 
 void Engine::keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
+	if(key == GLFW_KEY_BACKSPACE){
+		if(action == GLFW_REPEAT || action == GLFW_RELEASE) {
+			connectMenu.backspace();
+		}
+	}
+}
 
+void Engine::charCallback(GLFWwindow *window, unsigned int codepoint)
+{
+	connectMenu.processCodepoint(codepoint);
 }
 
 void Engine::mouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
 {
-	/*if(mouseState == Game2D::KeyState::State::RELEASED){
-		mouseState = Game2D::KeyState::State::UP;
-	}*/
 	if(button == GLFW_MOUSE_BUTTON_LEFT){
 		if(action == GLFW_PRESS){
 			mouseState = Game2D::KeyState::State::DOWN;
-			//std::cout << "leftdown\n";
 		}
 		else if(action == GLFW_RELEASE){
-			//std::cout << "leftup\n";
 			if(mouseState == Game2D::KeyState::State::DOWN) {
 				mouseState = Game2D::KeyState::State::RELEASED;
 			}
@@ -62,13 +71,9 @@ void Engine::mouseButtonCallback(GLFWwindow* window, int button, int action, int
 
 void Engine::mouseCallback(GLFWwindow* window, double xpos, double ypos)
 {
-	//(((xpos - ((screenWidth - screenHeight) / 2.0f)) / screenHeight)*100.0f) - 50.0f
 	mousePos = Game2D::Pos2(
 			(((xpos - ((screenWidth - screenHeight) / 2.0f)) / screenHeight)*100.0f) - 50.0f,
 			-(((ypos / screenHeight)*100)-50));
-
-	//std::cout << mousePos.x + (screenWidth / (float)screenHeight) * 50 << "\n";
-	//std::cout << mousePos.x - (screenWidth / (float)screenHeight) * 50 << "\n";
 }
 
 void Engine::display()
@@ -81,48 +86,27 @@ void Engine::display()
 
 	glLoadIdentity();
 
-	Game2D::Sprite temp;
+	//draw things here
+	switch (currentState) {
+		case MENU:
+			mainMenu.draw();
+			break;
+		case CONNECT:
+			connectMenu.draw();
+			break;
+		case PLAYING_MULTI:
+			client->draw();
+			break;
+		case PLAYING_SOLO:
+			break;
+		case WIN:
+			break;
+		case TIE:
+			break;
+		case EXIT:
+			break;
 
-	//draw stuff goes hear
-	switch (currentState)
-	{
-	case Engine::MENU:
-		mainMenu.draw();
-		break;
-	case Engine::WIN:
-		board.draw();
-		temp.setColour(Game2D::Colour(0, 0, 0, 0.5));
-		temp.setRect(Game2D::Rect(0, 0, 400, 400));
-		temp.draw();
-		Game2D::Colour(1, 1, 1).draw();
-		ScreenCoord::alignCentre();
-		freetype::print(Font::getFont(5), freetype::getLength(Font::getFont(5), "Player %d wins!", winningPlayer + 1) / -2.0, 20, "Player %d wins!", winningPlayer + 1);
-		freetype::print(Font::getFont(3), freetype::getLength(Font::getFont(3), "Click to continue") /-2.0, 10, "Click to continue");
-		//freetype::print(Font::getFont(5), (((((screenWidth - screenHeight) / 2.0f)) / screenHeight) * 100.0f) - 63.5f, 20, "Player %d wins!", winningPlayer + 1);
-		//freetype::print(Font::getFont(3), (((((screenWidth - screenHeight) / 2.0f)) / screenHeight) * 100.0f) - 53.5f, 10, "Click to continue");
-		break;
-	case Engine::TIE:
-		board.draw();
-		temp.setColour(Game2D::Colour(0, 0, 0, 0.5));
-		temp.setRect(Game2D::Rect(0, 0, 400, 400));
-		temp.draw();
-		Game2D::Colour(1, 1, 1).draw();
-		ScreenCoord::alignCentre();
-		freetype::print(Font::getFont(5), freetype::getLength(Font::getFont(5), "Tie") / -2.0, 20, "Tie");
-		freetype::print(Font::getFont(3), freetype::getLength(Font::getFont(3), "Click to continue") /-2.0, 10, "Click to continue");
-		//freetype::print(Font::getFont(5), (((((screenWidth - screenHeight) / 2.0f)) / screenHeight) * 100.0f) - 63.5f, 20, "Player %d wins!", winningPlayer + 1);
-		//freetype::print(Font::getFont(3), (((((screenWidth - screenHeight) / 2.0f)) / screenHeight) * 100.0f) - 53.5f, 10, "Click to continue");
-		break;
-	case Engine::PLAYING:
-		board.draw();
-		break;
-	case Engine::EXIT:
-		break;
-	default:
-		break;
 	}
-	//board.draw();
-	//mainMenu.draw();
 
 	glDisable(GL_BLEND);
 	glFlush();
@@ -134,37 +118,41 @@ void Engine::init()
 	glfwSetWindowSizeCallback(window, resizeCallback);
 	glfwSetCursorPosCallback(window,mouseCallback);
 	glfwSetKeyCallback(window,keyCallback);
+	glfwSetCharCallback(window,charCallback);
 	glfwSetMouseButtonCallback(window,mouseButtonCallback);
 
+	//make the starting state of the mouse state to up so there aren't any unintentional clicks
 	mouseState = Game2D::KeyState::State::UP;
 
-	std::vector<Game2D::Colour> playerColours = {
-		Game2D::Colour::Red, Game2D::Colour::Yellow,
-		Game2D::Colour::Green, Game2D::Colour::Blue,
-		Game2D::Colour::Cyan, Game2D::Colour::Magenta,
-		Game2D::Colour::White, Game2D::Colour(1,0.65f,0),
-		Game2D::Colour(1,0.75f,0.8f),
-	};
-
-	Font::init(screenHeight);
-	Font::insert(40);
-	Font::insert(36);
-	Font::insert(30);
-	Font::insert(26);
-	Font::insert(20);
-	Font::insert(5);
-	Font::insert(4);
-	Font::insert(3);
-	Font::initFonts();
+	Game2D::Font::init(screenHeight);
+	Game2D::Font::insert(40);
+	Game2D::Font::insert(36);
+	Game2D::Font::insert(30);
+	Game2D::Font::insert(26);
+	Game2D::Font::insert(20);
+	Game2D::Font::insert(5);
+	Game2D::Font::insert(4*1.2f);
+	Game2D::Font::insert(4);
+	Game2D::Font::insert(3);
+	Game2D::Font::initFonts();
 
 
-	ScreenCoord::init(screenWidth, screenHeight);
+	Game2D::ScreenCoord::init(screenWidth, screenHeight);
 
-
-	board.setBoardDims(7, 6);
-	board.setPlayerColours(playerColours);
-	board.initBoard();
 	mainMenu.init();
+	mainMenu.resize();
+	connectMenu.init();
+	connectMenu.resize();
+
+
+
+	//client->init();
+
+	currentState = MENU;
+	serverLoop = true;
+	startServer = false;
+	stopServer = false;
+	heatBeat = false;
 }
 
 void Engine::processKeys()
@@ -174,43 +162,76 @@ void Engine::processKeys()
 
 void Engine::processMouse()
 {
-	switch (currentState)
-	{
-	case Engine::MENU:
-		switch (mainMenu.processMouse(mousePos, mouseState)) {
-		case 1:
-			board.setNumPlayers(mainMenu.getNumPlayers());
-			board.setLineLength(4);
-			board.setBoardDims(mainMenu.getBoardWidth(), mainMenu.getBoardHeight());
-			board.initBoard();//reset the board
-			currentState = PLAYING;
+	switch (currentState) {
+		case MENU:
+			switch (mainMenu.processMouse(mousePos,mouseState)) {
+				case 1://quit
+					currentState = EXIT;
+					break;
+				case 2://join online game
+					connectMenu.setHost(false);
+					currentState = CONNECT;
+					break;
+				case 3://host online game
+					connectMenu.setHost(true);
+					currentState = CONNECT;
+					break;
+				case 4://Solo game
+					currentState = PLAYING_SOLO;
+					break;
+
+			}
 			break;
-		}
-		break;
-	case Engine::PLAYING:
-		switch (board.processMouse(mousePos,mouseState,winningPlayer))
-		{
-		case -1:
-			currentState = TIE;
+		case CONNECT:
+			switch (connectMenu.processMouse(mousePos,mouseState)) {
+				case 1://back
+					//if(server) { delete server; server = nullptr; }
+					if(client && client->isConnected()) { client->disconnect(); }
+					currentState = MENU;
+					break;
+				case 2://connect to server (either self host or online)
+					if(connectMenu.getHost()){
+						//the user is a host so start the server
+						startServer = true;
+					}
+					if(client) { delete client; }
+					client = new Client();
+					client->init();
+					client->setHost(connectMenu.getHost());
+					client->connect(connectMenu.getAddress(),connectMenu.getPort());
+					if(client->isConnected()) {
+						currentState = PLAYING_MULTI;
+					}
+					break;
+
+			}
 			break;
-		case 1:
-			//std::cout << "WIN\n";
-			currentState = WIN;
+		case PLAYING_MULTI:
+			/*if(server){
+				//check to see if all the connections are still connected
+				server->heartBeat();
+				server->update();
+			}
+			//server.update();*/
+			heatBeat = true;
+			switch (client->processMouse(mousePos,mouseState)) {
+				case 1://back
+					client->disconnect();
+					//stop the server
+					stopServer = true;
+					currentState = CONNECT;
+					break;
+			}
 			break;
-		}
-		break;
-	case Engine::TIE:
-	case Engine::WIN:
-		if (mouseState == Game2D::KeyState::DOWN) {
-			currentState = MENU;
-		}
-		break;
-	case Engine::EXIT:
-		break;
-	default:
-		break;
+		case PLAYING_SOLO:
+			break;
+		case WIN:
+			break;
+		case TIE:
+			break;
+		case EXIT:
+			break;
 	}
-	//std::cout << currentState << "\n";
 }
 
 void Engine::update()
@@ -245,24 +266,9 @@ bool Engine::createWindow()
 	glfwMakeContextCurrent(window);
 
 
-	ScreenCoord::init(screenWidth, screenHeight);
-	ScreenCoord::alignCentre();
-	//ScreenCoord::alignLeft();
+	Game2D::ScreenCoord::init(screenWidth, screenHeight);
+	Game2D::ScreenCoord::alignCentre();
 
-	/*
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-
-	//set screen coords
-	//glOrtho(0, 100.0f * (screenWidth / (float)screenHeight), 0, 100, 0, 100);
-	glOrtho(((-50.0f * (screenWidth / (float)screenHeight))), ((50.0f * (screenWidth / (float)screenHeight))), -50, 50, 0, 100);
-	//ScreenCoord::alignCentre();
-
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-	*/
-	//TODO add in input class
-	//input.setWindow(window);
 	return true;
 
 }
@@ -276,9 +282,40 @@ int Engine::mainLoop()
 
 	init();
 
+	std::thread serverThread(
+		[](){
+			Server* server = nullptr;
+			while (serverLoop){
+				if(startServer){
+					if(server) { delete server; }
+					server = new Server(60000);
+					server->start();
+					startServer = false;
+				}
+				if(heatBeat){
+					if(server){
+						server->heartBeat();
+					}
+					heatBeat = false;
+				}
+				if(stopServer) {
+					if(server){
+						delete server;
+						server = nullptr;
+					}
+					stopServer = false;
+				}
+				if(server){
+					server->update();
+				}
+			}
+			if(server) {delete server;}
+		}
+	);
+
+
 	while(!glfwWindowShouldClose(window))
 	{
-		//lastCycleTime = gameTimer.restartTimer();
 		glClear(GL_COLOR_BUFFER_BIT);
 		display();
 
@@ -290,9 +327,15 @@ int Engine::mainLoop()
 		processKeys();
 		processMouse();
 
-		//if(currentState == QUITTING) break;
+		if(currentState == EXIT) { break; }
 	}
 
+	serverLoop = false;
+	if(serverThread.joinable()) { serverThread.join();}
+
+	//if(server) { delete server; }
+
 	glfwTerminate();
+
 	return 0;
 }

@@ -5,17 +5,90 @@ CMakeFiles/nPlayerConnect4.dir/Board.cpp.o
  /home/dan/CLionProjects/Game2D/ClickableObject.h
  /home/dan/CLionProjects/Game2D/Colour.h
  /home/dan/CLionProjects/Game2D/DrawableObject.h
+ /home/dan/CLionProjects/Game2D/Fonts.h
  /home/dan/CLionProjects/Game2D/KeyState.h
  /home/dan/CLionProjects/Game2D/Pos2.h
  /home/dan/CLionProjects/Game2D/Rect.h
+ /home/dan/CLionProjects/Game2D/ScreenCoord.h
  /home/dan/CLionProjects/Game2D/Sprite.h
+ /home/dan/CLionProjects/Game2D/freetype.h
  /home/dan/CLionProjects/Game2D/glew.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Board.cpp
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Board.h
- /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Fonts.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ImageLoder.h
- /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ScreenCoord.h
- /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/freetype.h
+ /usr/include/freetype2/freetype/config/ftheader.h
+ /usr/include/freetype2/freetype/freetype.h
+ /usr/include/freetype2/freetype/fterrdef.h
+ /usr/include/freetype2/freetype/fterrors.h
+ /usr/include/freetype2/freetype/ftglyph.h
+ /usr/include/freetype2/freetype/ftimage.h
+ /usr/include/freetype2/freetype/ftmoderr.h
+ /usr/include/freetype2/freetype/ftoutln.h
+ /usr/include/freetype2/freetype/ftsystem.h
+ /usr/include/freetype2/freetype/fttrigon.h
+ /usr/include/freetype2/freetype/fttypes.h
+ /usr/include/freetype2/ft2build.h
+CMakeFiles/nPlayerConnect4.dir/Client.cpp.o
+ /home/dan/CLionProjects/Game2D/AnimatedSprite.h
+ /home/dan/CLionProjects/Game2D/Button.h
+ /home/dan/CLionProjects/Game2D/ClickableObject.h
+ /home/dan/CLionProjects/Game2D/Colour.h
+ /home/dan/CLionProjects/Game2D/DrawableObject.h
+ /home/dan/CLionProjects/Game2D/Fonts.h
+ /home/dan/CLionProjects/Game2D/KeyState.h
+ /home/dan/CLionProjects/Game2D/Pos2.h
+ /home/dan/CLionProjects/Game2D/Rect.h
+ /home/dan/CLionProjects/Game2D/ScreenCoord.h
+ /home/dan/CLionProjects/Game2D/Slider.h
+ /home/dan/CLionProjects/Game2D/Sprite.h
+ /home/dan/CLionProjects/Game2D/freetype.h
+ /home/dan/CLionProjects/Game2D/glew.h
+ /home/dan/CLionProjects/asio/net.h
+ /home/dan/CLionProjects/asio/net_TSQueue.h
+ /home/dan/CLionProjects/asio/net_client.h
+ /home/dan/CLionProjects/asio/net_common.h
+ /home/dan/CLionProjects/asio/net_connection.h
+ /home/dan/CLionProjects/asio/net_message.h
+ /home/dan/CLionProjects/asio/net_server.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Board.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Client.cpp
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Client.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/FontInfo.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ImageLoder.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Lobby.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Message.h
+ /usr/include/freetype2/freetype/config/ftheader.h
+ /usr/include/freetype2/freetype/freetype.h
+ /usr/include/freetype2/freetype/fterrdef.h
+ /usr/include/freetype2/freetype/fterrors.h
+ /usr/include/freetype2/freetype/ftglyph.h
+ /usr/include/freetype2/freetype/ftimage.h
+ /usr/include/freetype2/freetype/ftmoderr.h
+ /usr/include/freetype2/freetype/ftoutln.h
+ /usr/include/freetype2/freetype/ftsystem.h
+ /usr/include/freetype2/freetype/fttrigon.h
+ /usr/include/freetype2/freetype/fttypes.h
+ /usr/include/freetype2/ft2build.h
+CMakeFiles/nPlayerConnect4.dir/ConnectMenu.cpp.o
+ /home/dan/CLionProjects/Game2D/AnimatedSprite.h
+ /home/dan/CLionProjects/Game2D/Button.h
+ /home/dan/CLionProjects/Game2D/ClickableObject.h
+ /home/dan/CLionProjects/Game2D/Colour.h
+ /home/dan/CLionProjects/Game2D/DrawableObject.h
+ /home/dan/CLionProjects/Game2D/Fonts.h
+ /home/dan/CLionProjects/Game2D/KeyState.h
+ /home/dan/CLionProjects/Game2D/Pos2.h
+ /home/dan/CLionProjects/Game2D/Rect.h
+ /home/dan/CLionProjects/Game2D/ScreenCoord.h
+ /home/dan/CLionProjects/Game2D/Sprite.h
+ /home/dan/CLionProjects/Game2D/TextInput.h
+ /home/dan/CLionProjects/Game2D/Timer.h
+ /home/dan/CLionProjects/Game2D/freetype.h
+ /home/dan/CLionProjects/Game2D/glew.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ConnectMenu.cpp
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ConnectMenu.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/FontInfo.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ImageLoder.h
  /usr/include/freetype2/freetype/config/ftheader.h
  /usr/include/freetype2/freetype/freetype.h
  /usr/include/freetype2/freetype/fterrdef.h
@@ -34,21 +107,36 @@ CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o
  /home/dan/CLionProjects/Game2D/ClickableObject.h
  /home/dan/CLionProjects/Game2D/Colour.h
  /home/dan/CLionProjects/Game2D/DrawableObject.h
+ /home/dan/CLionProjects/Game2D/Fonts.h
  /home/dan/CLionProjects/Game2D/KeyMap.h
  /home/dan/CLionProjects/Game2D/KeyState.h
  /home/dan/CLionProjects/Game2D/Pos2.h
  /home/dan/CLionProjects/Game2D/Rect.h
+ /home/dan/CLionProjects/Game2D/ScreenCoord.h
+ /home/dan/CLionProjects/Game2D/Slider.h
  /home/dan/CLionProjects/Game2D/Sprite.h
+ /home/dan/CLionProjects/Game2D/TextInput.h
+ /home/dan/CLionProjects/Game2D/Timer.h
+ /home/dan/CLionProjects/Game2D/freetype.h
+ /home/dan/CLionProjects/Game2D/glew.h
+ /home/dan/CLionProjects/asio/net.h
+ /home/dan/CLionProjects/asio/net_TSQueue.h
+ /home/dan/CLionProjects/asio/net_client.h
+ /home/dan/CLionProjects/asio/net_common.h
+ /home/dan/CLionProjects/asio/net_connection.h
+ /home/dan/CLionProjects/asio/net_message.h
+ /home/dan/CLionProjects/asio/net_server.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Board.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Client.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ConnectMenu.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Engine.cpp
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Engine.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/FontInfo.h
- /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Fonts.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ImageLoder.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Lobby.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/MainMenu.h
- /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ScreenCoord.h
- /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/freetype.h
- /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/glew.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Message.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Server.h
  /home/dan/glfw/include/GLFW/glfw3.h
  /usr/include/freetype2/freetype/config/ftheader.h
  /usr/include/freetype2/freetype/freetype.h
@@ -62,11 +150,29 @@ CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o
  /usr/include/freetype2/freetype/fttrigon.h
  /usr/include/freetype2/freetype/fttypes.h
  /usr/include/freetype2/ft2build.h
-CMakeFiles/nPlayerConnect4.dir/Fonts.cpp.o
- /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Fonts.cpp
- /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Fonts.h
- /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/freetype.h
- /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/glew.h
+CMakeFiles/nPlayerConnect4.dir/ImageLoder.cpp.o
+ /home/dan/CLionProjects/Game2D/glew.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ImageLoder.cpp
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ImageLoder.h
+CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.o
+ /home/dan/CLionProjects/Game2D/AnimatedSprite.h
+ /home/dan/CLionProjects/Game2D/Button.h
+ /home/dan/CLionProjects/Game2D/ClickableObject.h
+ /home/dan/CLionProjects/Game2D/Colour.h
+ /home/dan/CLionProjects/Game2D/DrawableObject.h
+ /home/dan/CLionProjects/Game2D/Fonts.h
+ /home/dan/CLionProjects/Game2D/KeyState.h
+ /home/dan/CLionProjects/Game2D/Pos2.h
+ /home/dan/CLionProjects/Game2D/Rect.h
+ /home/dan/CLionProjects/Game2D/ScreenCoord.h
+ /home/dan/CLionProjects/Game2D/Slider.h
+ /home/dan/CLionProjects/Game2D/Sprite.h
+ /home/dan/CLionProjects/Game2D/freetype.h
+ /home/dan/CLionProjects/Game2D/glew.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/FontInfo.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ImageLoder.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Lobby.cpp
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Lobby.h
  /usr/include/freetype2/freetype/config/ftheader.h
  /usr/include/freetype2/freetype/freetype.h
  /usr/include/freetype2/freetype/fterrdef.h
@@ -79,28 +185,24 @@ CMakeFiles/nPlayerConnect4.dir/Fonts.cpp.o
  /usr/include/freetype2/freetype/fttrigon.h
  /usr/include/freetype2/freetype/fttypes.h
  /usr/include/freetype2/ft2build.h
-CMakeFiles/nPlayerConnect4.dir/ImageLoder.cpp.o
- /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ImageLoder.cpp
- /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ImageLoder.h
- /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/glew.h
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o
  /home/dan/CLionProjects/Game2D/AnimatedSprite.h
  /home/dan/CLionProjects/Game2D/Button.h
  /home/dan/CLionProjects/Game2D/ClickableObject.h
  /home/dan/CLionProjects/Game2D/Colour.h
  /home/dan/CLionProjects/Game2D/DrawableObject.h
+ /home/dan/CLionProjects/Game2D/Fonts.h
  /home/dan/CLionProjects/Game2D/KeyState.h
  /home/dan/CLionProjects/Game2D/Pos2.h
  /home/dan/CLionProjects/Game2D/Rect.h
+ /home/dan/CLionProjects/Game2D/ScreenCoord.h
  /home/dan/CLionProjects/Game2D/Sprite.h
+ /home/dan/CLionProjects/Game2D/freetype.h
+ /home/dan/CLionProjects/Game2D/glew.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/FontInfo.h
- /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Fonts.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ImageLoder.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/MainMenu.cpp
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/MainMenu.h
- /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ScreenCoord.h
- /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/freetype.h
- /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/glew.h
  /usr/include/freetype2/freetype/config/ftheader.h
  /usr/include/freetype2/freetype/freetype.h
  /usr/include/freetype2/freetype/fterrdef.h
@@ -113,46 +215,54 @@ CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o
  /usr/include/freetype2/freetype/fttrigon.h
  /usr/include/freetype2/freetype/fttypes.h
  /usr/include/freetype2/ft2build.h
-CMakeFiles/nPlayerConnect4.dir/ScreenCoord.cpp.o
- /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ScreenCoord.cpp
- /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ScreenCoord.h
- /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/glew.h
-CMakeFiles/nPlayerConnect4.dir/freetype.cpp.o
- /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/freetype.cpp
- /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/freetype.h
- /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/glew.h
- /usr/include/freetype2/freetype/config/ftheader.h
- /usr/include/freetype2/freetype/freetype.h
- /usr/include/freetype2/freetype/fterrdef.h
- /usr/include/freetype2/freetype/fterrors.h
- /usr/include/freetype2/freetype/ftglyph.h
- /usr/include/freetype2/freetype/ftimage.h
- /usr/include/freetype2/freetype/ftmoderr.h
- /usr/include/freetype2/freetype/ftoutln.h
- /usr/include/freetype2/freetype/ftsystem.h
- /usr/include/freetype2/freetype/fttrigon.h
- /usr/include/freetype2/freetype/fttypes.h
- /usr/include/freetype2/ft2build.h
+CMakeFiles/nPlayerConnect4.dir/Server.cpp.o
+ /home/dan/CLionProjects/Game2D/Colour.h
+ /home/dan/CLionProjects/Game2D/glew.h
+ /home/dan/CLionProjects/asio/net.h
+ /home/dan/CLionProjects/asio/net_TSQueue.h
+ /home/dan/CLionProjects/asio/net_client.h
+ /home/dan/CLionProjects/asio/net_common.h
+ /home/dan/CLionProjects/asio/net_connection.h
+ /home/dan/CLionProjects/asio/net_message.h
+ /home/dan/CLionProjects/asio/net_server.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Message.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Server.cpp
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Server.h
 CMakeFiles/nPlayerConnect4.dir/main.cpp.o
  /home/dan/CLionProjects/Game2D/AnimatedSprite.h
  /home/dan/CLionProjects/Game2D/Button.h
  /home/dan/CLionProjects/Game2D/ClickableObject.h
  /home/dan/CLionProjects/Game2D/Colour.h
  /home/dan/CLionProjects/Game2D/DrawableObject.h
+ /home/dan/CLionProjects/Game2D/Fonts.h
  /home/dan/CLionProjects/Game2D/KeyMap.h
  /home/dan/CLionProjects/Game2D/KeyState.h
  /home/dan/CLionProjects/Game2D/Pos2.h
  /home/dan/CLionProjects/Game2D/Rect.h
+ /home/dan/CLionProjects/Game2D/ScreenCoord.h
+ /home/dan/CLionProjects/Game2D/Slider.h
  /home/dan/CLionProjects/Game2D/Sprite.h
+ /home/dan/CLionProjects/Game2D/TextInput.h
+ /home/dan/CLionProjects/Game2D/Timer.h
+ /home/dan/CLionProjects/Game2D/freetype.h
+ /home/dan/CLionProjects/Game2D/glew.h
+ /home/dan/CLionProjects/asio/net.h
+ /home/dan/CLionProjects/asio/net_TSQueue.h
+ /home/dan/CLionProjects/asio/net_client.h
+ /home/dan/CLionProjects/asio/net_common.h
+ /home/dan/CLionProjects/asio/net_connection.h
+ /home/dan/CLionProjects/asio/net_message.h
+ /home/dan/CLionProjects/asio/net_server.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Board.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Client.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ConnectMenu.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Engine.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/FontInfo.h
- /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Fonts.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ImageLoder.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Lobby.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/MainMenu.h
- /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ScreenCoord.h
- /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/freetype.h
- /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/glew.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Message.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Server.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/main.cpp
  /home/dan/glfw/include/GLFW/glfw3.h
  /usr/include/freetype2/freetype/config/ftheader.h

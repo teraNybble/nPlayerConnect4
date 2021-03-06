@@ -2,7 +2,7 @@
 
 float Board::GetSegDim()
 {
-	float segWidth = ((100.0f * ScreenCoord::getAspectRatio()) / width) - 2;
+	float segWidth = ((100.0f * Game2D::ScreenCoord::getAspectRatio()) / width) - 2;
 	float segHeight = (100.0f / height) - 2;
 
 	//std::cout << segWidth << " x " << segHeight << "\n";
@@ -11,7 +11,7 @@ float Board::GetSegDim()
 }
 
 Board::Board() {
-	
+
 }
 
 void Board::setClickboxes()
@@ -51,29 +51,15 @@ void Board::initBoard()
 	//board[5][6] = 1;
 }
 
-int Board::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseState, unsigned int& winningPlayer)
+int Board::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseState, unsigned int& winningPlayer, int* x)
 {
 	bool newHighlight = false;
 	int i = 0;
 	for (auto& it : clickboxes) {
 		if (it.update(mousePos, mouseState) == Game2D::ClickableObject::CLICK) {
-			//get its id
-			//std::cout << "it clicked\n";
-			Game2D::Pos2 pos;
-			if (insertPice(i, currentPlayer, pos)) {
-				//std::cout << "insert time\n";
-				if (checkBoard(pos)) {
-					winningPlayer = currentPlayer;
-					return 1; 
-				} else if(boardFull()){
-					return -1;
-				} else {
-					if (++currentPlayer >= numPlayers) {
-						currentPlayer = 0;
-					}
-					return 0;
-				}
-			}
+			//if the user wants the x postion the piece was inserted in
+			if(x) { *x = i; }
+			return makeMove(i,currentPlayer,winningPlayer);
 		}
 		if(it.update(mousePos,mouseState) == Game2D::ClickableObject::HOVER){
 			Game2D::Pos2 pos;
@@ -92,6 +78,27 @@ int Board::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseStat
 	}
 	if(!newHighlight){
 		nextInsertPos = Game2D::Pos2(-1,-1);
+	}
+
+	return -2;
+}
+
+int Board::makeMove(int x, int playerNum, unsigned int& winningPlayer)
+{
+	Game2D::Pos2 pos;
+	if (insertPice(x, currentPlayer, pos)) {
+		//std::cout << "insert time\n";
+		if (checkBoard(pos)) {
+			winningPlayer = currentPlayer;
+			return 1;
+		} else if(boardFull()){
+			return -1;
+		} else {
+			if (++currentPlayer >= numPlayers) {
+				currentPlayer = 0;
+			}
+			return 0;
+		}
 	}
 
 	return 0;
@@ -308,10 +315,10 @@ void Board::draw()
 		x += segDim + 2;
 		//if((x += segWidth + 2 ) > 50) { x = -50; }
 	}
-	ScreenCoord::alignLeft();
+	Game2D::ScreenCoord::alignLeft();
 	Game2D::Colour(1, 1, 1).draw();
-	freetype::print(Font::getFont(5), 1, 44, "Player %d's turn", currentPlayer + 1);
-	ScreenCoord::alignCentre();
+	freetype::print(Game2D::Font::getFont(5), 1, 44, "Player %d's turn", currentPlayer + 1);
+	Game2D::ScreenCoord::alignCentre();
 	//test.setColour(Game2D::Colour(0, 1, 1, 0.5f));
 	//std::cout << ((segHeight + 2) * (height-1)) << "\n";
 	//test.setRect(Game2D::Rect(0, 0, segWidth, 2+(segHeight + 2) * (height - 1)));

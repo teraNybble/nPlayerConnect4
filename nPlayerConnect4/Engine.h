@@ -1,35 +1,45 @@
 #ifndef ENGINE_H
 #define ENGINE_H
 
-#include "Fonts.h"
+#include <ScreenCoord.h>
+#include <Pos2.h>
+#include <Fonts.h>
 #include "glew.h"
 #include <GLFW/glfw3.h>
-#include <map>
+#include "Server.h"
+#include "Client.h"
 #include <KeyMap.h>
-#include "Board.h"
 #include "MainMenu.h"
-
+#include "ConnectMenu.h"
 
 class Engine
 {
-public:
-	enum State { MENU, PLAYING, WIN, TIE, EXIT };
 private:
+	enum State { MENU, CONNECT, LOBBY, PLAYING_SOLO, PLAYING_MULTI, WIN, TIE, EXIT };
+
 	static GLFWwindow* window;
 	static int screenWidth, screenHeight;
 	static Game2D::Pos2 mousePos;
 	static Game2D::KeyState::State mouseState;
 
-	static void resizeCallback(GLFWwindow* window, int width, int height);
-	static void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
-	static void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
-	static void mouseCallback(GLFWwindow* window, double xpos, double ypos);
-
-	static Board board;
-	static MainMenu mainMenu;
 	static State currentState;
 
-	static unsigned int winningPlayer;
+	static MainMenu mainMenu;
+	static ConnectMenu connectMenu;
+
+
+	static Client* client;
+	//static Server* server;
+	static bool serverLoop;
+	static bool startServer;
+	static bool stopServer;
+	static bool heatBeat;
+
+	static void resizeCallback(GLFWwindow* window, int width, int height);
+	static void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
+	static void charCallback(GLFWwindow* window, unsigned int codepoint);
+	static void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
+	static void mouseCallback(GLFWwindow* window, double xpos, double ypos);
 public:
 	Engine();
 
@@ -42,5 +52,6 @@ public:
 
 	static int mainLoop();
 };
+
 
 #endif //ENGINE_H

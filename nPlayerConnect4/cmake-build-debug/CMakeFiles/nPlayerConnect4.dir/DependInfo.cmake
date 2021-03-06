@@ -5,12 +5,13 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Board.cpp" "/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/cmake-build-debug/CMakeFiles/nPlayerConnect4.dir/Board.cpp.o"
+  "/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Client.cpp" "/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/cmake-build-debug/CMakeFiles/nPlayerConnect4.dir/Client.cpp.o"
+  "/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ConnectMenu.cpp" "/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/cmake-build-debug/CMakeFiles/nPlayerConnect4.dir/ConnectMenu.cpp.o"
   "/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Engine.cpp" "/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/cmake-build-debug/CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o"
-  "/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Fonts.cpp" "/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/cmake-build-debug/CMakeFiles/nPlayerConnect4.dir/Fonts.cpp.o"
   "/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ImageLoder.cpp" "/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/cmake-build-debug/CMakeFiles/nPlayerConnect4.dir/ImageLoder.cpp.o"
+  "/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Lobby.cpp" "/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/cmake-build-debug/CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.o"
   "/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/MainMenu.cpp" "/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/cmake-build-debug/CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o"
-  "/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ScreenCoord.cpp" "/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/cmake-build-debug/CMakeFiles/nPlayerConnect4.dir/ScreenCoord.cpp.o"
-  "/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/freetype.cpp" "/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/cmake-build-debug/CMakeFiles/nPlayerConnect4.dir/freetype.cpp.o"
+  "/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Server.cpp" "/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/cmake-build-debug/CMakeFiles/nPlayerConnect4.dir/Server.cpp.o"
   "/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/main.cpp" "/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/cmake-build-debug/CMakeFiles/nPlayerConnect4.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
@@ -18,6 +19,7 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/home/dan/CLionProjects/Game2D"
+  "/home/dan/CLionProjects/asio"
   "/home/dan/glfw/include"
   "/usr/include/freetype2"
   )

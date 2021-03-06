@@ -83,22 +83,35 @@ CMakeFiles/nPlayerConnect4.dir/Engine.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/nPlayerConnect4.dir/Engine.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Engine.cpp -o CMakeFiles/nPlayerConnect4.dir/Engine.cpp.s
 
-CMakeFiles/nPlayerConnect4.dir/Board.cpp.o: CMakeFiles/nPlayerConnect4.dir/flags.make
-CMakeFiles/nPlayerConnect4.dir/Board.cpp.o: ../Board.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/nPlayerConnect4.dir/Board.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/nPlayerConnect4.dir/Board.cpp.o -c /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Board.cpp
+CMakeFiles/nPlayerConnect4.dir/Server.cpp.o: CMakeFiles/nPlayerConnect4.dir/flags.make
+CMakeFiles/nPlayerConnect4.dir/Server.cpp.o: ../Server.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/nPlayerConnect4.dir/Server.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/nPlayerConnect4.dir/Server.cpp.o -c /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Server.cpp
 
-CMakeFiles/nPlayerConnect4.dir/Board.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/nPlayerConnect4.dir/Board.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Board.cpp > CMakeFiles/nPlayerConnect4.dir/Board.cpp.i
+CMakeFiles/nPlayerConnect4.dir/Server.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/nPlayerConnect4.dir/Server.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Server.cpp > CMakeFiles/nPlayerConnect4.dir/Server.cpp.i
 
-CMakeFiles/nPlayerConnect4.dir/Board.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/nPlayerConnect4.dir/Board.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Board.cpp -o CMakeFiles/nPlayerConnect4.dir/Board.cpp.s
+CMakeFiles/nPlayerConnect4.dir/Server.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/nPlayerConnect4.dir/Server.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Server.cpp -o CMakeFiles/nPlayerConnect4.dir/Server.cpp.s
+
+CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: CMakeFiles/nPlayerConnect4.dir/flags.make
+CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: ../Client.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/nPlayerConnect4.dir/Client.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/nPlayerConnect4.dir/Client.cpp.o -c /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Client.cpp
+
+CMakeFiles/nPlayerConnect4.dir/Client.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/nPlayerConnect4.dir/Client.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Client.cpp > CMakeFiles/nPlayerConnect4.dir/Client.cpp.i
+
+CMakeFiles/nPlayerConnect4.dir/Client.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/nPlayerConnect4.dir/Client.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Client.cpp -o CMakeFiles/nPlayerConnect4.dir/Client.cpp.s
 
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: CMakeFiles/nPlayerConnect4.dir/flags.make
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: ../MainMenu.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o -c /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/MainMenu.cpp
 
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.i: cmake_force
@@ -111,7 +124,7 @@ CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.s: cmake_force
 
 CMakeFiles/nPlayerConnect4.dir/ImageLoder.cpp.o: CMakeFiles/nPlayerConnect4.dir/flags.make
 CMakeFiles/nPlayerConnect4.dir/ImageLoder.cpp.o: ../ImageLoder.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/nPlayerConnect4.dir/ImageLoder.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/nPlayerConnect4.dir/ImageLoder.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/nPlayerConnect4.dir/ImageLoder.cpp.o -c /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ImageLoder.cpp
 
 CMakeFiles/nPlayerConnect4.dir/ImageLoder.cpp.i: cmake_force
@@ -122,67 +135,69 @@ CMakeFiles/nPlayerConnect4.dir/ImageLoder.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/nPlayerConnect4.dir/ImageLoder.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ImageLoder.cpp -o CMakeFiles/nPlayerConnect4.dir/ImageLoder.cpp.s
 
-CMakeFiles/nPlayerConnect4.dir/ScreenCoord.cpp.o: CMakeFiles/nPlayerConnect4.dir/flags.make
-CMakeFiles/nPlayerConnect4.dir/ScreenCoord.cpp.o: ../ScreenCoord.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/nPlayerConnect4.dir/ScreenCoord.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/nPlayerConnect4.dir/ScreenCoord.cpp.o -c /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ScreenCoord.cpp
+CMakeFiles/nPlayerConnect4.dir/ConnectMenu.cpp.o: CMakeFiles/nPlayerConnect4.dir/flags.make
+CMakeFiles/nPlayerConnect4.dir/ConnectMenu.cpp.o: ../ConnectMenu.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/nPlayerConnect4.dir/ConnectMenu.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/nPlayerConnect4.dir/ConnectMenu.cpp.o -c /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ConnectMenu.cpp
 
-CMakeFiles/nPlayerConnect4.dir/ScreenCoord.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/nPlayerConnect4.dir/ScreenCoord.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ScreenCoord.cpp > CMakeFiles/nPlayerConnect4.dir/ScreenCoord.cpp.i
+CMakeFiles/nPlayerConnect4.dir/ConnectMenu.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/nPlayerConnect4.dir/ConnectMenu.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ConnectMenu.cpp > CMakeFiles/nPlayerConnect4.dir/ConnectMenu.cpp.i
 
-CMakeFiles/nPlayerConnect4.dir/ScreenCoord.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/nPlayerConnect4.dir/ScreenCoord.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ScreenCoord.cpp -o CMakeFiles/nPlayerConnect4.dir/ScreenCoord.cpp.s
+CMakeFiles/nPlayerConnect4.dir/ConnectMenu.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/nPlayerConnect4.dir/ConnectMenu.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ConnectMenu.cpp -o CMakeFiles/nPlayerConnect4.dir/ConnectMenu.cpp.s
 
-CMakeFiles/nPlayerConnect4.dir/Fonts.cpp.o: CMakeFiles/nPlayerConnect4.dir/flags.make
-CMakeFiles/nPlayerConnect4.dir/Fonts.cpp.o: ../Fonts.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/nPlayerConnect4.dir/Fonts.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/nPlayerConnect4.dir/Fonts.cpp.o -c /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Fonts.cpp
+CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.o: CMakeFiles/nPlayerConnect4.dir/flags.make
+CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.o: ../Lobby.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.o -c /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Lobby.cpp
 
-CMakeFiles/nPlayerConnect4.dir/Fonts.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/nPlayerConnect4.dir/Fonts.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Fonts.cpp > CMakeFiles/nPlayerConnect4.dir/Fonts.cpp.i
+CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Lobby.cpp > CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.i
 
-CMakeFiles/nPlayerConnect4.dir/Fonts.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/nPlayerConnect4.dir/Fonts.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Fonts.cpp -o CMakeFiles/nPlayerConnect4.dir/Fonts.cpp.s
+CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Lobby.cpp -o CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.s
 
-CMakeFiles/nPlayerConnect4.dir/freetype.cpp.o: CMakeFiles/nPlayerConnect4.dir/flags.make
-CMakeFiles/nPlayerConnect4.dir/freetype.cpp.o: ../freetype.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/nPlayerConnect4.dir/freetype.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/nPlayerConnect4.dir/freetype.cpp.o -c /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/freetype.cpp
+CMakeFiles/nPlayerConnect4.dir/Board.cpp.o: CMakeFiles/nPlayerConnect4.dir/flags.make
+CMakeFiles/nPlayerConnect4.dir/Board.cpp.o: ../Board.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/nPlayerConnect4.dir/Board.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/nPlayerConnect4.dir/Board.cpp.o -c /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Board.cpp
 
-CMakeFiles/nPlayerConnect4.dir/freetype.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/nPlayerConnect4.dir/freetype.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/freetype.cpp > CMakeFiles/nPlayerConnect4.dir/freetype.cpp.i
+CMakeFiles/nPlayerConnect4.dir/Board.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/nPlayerConnect4.dir/Board.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Board.cpp > CMakeFiles/nPlayerConnect4.dir/Board.cpp.i
 
-CMakeFiles/nPlayerConnect4.dir/freetype.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/nPlayerConnect4.dir/freetype.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/freetype.cpp -o CMakeFiles/nPlayerConnect4.dir/freetype.cpp.s
+CMakeFiles/nPlayerConnect4.dir/Board.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/nPlayerConnect4.dir/Board.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Board.cpp -o CMakeFiles/nPlayerConnect4.dir/Board.cpp.s
 
 # Object files for target nPlayerConnect4
 nPlayerConnect4_OBJECTS = \
 "CMakeFiles/nPlayerConnect4.dir/main.cpp.o" \
 "CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o" \
-"CMakeFiles/nPlayerConnect4.dir/Board.cpp.o" \
+"CMakeFiles/nPlayerConnect4.dir/Server.cpp.o" \
+"CMakeFiles/nPlayerConnect4.dir/Client.cpp.o" \
 "CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o" \
 "CMakeFiles/nPlayerConnect4.dir/ImageLoder.cpp.o" \
-"CMakeFiles/nPlayerConnect4.dir/ScreenCoord.cpp.o" \
-"CMakeFiles/nPlayerConnect4.dir/Fonts.cpp.o" \
-"CMakeFiles/nPlayerConnect4.dir/freetype.cpp.o"
+"CMakeFiles/nPlayerConnect4.dir/ConnectMenu.cpp.o" \
+"CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.o" \
+"CMakeFiles/nPlayerConnect4.dir/Board.cpp.o"
 
 # External object files for target nPlayerConnect4
 nPlayerConnect4_EXTERNAL_OBJECTS =
 
 nPlayerConnect4: CMakeFiles/nPlayerConnect4.dir/main.cpp.o
 nPlayerConnect4: CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o
-nPlayerConnect4: CMakeFiles/nPlayerConnect4.dir/Board.cpp.o
+nPlayerConnect4: CMakeFiles/nPlayerConnect4.dir/Server.cpp.o
+nPlayerConnect4: CMakeFiles/nPlayerConnect4.dir/Client.cpp.o
 nPlayerConnect4: CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o
 nPlayerConnect4: CMakeFiles/nPlayerConnect4.dir/ImageLoder.cpp.o
-nPlayerConnect4: CMakeFiles/nPlayerConnect4.dir/ScreenCoord.cpp.o
-nPlayerConnect4: CMakeFiles/nPlayerConnect4.dir/Fonts.cpp.o
-nPlayerConnect4: CMakeFiles/nPlayerConnect4.dir/freetype.cpp.o
+nPlayerConnect4: CMakeFiles/nPlayerConnect4.dir/ConnectMenu.cpp.o
+nPlayerConnect4: CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.o
+nPlayerConnect4: CMakeFiles/nPlayerConnect4.dir/Board.cpp.o
 nPlayerConnect4: CMakeFiles/nPlayerConnect4.dir/build.make
 nPlayerConnect4: /home/dan/CLionProjects/Game2D/cmake-build-debug/libGame2D.so
 nPlayerConnect4: /usr/lib/libSM.so
@@ -198,7 +213,7 @@ nPlayerConnect4: /usr/lib/libfreetype.so
 nPlayerConnect4: /usr/lib/libpng.so
 nPlayerConnect4: /usr/lib/libz.so
 nPlayerConnect4: CMakeFiles/nPlayerConnect4.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable nPlayerConnect4"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable nPlayerConnect4"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/nPlayerConnect4.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

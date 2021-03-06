@@ -8,7 +8,7 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/../cmake")
 include_directories(/home/dan/CLionProjects/Game2D)
 link_directories(/home/dan/CLionProjects/Game2D/cmake-build-debug/)
 
-add_executable(nPlayerConnect4 main.cpp Engine.cpp Engine.h Board.cpp Board.h MainMenu.cpp MainMenu.h ImageLoder.h ImageLoder.cpp ScreenCoord.h ScreenCoord.cpp Fonts.h Fonts.cpp freetype.h freetype.cpp)
+add_executable(nPlayerConnect4 main.cpp Engine.cpp Engine.h Server.cpp Server.h Client.cpp Client.h MainMenu.cpp MainMenu.h ImageLoder.cpp ImageLoder.h FontInfo.h ConnectMenu.cpp ConnectMenu.h Lobby.cpp Lobby.h Board.cpp Board.h)
 
 INCLUDE(FindPkgConfig)
 
@@ -19,6 +19,8 @@ find_package(glfw REQUIRED)#was glfw3
 find_package(GLEW REQUIRED)
 find_package(Freetype REQUIRED)
 find_package(PNG REQUIRED)
+
+include_directories("~/CLionProjects/asio/")
 include_directories(${X11_INCLUDE_DIR})
 include_directories(${OPENGL_INCLUDE_DIRS})
 include_directories(${GLFW_INCLUDE_DIRS})

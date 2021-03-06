@@ -1,11 +1,8 @@
-#include <fstream>
 #include "Engine.h"
-//#include "freetype.h"
-#include "Fonts.h"
 
 int main()
 {
-	//Engine::Engine();
+	Engine engine;
 
-	return Engine::mainLoop();
+	return engine.mainLoop();
 }

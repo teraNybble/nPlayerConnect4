@@ -45,6 +45,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/dan/CLionProjects/Game2D"/>
+					<Add directory="/home/dan/CLionProjects/asio"/>
 					<Add directory="/home/dan/glfw/include"/>
 					<Add directory="/usr/include/freetype2"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/../../../../include/c++/10.1.0"/>
@@ -70,6 +71,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/dan/CLionProjects/Game2D"/>
+					<Add directory="/home/dan/CLionProjects/asio"/>
 					<Add directory="/home/dan/glfw/include"/>
 					<Add directory="/usr/include/freetype2"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/../../../../include/c++/10.1.0"/>
@@ -94,16 +96,25 @@
 		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Board.h">
 			<Option target="nPlayerConnect4"/>
 		</Unit>
+		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Client.cpp">
+			<Option target="nPlayerConnect4"/>
+		</Unit>
+		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Client.h">
+			<Option target="nPlayerConnect4"/>
+		</Unit>
+		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ConnectMenu.cpp">
+			<Option target="nPlayerConnect4"/>
+		</Unit>
+		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ConnectMenu.h">
+			<Option target="nPlayerConnect4"/>
+		</Unit>
 		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Engine.cpp">
 			<Option target="nPlayerConnect4"/>
 		</Unit>
 		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Engine.h">
 			<Option target="nPlayerConnect4"/>
 		</Unit>
-		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Fonts.cpp">
-			<Option target="nPlayerConnect4"/>
-		</Unit>
-		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Fonts.h">
+		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/FontInfo.h">
 			<Option target="nPlayerConnect4"/>
 		</Unit>
 		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ImageLoder.cpp">
@@ -112,22 +123,22 @@
 		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ImageLoder.h">
 			<Option target="nPlayerConnect4"/>
 		</Unit>
+		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Lobby.cpp">
+			<Option target="nPlayerConnect4"/>
+		</Unit>
+		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Lobby.h">
+			<Option target="nPlayerConnect4"/>
+		</Unit>
 		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/MainMenu.cpp">
 			<Option target="nPlayerConnect4"/>
 		</Unit>
 		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/MainMenu.h">
 			<Option target="nPlayerConnect4"/>
 		</Unit>
-		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ScreenCoord.cpp">
+		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Server.cpp">
 			<Option target="nPlayerConnect4"/>
 		</Unit>
-		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ScreenCoord.h">
-			<Option target="nPlayerConnect4"/>
-		</Unit>
-		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/freetype.cpp">
-			<Option target="nPlayerConnect4"/>
-		</Unit>
-		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/freetype.h">
+		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Server.h">
 			<Option target="nPlayerConnect4"/>
 		</Unit>
 		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/main.cpp">

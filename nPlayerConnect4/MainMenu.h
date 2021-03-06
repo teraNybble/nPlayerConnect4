@@ -33,6 +33,8 @@ private:
 	unsigned int lineLength;
 
 	Game2D::Button start;
+	Game2D::Button host;
+	Game2D::Button join;
 	GLuint mainMenuTex;
 	//freetype::font_data font;
 	TextInfo title;
