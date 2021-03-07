@@ -1,6 +1,7 @@
 #ifndef ENGINE_H
 #define ENGINE_H
 
+#include <net.h>
 #include <ScreenCoord.h>
 #include <Pos2.h>
 #include <Fonts.h>

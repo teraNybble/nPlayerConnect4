@@ -67,6 +67,8 @@ namespace Game2D
 			for (auto& it : fonts) {
 				float temp = it.first;
 				temp = (((temp * projectionMatMine[1][1]) + projectionMatMine[3][1]) / projectionMatScreen[1][1]);
+				//if this function has been called then clean the font before reiniting it
+				//it.second.clean();
 				it.second.init(_SysFont, temp/*it.first/* * (screenHeight / 480)*/);
 			}
 			inited = true;

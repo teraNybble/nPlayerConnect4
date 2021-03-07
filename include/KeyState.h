@@ -1,5 +1,5 @@
-#ifndef KEYSTATE_H
-#define KEYSTATE_H
+#ifndef GAME2D_KEYSTATE_H
+#define GAME2D_KEYSTATE_H
 
 #include <iostream>
 
@@ -42,4 +42,4 @@ namespace Game2D
 	}
 }
 
-#endif //KEYSTATE_H
+#endif //GAME2D_KEYSTATE_H

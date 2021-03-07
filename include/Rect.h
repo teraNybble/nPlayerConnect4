@@ -5,7 +5,6 @@
 
 namespace Game2D
 {
-
 	class Rect
 	{
 	public:

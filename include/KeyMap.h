@@ -1,5 +1,5 @@
-#ifndef KEYMAP_H
-#define KEYMAP_H
+#ifndef GAME2D_KEYMAP_H
+#define GAME2D_KEYMAP_H
 
 #include "KeyState.h"
 #include <map>
@@ -27,4 +27,4 @@ namespace Game2D
 	};
 }
 
-#endif //KEYMAP_H
+#endif //GAME2D_KEYMAP_H
