@@ -98,10 +98,10 @@ public:
 	}
 
 	~Server(){
-		for(auto& it : m_deqConnections){
+		/*for(auto& it : m_deqConnections){
 			it->disconnect();
 		}
-		std::cout << "Disconnected all clients\n";
+		std::cout << "Disconnected all clients\n";*/
 #if _WIN32
 		m_deqConnections.clear();
 		std::cout << "Cleard the deq\n";

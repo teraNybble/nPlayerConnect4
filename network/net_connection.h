@@ -63,7 +63,7 @@ namespace net
 		void writeHeader(){
 			asio::async_write(m_socket, asio::buffer(&m_qMessagesOut.front().header, sizeof(MessageHeader<T>)),
 				[this](std::error_code ec, std::size_t length){
-					if(!ec){
+					if(!ec && !m_qMessagesOut.empty()){
 						if(m_qMessagesOut.front().body.size() > 0){
 							writeBody();
 						} else {
@@ -86,7 +86,7 @@ namespace net
 		void writeBody(){
 			asio::async_write(m_socket, asio::buffer(m_qMessagesOut.front().body.data(), m_qMessagesOut.front().body.size()),
 				[this](std::error_code ec, std::size_t length){
-					if(!ec){
+					if(!ec && !m_qMessagesOut.empty()){
 						m_qMessagesOut.pop_front();
 
 						//if we still have messages, process them
