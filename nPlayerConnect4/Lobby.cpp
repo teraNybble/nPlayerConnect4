@@ -179,6 +179,7 @@ void Lobby::draw()
 	}
 
 	Game2D::ScreenCoord::alignCentre();
+	Game2D::Colour::White.draw();
 	if(winningPlayer == -1){
 		float width = freetype::getLength(Game2D::Font::getFont(4),"Tie");
 		freetype::print(Game2D::Font::getFont(4),-width/2.0,40,"Tie");

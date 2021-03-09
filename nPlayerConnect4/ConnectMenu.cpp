@@ -101,7 +101,12 @@ int ConnectMenu::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mou
 	//as the start button is aligned to the right of the screen the mouse coordinats need to be aligned right as well
 	Game2D::Pos2 mousePosAlignedLeft = Game2D::Pos2((mousePos.x + Game2D::ScreenCoord::getAspectRatio() * 50), mousePos.y);
 
-	address.processMouse(mousePos,mouseState,1);
+	if(!isHost) {
+		address.processMouse(mousePos,mouseState,1);
+	} else {
+		//if the player is self hosting set the connect ip to localhost
+		address.setText("127.0.0.1");
+	}
 	port.processMouse(mousePos,mouseState,1);
 
 	if(backButton.update(mousePosAlignedLeft,mouseState,1) == Game2D::ClickableObject::CLICK){
@@ -132,8 +137,9 @@ void ConnectMenu::draw()
 	connectButton.draw();
 
 	Game2D::ScreenCoord::alignCentre();
-
-	address.draw();
+	if(!isHost) {
+		address.draw();
+	}
 	//rebind the menu textures as address would have bound the font textures
 	glBindTexture(GL_TEXTURE_2D, m_menuTex);
 	port.draw();
@@ -146,6 +152,6 @@ void ConnectMenu::draw()
 						connectText.pos.y, connectText.text.c_str());
 	}
 
-	freetype::print(Game2D::Font::getFont(4),-30,-2,"IP:");
+	if(!isHost) { freetype::print(Game2D::Font::getFont(4),-30,-2,"IP:"); }
 	freetype::print(Game2D::Font::getFont(4),-35,-12,"Port:");
 }

@@ -46,6 +46,7 @@ void Board::initBoard()
 	}
 
 	currentPlayer = 0;//so it starts as player 1
+	nextInsertPos = Game2D::Pos2(-1,-1);
 
 	//board[0][0] = 0;
 	//board[5][6] = 1;

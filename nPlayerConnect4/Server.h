@@ -16,11 +16,11 @@ private:
 	std::vector<uint32_t> garbageIDs;
 protected:
 	virtual bool onClientConnect(std::shared_ptr<net::Connection<GameMsg>> client) override {
-		/*
+
 	//if the game has started reject the connection
 	if(inGame){
 		return false;
-	}*/
+	}
 
 		//TODO move this to after the password check
 		//send the player their player number
