@@ -16,11 +16,11 @@ private:
 	std::vector<uint32_t> garbageIDs;
 protected:
 	virtual bool onClientConnect(std::shared_ptr<net::Connection<GameMsg>> client) override {
-		/*
+
 	//if the game has started reject the connection
 	if(inGame){
 		return false;
-	}*/
+	}
 
 		//TODO move this to after the password check
 		//send the player their player number
@@ -98,10 +98,10 @@ public:
 	}
 
 	~Server(){
-		for(auto& it : m_deqConnections){
+		/*for(auto& it : m_deqConnections){
 			it->disconnect();
 		}
-		std::cout << "Disconnected all clients\n";
+		std::cout << "Disconnected all clients\n";*/
 #if _WIN32
 		m_deqConnections.clear();
 		std::cout << "Cleard the deq\n";
