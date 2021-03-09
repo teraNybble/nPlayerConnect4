@@ -102,8 +102,10 @@ public:
 			it->disconnect();
 		}
 		std::cout << "Disconnected all clients\n";
+#if _WIN32
 		m_deqConnections.clear();
 		std::cout << "Cleard the deq\n";
+#endif
 	}
 
 	void startGame(unsigned int boardWidth, unsigned int boardHeight)

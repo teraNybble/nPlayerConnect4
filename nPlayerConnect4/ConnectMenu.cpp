@@ -102,7 +102,7 @@ int ConnectMenu::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mou
 	Game2D::Pos2 mousePosAlignedLeft = Game2D::Pos2((mousePos.x + Game2D::ScreenCoord::getAspectRatio() * 50), mousePos.y);
 
 	address.processMouse(mousePos,mouseState,1);
-	if(isHost) { port.processMouse(mousePos,mouseState,1); }
+	port.processMouse(mousePos,mouseState,1);
 
 	if(backButton.update(mousePosAlignedLeft,mouseState,1) == Game2D::ClickableObject::CLICK){
 		return 1;
@@ -134,11 +134,9 @@ void ConnectMenu::draw()
 	Game2D::ScreenCoord::alignCentre();
 
 	address.draw();
-	if(isHost) {
-		//rebind the menu textures as address would have bound the font textures
-		glBindTexture(GL_TEXTURE_2D, m_menuTex);
-		port.draw();
-	}
+	//rebind the menu textures as address would have bound the font textures
+	glBindTexture(GL_TEXTURE_2D, m_menuTex);
+	port.draw();
 
 	if(isHost){
 		freetype::print(Game2D::Font::getFont(hostText.fontSize), (hostText.width/-2.0f),
@@ -149,5 +147,5 @@ void ConnectMenu::draw()
 	}
 
 	freetype::print(Game2D::Font::getFont(4),-30,-2,"IP:");
-	if(isHost) { freetype::print(Game2D::Font::getFont(4),-35,-12,"Port:"); }
+	freetype::print(Game2D::Font::getFont(4),-35,-12,"Port:");
 }

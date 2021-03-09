@@ -118,7 +118,6 @@ CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o
  /home/dan/CLionProjects/Game2D/TextInput.h
  /home/dan/CLionProjects/Game2D/Timer.h
  /home/dan/CLionProjects/Game2D/freetype.h
- /home/dan/CLionProjects/Game2D/glew.h
  /home/dan/CLionProjects/asio/net.h
  /home/dan/CLionProjects/asio/net_TSQueue.h
  /home/dan/CLionProjects/asio/net_client.h
@@ -137,6 +136,7 @@ CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/MainMenu.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Message.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Server.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/glew.h
  /home/dan/glfw/include/GLFW/glfw3.h
  /usr/include/freetype2/freetype/config/ftheader.h
  /usr/include/freetype2/freetype/freetype.h
@@ -245,7 +245,6 @@ CMakeFiles/nPlayerConnect4.dir/main.cpp.o
  /home/dan/CLionProjects/Game2D/TextInput.h
  /home/dan/CLionProjects/Game2D/Timer.h
  /home/dan/CLionProjects/Game2D/freetype.h
- /home/dan/CLionProjects/Game2D/glew.h
  /home/dan/CLionProjects/asio/net.h
  /home/dan/CLionProjects/asio/net_TSQueue.h
  /home/dan/CLionProjects/asio/net_client.h
@@ -263,6 +262,7 @@ CMakeFiles/nPlayerConnect4.dir/main.cpp.o
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/MainMenu.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Message.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Server.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/glew.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/main.cpp
  /home/dan/glfw/include/GLFW/glfw3.h
  /usr/include/freetype2/freetype/config/ftheader.h
