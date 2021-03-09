@@ -31,6 +31,7 @@ private:
 
 	static Client* client;
 	//static Server* server;
+	static uint16_t serverPort;
 	static bool serverLoop;
 	static bool startServer;
 	static bool stopServer;

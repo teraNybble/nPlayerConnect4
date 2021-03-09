@@ -13,6 +13,7 @@ MainMenu Engine::mainMenu;
 ConnectMenu Engine::connectMenu;
 Client* Engine::client;
 //Server* Engine::server;
+uint16_t Engine::serverPort;
 bool Engine::serverLoop;
 bool Engine::startServer;
 bool Engine::stopServer;
@@ -192,6 +193,7 @@ void Engine::processMouse()
 				case 2://connect to server (either self host or online)
 					if(connectMenu.getHost()){
 						//the user is a host so start the server
+						serverPort = connectMenu.getPort();
 						startServer = true;
 					}
 					if(client) { delete client; }
@@ -288,7 +290,7 @@ int Engine::mainLoop()
 			while (serverLoop){
 				if(startServer){
 					if(server) { delete server; }
-					server = new Server(60000);
+					server = new Server(serverPort);
 					server->start();
 					startServer = false;
 				}
