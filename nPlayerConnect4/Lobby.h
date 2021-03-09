@@ -14,6 +14,7 @@ class Lobby
 {
 private:
 	GLuint m_menuTex;
+	GLuint m_circleTex;
 
 	TextInfo connectText;
 	TextInfo hostText;

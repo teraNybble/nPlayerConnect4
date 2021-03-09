@@ -5,6 +5,7 @@
 #include "Message.h"
 #include <Colour.h>
 #include <map>
+#include "Version.h"
 
 class Server : public net::ServerInterface<GameMsg>
 {
@@ -90,6 +91,12 @@ protected:
 	}
 
 	virtual bool checkClient(net::Message<GameMsg> msg, std::shared_ptr<net::Connection<GameMsg>> client) override {
+		Version temp;
+
+		msg >> temp;
+
+		return (temp == GameVer);
+
 		return true;
 	}
 public:

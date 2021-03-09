@@ -5,6 +5,7 @@ void Lobby::init()
 	playerList.clear();
 	winningPlayer = -2;
 	m_menuTex = ImageLoder::loadPNG("Images/menu.png");
+	m_circleTex = ImageLoder::loadPNG("Images/circle.png");
 
 	Game2D::Sprite normalSprite, hoverSprite, clickSprite, disabledSprite;
 	Game2D::Rect tempRect = Game2D::Rect(15,-40,10,5);
@@ -164,12 +165,17 @@ void Lobby::draw()
 	//get the width of all the players plus spacing and divied by two so they will all be aligned to the centre
 	float startX = ((float)(((playerList.size() - 1) * 7.5) + (playerList.size()-1))/2.0f);
 	tempSprite.setRect(Game2D::Rect(-startX,0,7.5,7.5));
+	tempSprite.setTextureCoords(Game2D::Rect(0,0,1,1));
+
+	glBindTexture(GL_TEXTURE_2D, m_circleTex);
+
 	//std::cout << playerList.size() << "\n";
 	for(auto it : playerList){
 		tempSprite.setColour(it.second);
 		tempSprite.draw();
 		tempSprite.move(Game2D::Pos2(tempSprite.getRect().width+1,0));
 	}
+	glBindTexture(GL_TEXTURE_2D, m_menuTex);
 
 
 	Game2D::ScreenCoord::alignRight();

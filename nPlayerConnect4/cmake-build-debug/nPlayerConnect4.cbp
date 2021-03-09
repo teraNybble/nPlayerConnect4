@@ -141,6 +141,9 @@
 		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Server.h">
 			<Option target="nPlayerConnect4"/>
 		</Unit>
+		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Version.h">
+			<Option target="nPlayerConnect4"/>
+		</Unit>
 		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/main.cpp">
 			<Option target="nPlayerConnect4"/>
 		</Unit>

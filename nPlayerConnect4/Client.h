@@ -12,6 +12,7 @@
 #include "Lobby.h"
 #include "Board.h"
 #include <algorithm>
+#include "Version.h"
 
 class Client : public net::ClientInterface<GameMsg>
 {
@@ -30,6 +31,8 @@ public:
 	{
 		net::Message<GameMsg> msg;
 		msg.header.id = GameMsg::CLIENT_INFO;
+
+		msg << GameVer;
 
 		return msg;
 	}
