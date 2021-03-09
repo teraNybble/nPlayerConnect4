@@ -5,7 +5,7 @@
 #include "net_message.h"
 
 #ifndef _WIN32
-//windows isn't defining __cplusplus the same way linux does so fuck checking it
+//windows isn't defining __cplusplus the same way linux does, so fuck checking it
 #if __cplusplus < 201703L
 #error This lib needs C++17 or greater
 #endif

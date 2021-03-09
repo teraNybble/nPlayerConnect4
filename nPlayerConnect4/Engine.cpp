@@ -300,6 +300,7 @@ int Engine::mainLoop()
 				}
 				if(stopServer) {
 					if(server){
+						//server->stop();
 						delete server;
 						server = nullptr;
 					}

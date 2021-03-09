@@ -101,6 +101,9 @@ public:
 		for(auto& it : m_deqConnections){
 			it->disconnect();
 		}
+		std::cout << "Disconnected all clients\n";
+		m_deqConnections.clear();
+		std::cout << "Cleard the deq\n";
 	}
 
 	void startGame(unsigned int boardWidth, unsigned int boardHeight)
