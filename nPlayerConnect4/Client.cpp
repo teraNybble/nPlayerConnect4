@@ -37,6 +37,13 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 						lobby.setPlayerColour(id,colour);
 					}
 
+					uint32_t width, height;
+
+					msg >> width;
+					msg >> height;
+					lobby.setBoardHeight(height);
+					lobby.setBoardWidth(width);
+
 					net::Message<GameMsg> outMsg;
 					outMsg.header.id = GameMsg::PLAYER_COLOUR;
 					outMsg << Game2D::Colour::Red;

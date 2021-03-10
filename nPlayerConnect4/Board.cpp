@@ -260,9 +260,10 @@ bool Board::checkBackDiag(Game2D::Pos2 pos)
 
 bool Board::boardFull()
 {
+	std::cout << board.size() << "\t" << board.front().size() << "\n";
 	for(int y = 0; y < height; y++)	{
 		for(int x = 0; x < width; x++){
-			if(board[x][y] == -1){
+			if(board[y][x] == -1){
 				return false;
 			}
 		}

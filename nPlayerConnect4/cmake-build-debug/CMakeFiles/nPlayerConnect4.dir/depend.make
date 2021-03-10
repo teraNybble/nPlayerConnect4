@@ -56,6 +56,7 @@ CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: ../FontInfo.h
 CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: ../ImageLoder.h
 CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: ../Lobby.h
 CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: ../Message.h
+CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: ../Version.h
 CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: /usr/include/freetype2/freetype/config/ftheader.h
 CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: /usr/include/freetype2/freetype/freetype.h
 CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: /usr/include/freetype2/freetype/fterrdef.h
@@ -135,6 +136,7 @@ CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: ../Lobby.h
 CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: ../MainMenu.h
 CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: ../Message.h
 CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: ../Server.h
+CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: ../Version.h
 CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: ../glew.h
 CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: /home/dan/glfw/include/GLFW/glfw3.h
 CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: /usr/include/freetype2/freetype/config/ftheader.h
@@ -197,11 +199,11 @@ CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: /home/dan/CLionProjects/Game2D/Re
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: /home/dan/CLionProjects/Game2D/ScreenCoord.h
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: /home/dan/CLionProjects/Game2D/Sprite.h
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: /home/dan/CLionProjects/Game2D/freetype.h
-CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: /home/dan/CLionProjects/Game2D/glew.h
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: ../FontInfo.h
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: ../ImageLoder.h
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: ../MainMenu.cpp
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: ../MainMenu.h
+CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: ../glew.h
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: /usr/include/freetype2/freetype/config/ftheader.h
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: /usr/include/freetype2/freetype/freetype.h
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: /usr/include/freetype2/freetype/fterrdef.h
@@ -227,6 +229,7 @@ CMakeFiles/nPlayerConnect4.dir/Server.cpp.o: /home/dan/CLionProjects/asio/net_se
 CMakeFiles/nPlayerConnect4.dir/Server.cpp.o: ../Message.h
 CMakeFiles/nPlayerConnect4.dir/Server.cpp.o: ../Server.cpp
 CMakeFiles/nPlayerConnect4.dir/Server.cpp.o: ../Server.h
+CMakeFiles/nPlayerConnect4.dir/Server.cpp.o: ../Version.h
 
 CMakeFiles/nPlayerConnect4.dir/main.cpp.o: /home/dan/CLionProjects/Game2D/AnimatedSprite.h
 CMakeFiles/nPlayerConnect4.dir/main.cpp.o: /home/dan/CLionProjects/Game2D/Button.h
@@ -261,6 +264,7 @@ CMakeFiles/nPlayerConnect4.dir/main.cpp.o: ../Lobby.h
 CMakeFiles/nPlayerConnect4.dir/main.cpp.o: ../MainMenu.h
 CMakeFiles/nPlayerConnect4.dir/main.cpp.o: ../Message.h
 CMakeFiles/nPlayerConnect4.dir/main.cpp.o: ../Server.h
+CMakeFiles/nPlayerConnect4.dir/main.cpp.o: ../Version.h
 CMakeFiles/nPlayerConnect4.dir/main.cpp.o: ../glew.h
 CMakeFiles/nPlayerConnect4.dir/main.cpp.o: ../main.cpp
 CMakeFiles/nPlayerConnect4.dir/main.cpp.o: /home/dan/glfw/include/GLFW/glfw3.h

@@ -14,6 +14,9 @@
 //TODO add a join button texture and a back button texture
 //TODO add single player
 //TODO add ability to change if from connect4 to connectx
+//TODO add version number to main menu
+//TODO add quit button to main menu
+//TODO make it remember player colour
 
 class Lobby
 {

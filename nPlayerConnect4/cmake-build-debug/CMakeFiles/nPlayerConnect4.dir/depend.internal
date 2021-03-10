@@ -57,6 +57,7 @@ CMakeFiles/nPlayerConnect4.dir/Client.cpp.o
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ImageLoder.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Lobby.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Message.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Version.h
  /usr/include/freetype2/freetype/config/ftheader.h
  /usr/include/freetype2/freetype/freetype.h
  /usr/include/freetype2/freetype/fterrdef.h
@@ -136,6 +137,7 @@ CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/MainMenu.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Message.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Server.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Version.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/glew.h
  /home/dan/glfw/include/GLFW/glfw3.h
  /usr/include/freetype2/freetype/config/ftheader.h
@@ -198,11 +200,11 @@ CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o
  /home/dan/CLionProjects/Game2D/ScreenCoord.h
  /home/dan/CLionProjects/Game2D/Sprite.h
  /home/dan/CLionProjects/Game2D/freetype.h
- /home/dan/CLionProjects/Game2D/glew.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/FontInfo.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ImageLoder.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/MainMenu.cpp
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/MainMenu.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/glew.h
  /usr/include/freetype2/freetype/config/ftheader.h
  /usr/include/freetype2/freetype/freetype.h
  /usr/include/freetype2/freetype/fterrdef.h
@@ -228,6 +230,7 @@ CMakeFiles/nPlayerConnect4.dir/Server.cpp.o
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Message.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Server.cpp
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Server.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Version.h
 CMakeFiles/nPlayerConnect4.dir/main.cpp.o
  /home/dan/CLionProjects/Game2D/AnimatedSprite.h
  /home/dan/CLionProjects/Game2D/Button.h
@@ -262,6 +265,7 @@ CMakeFiles/nPlayerConnect4.dir/main.cpp.o
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/MainMenu.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Message.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Server.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Version.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/glew.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/main.cpp
  /home/dan/glfw/include/GLFW/glfw3.h
