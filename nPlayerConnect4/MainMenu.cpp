@@ -112,9 +112,9 @@ void MainMenu::init()
 	tempRect = Game2D::Rect(-15,-10,10,5);
 	Game2D::Sprite tempNormal, tempHover, tempClick;
 	//borrowing the start sprites for the join button sprites
-	tempNormal.setTextureCoords(Game2D::Rect(0.75f, 0.375f, 0.25f, 0.125f));
-	tempHover.setTextureCoords(Game2D::Rect(0.75f, 0.25f, 0.25f, 0.125f));
-	tempClick.setTextureCoords(Game2D::Rect(0.75f, 0.125f, 0.25f, 0.125f));
+	tempNormal.setTextureCoords(Game2D::Rect(0.50f, 0.375f, 0.25f, 0.125f));
+	tempHover.setTextureCoords(Game2D::Rect(0.50f, 0.25f, 0.25f, 0.125f));
+	tempClick.setTextureCoords(Game2D::Rect(0.50f, 0.125f, 0.25f, 0.125f));
 
 	tempNormal.setRect(tempRect);
 	tempHover.setRect(tempRect);

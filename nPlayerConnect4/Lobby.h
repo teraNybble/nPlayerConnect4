@@ -10,6 +10,11 @@
 #include <map>
 #include <Slider.h>
 
+
+//TODO add a join button texture and a back button texture
+//TODO add single player
+//TODO add ability to change if from connect4 to connectx
+
 class Lobby
 {
 private:

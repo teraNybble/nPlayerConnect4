@@ -12,6 +12,8 @@ class Server : public net::ServerInterface<GameMsg>
 private:
 	std::string password;
 	bool inGame;
+	uint32_t boardWidth;
+	uint32_t boardheight;
 	//Version serverVer;
 	std::map<uint32_t,Game2D::Colour> playerColours;
 	std::vector<uint32_t> garbageIDs;
@@ -27,6 +29,9 @@ protected:
 		//send the player their player number
 		net::Message<GameMsg> msg;
 		msg.header.id = GameMsg::SERVER_ACCEPT;
+
+		msg << boardheight;
+		msg << boardWidth;
 
 		for(auto& it : playerColours){
 			//push the colour then the ID
@@ -73,7 +78,15 @@ protected:
 			}
 			case GameMsg::BOARD_SIZE:{
 				//send the board size to everyone except the sending client
-				messageAllClients(msg,client);
+				msg >> boardWidth;
+				msg >> boardheight;
+
+				net::Message<GameMsg> outMsg;
+				outMsg.header.id = GameMsg::BOARD_SIZE;
+				outMsg << boardheight;
+				outMsg << boardWidth;
+
+				messageAllClients(outMsg,client);
 				break;
 			}
 			case GameMsg::PLAYER_MOVE: {

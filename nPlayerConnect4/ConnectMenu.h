@@ -31,7 +31,7 @@ protected:
 public:
 	ConnectMenu();
 
-	inline void setHost(bool host) { isHost = host; }
+	void setHost(bool host);
 
 	void init();
 

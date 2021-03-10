@@ -23,7 +23,8 @@ void Board::setClickboxes()
 	float clickHeight = (segDim + 2) * height;
 	for (float i = 0, x = (0 - ((segDim + 2) * (width - 1)) / 2.0f); i < width; i++, x+=(segDim +2)) {
 		Game2D::ClickableObject temp;
-		temp.setRect(Game2D::Rect(x,0, segDim,((segDim + 2) * (height - 1)) + 2));
+		//std::cout << "Adding click object at:\t" << Game2D::Rect(x,0, segDim,((segDim + 2) * (height - 1)) + 2) << "\n";
+		temp.setRect(Game2D::Rect(x,0, segDim,((segDim + 2) * (height))));
 		clickboxes.push_back(temp);
 		clickboxes.back().alignToDrawableObject();
 	}
@@ -290,7 +291,8 @@ void Board::draw()
 	float y = -50 + (segDim/2.0f)+2;
 
 	for(int i = 0; i < width; i++){
-		y = -50 + (segDim / 2.0f) + 1;
+		//y = -50 + (segDim / 2.0f) + 1;//old formula
+		y = 0 - ((segDim+2) * ((height-1)/2.0));
 		for(int j = 0; j < height; j++){
 			if(board[j][i] != -1){
 				circleSprite.setColour(playerColours[board[j][i]]);
