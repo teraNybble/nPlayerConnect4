@@ -33,6 +33,17 @@ private:
 	Game2D::Slider blueSlider;
 	Game2D::Sprite exampleColour;
 
+	unsigned int boardWidth;
+	Game2D::Button boardWidthPlus;
+	Game2D::Button boardWidthMinus;
+	unsigned int boardHeight;
+	Game2D::Button boardHeightPlus;
+	Game2D::Button boardHeightMinus;
+
+	unsigned int lineLength;
+
+	TextInfo boardDims;
+	TextInfo boardDimLabels;
 protected:
 public:
 	void init();
@@ -53,6 +64,11 @@ public:
 	Game2D::Colour getColour() const {
 		return Game2D::Colour(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue());
 	}
+
+	inline uint32_t getBoardWidth() const { return boardWidth; }
+	inline uint32_t getBoardHeight() const { return boardHeight; }
+	inline void setBoardWidth(unsigned int width) { boardWidth = width; }
+	inline void setBoardHeight(unsigned int height) { boardHeight = height; }
 
 	//set to -1 for a tie
 	void setWinningPlayer(int playerNo) { winningPlayer = playerNo; }

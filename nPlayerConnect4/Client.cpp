@@ -61,6 +61,17 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 					lobby.removePlayer(id);
 					break;
 				}
+				case GameMsg::BOARD_SIZE:{
+					uint32_t width;
+					uint32_t height;
+
+					msg >> width;
+					msg >> height;
+
+					lobby.setBoardHeight(height);
+					lobby.setBoardWidth(width);
+					break;
+				}
 				case GameMsg::GAME_START:{
 					//int playerNumber;
 					uint32_t noPlayers;
@@ -184,6 +195,16 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 		case 3: {//start the game
 			net::Message<GameMsg> msg;
 			msg.header.id = GameMsg::GAME_START;
+			msg << lobby.getBoardHeight();
+			msg << lobby.getBoardWidth();
+			send(msg);
+			break;
+		}
+		case 4: {//board size change
+			net::Message<GameMsg> msg;
+			msg.header.id = GameMsg::BOARD_SIZE;
+			msg << lobby.getBoardHeight();
+			msg << lobby.getBoardWidth();
 			send(msg);
 			break;
 		}

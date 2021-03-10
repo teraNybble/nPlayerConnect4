@@ -9,6 +9,7 @@ void Lobby::init()
 
 	Game2D::Sprite normalSprite, hoverSprite, clickSprite, disabledSprite;
 	Game2D::Rect tempRect = Game2D::Rect(15,-40,10,5);
+	//Game2D::Rect tempTexRect;
 
 	disabledSprite.setTextureCoords(Game2D::Rect(0.75f,0.500f,0.25f,0.125f));
 	normalSprite.setTextureCoords(Game2D::Rect(0.75f,0.375f,0.25f,0.125f));
@@ -85,10 +86,82 @@ void Lobby::init()
 	redSlider.setValue(1.0f);
 	greenSlider.setValue(0.0f);
 	blueSlider.setValue(0.0f);
+
+
+	//-------------------------------
+	tempRect = Game2D::Rect(1,-40,5,5);
+	//tempTexRect = Game2D::Rect(0, 0, 0.125f, 0.125f);
+	normalSprite.setTextureCoords(Game2D::Rect(0, 0, 0.125f, 0.125f));
+	hoverSprite.setTextureCoords(Game2D::Rect(0.125f, 0, 0.125f, 0.125f));
+	clickSprite.setTextureCoords(Game2D::Rect(0.250f, 0, 0.125f, 0.125f));
+
+	normalSprite.setRect(tempRect);
+	hoverSprite.setRect(tempRect);
+	clickSprite.setRect(tempRect);
+
+	boardWidthPlus.setRect(tempRect);
+	boardWidthPlus.addStateSprites(normalSprite, hoverSprite, clickSprite, clickSprite, normalSprite);
+	boardWidthPlus.alignToDrawableObject();
+
+	tempRect = Game2D::Rect(-5, -40, 5, 5);
+
+	normalSprite.flipX();
+	hoverSprite.flipX();
+	clickSprite.flipX();
+
+	normalSprite.setRect(tempRect);
+	hoverSprite.setRect(tempRect);
+	clickSprite.setRect(tempRect);
+
+	boardWidthMinus.setRect(tempRect);
+	boardWidthMinus.addStateSprites(normalSprite, hoverSprite, clickSprite, clickSprite, normalSprite);
+	boardWidthMinus.alignToDrawableObject();
+
+	tempRect = Game2D::Rect(12, -34, 5, 5);
+
+	normalSprite.rotate(90);
+	hoverSprite.rotate(90);
+	clickSprite.rotate(90);
+
+	normalSprite.setRect(tempRect);
+	hoverSprite.setRect(tempRect);
+	clickSprite.setRect(tempRect);
+
+	boardHeightMinus.setRect(tempRect);
+	boardHeightMinus.addStateSprites(normalSprite, hoverSprite, clickSprite, clickSprite, normalSprite);
+	boardHeightMinus.alignToDrawableObject();
+
+	tempRect = Game2D::Rect(12, -28, 5, 5);
+
+	normalSprite.flipX();
+	hoverSprite.flipX();
+	clickSprite.flipX();
+
+	normalSprite.setRect(tempRect);
+	hoverSprite.setRect(tempRect);
+	clickSprite.setRect(tempRect);
+
+	boardHeightPlus.setRect(tempRect);
+	boardHeightPlus.addStateSprites(normalSprite, hoverSprite, clickSprite, clickSprite, normalSprite);
+	boardHeightPlus.alignToDrawableObject();
+	//-------------------------------
+
+	lineLength = 4;
+	boardWidth = 7;
+	boardHeight = 6;
+
+	resize();
 }
 
 void Lobby::resize()
 {
+	boardDims.fontSize = 4;
+	boardDims.text = "Board size";
+	boardDims.width = freetype::getLength(Game2D::Font::getFont(boardDims.fontSize), boardDims.text.c_str());
+
+	boardDimLabels.fontSize = 4;
+	boardDimLabels.text = "%d x %d";
+	boardDimLabels.width = freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize), boardDimLabels.text.c_str(), boardWidth, boardHeight);
 }
 
 int Lobby::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseState)
@@ -116,6 +189,37 @@ int Lobby::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseStat
 	//std::cout << Game2D::Colour(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue()) << "\n";
 
 	exampleColour.setColour(Game2D::Colour(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue()));
+
+	if(isHost) {
+		if (boardWidthPlus.update(mousePos, mouseState, 1) == Game2D::ClickableObject::ClickState::CLICK) {
+			boardWidth++;
+			boardDimLabels.width = freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
+													   boardDimLabels.text.c_str(), boardWidth, boardHeight);
+			return 4;
+		}
+		if (boardWidthMinus.update(mousePos, mouseState, 1) == Game2D::ClickableObject::ClickState::CLICK) {
+			if (--boardWidth < lineLength) {
+				boardWidth = lineLength;
+			}
+			boardDimLabels.width = freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
+													   boardDimLabels.text.c_str(), boardWidth, boardHeight);
+			return 4;
+		}
+		if (boardHeightPlus.update(mousePos, mouseState, 1) == Game2D::ClickableObject::ClickState::CLICK) {
+			boardHeight++;
+			boardDimLabels.width = freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
+													   boardDimLabels.text.c_str(), boardWidth, boardHeight);
+			return 4;
+		}
+		if (boardHeightMinus.update(mousePos, mouseState, 1) == Game2D::ClickableObject::ClickState::CLICK) {
+			if (--boardHeight < lineLength) {
+				boardHeight = lineLength;
+			}
+			boardDimLabels.width = freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
+													   boardDimLabels.text.c_str(), boardWidth, boardHeight);
+			return 4;
+		}
+	}
 
 	//only allow the host to start the game
 	if(isHost) {
@@ -161,6 +265,12 @@ void Lobby::draw()
 	Game2D::Sprite tempSprite;
 	//tempSlider.draw();
 
+	if(isHost){
+		boardWidthPlus.draw();
+		boardWidthMinus.draw();
+		boardHeightPlus.draw();
+		boardHeightMinus.draw();
+	}
 
 	//get the width of all the players plus spacing and divied by two so they will all be aligned to the centre
 	float startX = ((float)(((playerList.size() - 1) * 7.5) + (playerList.size()-1))/2.0f);
@@ -186,6 +296,8 @@ void Lobby::draw()
 
 	Game2D::ScreenCoord::alignCentre();
 	Game2D::Colour::White.draw();
+	freetype::print(Game2D::Font::getFont(boardDims.fontSize), (boardDims.width/-2.0f)+1, -20, boardDims.text.c_str());
+	freetype::print(Game2D::Font::getFont(boardDimLabels.fontSize), (boardDimLabels.width/-2.0f)-2, -33.5, boardDimLabels.text.c_str(), boardWidth,boardHeight);
 	if(winningPlayer == -1){
 		float width = freetype::getLength(Game2D::Font::getFont(4),"Tie");
 		freetype::print(Game2D::Font::getFont(4),-width/2.0,40,"Tie");

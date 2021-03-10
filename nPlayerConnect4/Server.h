@@ -71,13 +71,24 @@ protected:
 				messageAllClients(outMsg);
 				break;
 			}
+			case GameMsg::BOARD_SIZE:{
+				//send the board size to everyone except the sending client
+				messageAllClients(msg,client);
+				break;
+			}
 			case GameMsg::PLAYER_MOVE: {
 				//send the move to everyone except the sending client
 				messageAllClients(msg,client);
 				break;
 			}
 			case GameMsg::GAME_START:{
-				startGame(7,6);//TODO get it so the host can choose the board size
+				uint32_t width;
+				uint32_t height;
+
+				msg >> width;
+				msg >> height;
+
+				startGame(width,height);//TODO get it so the host can choose the board size
 				break;
 			}
 			case GameMsg::GAME_WIN: {
