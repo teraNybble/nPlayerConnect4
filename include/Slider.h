@@ -9,6 +9,7 @@ namespace Game2D
 	{
 	private:
 		Button button;
+		Button barClickRegion;
 		Rect bar;
 		bool followMouse;
 		bool horazontal;
@@ -24,6 +25,8 @@ namespace Game2D
 			button.addStateSprites(normal,hover,mouseDown,click,disabled);
 			button.alignToDrawableObject();
 		}
+
+		void setRect(Rect bar);
 
 		void update(Pos2 mousePos, KeyState::State state, float time);
 

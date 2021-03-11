@@ -47,6 +47,7 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 					net::Message<GameMsg> outMsg;
 					outMsg.header.id = GameMsg::PLAYER_COLOUR;
 					outMsg << lobby.getColour();
+					//outMsg << Game2D::Colour::Red;
 
 					send(outMsg);
 					//tell the server to tell every client what my colour is

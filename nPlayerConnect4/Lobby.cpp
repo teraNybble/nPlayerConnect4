@@ -2,6 +2,7 @@
 
 void Lobby::init()
 {
+	
 	playerList.clear();
 	winningPlayer = -2;
 	m_menuTex = ImageLoder::loadPNG("Images/menu.png");
@@ -67,7 +68,8 @@ void Lobby::init()
 	hoverSprite.setRect(tempRect);
 	clickSprite.setRect(tempRect);
 
-	redSlider = Game2D::Slider(Game2D::Rect(6,40,10,2));
+	//redSlider = Game2D::Slider(Game2D::Rect(6,40,10,2));
+	redSlider.setRect(Game2D::Rect(6, 40, 10, 2));
 	redSlider.setButtonStateSprites(normalSprite,normalSprite,normalSprite,normalSprite,normalSprite);
 
 	tempRect = Game2D::Rect(11,37,1,2);
@@ -77,7 +79,8 @@ void Lobby::init()
 	hoverSprite.setRect(tempRect);
 	clickSprite.setRect(tempRect);
 
-	greenSlider = Game2D::Slider(Game2D::Rect(6,37,10,2));
+	//greenSlider = Game2D::Slider(Game2D::Rect(6,37,10,2));
+	greenSlider.setRect(Game2D::Rect(6, 37, 10, 2));
 	greenSlider.setButtonStateSprites(normalSprite,normalSprite,normalSprite,normalSprite,normalSprite);
 
 	tempRect = Game2D::Rect(11,34,1,2);
@@ -87,16 +90,17 @@ void Lobby::init()
 	hoverSprite.setRect(tempRect);
 	clickSprite.setRect(tempRect);
 
-	blueSlider = Game2D::Slider(Game2D::Rect(6,34,10,2));
+	//blueSlider = Game2D::Slider(Game2D::Rect(6,34,10,2));
+	blueSlider.setRect(Game2D::Rect(6, 34, 10, 2));
 	blueSlider.setButtonStateSprites(normalSprite,normalSprite,normalSprite,normalSprite,normalSprite);
 
 	exampleColour.setRect(Game2D::Rect(6,45,5,5));
 	exampleColour.setColour(Game2D::Colour::Red);
 
-	//redSlider.setValue(1.0f);
-	//greenSlider.setValue(0.0f);
-	//blueSlider.setValue(0.0f);
-
+	redSlider.setValue(1.0f);
+	greenSlider.setValue(0.0f);
+	blueSlider.setValue(0.0f);
+	
 
 	//-------------------------------
 	tempRect = Game2D::Rect(1,-40,5,5);
@@ -155,11 +159,11 @@ void Lobby::init()
 	boardHeightPlus.addStateSprites(normalSprite, hoverSprite, clickSprite, clickSprite, normalSprite);
 	boardHeightPlus.alignToDrawableObject();
 	//-------------------------------
-
+	//*/
 	lineLength = 4;
 	boardWidth = 7;
 	boardHeight = 6;
-
+	
 	resize();
 }
 

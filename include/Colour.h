@@ -14,6 +14,11 @@ namespace Game2D
 		Colour();
 		Colour(float r, float g, float b, float a = 1);
 
+		inline float getR() const { return r; }
+		inline float getG() const { return g; }
+		inline float getB() const { return b; }
+		inline float getA() const { return a; }
+
 		static const Colour Black;
 		static const Colour White;
 		static const Colour Transparent;
