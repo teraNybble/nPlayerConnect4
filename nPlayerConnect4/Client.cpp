@@ -7,6 +7,10 @@ void Client::init()
 
 int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseState)
 {
+	if(currentState == GAME_END && mouseState == Game2D::KeyState::State::RELEASED){
+		//if the player has clicked on the victory screen send them to the lobby
+		currentState = LOBBY;
+	}
 	int result = -1;
 
 	//std::cout << (isConnected() ? "true" : "false") << "\n";
@@ -108,10 +112,10 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 					break;
 				}
 				case GameMsg::GAME_OVER:{
-					int32_t winningPlayer;
+					//int32_t winningPlayer;
 					msg >> winningPlayer;
 					lobby.setWinningPlayer(winningPlayer);
-					currentState = LOBBY;
+					currentState = GAME_END;
 					break;
 				}
 				case GameMsg::PLAYER_MOVE:{
@@ -229,18 +233,37 @@ void Client::draw()
 {
 	//freetype::print(Game2D::Font::getFont(5),0,35,"GAME!");
 	switch (currentState) {
-		case LOBBY:
+		case LOBBY: {
 			lobby.draw();
 			break;
-		case PLAYING:
+		}
+		case PLAYING: {
 			//freetype::print(Game2D::Font::getFont(5),0,35,"GAME!");
 			board.draw();
 			Game2D::ScreenCoord::alignRight();
-			float width = freetype::getLength(Game2D::Font::getFont(5),"You are Player %d",playerNo+1);
+			float width = freetype::getLength(Game2D::Font::getFont(5), "You are Player %d", playerNo + 1);
 			//TODO print out the text informing the user what player they are
-			freetype::print(Game2D::Font::getFont(5),-width-1,44,"You are Player %d",playerNo+1);
+			freetype::print(Game2D::Font::getFont(5), -width - 1, 44, "You are Player %d", playerNo + 1);
 			Game2D::ScreenCoord::alignCentre();
 			break;
-
+		}
+		case GAME_END: {
+			board.draw();
+			Game2D::Sprite tempSprite(Game2D::Rect(0, 0, 200, 200));
+			tempSprite.setColour(Game2D::Colour(0, 0, 0, 0.5f));
+			tempSprite.draw();
+			//std::cout << winningPlayer << "\n";
+			Game2D::Colour::White.draw();
+			if (winningPlayer == -1) {
+				float width = freetype::getLength(Game2D::Font::getFont(5), "Tie");
+				freetype::print(Game2D::Font::getFont(5), -width / 2.0, 35, "Tie");
+			} else if (winningPlayer >= 0) {
+				float width = freetype::getLength(Game2D::Font::getFont(5), "Player %d wins", winningPlayer + 1);
+				freetype::print(Game2D::Font::getFont(5), -width / 2.0, 35, "Player %d wins", winningPlayer + 1);
+			}
+			float width = freetype::getLength(Game2D::Font::getFont(3), "Click to continue");
+			freetype::print(Game2D::Font::getFont(3), -width/2.0f, 0, "Click to continue");
+			break;
+		}
 	}
 }

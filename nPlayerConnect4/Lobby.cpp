@@ -103,7 +103,7 @@ void Lobby::init()
 	
 
 	//-------------------------------
-	tempRect = Game2D::Rect(1,-40,5,5);
+	tempRect = Game2D::Rect(1.25,-45,2.5,2.5);
 	//tempTexRect = Game2D::Rect(0, 0, 0.125f, 0.125f);
 	normalSprite.setTextureCoords(Game2D::Rect(0, 0, 0.125f, 0.125f));
 	hoverSprite.setTextureCoords(Game2D::Rect(0.125f, 0, 0.125f, 0.125f));
@@ -117,7 +117,7 @@ void Lobby::init()
 	boardWidthPlus.addStateSprites(normalSprite, hoverSprite, clickSprite, clickSprite, normalSprite);
 	boardWidthPlus.alignToDrawableObject();
 
-	tempRect = Game2D::Rect(-5, -40, 5, 5);
+	tempRect = Game2D::Rect(-1.25, -45, 2.5, 2.5);
 
 	normalSprite.flipX();
 	hoverSprite.flipX();
@@ -131,7 +131,7 @@ void Lobby::init()
 	boardWidthMinus.addStateSprites(normalSprite, hoverSprite, clickSprite, clickSprite, normalSprite);
 	boardWidthMinus.alignToDrawableObject();
 
-	tempRect = Game2D::Rect(12, -34, 5, 5);
+	tempRect = Game2D::Rect(12, -40, 2.5, 2.5);
 
 	normalSprite.rotate(90);
 	hoverSprite.rotate(90);
@@ -145,7 +145,7 @@ void Lobby::init()
 	boardHeightMinus.addStateSprites(normalSprite, hoverSprite, clickSprite, clickSprite, normalSprite);
 	boardHeightMinus.alignToDrawableObject();
 
-	tempRect = Game2D::Rect(12, -28, 5, 5);
+	tempRect = Game2D::Rect(12, -37.5, 2.5, 2.5);
 
 	normalSprite.flipX();
 	hoverSprite.flipX();
@@ -169,7 +169,7 @@ void Lobby::init()
 
 void Lobby::resize()
 {
-	boardDims.fontSize = 4;
+	boardDims.fontSize = 3;
 	boardDims.text = "Board size";
 	boardDims.width = freetype::getLength(Game2D::Font::getFont(boardDims.fontSize), boardDims.text.c_str());
 
@@ -310,8 +310,8 @@ void Lobby::draw()
 
 	Game2D::ScreenCoord::alignCentre();
 	Game2D::Colour::White.draw();
-	freetype::print(Game2D::Font::getFont(boardDims.fontSize), (boardDims.width/-2.0f)+1, -20, boardDims.text.c_str());
-	freetype::print(Game2D::Font::getFont(boardDimLabels.fontSize), (boardDimLabels.width/-2.0f)-2, -33.5, boardDimLabels.text.c_str(), boardWidth,boardHeight);
+	freetype::print(Game2D::Font::getFont(boardDims.fontSize), (boardDims.width/-2.0f), -35, boardDims.text.c_str());
+	freetype::print(Game2D::Font::getFont(boardDimLabels.fontSize), (boardDimLabels.width/-2.0f), -41, boardDimLabels.text.c_str(), boardWidth,boardHeight);
 	if(winningPlayer == -1){
 		float width = freetype::getLength(Game2D::Font::getFont(4),"Tie");
 		freetype::print(Game2D::Font::getFont(4),-width/2.0,40,"Tie");

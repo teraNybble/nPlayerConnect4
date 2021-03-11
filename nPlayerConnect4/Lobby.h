@@ -15,10 +15,9 @@
 //TODO add single player
 //TODO add ability to change if from connect4 to connectx
 //TODO add quit button to main menu
-//TODO show winning board state after victory
 //TODO add pause menu to multiplayer
 //TODO show player number over piece on board for colourblind people
-// TODO reduce CPU load (make server wait for messages)
+//TODO reduce CPU load (make server wait for messages)
 //TODO when a game is in progress change the tile bar text to reflect the number of players in game
 
 

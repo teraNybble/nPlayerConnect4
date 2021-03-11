@@ -118,6 +118,14 @@ GL/glu.h
 stdexcept
 -
 
+/home/dan/CLionProjects/Game2D/glew.h
+stddef.h
+-
+OpenGL/glu.h
+-
+GL/glu.h
+-
+
 /home/dan/CLionProjects/asio/net.h
 net_client.h
 /home/dan/CLionProjects/asio/net_client.h
@@ -197,6 +205,10 @@ Sprite.h
 -
 ScreenCoord.h
 -
+
+/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Client.cpp
+Client.h
+/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Client.h
 
 /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Client.h
 net.h
@@ -288,6 +300,10 @@ png.h
 cstring
 -
 
+/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Lobby.cpp
+Lobby.h
+/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Lobby.h
+
 /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Lobby.h
 freetype.h
 -
@@ -345,6 +361,10 @@ OpenGL/glu.h
 -
 GL/glu.h
 -
+
+/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/main.cpp
+Engine.h
+/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Engine.h
 
 /home/dan/glfw/include/GLFW/glfw3.h
 stddef.h

@@ -147,7 +147,7 @@ public:
 		//msg << boardHeight;
 		//msg << boardWidth;
 
-		std::cout << m_deqConnections.size() << "\n";
+		//std::cout << m_deqConnections.size() << "\n";
 		int i = 0;
 		for(auto& player : m_deqConnections){
 			net::Message<GameMsg> msg;

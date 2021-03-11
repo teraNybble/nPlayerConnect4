@@ -17,7 +17,7 @@
 class Client : public net::ClientInterface<GameMsg>
 {
 private:
-	enum State { LOBBY, PLAYING };
+	enum State { LOBBY, PLAYING, GAME_END };
 private:
 	Lobby lobby;
 	Board board;
@@ -25,6 +25,7 @@ private:
 	bool isHost;
 	State currentState;
 	int32_t playerNo;
+	int32_t winningPlayer;
 protected:
 public:
 	virtual net::Message<GameMsg> sendClientCheck() override
