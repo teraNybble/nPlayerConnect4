@@ -136,7 +136,7 @@ public:
 		std::cout << "Disconnected all clients\n";*/
 #if _WIN32
 		m_deqConnections.clear();
-		std::cout << "Cleard the deq\n";
+		//std::cout << "Cleard the deq\n";
 #endif
 	}
 
