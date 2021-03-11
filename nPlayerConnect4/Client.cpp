@@ -5,7 +5,7 @@ void Client::init()
 	lobby.init();
 }
 
-int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseState)
+int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseState, void(*winTitle)(std::string))
 {
 	if(currentState == GAME_END && mouseState == Game2D::KeyState::State::RELEASED){
 		//if the player has clicked on the victory screen send them to the lobby
@@ -108,10 +108,21 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 					board.setPlayerColours(playerColours);
 					board.initBoard();
 
+					if(winTitle){
+						std::string tempStr = std::to_string(noPlayers);
+						tempStr += " Player Connect 4";
+						winTitle(tempStr);
+					}
+
 					currentState = PLAYING;
 					break;
 				}
 				case GameMsg::GAME_OVER:{
+					if(winTitle){
+						//std::string tempStr = std::to_string(noPlayers);
+						std::string tempStr = "n Player Connect 4";
+						winTitle(tempStr);
+					}
 					//int32_t winningPlayer;
 					msg >> winningPlayer;
 					lobby.setWinningPlayer(winningPlayer);

@@ -78,6 +78,11 @@ void Engine::mouseCallback(GLFWwindow* window, double xpos, double ypos)
 			-(((ypos / screenHeight)*100)-50));
 }
 
+void Engine::setWindowTitle(std::string title)
+{
+	glfwSetWindowTitle(window,title.c_str());
+}
+
 void Engine::display()
 {
 	glClear(GL_COLOR_BUFFER_BIT);
@@ -221,7 +226,7 @@ void Engine::processMouse()
 			}
 			//server.update();*/
 			heatBeat = true;
-			switch (client->processMouse(mousePos,mouseState)) {
+			switch (client->processMouse(mousePos,mouseState,setWindowTitle)) {
 				case 1://back
 					client->disconnect();
 					//stop the server
@@ -259,7 +264,7 @@ bool Engine::createWindow()
 	//glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
 	/* Create a windowed mode window and its OpenGL context */
-	window = glfwCreateWindow(screenWidth, screenHeight, "N Player Connect 4", NULL, NULL);
+	window = glfwCreateWindow(screenWidth, screenHeight, "n Player Connect 4", NULL, NULL);
 	if (!window)
 	{
 		std::cerr << "failed to create window\n";

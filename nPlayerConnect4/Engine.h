@@ -43,6 +43,8 @@ private:
 	static void charCallback(GLFWwindow* window, unsigned int codepoint);
 	static void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
 	static void mouseCallback(GLFWwindow* window, double xpos, double ypos);
+
+	static void setWindowTitle(std::string title);
 public:
 	Engine();
 

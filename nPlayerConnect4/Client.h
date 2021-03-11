@@ -41,7 +41,7 @@ public:
 	void init();
 	inline void reset() { currentState = LOBBY; lobby.reset(); }
 
-	int processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseState);
+	int processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseState, void(*winTitle)(std::string) = NULL);
 
 	inline void setHost(bool host = false) { isHost = host; lobby.setHost(host); }
 
