@@ -14,9 +14,12 @@
 //TODO add a join button texture and a back button texture
 //TODO add single player
 //TODO add ability to change if from connect4 to connectx
-//TODO add version number to main menu
 //TODO add quit button to main menu
 //TODO make it remember player colour
+//TODO show winning board state after victory
+//TODO add pause menu to multiplayer
+//TODO show player number over piece on board for colourblind people
+//TODO when a game is in progress change the tile bar text to reflect the number of players in game
 
 class Lobby
 {
@@ -69,8 +72,13 @@ public:
 
 	void setPlayerColour(int id, Game2D::Colour colour);
 	void removePlayer(int id);
-	Game2D::Colour getColour() const {
+	inline Game2D::Colour getColour() const {
 		return Game2D::Colour(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue());
+	}
+	inline void setColour(Game2D::Colour colour){
+		redSlider.setValue(colour.getR());
+		greenSlider.setValue(colour.getG());
+		blueSlider.setValue(colour.getB());
 	}
 
 	inline uint32_t getBoardWidth() const { return boardWidth; }

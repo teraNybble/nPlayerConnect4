@@ -9,7 +9,7 @@ ConnectMenu::ConnectMenu()
 }
 
 void ConnectMenu::setHost(bool host){
-	std::cout << "Setting host\n";
+	//std::cout << "Setting host\n";
 	isHost = host;
 	Game2D::Sprite normalSprite, hoverSprite, clickSprite;
 	if(isHost) {
@@ -52,6 +52,10 @@ void ConnectMenu::init()
 	backButton.alignToDrawableObject();
 
 	tempRect = Game2D::Rect(-15,-40,10,5);
+
+	normalSprite.setTextureCoords(Game2D::Rect(0.50f,0.375f,0.25f,0.125f));
+	hoverSprite.setTextureCoords(Game2D::Rect(0.50f,0.250f,0.25f,0.125f));
+	clickSprite.setTextureCoords(Game2D::Rect(0.50f,0.125f,0.25f,0.125f));
 
 	normalSprite.setRect(tempRect);
 	hoverSprite.setRect(tempRect);

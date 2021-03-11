@@ -17,7 +17,7 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 
 			switch (msg.header.id) {
 				case GameMsg::SERVER_CLOSE: {
-					std::cout << "serverClose\n";
+					//std::cout << "serverClose\n";
 					if(isConnected()){
 						disconnect();
 						return 1;//tell the engine to go back to the connect menu
@@ -46,7 +46,7 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 
 					net::Message<GameMsg> outMsg;
 					outMsg.header.id = GameMsg::PLAYER_COLOUR;
-					outMsg << Game2D::Colour::Red;
+					outMsg << lobby.getColour();
 
 					send(outMsg);
 					//tell the server to tell every client what my colour is

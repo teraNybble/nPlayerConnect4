@@ -125,7 +125,8 @@ protected:
 	}
 public:
 	Server(uint16_t port) : net::ServerInterface<GameMsg>(port){
-
+		boardWidth = 7;
+		boardheight = 6;
 	}
 
 	~Server(){

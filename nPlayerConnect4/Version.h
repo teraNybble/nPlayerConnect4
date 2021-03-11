@@ -12,8 +12,6 @@ struct Version{
 	int ver;
 	int verMajor;
 	int verMinor;
-
-
 };
 
 inline std::ostream& operator<< (std::ostream& os, const Version& v){

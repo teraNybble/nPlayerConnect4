@@ -203,6 +203,7 @@ CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: ../FontInfo.h
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: ../ImageLoder.h
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: ../MainMenu.cpp
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: ../MainMenu.h
+CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: ../Version.h
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: ../glew.h
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: /usr/include/freetype2/freetype/config/ftheader.h
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: /usr/include/freetype2/freetype/freetype.h

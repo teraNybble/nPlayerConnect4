@@ -93,9 +93,9 @@ void Lobby::init()
 	exampleColour.setRect(Game2D::Rect(6,45,5,5));
 	exampleColour.setColour(Game2D::Colour::Red);
 
-	redSlider.setValue(1.0f);
-	greenSlider.setValue(0.0f);
-	blueSlider.setValue(0.0f);
+	//redSlider.setValue(1.0f);
+	//greenSlider.setValue(0.0f);
+	//blueSlider.setValue(0.0f);
 
 
 	//-------------------------------

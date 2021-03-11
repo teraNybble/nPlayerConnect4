@@ -30,6 +30,7 @@ private:
 
 
 	static Client* client;
+	static Game2D::Colour playerColour;
 	//static Server* server;
 	static uint16_t serverPort;
 	static bool serverLoop;

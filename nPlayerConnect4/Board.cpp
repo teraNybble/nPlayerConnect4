@@ -2,8 +2,8 @@
 
 float Board::GetSegDim()
 {
-	float segWidth = ((100.0f * Game2D::ScreenCoord::getAspectRatio()) / width) - 2;
-	float segHeight = (100.0f / height) - 2;
+	float segWidth = ((100.0f * Game2D::ScreenCoord::getAspectRatio()) / width);
+	float segHeight = (100.0f / height);
 
 	//std::cout << segWidth << " x " << segHeight << "\n";
 
@@ -21,10 +21,10 @@ void Board::setClickboxes()
 	float segDim = GetSegDim();
 
 	float clickHeight = (segDim + 2) * height;
-	for (float i = 0, x = (0 - ((segDim + 2) * (width - 1)) / 2.0f); i < width; i++, x+=(segDim +2)) {
+	for (float i = 0, x = (0 - ((segDim) * (width - 1)) / 2.0f); i < width; i++, x+=(segDim)) {
 		Game2D::ClickableObject temp;
 		//std::cout << "Adding click object at:\t" << Game2D::Rect(x,0, segDim,((segDim + 2) * (height - 1)) + 2) << "\n";
-		temp.setRect(Game2D::Rect(x,0, segDim,((segDim + 2) * (height))));
+		temp.setRect(Game2D::Rect(x,0, segDim,((segDim) * (height))));
 		clickboxes.push_back(temp);
 		clickboxes.back().alignToDrawableObject();
 	}
@@ -260,7 +260,7 @@ bool Board::checkBackDiag(Game2D::Pos2 pos)
 
 bool Board::boardFull()
 {
-	std::cout << board.size() << "\t" << board.front().size() << "\n";
+	//std::cout << board.size() << "\t" << board.front().size() << "\n";
 	for(int y = 0; y < height; y++)	{
 		for(int x = 0; x < width; x++){
 			if(board[y][x] == -1){
@@ -281,19 +281,19 @@ void Board::draw()
 	//std::cout << segWidth << "\n";
 
 	//Game2D::DrawableObject test;
-	circleSprite.setRect(Game2D::Rect(0,0,segDim,segDim));
+	circleSprite.setRect(Game2D::Rect(0,0,segDim*0.9f,segDim*0.9f));
 	circleSprite.setColour(Game2D::Colour::Black);
 
-	highlightSprite.setRect(Game2D::Rect(0,0,segDim*1.1f,segDim*1.1f));
+	highlightSprite.setRect(Game2D::Rect(0,0,(segDim*0.9f)*1.1f,(segDim*0.9f)*1.1f));
 	highlightSprite.setColour(Game2D::Colour::White);
 
-	float x = (0 - ((segDim + 2) * (width-1)) / 2.0f);// *ScreenCoord::getAspectRatio();
+	float x = (0 - ((segDim) * (width-1)) / 2.0f);// *ScreenCoord::getAspectRatio();
 	//float x = -50 * ScreenCoord::getAspectRatio();
 	float y = -50 + (segDim/2.0f)+2;
 
 	for(int i = 0; i < width; i++){
 		//y = -50 + (segDim / 2.0f) + 1;//old formula
-		y = 0 - ((segDim+2) * ((height-1)/2.0));
+		y = 0 - ((segDim) * ((height-1)/2.0));
 		for(int j = 0; j < height; j++){
 			if(board[j][i] != -1){
 				circleSprite.setColour(playerColours[board[j][i]]);
@@ -313,10 +313,10 @@ void Board::draw()
 			circleSprite.setPos(Game2D::Pos2(x,y));
 			circleSprite.draw();
 
-			y += segDim + 2;
+			y += segDim;// + 2;
 			//if ((y += segWidth + 2) > 50) { std::cout << y <<"\n"; y = -51 + (segWidth / 2.0f) + 2; }
 		}
-		x += segDim + 2;
+		x += segDim; //+ 2;
 		//if((x += segWidth + 2 ) > 50) { x = -50; }
 	}
 	Game2D::ScreenCoord::alignLeft();

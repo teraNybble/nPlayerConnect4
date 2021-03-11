@@ -161,6 +161,9 @@ void MainMenu::resize()
 	boardDimLabels.text = "%d x %d";
 	boardDimLabels.width = freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize), boardDimLabels.text.c_str(), boardWidth, boardHeight);
 
+	version.fontSize = 3;
+	version.text = "%d.%d.%d";
+	version.width = freetype::getLength(Game2D::Font::getFont(version.fontSize),version.text.c_str(),GameVer.ver,GameVer.verMajor,GameVer.verMinor);
 }
 
 void MainMenu::update()
@@ -234,6 +237,7 @@ void MainMenu::draw()
 	host.draw();
 	join.draw();
 
+	freetype::print(Game2D::Font::getFont(version.fontSize),-1 - version.width , -49 ,version.text.c_str(),GameVer.ver,GameVer.verMajor,GameVer.verMinor);
 	Game2D::ScreenCoord::alignCentre();
 
 	//Game2D::Colour(0, 0, 0).draw();

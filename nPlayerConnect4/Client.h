@@ -44,6 +44,9 @@ public:
 
 	inline void setHost(bool host = false) { isHost = host; lobby.setHost(host); }
 
+	inline Game2D::Colour getColour() const { return lobby.getColour(); }
+	inline void setColour(Game2D::Colour colour) { lobby.setColour(colour); }
+
 	void draw();
 };
 

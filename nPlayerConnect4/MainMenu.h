@@ -6,6 +6,7 @@
 #include "ImageLoder.h"
 #include "ScreenCoord.h"
 #include "FontInfo.h"
+#include "Version.h"
 //#include "freetype.h"
 
 class MainMenu
@@ -42,6 +43,7 @@ private:
 	TextInfo boardDims;
 	TextInfo playerCount;
 	TextInfo boardDimLabels;
+	TextInfo version;
 public:
 	void init();
 

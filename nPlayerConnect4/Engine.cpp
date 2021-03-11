@@ -11,6 +11,7 @@ Game2D::KeyState::State Engine::mouseState;
 Engine::State Engine::currentState;
 MainMenu Engine::mainMenu;
 ConnectMenu Engine::connectMenu;
+Game2D::Colour Engine::playerColour;
 Client* Engine::client;
 //Server* Engine::server;
 uint16_t Engine::serverPort;
@@ -145,7 +146,7 @@ void Engine::init()
 	connectMenu.init();
 	connectMenu.resize();
 
-
+	playerColour = Game2D::Colour::Red;
 
 	//client->init();
 
@@ -196,9 +197,13 @@ void Engine::processMouse()
 						serverPort = connectMenu.getPort();
 						startServer = true;
 					}
-					if(client) { delete client; }
+					if(client) {
+						playerColour = client->getColour();
+						delete client;
+					}
 					client = new Client();
 					client->init();
+					client->setColour(playerColour);
 					client->setHost(connectMenu.getHost());
 					client->connect(connectMenu.getAddress(),connectMenu.getPort());
 					if(client->isConnected()) {
