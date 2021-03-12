@@ -18,8 +18,6 @@
 //TODO add pause menu to multiplayer
 //TODO show player number over piece on board for colourblind people
 //TODO reduce CPU load (make server wait for messages)
-//TODO when a game is in progress change the tile bar text to reflect the number of players in game
-
 
 class Lobby
 {

@@ -31,6 +31,10 @@ void Lobby::init()
 
 	tempRect = Game2D::Rect(8.5,30,5,5);
 
+	normalSprite.setTextureCoords(Game2D::Rect(0.375f,0.0f,0.125f,0.125f));
+	hoverSprite.setTextureCoords(Game2D::Rect(0.500f,0.0f,0.125f,0.125f));
+	clickSprite.setTextureCoords(Game2D::Rect(0.625f,0.0f,0.125f,0.125f));
+
 	normalSprite.setRect(tempRect);
 	hoverSprite.setRect(tempRect);
 	clickSprite.setRect(tempRect);
@@ -61,6 +65,10 @@ void Lobby::init()
 	clickSprite.setTextureCoords(Game2D::Rect(0.75f,0.125f,0.25f,0.125f));
 
 	tempRect = Game2D::Rect(11,40,1,2);
+
+	normalSprite.setTextureCoords(Game2D::Rect(0.0f,0.0f,0.0f,0.0f));
+	hoverSprite.setTextureCoords(Game2D::Rect(0.0f,0.0f,0.0f,0.0f));
+	clickSprite.setTextureCoords(Game2D::Rect(0.0f,0.0f,0.0f,0.0f));
 
 	disabledSprite.setRect(tempRect);
 	normalSprite.setRect(tempRect);
