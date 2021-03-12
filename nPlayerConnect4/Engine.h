@@ -12,11 +12,12 @@
 #include <KeyMap.h>
 #include "MainMenu.h"
 #include "ConnectMenu.h"
+#include "SinglePlayerMenu.h"
 
 class Engine
 {
 private:
-	enum State { MENU, CONNECT, LOBBY, PLAYING_SOLO, PLAYING_MULTI, WIN, TIE, EXIT };
+	enum State { MENU, CONNECT, LOBBY, SOLO_MENU, PLAYING_SOLO, PLAYING_MULTI, WIN, TIE, EXIT };
 
 	static GLFWwindow* window;
 	static int screenWidth, screenHeight;
@@ -27,6 +28,7 @@ private:
 
 	static MainMenu mainMenu;
 	static ConnectMenu connectMenu;
+	static SinglePlayerMenu singlePlayerMenu;
 
 
 	static Client* client;

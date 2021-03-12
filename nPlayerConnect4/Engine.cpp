@@ -11,6 +11,7 @@ Game2D::KeyState::State Engine::mouseState;
 Engine::State Engine::currentState;
 MainMenu Engine::mainMenu;
 ConnectMenu Engine::connectMenu;
+SinglePlayerMenu Engine::singlePlayerMenu;
 Game2D::Colour Engine::playerColour;
 Client* Engine::client;
 //Server* Engine::server;
@@ -101,6 +102,9 @@ void Engine::display()
 		case CONNECT:
 			connectMenu.draw();
 			break;
+		case SOLO_MENU:
+			singlePlayerMenu.draw();
+			break;
 		case PLAYING_MULTI:
 			client->draw();
 			break;
@@ -150,6 +154,8 @@ void Engine::init()
 	mainMenu.resize();
 	connectMenu.init();
 	connectMenu.resize();
+	singlePlayerMenu.init();
+	singlePlayerMenu.resize();
 
 	playerColour = Game2D::Colour::Red;
 
@@ -184,7 +190,7 @@ void Engine::processMouse()
 					currentState = CONNECT;
 					break;
 				case 4://Solo game
-					currentState = PLAYING_SOLO;
+					currentState = SOLO_MENU;
 					break;
 
 			}
@@ -233,6 +239,14 @@ void Engine::processMouse()
 					stopServer = true;
 					currentState = CONNECT;
 					break;
+			}
+			break;
+		case SOLO_MENU:
+			switch (singlePlayerMenu.processMouse(mousePos, mouseState)) {
+			case 3://back
+				break;
+			case 4://start
+				break;
 			}
 			break;
 		case PLAYING_SOLO:

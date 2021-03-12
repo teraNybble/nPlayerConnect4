@@ -1,8 +1,7 @@
 #include "Lobby.h"
 
 void Lobby::init()
-{
-	
+{	
 	playerList.clear();
 	winningPlayer = -2;
 	m_menuTex = ImageLoder::loadPNG("Images/menu.png");
