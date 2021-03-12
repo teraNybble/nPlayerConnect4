@@ -8,11 +8,11 @@ void MainMenu::init()
 
 	Game2D::Rect tempRect;
 	Game2D::Sprite tempNormal, tempHover, tempClick;
-	tempRect = Game2D::Rect(0,-14,10,5);
+	tempRect = Game2D::Rect(0,-14,21,5);
 
-	tempNormal.setTextureCoords(Game2D::Rect(0, 0.375f, 0.25f, 0.125f));
-	tempHover.setTextureCoords(Game2D::Rect(0, 0.250f, 0.25f, 0.125f));
-	tempClick.setTextureCoords(Game2D::Rect(0, 0.125f, 0.25f, 0.125f));
+	tempNormal.setTextureCoords(Game2D::Rect(0, 0.875f, 0.525f, 0.125f));
+	tempHover.setTextureCoords(Game2D::Rect(0, 0.750f, 0.525f, 0.125f));
+	tempClick.setTextureCoords(Game2D::Rect(0, 0.625f, 0.525f, 0.125f));
 
 	tempNormal.setRect(tempRect);
 	tempHover.setRect(tempRect);
@@ -27,7 +27,6 @@ void MainMenu::init()
 	start.alignToDrawableObject();
 
 	tempRect = Game2D::Rect(5.5,-20,10,5);
-	host.setRect(tempRect);
 
 	tempNormal.setTextureCoords(Game2D::Rect(0.25f, 0.375f, 0.25f, 0.125f));
 	tempHover.setTextureCoords(Game2D::Rect(0.25f, 0.25f, 0.25f, 0.125f));
@@ -37,6 +36,7 @@ void MainMenu::init()
 	tempHover.setRect(tempRect);
 	tempClick.setRect(tempRect);
 
+	host.setRect(tempRect);
 	host.addStateSprites(tempNormal,tempHover,tempClick,tempClick,tempNormal);
 	host.alignToDrawableObject();
 

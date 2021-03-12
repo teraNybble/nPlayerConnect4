@@ -281,6 +281,11 @@ void Engine::processMouse()
 				singlePlayerBoard.setBoardDims(singlePlayerMenu.getBoardWidth(),singlePlayerMenu.getBoardHeight());
 				singlePlayerBoard.setLineLength(singlePlayerMenu.getLineLength());
 				singlePlayerBoard.setNumPlayers(singlePlayerMenu.getNumPlayers());
+				std::string tempString;
+				tempString += std::to_string(singlePlayerMenu.getNumPlayers());
+				tempString += " Player Connect ";
+				tempString += std::to_string(singlePlayerMenu.getLineLength());
+				setWindowTitle(tempString);
 				singlePlayerBoard.initBoard();
 
 				currentState = PLAYING_SOLO;
@@ -301,6 +306,7 @@ void Engine::processMouse()
 			break;
 		case WIN:
 		case TIE:
+			setWindowTitle("n Player Connect 4");
 			if (mouseState == Game2D::KeyState::DOWN) {
 				currentState = SOLO_MENU;
 			}

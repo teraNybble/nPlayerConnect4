@@ -10,14 +10,11 @@
 #include <map>
 #include <Slider.h>
 
-
-//TODO add a join button texture and a back button texture
-//TODO add single player
+//TODO make single player button match the width of the host and the join buttons
+//TODO add options button either put it next to quit or make it the same width as single player
 //TODO add ability to change if from connect4 to connectx
-//TODO add quit button to main menu
 //TODO add pause menu to multiplayer
 //TODO show player number over piece on board for colourblind people
-//TODO reduce CPU load (make server wait for messages)
 
 class Lobby
 {

@@ -17,7 +17,7 @@
 class Engine
 {
 private:
-	enum State { MENU, CONNECT, LOBBY, SOLO_MENU, PLAYING_SOLO, PLAYING_MULTI, WIN, TIE, EXIT };
+	enum State { MENU, CONNECT, OPTIONS, SOLO_MENU, PLAYING_SOLO, PLAYING_MULTI, WIN, TIE, EXIT };
 
 	static GLFWwindow* window;
 	static int screenWidth, screenHeight;

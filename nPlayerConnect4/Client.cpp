@@ -110,7 +110,8 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 
 					if(winTitle){
 						std::string tempStr = std::to_string(noPlayers);
-						tempStr += " Player Connect 4";
+						tempStr += " Player Connect ";
+						tempStr += std::to_string(4);
 						winTitle(tempStr);
 					}
 
