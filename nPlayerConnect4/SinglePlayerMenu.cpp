@@ -186,11 +186,15 @@ int SinglePlayerMenu::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::Stat
 	}
 	//as the start button is aligned to the right of the screen the mouse coordinats need to be aligned right as well
 	Game2D::Pos2 mousePosAlignedRight = Game2D::Pos2((mousePos.x - Game2D::ScreenCoord::getAspectRatio() * 50), mousePos.y);
+	//as the start button is aligned to the right of the screen the mouse coordinats need to be aligned right as well
+	Game2D::Pos2 mousePosAlignedLeft = Game2D::Pos2((mousePos.x + Game2D::ScreenCoord::getAspectRatio() * 50), mousePos.y);
+
+
 	if (startButton.update(mousePosAlignedRight, mouseState, 1) == Game2D::ClickableObject::ClickState::CLICK) {
-		return 4;
+		return 2;
 	}
-	if (backButton.update(mousePosAlignedRight, mouseState, 1) == Game2D::ClickableObject::ClickState::CLICK) {
-		return 3;
+	if (backButton.update(mousePosAlignedLeft, mouseState, 1) == Game2D::ClickableObject::ClickState::CLICK) {
+		return 1;
 	}
 
 	return 0;
@@ -199,13 +203,20 @@ int SinglePlayerMenu::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::Stat
 void SinglePlayerMenu::draw() const
 {
 	glBindTexture(GL_TEXTURE_2D, mainMenuTex);
+
+	Game2D::ScreenCoord::alignLeft();
+	backButton.draw();
+	Game2D::ScreenCoord::alignCentre();
 	playersPlus.draw();
 	playersMinus.draw();
 	boardHeightPlus.draw();
 	boardHeightMinus.draw();
 	boardWidthPlus.draw();
 	boardWidthMinus.draw();
+	Game2D::ScreenCoord::alignRight();
+	startButton.draw();
 
+	Game2D::ScreenCoord::alignCentre();
 	Game2D::Colour::White.draw();
 	freetype::print(Game2D::Font::getFont(playerCount.fontSize), (playerCount.width / -2.0f) - 38, -41, playerCount.text.c_str(), numPlayers);
 	freetype::print(Game2D::Font::getFont(noPlayers.fontSize), (noPlayers.width / -2.0f) - 38, -35, noPlayers.text.c_str());

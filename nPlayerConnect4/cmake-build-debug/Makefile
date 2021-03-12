@@ -339,6 +339,33 @@ Server.cpp.s:
 	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/Server.cpp.s
 .PHONY : Server.cpp.s
 
+SinglePlayerMenu.o: SinglePlayerMenu.cpp.o
+
+.PHONY : SinglePlayerMenu.o
+
+# target to build an object file
+SinglePlayerMenu.cpp.o:
+	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.o
+.PHONY : SinglePlayerMenu.cpp.o
+
+SinglePlayerMenu.i: SinglePlayerMenu.cpp.i
+
+.PHONY : SinglePlayerMenu.i
+
+# target to preprocess a source file
+SinglePlayerMenu.cpp.i:
+	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.i
+.PHONY : SinglePlayerMenu.cpp.i
+
+SinglePlayerMenu.s: SinglePlayerMenu.cpp.s
+
+.PHONY : SinglePlayerMenu.s
+
+# target to generate assembly for a file
+SinglePlayerMenu.cpp.s:
+	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.s
+.PHONY : SinglePlayerMenu.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -399,6 +426,9 @@ help:
 	@echo "... Server.o"
 	@echo "... Server.i"
 	@echo "... Server.s"
+	@echo "... SinglePlayerMenu.o"
+	@echo "... SinglePlayerMenu.i"
+	@echo "... SinglePlayerMenu.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

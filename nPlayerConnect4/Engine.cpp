@@ -12,6 +12,8 @@ Engine::State Engine::currentState;
 MainMenu Engine::mainMenu;
 ConnectMenu Engine::connectMenu;
 SinglePlayerMenu Engine::singlePlayerMenu;
+Board Engine::singlePlayerBoard;
+unsigned int Engine::winningPlayer;
 Game2D::Colour Engine::playerColour;
 Client* Engine::client;
 //Server* Engine::server;
@@ -94,6 +96,8 @@ void Engine::display()
 
 	glLoadIdentity();
 
+	Game2D::Sprite temp;
+
 	//draw things here
 	switch (currentState) {
 		case MENU:
@@ -109,10 +113,27 @@ void Engine::display()
 			client->draw();
 			break;
 		case PLAYING_SOLO:
+			singlePlayerBoard.draw();
 			break;
 		case WIN:
+			singlePlayerBoard.draw();
+			temp.setColour(Game2D::Colour(0, 0, 0, 0.5));
+			temp.setRect(Game2D::Rect(0, 0, 400, 400));
+			temp.draw();
+			Game2D::Colour(1, 1, 1).draw();
+			Game2D::ScreenCoord::alignCentre();
+			freetype::print(Game2D::Font::getFont(5), freetype::getLength(Game2D::Font::getFont(5), "Player %d wins!", winningPlayer + 1) / -2.0, 20, "Player %d wins!", winningPlayer + 1);
+			freetype::print(Game2D::Font::getFont(3), freetype::getLength(Game2D::Font::getFont(3), "Click to continue") /-2.0, 10, "Click to continue");
 			break;
 		case TIE:
+			singlePlayerBoard.draw();
+			temp.setColour(Game2D::Colour(0, 0, 0, 0.5));
+			temp.setRect(Game2D::Rect(0, 0, 400, 400));
+			temp.draw();
+			Game2D::Colour(1, 1, 1).draw();
+			Game2D::ScreenCoord::alignCentre();
+			freetype::print(Game2D::Font::getFont(5), freetype::getLength(Game2D::Font::getFont(5), "Tie") / -2.0, 20, "Tie");
+			freetype::print(Game2D::Font::getFont(3), freetype::getLength(Game2D::Font::getFont(3), "Click to continue") /-2.0, 10, "Click to continue");
 			break;
 		case EXIT:
 			break;
@@ -156,6 +177,16 @@ void Engine::init()
 	connectMenu.resize();
 	singlePlayerMenu.init();
 	singlePlayerMenu.resize();
+
+	std::vector<Game2D::Colour> playerColours = {
+			Game2D::Colour::Red, Game2D::Colour::Yellow,
+			Game2D::Colour::Green, Game2D::Colour::Blue,
+			Game2D::Colour::Cyan, Game2D::Colour::Magenta,
+			Game2D::Colour::White, Game2D::Colour(1,0.65f,0),
+			Game2D::Colour(1,0.75f,0.8f),
+	};
+
+	singlePlayerBoard.setPlayerColours(playerColours);
 
 	playerColour = Game2D::Colour::Red;
 
@@ -243,17 +274,36 @@ void Engine::processMouse()
 			break;
 		case SOLO_MENU:
 			switch (singlePlayerMenu.processMouse(mousePos, mouseState)) {
-			case 3://back
+			case 1://back
+				currentState = MENU;
 				break;
-			case 4://start
+			case 2://start
+				singlePlayerBoard.setBoardDims(singlePlayerMenu.getBoardWidth(),singlePlayerMenu.getBoardHeight());
+				singlePlayerBoard.setLineLength(singlePlayerMenu.getLineLength());
+				singlePlayerBoard.setNumPlayers(singlePlayerMenu.getNumPlayers());
+				singlePlayerBoard.initBoard();
+
+				currentState = PLAYING_SOLO;
 				break;
 			}
 			break;
 		case PLAYING_SOLO:
+			switch (singlePlayerBoard.processMouse(mousePos,mouseState,winningPlayer))
+			{
+				case -1:
+					currentState = TIE;
+					break;
+				case 1:
+					//std::cout << "WIN\n";
+					currentState = WIN;
+					break;
+			}
 			break;
 		case WIN:
-			break;
 		case TIE:
+			if (mouseState == Game2D::KeyState::DOWN) {
+				currentState = SOLO_MENU;
+			}
 			break;
 		case EXIT:
 			break;

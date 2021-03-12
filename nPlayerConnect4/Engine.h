@@ -30,6 +30,8 @@ private:
 	static ConnectMenu connectMenu;
 	static SinglePlayerMenu singlePlayerMenu;
 
+	static Board singlePlayerBoard;
+	static unsigned int winningPlayer;
 
 	static Client* client;
 	static Game2D::Colour playerColour;
