@@ -88,6 +88,7 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 					//int playerNumber;
 					uint32_t noPlayers;
 					uint32_t width, height;
+					uint32_t connectLength;
 					std::vector<Game2D::Colour> playerColours;
 					msg >> noPlayers;
 
@@ -101,8 +102,9 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 					msg >> playerNo;
 					msg >> width;
 					msg >> height;
+					msg >> connectLength;
 					//set up the board
-					board.setLineLength(4);
+					board.setLineLength(connectLength);
 					board.setBoardDims(width,height);
 					board.setNumPlayers(noPlayers);
 					board.setPlayerColours(playerColours);
@@ -111,7 +113,7 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 					if(winTitle){
 						std::string tempStr = std::to_string(noPlayers);
 						tempStr += " Player Connect ";
-						tempStr += std::to_string(4);
+						tempStr += std::to_string(connectLength);
 						winTitle(tempStr);
 					}
 
@@ -121,13 +123,18 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 				case GameMsg::GAME_OVER:{
 					if(winTitle){
 						//std::string tempStr = std::to_string(noPlayers);
-						std::string tempStr = "n Player Connect 4";
+						std::string tempStr = "n Player Connect x";
 						winTitle(tempStr);
 					}
 					//int32_t winningPlayer;
 					msg >> winningPlayer;
 					lobby.setWinningPlayer(winningPlayer);
-					currentState = GAME_END;
+					if(winningPlayer == -2) {
+						//client disconnected so return to lobby
+						currentState = LOBBY;
+					} else {
+						currentState = GAME_END;
+					}
 					break;
 				}
 				case GameMsg::PLAYER_MOVE:{
@@ -219,6 +226,7 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 		case 3: {//start the game
 			net::Message<GameMsg> msg;
 			msg.header.id = GameMsg::GAME_START;
+			msg << lobby.getConncectLength();
 			msg << lobby.getBoardHeight();
 			msg << lobby.getBoardWidth();
 			send(msg);

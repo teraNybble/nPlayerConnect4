@@ -124,6 +124,16 @@ void Lobby::init()
 	boardWidthPlus.addStateSprites(normalSprite, hoverSprite, clickSprite, clickSprite, normalSprite);
 	boardWidthPlus.alignToDrawableObject();
 
+	tempRect = Game2D::Rect(37,-45,2.5,2.5);
+
+	normalSprite.setRect(tempRect);
+	hoverSprite.setRect(tempRect);
+	clickSprite.setRect(tempRect);
+
+	lineLengthPlus.setRect(tempRect);
+	lineLengthPlus.addStateSprites(normalSprite, hoverSprite, clickSprite, clickSprite, normalSprite);
+	lineLengthPlus.alignToDrawableObject();
+
 	tempRect = Game2D::Rect(-1.25, -45, 2.5, 2.5);
 
 	normalSprite.flipX();
@@ -137,6 +147,16 @@ void Lobby::init()
 	boardWidthMinus.setRect(tempRect);
 	boardWidthMinus.addStateSprites(normalSprite, hoverSprite, clickSprite, clickSprite, normalSprite);
 	boardWidthMinus.alignToDrawableObject();
+
+	tempRect = Game2D::Rect(34.5,-45,2.5,2.5);
+
+	normalSprite.setRect(tempRect);
+	hoverSprite.setRect(tempRect);
+	clickSprite.setRect(tempRect);
+
+	lineLengthMinus.setRect(tempRect);
+	lineLengthMinus.addStateSprites(normalSprite, hoverSprite, clickSprite, clickSprite, normalSprite);
+	lineLengthMinus.alignToDrawableObject();
 
 	tempRect = Game2D::Rect(12, -40, 2.5, 2.5);
 
@@ -183,6 +203,14 @@ void Lobby::resize()
 	boardDimLabels.fontSize = 4;
 	boardDimLabels.text = "%d x %d";
 	boardDimLabels.width = freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize), boardDimLabels.text.c_str(), boardWidth, boardHeight);
+
+	connectLength.fontSize = 3;
+	connectLength.text = "Connect length";
+	connectLength.width = freetype::getLength(Game2D::Font::getFont(connectLength.fontSize), connectLength.text.c_str());
+
+	connectLengthLabels.fontSize = 4;
+	connectLengthLabels.text = "%d";
+	connectLengthLabels.width = freetype::getLength(Game2D::Font::getFont(connectLengthLabels.fontSize), connectLengthLabels.text.c_str(), lineLength);
 }
 
 int Lobby::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseState)
@@ -240,6 +268,28 @@ int Lobby::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseStat
 													   boardDimLabels.text.c_str(), boardWidth, boardHeight);
 			return 4;
 		}
+		if(lineLengthMinus.update(mousePos,mouseState,1) == Game2D::ClickableObject::CLICK){
+			if(lineLength > 0){
+				lineLength--;
+				connectLengthLabels.width = freetype::getLength(Game2D::Font::getFont(connectLengthLabels.fontSize), connectLengthLabels.text.c_str(), lineLength);
+			}
+			return 5;
+		}
+		if(lineLengthPlus.update(mousePos,mouseState,1) == Game2D::ClickableObject::CLICK){
+			lineLength++;
+			connectLengthLabels.width = freetype::getLength(Game2D::Font::getFont(connectLengthLabels.fontSize), connectLengthLabels.text.c_str(), lineLength);
+			if(boardHeight < lineLength) {
+				boardHeight = lineLength;
+				boardDimLabels.width = freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
+														   boardDimLabels.text.c_str(), boardWidth, boardHeight);
+			}
+			if(boardWidth < lineLength) {
+				boardWidth = boardHeight;
+				boardDimLabels.width = freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
+														   boardDimLabels.text.c_str(), boardWidth, boardHeight);
+			}
+			return 5;
+		}
 	}
 
 	//only allow the host to start the game
@@ -291,6 +341,8 @@ void Lobby::draw()
 		boardWidthMinus.draw();
 		boardHeightPlus.draw();
 		boardHeightMinus.draw();
+		lineLengthPlus.draw();
+		lineLengthMinus.draw();
 	}
 
 	//get the width of all the players plus spacing and divied by two so they will all be aligned to the centre
@@ -319,6 +371,8 @@ void Lobby::draw()
 	Game2D::Colour::White.draw();
 	freetype::print(Game2D::Font::getFont(boardDims.fontSize), (boardDims.width/-2.0f), -35, boardDims.text.c_str());
 	freetype::print(Game2D::Font::getFont(boardDimLabels.fontSize), (boardDimLabels.width/-2.0f), -41, boardDimLabels.text.c_str(), boardWidth,boardHeight);
+	freetype::print(Game2D::Font::getFont(connectLength.fontSize), (connectLength.width/-2.0f) + 35.5, -35, connectLength.text.c_str());
+	freetype::print(Game2D::Font::getFont(connectLengthLabels.fontSize), (connectLengthLabels.width / -2.0f) + 35.5, -41, connectLengthLabels.text.c_str(), lineLength);
 	if(winningPlayer == -1){
 		float width = freetype::getLength(Game2D::Font::getFont(4),"Tie");
 		freetype::print(Game2D::Font::getFont(4),-width/2.0,40,"Tie");

@@ -10,7 +10,8 @@
 #include <map>
 #include <Slider.h>
 
-//TODO make single player button match the width of the host and the join buttons
+//TODO fix crash when server is already running on that port
+//TODO when a player connects give them a default colour from the single player list
 //TODO add options button either put it next to quit or make it the same width as single player
 //TODO add ability to change if from connect4 to connectx
 //TODO add pause menu to multiplayer
@@ -47,9 +48,14 @@ private:
 	Game2D::Button boardHeightMinus;
 
 	unsigned int lineLength;
+	Game2D::Button lineLengthPlus;
+	Game2D::Button lineLengthMinus;
 
 	TextInfo boardDims;
 	TextInfo boardDimLabels;
+
+	TextInfo connectLength;
+	TextInfo connectLengthLabels;
 protected:
 public:
 	void init();
@@ -76,6 +82,7 @@ public:
 		blueSlider.setValue(colour.getB());
 	}
 
+	inline uint32_t getConncectLength() const {return lineLength; }
 	inline uint32_t getBoardWidth() const { return boardWidth; }
 	inline uint32_t getBoardHeight() const { return boardHeight; }
 	inline void setBoardWidth(unsigned int width) { boardWidth = width; }

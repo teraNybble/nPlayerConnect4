@@ -10,6 +10,7 @@
 #include "ImageLoder.h"
 #include <Sprite.h>
 #include <ScreenCoord.h>
+#include "Options.h"
 
 class Board
 {
@@ -29,6 +30,8 @@ private:
 	Game2D::Pos2 nextInsertPos;//used to see highlight to the user where the next piece will be put
 
 	float GetSegDim();
+
+	freetype::font_data playerNoFont;
 
 protected:
 	unsigned int numPlayers;

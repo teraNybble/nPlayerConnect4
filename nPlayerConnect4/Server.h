@@ -97,11 +97,13 @@ protected:
 			case GameMsg::GAME_START:{
 				uint32_t width;
 				uint32_t height;
+				uint32_t connectLentgh;
 
 				msg >> width;
 				msg >> height;
+				msg >> connectLentgh;
 
-				startGame(width,height);//TODO get it so the host can choose the board size
+				startGame(width,height,connectLentgh);
 				break;
 			}
 			case GameMsg::GAME_WIN: {
@@ -140,7 +142,7 @@ public:
 #endif
 	}
 
-	void startGame(unsigned int boardWidth, unsigned int boardHeight)
+	void startGame(uint32_t boardWidth, uint32_t boardHeight, uint32_t connectLength)
 	{
 		//net::Message<GameMsg> msg;
 		//msg.header.id = GameMsg::GAME_START;
@@ -153,8 +155,9 @@ public:
 			net::Message<GameMsg> msg;
 			msg.header.id = GameMsg::GAME_START;
 			//cast all the values to uint32 so they are the same size regardless of platform
-			msg << (uint32_t)boardHeight;
-			msg << (uint32_t)boardWidth;
+			msg << connectLength;
+			msg << boardHeight;
+			msg << boardWidth;
 			msg << (int32_t)i++;//player number
 			for(auto it : playerColours){
 				msg << it.second;

@@ -171,6 +171,8 @@ void Engine::init()
 
 	Game2D::ScreenCoord::init(screenWidth, screenHeight);
 
+	Options::showPlayerNums = false;
+
 	mainMenu.init();
 	mainMenu.resize();
 	connectMenu.init();
@@ -306,7 +308,7 @@ void Engine::processMouse()
 			break;
 		case WIN:
 		case TIE:
-			setWindowTitle("n Player Connect 4");
+			setWindowTitle("n Player Connect x");
 			if (mouseState == Game2D::KeyState::DOWN) {
 				currentState = SOLO_MENU;
 			}
@@ -334,7 +336,7 @@ bool Engine::createWindow()
 	//glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
 	/* Create a windowed mode window and its OpenGL context */
-	window = glfwCreateWindow(screenWidth, screenHeight, "n Player Connect 4", NULL, NULL);
+	window = glfwCreateWindow(screenWidth, screenHeight, "n Player Connect x", NULL, NULL);
 	if (!window)
 	{
 		std::cerr << "failed to create window\n";

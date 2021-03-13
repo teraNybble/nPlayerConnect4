@@ -29,6 +29,33 @@ void Board::setClickboxes()
 		clickboxes.back().alignToDrawableObject();
 	}
 	//std::cout << clickboxes[0].getClickRegion().pos << "\n";
+
+
+	float projectionMatMine[4][4];
+	glGetFloatv(GL_PROJECTION_MATRIX, &projectionMatMine[0][0]);
+	glPushAttrib(GL_TRANSFORM_BIT);
+	GLint	viewport[4];
+	glGetIntegerv(GL_VIEWPORT, viewport);
+	glMatrixMode(GL_PROJECTION);
+	glPushMatrix();
+	glLoadIdentity();
+	//gluOrtho2D(viewport[0], viewport[2], viewport[1], viewport[3]);
+	glOrtho(viewport[0], viewport[2], viewport[1], viewport[3], 0, 100);
+	//gluOrtho2D(left, right, bottom, top);
+	glPopAttrib();
+	//!
+
+	float projectionMatScreen[4][4];
+	glGetFloatv(GL_PROJECTION_MATRIX, &projectionMatScreen[0][0]);
+
+	float temp = (segDim/1.5F)*0.9;
+	temp = (((temp * projectionMatMine[1][1]) + projectionMatMine[3][1]) / projectionMatScreen[1][1]);
+	playerNoFont.init(_SysFont, temp);
+	//temp = ((segDim/1.5F)*0.9)*1.1;
+	//temp = (((temp * projectionMatMine[1][1]) + projectionMatMine[3][1]) / projectionMatScreen[1][1]);
+
+	//playerNoFontOutline.init(_SysFont_Bold, temp);
+
 }
 
 void Board::initBoard()
@@ -318,6 +345,30 @@ void Board::draw()
 		}
 		x += segDim; //+ 2;
 		//if((x += segWidth + 2 ) > 50) { x = -50; }
+	}
+	if(Options::showPlayerNums){
+		x = (0 - ((segDim) * (width-1)) / 2.0f);
+		float fontHight = (segDim/1.5f)*0.9f;
+		//float outlineHight = fontHight*1.1f;
+		//float outlineHight = fontHight;
+		for(int i = 0; i < width; i++){
+			y = 0 - ((segDim) * ((height-1)/2.0));
+			for(int j = 0; j < height; j++){
+				if(board[j][i] != -1){
+					//circleSprite.setColour(playerColours[board[j][i]]);
+					//print the number
+					float fontWidth = freetype::getLength(playerNoFont,"%d",board[j][i]+1);
+					//float outlineWidth = freetype::getLength(playerNoFontOutline,"%d",board[j][i]+1);
+					//std::cout << "printing player number at " << x << " " << y << "\n";
+					Game2D::Colour::Black.draw();
+					//freetype::print(playerNoFontOutline,(x-(outlineWidth/2.0f))*1.05f,y-(outlineHight/2.0f),"%d",board[j][i]+1);
+					//Game2D::Colour::White.draw();
+					freetype::print(playerNoFont,x-(fontWidth/2.0f),y-(fontHight/2.0f),"%d",board[j][i]+1);
+				}
+				y += segDim;
+			}
+			x += segDim;
+		}
 	}
 	Game2D::ScreenCoord::alignLeft();
 	Game2D::Colour(1, 1, 1).draw();

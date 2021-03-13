@@ -81,7 +81,7 @@ void MainMenu::resize()
 {
 	Game2D::ScreenCoord::alignCentre();
 	title.fontSize = 5;
-	title.text = "n Player Connect 4";
+	title.text = "n Player Connect x";
 	title.width = freetype::getLength(Game2D::Font::getFont(title.fontSize), title.text.c_str());
 
 	version.fontSize = 3;

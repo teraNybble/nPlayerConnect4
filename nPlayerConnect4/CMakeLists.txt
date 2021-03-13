@@ -8,7 +8,7 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/../cmake")
 include_directories(/home/dan/CLionProjects/Game2D)
 link_directories(/home/dan/CLionProjects/Game2D/cmake-build-debug/)
 
-add_executable(nPlayerConnect4 main.cpp Engine.cpp Engine.h Server.cpp Server.h Client.cpp Client.h MainMenu.cpp MainMenu.h ImageLoder.cpp ImageLoder.h FontInfo.h ConnectMenu.cpp ConnectMenu.h Lobby.cpp Lobby.h Board.cpp Board.h Version.h SinglePlayerMenu.cpp SinglePlayerMenu.h)
+add_executable(nPlayerConnect4 main.cpp Engine.cpp Engine.h Server.cpp Server.h Client.cpp Client.h MainMenu.cpp MainMenu.h ImageLoder.cpp ImageLoder.h FontInfo.h ConnectMenu.cpp ConnectMenu.h Lobby.cpp Lobby.h Board.cpp Board.h Version.h SinglePlayerMenu.cpp SinglePlayerMenu.h Options.cpp Options.h)
 
 INCLUDE(FindPkgConfig)
 
