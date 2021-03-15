@@ -38,8 +38,16 @@ public:
 		return msg;
 	}
 
+	void leave()
+	{
+		net::Message<GameMsg> msg;
+		msg.header.id = GameMsg::CLIENT_DISCONNECT;
+		send(msg);
+	}
+
 	void init();
 	inline void reset() { currentState = LOBBY; lobby.reset(); }
+	inline void resize() { board.resize(); }
 
 	int processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseState, void(*winTitle)(std::string) = NULL);
 

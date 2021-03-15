@@ -40,6 +40,8 @@ void Engine::resizeCallback(GLFWwindow* window, int width, int height)
 	Game2D::ScreenCoord::alignCentre();
 
 	mainMenu.resize();
+	singlePlayerBoard.resize();
+	if(client) { client->resize(); }
 	//connectMenu.resize();
 }
 
@@ -171,7 +173,7 @@ void Engine::init()
 
 	Game2D::ScreenCoord::init(screenWidth, screenHeight);
 
-	Options::showPlayerNums = false;
+	Options::showPlayerNums = true;
 
 	mainMenu.init();
 	mainMenu.resize();
@@ -267,7 +269,10 @@ void Engine::processMouse()
 			heatBeat = true;
 			switch (client->processMouse(mousePos,mouseState,setWindowTitle)) {
 				case 1://back
-					client->disconnect();
+					if(client) {
+						playerColour = client->getColour();
+						client->leave();
+					}
 					//stop the server
 					stopServer = true;
 					currentState = CONNECT;
@@ -372,8 +377,12 @@ int Engine::mainLoop()
 			while (serverLoop){
 				if(startServer){
 					if(server) { delete server; }
-					server = new Server(serverPort);
-					server->start();
+					try {
+						server = new Server(serverPort);
+						server->start();
+					} catch (std::exception e){
+						std::cerr << e.what() << "\n";
+					}
 					startServer = false;
 				}
 				if(heatBeat){

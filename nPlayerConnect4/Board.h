@@ -48,6 +48,7 @@ public:
 	inline unsigned int getCurrentPlayer() const { return currentPlayer; }
 
 	void initBoard();
+	void resize();
 
 	int processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseState, unsigned int& winningPlayer, int* x = nullptr);
 	int makeMove(int x, int playerNum, unsigned int& winningPlayer);

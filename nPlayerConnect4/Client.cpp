@@ -42,15 +42,18 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 					}
 
 					uint32_t width, height;
+					Game2D::Colour defaultColour;
 
 					msg >> width;
 					msg >> height;
 					lobby.setBoardHeight(height);
 					lobby.setBoardWidth(width);
 
+					msg >> defaultColour;
+
 					net::Message<GameMsg> outMsg;
 					outMsg.header.id = GameMsg::PLAYER_COLOUR;
-					outMsg << lobby.getColour();
+					outMsg << defaultColour;
 					//outMsg << Game2D::Colour::Red;
 
 					send(outMsg);
@@ -82,6 +85,12 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 
 					lobby.setBoardHeight(height);
 					lobby.setBoardWidth(width);
+					break;
+				}
+				case GameMsg::CONNECT_LENGTH:{
+					uint32_t length;
+					msg >> length;
+					lobby.setConnectLength(length);
 					break;
 				}
 				case GameMsg::GAME_START:{
@@ -216,7 +225,7 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 
 
 	switch (result) {
-		case 2: {//test button click
+		case 2: {//player colour confirm button click
 			net::Message<GameMsg> msg;
 			msg.header.id = GameMsg::PLAYER_COLOUR;
 			msg << lobby.getColour();
@@ -226,11 +235,17 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 		case 3: {//start the game
 			net::Message<GameMsg> msg;
 			msg.header.id = GameMsg::GAME_START;
-			msg << lobby.getConncectLength();
+			msg << lobby.getConnectLength();
 			msg << lobby.getBoardHeight();
 			msg << lobby.getBoardWidth();
 			send(msg);
 			break;
+		}
+		case 5:{//connect length change
+			net::Message<GameMsg> msg;
+			msg.header.id = GameMsg::CONNECT_LENGTH;
+			msg << lobby.getConnectLength();
+			send(msg);
 		}
 		case 4: {//board size change
 			net::Message<GameMsg> msg;

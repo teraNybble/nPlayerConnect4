@@ -17,6 +17,15 @@ private:
 	//Version serverVer;
 	std::map<uint32_t,Game2D::Colour> playerColours;
 	std::vector<uint32_t> garbageIDs;
+	unsigned int connCount;
+
+	std::vector<Game2D::Colour> defaultPlayerColours = {
+			Game2D::Colour::Red, Game2D::Colour::Yellow,
+			Game2D::Colour::Green, Game2D::Colour::Blue,
+			Game2D::Colour::Cyan, Game2D::Colour::Magenta,
+			Game2D::Colour::White, Game2D::Colour(1,0.65f,0),
+			Game2D::Colour(1,0.75f,0.8f),
+	};
 protected:
 	virtual bool onClientConnect(std::shared_ptr<net::Connection<GameMsg>> client) override {
 
@@ -29,6 +38,8 @@ protected:
 		//send the player their player number
 		net::Message<GameMsg> msg;
 		msg.header.id = GameMsg::SERVER_ACCEPT;
+
+		msg << defaultPlayerColours.at(connCount++ % 9);
 
 		msg << boardheight;
 		msg << boardWidth;
@@ -45,6 +56,7 @@ protected:
 		return true;
 	}
 	virtual void onClientDisconnect(std::shared_ptr<net::Connection<GameMsg>> client) override{
+		//std::cout << "client disconnecting\n";
 		if(client) {
 			if(!(playerColours.find(client->getID()) == playerColours.end())){
 				auto& pd = playerColours[client->getID()];
@@ -89,6 +101,10 @@ protected:
 				messageAllClients(outMsg,client);
 				break;
 			}
+			case GameMsg::CONNECT_LENGTH:{
+				messageAllClients(msg,client);
+				break;
+			}
 			case GameMsg::PLAYER_MOVE: {
 				//send the move to everyone except the sending client
 				messageAllClients(msg,client);
@@ -113,6 +129,14 @@ protected:
 				inGame = false;
 				break;
 			}
+			case GameMsg::CLIENT_DISCONNECT: {
+				if(!(playerColours.find(client->getID()) == playerColours.end())){
+					auto& pd = playerColours[client->getID()];
+					playerColours.erase(client->getID());
+					garbageIDs.push_back(client->getID());
+				}
+				break;
+			}
 		}
 	}
 
@@ -129,6 +153,7 @@ public:
 	Server(uint16_t port) : net::ServerInterface<GameMsg>(port){
 		boardWidth = 7;
 		boardheight = 6;
+		connCount = 0;
 	}
 
 	~Server(){

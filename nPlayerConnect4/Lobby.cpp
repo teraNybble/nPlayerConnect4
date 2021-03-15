@@ -190,6 +190,75 @@ void Lobby::init()
 	lineLength = 4;
 	boardWidth = 7;
 	boardHeight = 6;
+
+	delayTime = 1000;//ms
+	arrowDown = false;
+
+	arrowButtons.clear();
+	arrowButtons.push_back(&boardWidthPlus);
+	arrowButtons.push_back(&boardWidthMinus);
+	arrowButtons.push_back(&boardHeightPlus);
+	arrowButtons.push_back(&boardHeightMinus);
+	arrowButtons.push_back(&lineLengthPlus);
+	arrowButtons.push_back(&lineLengthMinus);
+
+	arrowFuncs.clear();
+	arrowFuncs.push_back(
+		[&](){
+			boardWidth++;
+			boardDimLabels.width = freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
+													   boardDimLabels.text.c_str(), boardWidth, boardHeight);
+		}
+	);
+	arrowFuncs.push_back(
+		[&](){
+			if (--boardWidth < lineLength) { boardWidth = lineLength; }
+			boardDimLabels.width = freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
+													   boardDimLabels.text.c_str(), boardWidth, boardHeight);
+		}
+	);
+	arrowFuncs.push_back(
+		[&](){
+			boardHeight++;
+			boardDimLabels.width = freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
+													   boardDimLabels.text.c_str(), boardWidth, boardHeight);
+		}
+	);
+	arrowFuncs.push_back(
+		[&](){
+			if (--boardHeight < lineLength) { boardHeight = lineLength; }
+			boardDimLabels.width = freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
+													   boardDimLabels.text.c_str(), boardWidth, boardHeight);
+		}
+	);
+
+	arrowFuncs.push_back(
+		[&](){
+			lineLength++;
+			connectLengthLabels.width = freetype::getLength(Game2D::Font::getFont(connectLengthLabels.fontSize), connectLengthLabels.text.c_str(), lineLength);
+			bool recalculateTextLength = false;
+			if(boardHeight < lineLength) {
+				boardHeight = lineLength;
+				recalculateTextLength = true;
+			}
+			if(boardWidth < lineLength) {
+				boardWidth = lineLength;
+				recalculateTextLength = true;
+			}
+			if(recalculateTextLength){
+				boardDimLabels.width = freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
+														   boardDimLabels.text.c_str(), boardWidth, boardHeight);
+			}
+		}
+	);
+	arrowFuncs.push_back(
+		[&](){
+			if(lineLength > 0){
+				lineLength--;
+				connectLengthLabels.width = freetype::getLength(Game2D::Font::getFont(connectLengthLabels.fontSize), connectLengthLabels.text.c_str(), lineLength);
+			}
+		}
+	);
 	
 	resize();
 }
@@ -240,7 +309,67 @@ int Lobby::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseStat
 	exampleColour.setColour(Game2D::Colour(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue()));
 
 	if(isHost) {
-		if (boardWidthPlus.update(mousePos, mouseState, 1) == Game2D::ClickableObject::ClickState::CLICK) {
+		for(int i = 0; i < arrowButtons.size(); i++){
+			Game2D::ClickableObject::ClickState tempClickState = arrowButtons[i]->update(mousePos,mouseState,1);
+			if(tempClickState == Game2D::ClickableObject::MOUSEDOWN){
+				if(!arrowDown) {
+					timer.start();
+					delayCount = delayTime;
+					arrowDown = true;
+					return -1;
+				} else {
+					if(timer.elapsedTime<Game2D::Timer::miliseconds>() >= delayCount){
+						delayCount *= 0.9;
+						timer.start();
+
+						arrowFuncs[i]();
+						//if i is less than 4 then we are changing board detentions else we are changing the connect length
+						return -1;
+						if(i < 4){
+							return 4;
+						} else {
+							return 5;
+						}
+					} else {
+						return -1;
+					}
+				}
+			} else if(tempClickState == Game2D::ClickableObject::CLICK) {
+				arrowDown = false;
+				arrowFuncs[i]();
+				//if i is less than 4 then we are changing board detentions else we are changing the connect length
+				if(i < 4){
+					return 4;
+				} else {
+					return 5;
+				}
+			} else if(mouseState == Game2D::KeyState::UP && arrowDown) {
+				arrowDown = false;
+				return 5;
+			}
+		}
+/*
+		Game2D::ClickableObject::ClickState tempClickState = boardWidthPlus.update(mousePos, mouseState, 1);
+		if(tempClickState == Game2D::ClickableObject::MOUSEDOWN){
+			if(!arrowDown) {
+				timer.start();
+				delayCount = delayTime;
+				arrowDown = true;
+				return -1;
+			} else {
+				if(timer.elapsedTime<Game2D::Timer::miliseconds>() >= delayCount){
+					delayCount *= 0.9;
+					timer.start();
+					boardWidth++;
+					boardDimLabels.width = freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
+															   boardDimLabels.text.c_str(), boardWidth, boardHeight);
+					return 4;
+				} else {
+					return -1;
+				}
+			}
+		} else if(tempClickState == Game2D::ClickableObject::CLICK) {
+		//if (boardWidthPlus.update(mousePos, mouseState, 1) == Game2D::ClickableObject::ClickState::CLICK) {
 			boardWidth++;
 			boardDimLabels.width = freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
 													   boardDimLabels.text.c_str(), boardWidth, boardHeight);
@@ -291,7 +420,7 @@ int Lobby::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseStat
 														   boardDimLabels.text.c_str(), boardWidth, boardHeight);
 			}
 			return 5;
-		}
+		}*/
 	}
 
 	//only allow the host to start the game

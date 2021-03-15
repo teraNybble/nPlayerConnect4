@@ -119,6 +119,30 @@ int Board::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseStat
 	return -2;
 }
 
+void Board::resize()
+{
+	float projectionMatMine[4][4];
+	glGetFloatv(GL_PROJECTION_MATRIX, &projectionMatMine[0][0]);
+	glPushAttrib(GL_TRANSFORM_BIT);
+	GLint	viewport[4];
+	glGetIntegerv(GL_VIEWPORT, viewport);
+	glMatrixMode(GL_PROJECTION);
+	glPushMatrix();
+	glLoadIdentity();
+	//gluOrtho2D(viewport[0], viewport[2], viewport[1], viewport[3]);
+	glOrtho(viewport[0], viewport[2], viewport[1], viewport[3], 0, 100);
+	//gluOrtho2D(left, right, bottom, top);
+	glPopAttrib();
+	//!
+
+	float projectionMatScreen[4][4];
+	glGetFloatv(GL_PROJECTION_MATRIX, &projectionMatScreen[0][0]);
+
+	float temp = (GetSegDim()/1.5F)*0.9;
+	temp = (((temp * projectionMatMine[1][1]) + projectionMatMine[3][1]) / projectionMatScreen[1][1]);
+	playerNoFont.init(_SysFont, temp);
+}
+
 int Board::makeMove(int x, int playerNum, unsigned int& winningPlayer)
 {
 	Game2D::Pos2 pos;
@@ -368,7 +392,20 @@ void Board::draw()
 					float fontWidth = freetype::getLength(playerNoFont,"%d",board[j][i]+1);
 					//float outlineWidth = freetype::getLength(playerNoFontOutline,"%d",board[j][i]+1);
 					//std::cout << "printing player number at " << x << " " << y << "\n";
-					Game2D::Colour::Black.draw();
+					Game2D::Colour tempColour;
+					if(board[j][i] < playerColours.size()){
+						tempColour = playerColours[board[j][i]];
+					} else {
+						tempColour = Game2D::Colour::Black;
+					}
+
+					//std::cout << tempColour.getR()+tempColour.getG()+tempColour.getB() << "\n";
+
+					if(tempColour.getR()+tempColour.getG()+tempColour.getB() < 1.0){
+						Game2D::Colour::White.draw();
+					} else {
+						Game2D::Colour::Black.draw();
+					}
 					//freetype::print(playerNoFontOutline,(x-(outlineWidth/2.0f))*1.05f,y-(outlineHight/2.0f),"%d",board[j][i]+1);
 					//Game2D::Colour::White.draw();
 					freetype::print(playerNoFont,x-(fontWidth/2.0f),y-(fontHight/2.0f),"%d",board[j][i]+1);
