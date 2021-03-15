@@ -10,6 +10,11 @@
 #include <map>
 #include <Slider.h>
 
+//TODO fix n player connect 1
+//TODO make it so when a game is over the server updates the bool so others can join
+//TODO send over the connect length to clients
+//TODO make it so you can click and hold arrow buttons
+//TODO gravity toggle?
 //TODO fix crash when server is already running on that port
 //TODO when a player connects give them a default colour from the single player list
 //TODO add options button either put it next to quit or make it the same width as single player

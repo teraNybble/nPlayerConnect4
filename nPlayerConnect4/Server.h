@@ -110,7 +110,7 @@ protected:
 				//inform all the clients who won
 				msg.header.id = GameMsg::GAME_OVER;
 				messageAllClients(msg);
-				//inGame = false;
+				inGame = false;
 				break;
 			}
 		}
@@ -188,6 +188,7 @@ public:
 					outMsg.header.id = GameMsg::GAME_OVER;
 					outMsg << -2;
 					messageAllClients(outMsg);
+					inGame = false;
 				}
 				net::Message<GameMsg> m;
 				m.header.id = GameMsg::CLIENT_DISCONNECT;

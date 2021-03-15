@@ -158,6 +158,7 @@ bool Board::insertPice(int x, int playerNum,Game2D::Pos2& insertPos)
 
 bool Board::checkBoard(Game2D::Pos2 pos)
 {
+	if (lineLength < 2) { return true; }
 	return (checkLine(pos) || checkRow(pos) || checkDiag(pos) || checkBackDiag(pos));
 	bool temp = (checkLine(pos) || checkRow(pos) || checkDiag(pos) || checkBackDiag(pos));
 	std::cout << (temp ? "true" : "false") << std::endl;

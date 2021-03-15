@@ -280,10 +280,12 @@ int Lobby::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseStat
 			connectLengthLabels.width = freetype::getLength(Game2D::Font::getFont(connectLengthLabels.fontSize), connectLengthLabels.text.c_str(), lineLength);
 			if(boardHeight < lineLength) {
 				boardHeight = lineLength;
+				boardWidth = lineLength;
 				boardDimLabels.width = freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
 														   boardDimLabels.text.c_str(), boardWidth, boardHeight);
 			}
 			if(boardWidth < lineLength) {
+				boardHeight = lineLength;
 				boardWidth = boardHeight;
 				boardDimLabels.width = freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
 														   boardDimLabels.text.c_str(), boardWidth, boardHeight);
