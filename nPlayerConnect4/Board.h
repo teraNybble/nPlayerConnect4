@@ -39,6 +39,7 @@ protected:
 	unsigned int currentPlayer;
 public:
 	Board();
+	~Board();
 
 	inline void setBoardDims(int width, int height) { this->width = width; this->height = height; setClickboxes(); }
 	inline void setLineLength(int length) { this->lineLength = length; }

@@ -14,6 +14,13 @@ Board::Board() {
 
 }
 
+Board::~Board() 
+{
+	//playerNoFont.clean();
+	board.clear();
+	clickboxes.clear();
+}
+
 void Board::setClickboxes()
 {
 	clickboxes.clear();
@@ -160,9 +167,9 @@ bool Board::checkBoard(Game2D::Pos2 pos)
 {
 	if (lineLength < 2) { return true; }
 	return (checkLine(pos) || checkRow(pos) || checkDiag(pos) || checkBackDiag(pos));
-	bool temp = (checkLine(pos) || checkRow(pos) || checkDiag(pos) || checkBackDiag(pos));
-	std::cout << (temp ? "true" : "false") << std::endl;
-	return temp;
+	//bool temp = (checkLine(pos) || checkRow(pos) || checkDiag(pos) || checkBackDiag(pos));
+	//std::cout << (temp ? "true" : "false") << std::endl;
+	//return temp;
 }
 
 bool Board::checkLine(Game2D::Pos2 pos)
