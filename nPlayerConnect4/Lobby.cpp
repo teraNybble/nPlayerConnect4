@@ -1,11 +1,14 @@
 #include "Lobby.h"
+#include "TextureManager.h"
 
 void Lobby::init()
 {	
 	playerList.clear();
 	winningPlayer = -2;
-	m_menuTex = ImageLoder::loadPNG("Images/menu.png");
-	m_circleTex = ImageLoder::loadPNG("Images/circle.png");
+	//m_menuTex = ImageLoder::loadPNG("Images/menu.png");
+	//m_circleTex = ImageLoder::loadPNG("Images/circle.png");
+	m_menuTex = TextureManager::getText(0);
+	m_circleTex = TextureManager::getText(1);
 
 	Game2D::Sprite normalSprite, hoverSprite, clickSprite, disabledSprite;
 	Game2D::Rect tempRect = Game2D::Rect(15,-40,10,5);

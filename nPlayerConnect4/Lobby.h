@@ -12,7 +12,9 @@
 #include <Timer.h>
 #include <functional>
 
-//TODO fix memory leak caused by board and possibly other things
+//TODO add a wakeup to the server
+//TODO identify memory leak in client and possibly server
+//TODO fix memory leak caused by board and image loader and possibly other things
 //TODO that bloody freetype is an arse
 //TODO add message to the user if they don't connect to the server
 //TODO gravity toggle?

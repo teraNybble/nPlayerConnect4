@@ -182,22 +182,6 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 		return 1;//go back
 	}
 
-	/*
-	if(board.getCurrentPlayer() == playerNo){
-		//TODO do a move and send it
-		unsigned int winningPlayer;
-		int x;
-		switch(board.processMouse(mousePos,mouseState,winningPlayer,&x)){
-			default:
-				net::Message<GameMsg> msg;
-				msg.header.id = GameMsg::PLAYER_MOVE;
-				msg << (int32_t)x;
-				msg << playerNo;
-				send(msg);
-				break;
-		}
-	}*/
-
 
 	switch (currentState) {
 		case LOBBY:

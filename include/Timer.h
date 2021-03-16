@@ -20,11 +20,33 @@ namespace Game2D
 		Timer()
 		{ startTime = high_resolution_clock::now(); }
 
+		void start()
+		{
+			startTime = high_resolution_clock::now();
+		}
+
 		template<typename _ToDur>
 		int elapsedTime() const
 		{
 			auto elapsedTime = high_resolution_clock::now() - startTime;
 
+			return std::chrono::duration_cast<_ToDur>(elapsedTime).count();
+		}
+
+		template<typename T>
+		T elapsedTimePoint() const
+		{
+			auto elapsedTime = high_resolution_clock::now() - startTime;
+
+			return std::chrono::duration_cast<T>(elapsedTime);
+		}
+
+		template<typename _ToDur>
+		int reset()
+		{
+			auto elapsedTime = high_resolution_clock::now() - startTime;
+
+			startTime = high_resolution_clock::now();
 			return std::chrono::duration_cast<_ToDur>(elapsedTime).count();
 		}
 	};

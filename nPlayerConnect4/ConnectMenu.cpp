@@ -1,4 +1,5 @@
 #include "ConnectMenu.h"
+#include "TextureManager.h"
 
 ConnectMenu::ConnectMenu()
 {
@@ -20,7 +21,8 @@ void ConnectMenu::setHost(bool host){
 
 void ConnectMenu::init()
 {
-	m_menuTex = ImageLoder::loadPNG("Images/menu.png");
+	//m_menuTex = ImageLoder::loadPNG("Images/menu.png");
+	m_menuTex = TextureManager::getText(0);
 
 	connectText.fontSize = 5;
 	connectText.pos = Game2D::Pos2(0,35);

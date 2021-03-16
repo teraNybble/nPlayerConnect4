@@ -74,7 +74,7 @@ namespace net
 			//and join the thread
 			if(thrContext.joinable()) { thrContext.join();}
 
-			m_connection.release();
+			//m_connection.release();
 		}
 
 		bool isConnected(){

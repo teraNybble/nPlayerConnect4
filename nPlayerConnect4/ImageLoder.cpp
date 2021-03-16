@@ -48,6 +48,7 @@ bool ImageLoder::loadPNGFromFile(const char *name, int& pngWidth, int& pngHeight
 
 	if (png_ptr == NULL) {
 		fclose(fp);
+		//if (fp) { delete fp; }
 		std::cerr << "png_create_read_struct returned NULL\n";
 		return false;
 	}
@@ -57,6 +58,7 @@ bool ImageLoder::loadPNGFromFile(const char *name, int& pngWidth, int& pngHeight
 	info_ptr = png_create_info_struct(png_ptr);
 	if (info_ptr == NULL) {
 		fclose(fp);
+		if (fp) { delete fp; }
 		png_destroy_read_struct(&png_ptr, NULL, NULL);
 		std::cerr << "info_ptr is NULL\n";
 		return false;
@@ -76,6 +78,7 @@ bool ImageLoder::loadPNGFromFile(const char *name, int& pngWidth, int& pngHeight
 		 * with the png_ptr and info_ptr */
 		png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
 		fclose(fp);
+		//if (fp) { delete fp; }
 		/* If we get here, we had a
 		 * problem reading the file */
 		std::cerr << "Problem reading file\n";
@@ -141,7 +144,7 @@ bool ImageLoder::loadPNGFromFile(const char *name, int& pngWidth, int& pngHeight
 
 	/* Close the file */
 	fclose(fp);
-
+	//if (fp) { delete fp; }
 	/* That's it */
 
 
@@ -187,6 +190,10 @@ GLuint ImageLoder::loadPNG(const char* path)
 	{
 		std::cerr << "Error failed to load texture\n";
 		texID = NULL;
+	}
+
+	if (image) {
+		delete image;
 	}
 
 	return texID;

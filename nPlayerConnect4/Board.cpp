@@ -1,4 +1,5 @@
 #include "Board.h"
+#include "TextureManager.h"
 
 float Board::GetSegDim()
 {
@@ -67,7 +68,8 @@ void Board::setClickboxes()
 
 void Board::initBoard()
 {
-	circleTex = ImageLoder::loadPNG("Images/circle.png");
+	//circleTex = ImageLoder::loadPNG("Images/circle.png");#
+	circleTex = TextureManager::getText(1);
 	circleSprite.setTextureCoords(Game2D::Rect(0, 0, 1, 1));
 	highlightSprite.setTextureCoords(Game2D::Rect(0, 0, 1, 1));
 	//std::cout << circleTex << "\n";

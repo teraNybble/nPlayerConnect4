@@ -1,7 +1,7 @@
 #include "Engine.h"
 #include <iostream>
 #include <iomanip>
-
+#include "TextureManager.h"
 
 GLFWwindow* Engine::window;
 int Engine::screenWidth = 1280;
@@ -170,6 +170,8 @@ void Engine::init()
 	Game2D::Font::insert(3);
 	Game2D::Font::initFonts();
 
+	TextureManager::loadTex("Images/menu.png");
+	TextureManager::loadTex("Images/circle.png");
 
 	Game2D::ScreenCoord::init(screenWidth, screenHeight);
 
@@ -270,7 +272,7 @@ void Engine::processMouse()
 			switch (client->processMouse(mousePos,mouseState,setWindowTitle)) {
 				case 1://back
 					if(client) {
-						playerColour = client->getColour();
+						//playerColour = client->getColour();
 						client->leave();
 					}
 					//stop the server

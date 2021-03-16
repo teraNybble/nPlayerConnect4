@@ -1,9 +1,11 @@
 #include "MainMenu.h"
+#include "TextureManager.h"
 
 void MainMenu::init()
 {
 	//load the texture
-	mainMenuTex = ImageLoder::loadPNG("Images/menu.png");
+	//mainMenuTex = ImageLoder::loadPNG("Images/menu.png");
+	mainMenuTex = TextureManager::getText(0);
 	//set the sprites colour
 
 	Game2D::Rect tempRect;
