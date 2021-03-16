@@ -3,11 +3,9 @@
 void SinglePlayerMenu::init()
 {
 	mainMenuTex = ImageLoder::loadPNG("Images/menu.png");
-	//m_circleTex = ImageLoder::loadPNG("Images/circle.png");
 
 	Game2D::Sprite normalSprite, hoverSprite, clickSprite, disabledSprite;
 	Game2D::Rect tempRect = Game2D::Rect(15, -40, 10, 5);
-	//Game2D::Rect tempTexRect;
 
 	disabledSprite.setTextureCoords(Game2D::Rect(0.75f, 0.500f, 0.25f, 0.125f));
 	normalSprite.setTextureCoords(Game2D::Rect(0.75f, 0.375f, 0.25f, 0.125f));
@@ -43,9 +41,7 @@ void SinglePlayerMenu::init()
 	startButton.addStateSprites(normalSprite, hoverSprite, clickSprite, clickSprite, disabledSprite);
 	startButton.alignToDrawableObject();
 
-	//-------------------------------
 	tempRect = Game2D::Rect(1.25, -45, 2.5, 2.5);
-	//tempTexRect = Game2D::Rect(0, 0, 0.125f, 0.125f);
 	normalSprite.setTextureCoords(Game2D::Rect(0, 0, 0.125f, 0.125f));
 	hoverSprite.setTextureCoords(Game2D::Rect(0.125f, 0, 0.125f, 0.125f));
 	clickSprite.setTextureCoords(Game2D::Rect(0.250f, 0, 0.125f, 0.125f));
@@ -119,8 +115,7 @@ void SinglePlayerMenu::init()
 	boardHeightPlus.setRect(tempRect);
 	boardHeightPlus.addStateSprites(normalSprite, hoverSprite, clickSprite, clickSprite, normalSprite);
 	boardHeightPlus.alignToDrawableObject();
-	//-------------------------------
-	//*/
+
 	lineLength = 4;
 	boardWidth = 7;
 	boardHeight = 6;
@@ -136,7 +131,6 @@ void SinglePlayerMenu::resize()
 	noPlayers.fontSize = 3;
 	noPlayers.text = "No. Players";
 	noPlayers.width = freetype::getLength(Game2D::Font::getFont(noPlayers.fontSize), noPlayers.text.c_str());
-	//freetype::print(Font::getFont(26), -10, -20, "Board size");
 	boardDims.fontSize = 3;
 	boardDims.text = "Board size";
 	boardDims.width = freetype::getLength(Game2D::Font::getFont(boardDims.fontSize), boardDims.text.c_str());
@@ -155,14 +149,12 @@ int SinglePlayerMenu::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::Stat
 	if (playersPlus.update(mousePos, mouseState, 1) == Game2D::ClickableObject::ClickState::CLICK) {
 		numPlayers++;
 		playerCount.width = freetype::getLength(Game2D::Font::getFont(playerCount.fontSize), playerCount.text.c_str(), numPlayers);
-		//std::cout << playerCount.width << "\n";
 	}
 	if (playersMinus.update(mousePos, mouseState, 1) == Game2D::ClickableObject::ClickState::CLICK) {
 		if (--numPlayers < 2) {
 			numPlayers = 2;
 		}
 		playerCount.width = freetype::getLength(Game2D::Font::getFont(playerCount.fontSize), playerCount.text.c_str(), numPlayers);
-		//std::cout << playerCount.width << "\n";
 	}
 	if (boardWidthPlus.update(mousePos, mouseState, 1) == Game2D::ClickableObject::ClickState::CLICK) {
 		boardWidth++;

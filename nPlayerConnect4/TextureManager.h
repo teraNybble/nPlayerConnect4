@@ -14,7 +14,6 @@ public:
 		try {
 			return textures.at(i);
 		} catch (std::exception e) {
-			//std::cerr << e.what() << "\n";
 			std::cerr << i << " out of range " << textures.size() << "\n";
 			return -1;
 		}

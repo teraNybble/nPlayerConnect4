@@ -6,8 +6,6 @@ float Board::GetSegDim()
 	float segWidth = ((100.0f * Game2D::ScreenCoord::getAspectRatio()) / width);
 	float segHeight = (100.0f / height);
 
-	//std::cout << segWidth << " x " << segHeight << "\n";
-
 	return (segWidth < segHeight ? segWidth : segHeight);
 }
 
@@ -17,7 +15,6 @@ Board::Board() {
 
 Board::~Board() 
 {
-	//playerNoFont.clean();
 	board.clear();
 	clickboxes.clear();
 }
@@ -31,13 +28,10 @@ void Board::setClickboxes()
 	float clickHeight = (segDim + 2) * height;
 	for (float i = 0, x = (0 - ((segDim) * (width - 1)) / 2.0f); i < width; i++, x+=(segDim)) {
 		Game2D::ClickableObject temp;
-		//std::cout << "Adding click object at:\t" << Game2D::Rect(x,0, segDim,((segDim + 2) * (height - 1)) + 2) << "\n";
 		temp.setRect(Game2D::Rect(x,0, segDim,((segDim) * (height))));
 		clickboxes.push_back(temp);
 		clickboxes.back().alignToDrawableObject();
 	}
-	//std::cout << clickboxes[0].getClickRegion().pos << "\n";
-
 
 	float projectionMatMine[4][4];
 	glGetFloatv(GL_PROJECTION_MATRIX, &projectionMatMine[0][0]);
@@ -47,11 +41,8 @@ void Board::setClickboxes()
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
 	glLoadIdentity();
-	//gluOrtho2D(viewport[0], viewport[2], viewport[1], viewport[3]);
 	glOrtho(viewport[0], viewport[2], viewport[1], viewport[3], 0, 100);
-	//gluOrtho2D(left, right, bottom, top);
 	glPopAttrib();
-	//!
 
 	float projectionMatScreen[4][4];
 	glGetFloatv(GL_PROJECTION_MATRIX, &projectionMatScreen[0][0]);
@@ -59,20 +50,13 @@ void Board::setClickboxes()
 	float temp = (segDim/1.5F)*0.9;
 	temp = (((temp * projectionMatMine[1][1]) + projectionMatMine[3][1]) / projectionMatScreen[1][1]);
 	playerNoFont.init(_SysFont, temp);
-	//temp = ((segDim/1.5F)*0.9)*1.1;
-	//temp = (((temp * projectionMatMine[1][1]) + projectionMatMine[3][1]) / projectionMatScreen[1][1]);
-
-	//playerNoFontOutline.init(_SysFont_Bold, temp);
-
 }
 
 void Board::initBoard()
 {
-	//circleTex = ImageLoder::loadPNG("Images/circle.png");#
 	circleTex = TextureManager::getText(1);
 	circleSprite.setTextureCoords(Game2D::Rect(0, 0, 1, 1));
 	highlightSprite.setTextureCoords(Game2D::Rect(0, 0, 1, 1));
-	//std::cout << circleTex << "\n";
 	board.clear();
 	for(int i = 0; i < height; i++){
 		std::vector<int> temp;
@@ -84,9 +68,6 @@ void Board::initBoard()
 
 	currentPlayer = 0;//so it starts as player 1
 	nextInsertPos = Game2D::Pos2(-1,-1);
-
-	//board[0][0] = 0;
-	//board[5][6] = 1;
 }
 
 int Board::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseState, unsigned int& winningPlayer, int* x)
@@ -107,10 +88,7 @@ int Board::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseStat
 			} else {
 				nextInsertPos = Game2D::Pos2(-1,-1);
 			}
-		} else {
-			//nextInsertPos = Game2D::Pos2(-1,-1);
 		}
-		//std::cout << nextInsertPos << "\n";
 
 		i++;
 	}
@@ -131,11 +109,8 @@ void Board::resize()
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
 	glLoadIdentity();
-	//gluOrtho2D(viewport[0], viewport[2], viewport[1], viewport[3]);
 	glOrtho(viewport[0], viewport[2], viewport[1], viewport[3], 0, 100);
-	//gluOrtho2D(left, right, bottom, top);
 	glPopAttrib();
-	//!
 
 	float projectionMatScreen[4][4];
 	glGetFloatv(GL_PROJECTION_MATRIX, &projectionMatScreen[0][0]);
@@ -149,7 +124,6 @@ int Board::makeMove(int x, int playerNum, unsigned int& winningPlayer)
 {
 	Game2D::Pos2 pos;
 	if (insertPice(x, currentPlayer, pos)) {
-		//std::cout << "insert time\n";
 		if (checkBoard(pos)) {
 			winningPlayer = currentPlayer;
 			return 1;
@@ -193,14 +167,10 @@ bool Board::checkBoard(Game2D::Pos2 pos)
 {
 	if (lineLength < 2) { return true; }
 	return (checkLine(pos) || checkRow(pos) || checkDiag(pos) || checkBackDiag(pos));
-	//bool temp = (checkLine(pos) || checkRow(pos) || checkDiag(pos) || checkBackDiag(pos));
-	//std::cout << (temp ? "true" : "false") << std::endl;
-	//return temp;
 }
 
 bool Board::checkLine(Game2D::Pos2 pos)
 {
-	//int previous = -2;
 	int count = 1;
 
 	for(int i = 1; i < width; i++){
@@ -211,14 +181,12 @@ bool Board::checkLine(Game2D::Pos2 pos)
 		if(board[pos.y][i] == board[pos.y][i-1]){
 			count++;
 			if(count >= lineLength){
-				//std::cout << "Line\ttrue" << std::endl;
 				return true;
 			}
 		}
 		else count = 1;
 	}
 
-	//std::cout << "Line\tfalse" << std::endl;
 	return false;
 }
 
@@ -227,23 +195,19 @@ bool Board::checkRow(Game2D::Pos2 pos)
 	int count = 1;
 
 	for(int i = 1; i < height; i++){
-		//std::cout << i << std::endl;
 		if(board[i][pos.x] == -1) {
 			count = 1;
 			continue;
 		}
 		if(board[i][pos.x] == board[i-1][pos.x]){
 			count++;
-			//std::cout << count << "\n";
 			if(count >= lineLength){
-				//std::cout << "Row\ttrue" << std::endl;
 				return true;
 			}
 		}
 		else count = 1;
 	}
 
-	//std::cout << "Row\tfalse" << std::endl;
 	return false;
 }
 
@@ -272,14 +236,12 @@ bool Board::checkDiag(Game2D::Pos2 pos)
 		if(line[i] == line[i-1]){
 			count++;
 			if(count >= lineLength){
-				//std::cout << "Diag\ttrue" << std::endl;
 				return true;
 			}
 		}
 		else count = 1;
 	}
 
-	//std::cout << "Diag\tfalse" << std::endl;
 	return false;
 }
 
@@ -308,20 +270,17 @@ bool Board::checkBackDiag(Game2D::Pos2 pos)
 		if(line[i] == line[i-1]){
 			count++;
 			if(count >= lineLength){
-				//std::cout << "BackDiag\ttrue" << std::endl;
 				return true;
 			}
 		}
 		else count = 1;
 	}
 
-	//std::cout << "backDiag\tfalse" << std::endl;
 	return false;
 }
 
 bool Board::boardFull()
 {
-	//std::cout << board.size() << "\t" << board.front().size() << "\n";
 	for(int y = 0; y < height; y++)	{
 		for(int x = 0; x < width; x++){
 			if(board[y][x] == -1){
@@ -339,21 +298,16 @@ void Board::draw()
 
 	float segDim = GetSegDim();
 
-	//std::cout << segWidth << "\n";
-
-	//Game2D::DrawableObject test;
 	circleSprite.setRect(Game2D::Rect(0,0,segDim*0.9f,segDim*0.9f));
 	circleSprite.setColour(Game2D::Colour::Black);
 
 	highlightSprite.setRect(Game2D::Rect(0,0,(segDim*0.9f)*1.1f,(segDim*0.9f)*1.1f));
 	highlightSprite.setColour(Game2D::Colour::White);
 
-	float x = (0 - ((segDim) * (width-1)) / 2.0f);// *ScreenCoord::getAspectRatio();
-	//float x = -50 * ScreenCoord::getAspectRatio();
+	float x = (0 - ((segDim) * (width-1)) / 2.0f);
 	float y = -50 + (segDim/2.0f)+2;
 
 	for(int i = 0; i < width; i++){
-		//y = -50 + (segDim / 2.0f) + 1;//old formula
 		y = 0 - ((segDim) * ((height-1)/2.0));
 		for(int j = 0; j < height; j++){
 			if(board[j][i] != -1){
@@ -361,11 +315,8 @@ void Board::draw()
 			} else {
 				circleSprite.setColour(Game2D::Colour::Black);
 			}
-			//std::cout << i << "," << j << " at " << x << "," << y << "\n";
 			Game2D::Pos2 currentBoardPos(i,j);
-			//std::cout << currentBoardPos << "\t" << nextInsertPos << "\n";
 			if(currentBoardPos == nextInsertPos){
-				//std::cout << "Drawing Highlight\n";
 				highlightSprite.setPos(Game2D::Pos2(x,y));
 				highlightSprite.setColour(playerColours[currentPlayer]);
 				highlightSprite.draw();
@@ -375,25 +326,17 @@ void Board::draw()
 			circleSprite.draw();
 
 			y += segDim;// + 2;
-			//if ((y += segWidth + 2) > 50) { std::cout << y <<"\n"; y = -51 + (segWidth / 2.0f) + 2; }
 		}
 		x += segDim; //+ 2;
-		//if((x += segWidth + 2 ) > 50) { x = -50; }
 	}
 	if(Options::showPlayerNums){
 		x = (0 - ((segDim) * (width-1)) / 2.0f);
 		float fontHight = (segDim/1.5f)*0.9f;
-		//float outlineHight = fontHight*1.1f;
-		//float outlineHight = fontHight;
 		for(int i = 0; i < width; i++){
 			y = 0 - ((segDim) * ((height-1)/2.0));
 			for(int j = 0; j < height; j++){
 				if(board[j][i] != -1){
-					//circleSprite.setColour(playerColours[board[j][i]]);
-					//print the number
 					float fontWidth = freetype::getLength(playerNoFont,"%d",board[j][i]+1);
-					//float outlineWidth = freetype::getLength(playerNoFontOutline,"%d",board[j][i]+1);
-					//std::cout << "printing player number at " << x << " " << y << "\n";
 					Game2D::Colour tempColour;
 					if(board[j][i] < playerColours.size()){
 						tempColour = playerColours[board[j][i]];
@@ -401,15 +344,11 @@ void Board::draw()
 						tempColour = Game2D::Colour::Black;
 					}
 
-					//std::cout << tempColour.getR()+tempColour.getG()+tempColour.getB() << "\n";
-
 					if(tempColour.getR()+tempColour.getG()+tempColour.getB() < 1.0){
 						Game2D::Colour::White.draw();
 					} else {
 						Game2D::Colour::Black.draw();
 					}
-					//freetype::print(playerNoFontOutline,(x-(outlineWidth/2.0f))*1.05f,y-(outlineHight/2.0f),"%d",board[j][i]+1);
-					//Game2D::Colour::White.draw();
 					freetype::print(playerNoFont,x-(fontWidth/2.0f),y-(fontHight/2.0f),"%d",board[j][i]+1);
 				}
 				y += segDim;
@@ -421,10 +360,4 @@ void Board::draw()
 	Game2D::Colour(1, 1, 1).draw();
 	freetype::print(Game2D::Font::getFont(5), 1, 44, "Player %d's turn", currentPlayer + 1);
 	Game2D::ScreenCoord::alignCentre();
-	//test.setColour(Game2D::Colour(0, 1, 1, 0.5f));
-	//std::cout << ((segHeight + 2) * (height-1)) << "\n";
-	//test.setRect(Game2D::Rect(0, 0, segWidth, 2+(segHeight + 2) * (height - 1)));
-	//test.setRect(clickboxes.begin()->getClickRegion());
-	//std::cout << clickboxes.begin()->getClickRegion() << "\n";
-	//test.draw();
 }

@@ -20,9 +20,6 @@ private:
 	Game2D::Button backButton;
 	Game2D::Button connectButton;
 
-	//std::string address;
-	//std::string port;
-
 	Game2D::TextInput address;
 	Game2D::TextInput port;
 

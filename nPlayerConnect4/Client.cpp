@@ -13,15 +13,12 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 	}
 	int result = -1;
 
-	//std::cout << (isConnected() ? "true" : "false") << "\n";
-
 	if(isConnected()){
 		if(!incoming().empty()){
 			auto msg = incoming().pop_front().msg;
 
 			switch (msg.header.id) {
 				case GameMsg::SERVER_CLOSE: {
-					//std::cout << "serverClose\n";
 					if(isConnected()){
 						disconnect();
 						return 1;//tell the engine to go back to the connect menu
@@ -54,19 +51,16 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 					net::Message<GameMsg> outMsg;
 					outMsg.header.id = GameMsg::PLAYER_COLOUR;
 					outMsg << defaultColour;
-					//outMsg << Game2D::Colour::Red;
 
 					send(outMsg);
 					//tell the server to tell every client what my colour is
 					break;
 				}
 				case GameMsg::PLAYER_COLOUR: {
-					//std::cout << "PlayerColour\n";
 					Game2D::Colour colour;
 					uint32_t id;
 					msg >> id;
 					msg >> colour;
-					//std::cout << id << "\n";
 					lobby.setPlayerColour(id, colour);
 					break;
 				}
@@ -94,7 +88,6 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 					break;
 				}
 				case GameMsg::GAME_START:{
-					//int playerNumber;
 					uint32_t noPlayers;
 					uint32_t width, height;
 					uint32_t connectLength;
@@ -131,11 +124,9 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 				}
 				case GameMsg::GAME_OVER:{
 					if(winTitle){
-						//std::string tempStr = std::to_string(noPlayers);
 						std::string tempStr = "n Player Connect x";
 						winTitle(tempStr);
 					}
-					//int32_t winningPlayer;
 					msg >> winningPlayer;
 					lobby.setWinningPlayer(winningPlayer);
 					if(winningPlayer == -2) {
@@ -147,14 +138,12 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 					break;
 				}
 				case GameMsg::PLAYER_MOVE:{
-					//std::cout << "PlayerMove\n";
 					int32_t x, playerNum;
 					unsigned int winningPlayer;
 					msg >> playerNum;
 					msg >> x;
 					switch(board.makeMove(x,playerNum,winningPlayer)){
 						case -1: {//board full
-							//std::cout << "Case -1\n";
 							net::Message<GameMsg> msg;
 							msg.header.id = GameMsg::GAME_WIN;
 							msg << (int32_t)-1;
@@ -162,11 +151,9 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 							break;
 						}
 						case 0: {//next player
-							//std::cout << "Case 0\n";
 							break;
 						}
 						case 1: {//player wins
-							//std::cout << "Case 1\n";
 							net::Message<GameMsg> msg;
 							msg.header.id = GameMsg::GAME_WIN;
 							msg << winningPlayer;
@@ -189,7 +176,6 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 			break;
 		case PLAYING:
 			if(board.getCurrentPlayer() == playerNo){
-				//TODO do a move and send it
 				unsigned int winningPlayer;
 				int x;
 				switch(board.processMouse(mousePos,mouseState,winningPlayer,&x)){
@@ -243,25 +229,20 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 			return result;
 	}
 
-	//return lobby.processMouse(mousePos,mouseState);
-
 	return -1;
 }
 
 void Client::draw()
 {
-	//freetype::print(Game2D::Font::getFont(5),0,35,"GAME!");
 	switch (currentState) {
 		case LOBBY: {
 			lobby.draw();
 			break;
 		}
 		case PLAYING: {
-			//freetype::print(Game2D::Font::getFont(5),0,35,"GAME!");
 			board.draw();
 			Game2D::ScreenCoord::alignRight();
 			float width = freetype::getLength(Game2D::Font::getFont(5), "You are Player %d", playerNo + 1);
-			//TODO print out the text informing the user what player they are
 			freetype::print(Game2D::Font::getFont(5), -width - 1, 44, "You are Player %d", playerNo + 1);
 			Game2D::ScreenCoord::alignCentre();
 			break;
@@ -271,7 +252,6 @@ void Client::draw()
 			Game2D::Sprite tempSprite(Game2D::Rect(0, 0, 200, 200));
 			tempSprite.setColour(Game2D::Colour(0, 0, 0, 0.5f));
 			tempSprite.draw();
-			//std::cout << winningPlayer << "\n";
 			Game2D::Colour::White.draw();
 			if (winningPlayer == -1) {
 				float width = freetype::getLength(Game2D::Font::getFont(5), "Tie");

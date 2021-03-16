@@ -4,13 +4,9 @@
 ConnectMenu::ConnectMenu()
 {
 	isHost = false;
-
-	//address = "127.0.0.1";//default address to local host
-	//port = "60000";//default port to 60000
 }
 
 void ConnectMenu::setHost(bool host){
-	//std::cout << "Setting host\n";
 	isHost = host;
 	Game2D::Sprite normalSprite, hoverSprite, clickSprite;
 	if(isHost) {
@@ -21,7 +17,6 @@ void ConnectMenu::setHost(bool host){
 
 void ConnectMenu::init()
 {
-	//m_menuTex = ImageLoder::loadPNG("Images/menu.png");
 	m_menuTex = TextureManager::getText(0);
 
 	connectText.fontSize = 5;
@@ -77,7 +72,6 @@ void ConnectMenu::init()
 	hoverSprite.setRect(tempRect);
 	clickSprite.setRect(tempRect);
 
-	//address.setPos(Game2D::Pos2(-24,0));
 	address.setRect(tempRect);
 	address.setBackGroundSprites(normalSprite,normalSprite,normalSprite,normalSprite,normalSprite);
 	address.init(4);
@@ -92,13 +86,11 @@ void ConnectMenu::init()
 	hoverSprite.setRect(tempRect);
 	clickSprite.setRect(tempRect);
 
-	//address.setPos(Game2D::Pos2(-24,0));
 	port.setRect(tempRect);
 	port.setBackGroundSprites(normalSprite,normalSprite,normalSprite,normalSprite,normalSprite);
 	port.init(4);
 	port.setCharListModeWhitelist();
 	port.addNumbersToList();
-	//address.addCharToList('.');
 	port.setText("60000");//default to port 60000
 }
 
@@ -119,10 +111,7 @@ int ConnectMenu::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mou
 
 	if(!isHost) {
 		address.processMouse(mousePos,mouseState,1);
-	} /*else {
-		//if the player is self hosting set the connect ip to localhost
-		address.setText("127.0.0.1");
-	}*/
+	}
 	port.processMouse(mousePos,mouseState,1);
 
 	if(backButton.update(mousePosAlignedLeft,mouseState,1) == Game2D::ClickableObject::CLICK){

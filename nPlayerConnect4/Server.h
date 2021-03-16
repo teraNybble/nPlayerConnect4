@@ -34,7 +34,6 @@ protected:
 		return false;
 	}
 
-		//TODO move this to after the password check
 		//send the player their player number
 		net::Message<GameMsg> msg;
 		msg.header.id = GameMsg::SERVER_ACCEPT;
@@ -56,7 +55,6 @@ protected:
 		return true;
 	}
 	virtual void onClientDisconnect(std::shared_ptr<net::Connection<GameMsg>> client) override{
-		//std::cout << "client disconnecting\n";
 		if(client) {
 			if(!(playerColours.find(client->getID()) == playerColours.end())){
 				auto& pd = playerColours[client->getID()];
@@ -157,10 +155,6 @@ public:
 	}
 
 	~Server(){
-		/*for(auto& it : m_deqConnections){
-			it->disconnect();
-		}
-		std::cout << "Disconnected all clients\n";*/
 #if _WIN32
 		m_deqConnections.clear();
 		//std::cout << "Cleard the deq\n";
@@ -169,12 +163,6 @@ public:
 
 	void startGame(uint32_t boardWidth, uint32_t boardHeight, uint32_t connectLength)
 	{
-		//net::Message<GameMsg> msg;
-		//msg.header.id = GameMsg::GAME_START;
-		//msg << boardHeight;
-		//msg << boardWidth;
-
-		//std::cout << m_deqConnections.size() << "\n";
 		int i = 0;
 		for(auto& player : m_deqConnections){
 			net::Message<GameMsg> msg;
@@ -192,10 +180,6 @@ public:
 		}
 
 		inGame = true;
-
-		//send the board dimentions to all the players
-		//messageAllClients(msg);
-
 	}
 
 	void heartBeat(){

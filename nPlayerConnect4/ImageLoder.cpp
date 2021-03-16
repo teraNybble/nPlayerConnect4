@@ -48,7 +48,6 @@ bool ImageLoder::loadPNGFromFile(const char *name, int& pngWidth, int& pngHeight
 
 	if (png_ptr == NULL) {
 		fclose(fp);
-		//if (fp) { delete fp; }
 		std::cerr << "png_create_read_struct returned NULL\n";
 		return false;
 	}
@@ -120,8 +119,6 @@ bool ImageLoder::loadPNGFromFile(const char *name, int& pngWidth, int& pngHeight
 	pngWidth = width;
 	pngHeight = height;
 
-	//std::cout << "Colour_type\t" << color_type << "\n";
-
 	outHasAlpha = (color_type & PNG_COLOR_MASK_ALPHA) != 0;
 
 	unsigned int row_bytes = png_get_rowbytes(png_ptr, info_ptr);
@@ -144,7 +141,6 @@ bool ImageLoder::loadPNGFromFile(const char *name, int& pngWidth, int& pngHeight
 
 	/* Close the file */
 	fclose(fp);
-	//if (fp) { delete fp; }
 	/* That's it */
 
 
@@ -153,27 +149,13 @@ bool ImageLoder::loadPNGFromFile(const char *name, int& pngWidth, int& pngHeight
 
 GLuint ImageLoder::loadPNG(const char* path)
 {
-	//nv::Image img;
 	GLuint texID;
 	GLubyte* image = NULL;
-	//Rect imageRect;
 	int width = 0, height = 0;
 	bool hasAlpha = false;
 
 	if (ImageLoder::loadPNGFromFile(path,width,height,hasAlpha,&image))
 	{
-		/*for (int i = 0; i < width * height; i++) {
-			std::cout << (int)image[i] << " ";
-		}
-		*//*
-		for (int i = 0; i < height; i++) {
-			for (int j = 0; j < width; j++) {
-				std::cout << (int)image[width * j + i] << "\t";
-			}
-			std::cout << "\n";
-		}*/
-		//std::cout << width << " " << height << "\n";
-		//hasAlpha = false;
 		glGenTextures(1, &texID);
 		glBindTexture(GL_TEXTURE_2D, texID);
 		glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);

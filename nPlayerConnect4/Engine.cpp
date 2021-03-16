@@ -16,7 +16,6 @@ Board Engine::singlePlayerBoard;
 unsigned int Engine::winningPlayer;
 Game2D::Colour Engine::playerColour;
 Client* Engine::client;
-//Server* Engine::server;
 uint16_t Engine::serverPort;
 bool Engine::serverLoop;
 bool Engine::startServer;
@@ -42,7 +41,6 @@ void Engine::resizeCallback(GLFWwindow* window, int width, int height)
 	mainMenu.resize();
 	singlePlayerBoard.resize();
 	if(client) { client->resize(); }
-	//connectMenu.resize();
 }
 
 void Engine::keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
@@ -94,7 +92,6 @@ void Engine::display()
 	glEnable(GL_BLEND); glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	glClearColor(0.118f, 0.118f, 0.118f,1.0f);
-	//glClearColor(1, 1, 0.118f, 1.0f);
 
 	glLoadIdentity();
 
@@ -196,8 +193,6 @@ void Engine::init()
 
 	playerColour = Game2D::Colour::Red;
 
-	//client->init();
-
 	currentState = MENU;
 	serverLoop = true;
 	startServer = false;
@@ -235,7 +230,6 @@ void Engine::processMouse()
 		case CONNECT:
 			switch (connectMenu.processMouse(mousePos,mouseState)) {
 				case 1://back
-					//if(server) { delete server; server = nullptr; }
 					if(client && client->isConnected()) { client->disconnect(); }
 					currentState = MENU;
 					break;
@@ -262,17 +256,11 @@ void Engine::processMouse()
 			}
 			break;
 		case PLAYING_MULTI:
-			/*if(server){
-				//check to see if all the connections are still connected
-				server->heartBeat();
-				server->update();
-			}
-			//server.update();*/
 			heatBeat = true;
 			switch (client->processMouse(mousePos,mouseState,setWindowTitle)) {
 				case 1://back
 					if(client) {
-						//playerColour = client->getColour();
+						playerColour = client->getColour();
 						client->leave();
 					}
 					//stop the server
@@ -308,7 +296,6 @@ void Engine::processMouse()
 					currentState = TIE;
 					break;
 				case 1:
-					//std::cout << "WIN\n";
 					currentState = WIN;
 					break;
 			}
@@ -339,8 +326,6 @@ bool Engine::createWindow()
 		std::cerr << "failed to init glfw with error: 0x" << std::hex << std::setw(8) << std::setfill('0') << glfwGetError(NULL) << "\n";
 		return false;
 	}
-
-	//glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
 	/* Create a windowed mode window and its OpenGL context */
 	window = glfwCreateWindow(screenWidth, screenHeight, "n Player Connect x", NULL, NULL);
@@ -395,7 +380,6 @@ int Engine::mainLoop()
 				}
 				if(stopServer) {
 					if(server){
-						//server->stop();
 						delete server;
 						server = nullptr;
 					}
@@ -427,8 +411,6 @@ int Engine::mainLoop()
 
 	serverLoop = false;
 	if(serverThread.joinable()) { serverThread.join();}
-
-	//if(server) { delete server; }
 
 	glfwTerminate();
 

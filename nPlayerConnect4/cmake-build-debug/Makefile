@@ -393,6 +393,33 @@ SinglePlayerMenu.cpp.s:
 	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.s
 .PHONY : SinglePlayerMenu.cpp.s
 
+TextureManager.o: TextureManager.cpp.o
+
+.PHONY : TextureManager.o
+
+# target to build an object file
+TextureManager.cpp.o:
+	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/TextureManager.cpp.o
+.PHONY : TextureManager.cpp.o
+
+TextureManager.i: TextureManager.cpp.i
+
+.PHONY : TextureManager.i
+
+# target to preprocess a source file
+TextureManager.cpp.i:
+	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/TextureManager.cpp.i
+.PHONY : TextureManager.cpp.i
+
+TextureManager.s: TextureManager.cpp.s
+
+.PHONY : TextureManager.s
+
+# target to generate assembly for a file
+TextureManager.cpp.s:
+	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/TextureManager.cpp.s
+.PHONY : TextureManager.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -459,6 +486,9 @@ help:
 	@echo "... SinglePlayerMenu.o"
 	@echo "... SinglePlayerMenu.i"
 	@echo "... SinglePlayerMenu.s"
+	@echo "... TextureManager.o"
+	@echo "... TextureManager.i"
+	@echo "... TextureManager.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

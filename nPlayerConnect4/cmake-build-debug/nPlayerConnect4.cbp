@@ -153,6 +153,12 @@
 		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/SinglePlayerMenu.h">
 			<Option target="nPlayerConnect4"/>
 		</Unit>
+		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/TextureManager.cpp">
+			<Option target="nPlayerConnect4"/>
+		</Unit>
+		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/TextureManager.h">
+			<Option target="nPlayerConnect4"/>
+		</Unit>
 		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Version.h">
 			<Option target="nPlayerConnect4"/>
 		</Unit>

@@ -9,6 +9,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/nPlayerConnect4.dir/Options.cpp.o"
   "CMakeFiles/nPlayerConnect4.dir/Server.cpp.o"
   "CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.o"
+  "CMakeFiles/nPlayerConnect4.dir/TextureManager.cpp.o"
   "CMakeFiles/nPlayerConnect4.dir/main.cpp.o"
   "nPlayerConnect4"
   "nPlayerConnect4.pdb"

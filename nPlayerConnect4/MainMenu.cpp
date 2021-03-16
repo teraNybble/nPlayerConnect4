@@ -3,8 +3,6 @@
 
 void MainMenu::init()
 {
-	//load the texture
-	//mainMenuTex = ImageLoder::loadPNG("Images/menu.png");
 	mainMenuTex = TextureManager::getText(0);
 	//set the sprites colour
 

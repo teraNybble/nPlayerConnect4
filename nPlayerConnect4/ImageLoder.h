@@ -2,7 +2,6 @@
 #define IMAGELODER_H
 
 #include <string>
-//#include <GL/glext.h>
 #include "glew.h"
 #include <png.h>
 #include <cstring>
