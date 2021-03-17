@@ -33,10 +33,11 @@ void Engine::resizeCallback(GLFWwindow* window, int width, int height)
 	screenWidth = width;
 	screenHeight = height;
 
-	Game2D::Font::init(height);
-	Game2D::Font::initFonts();
 	Game2D::ScreenCoord::init(width, height);
 	Game2D::ScreenCoord::alignCentre();
+
+	Game2D::Font::init(height);
+	Game2D::Font::initFonts();
 
 	mainMenu.resize();
 	singlePlayerBoard.resize();
@@ -121,8 +122,8 @@ void Engine::display()
 			temp.draw();
 			Game2D::Colour(1, 1, 1).draw();
 			Game2D::ScreenCoord::alignCentre();
-			freetype::print(Game2D::Font::getFont(5), freetype::getLength(Game2D::Font::getFont(5), "Player %d wins!", winningPlayer + 1) / -2.0, 20, "Player %d wins!", winningPlayer + 1);
-			freetype::print(Game2D::Font::getFont(3), freetype::getLength(Game2D::Font::getFont(3), "Click to continue") /-2.0, 10, "Click to continue");
+			Game2D::Freetype::print(Game2D::Font::getFont(5), Game2D::Freetype::getLength(Game2D::Font::getFont(5), "Player %d wins!", winningPlayer + 1) / -2.0, 20, "Player %d wins!", winningPlayer + 1);
+			Game2D::Freetype::print(Game2D::Font::getFont(3), Game2D::Freetype::getLength(Game2D::Font::getFont(3), "Click to continue") /-2.0, 10, "Click to continue");
 			break;
 		case TIE:
 			singlePlayerBoard.draw();
@@ -131,8 +132,8 @@ void Engine::display()
 			temp.draw();
 			Game2D::Colour(1, 1, 1).draw();
 			Game2D::ScreenCoord::alignCentre();
-			freetype::print(Game2D::Font::getFont(5), freetype::getLength(Game2D::Font::getFont(5), "Tie") / -2.0, 20, "Tie");
-			freetype::print(Game2D::Font::getFont(3), freetype::getLength(Game2D::Font::getFont(3), "Click to continue") /-2.0, 10, "Click to continue");
+			Game2D::Freetype::print(Game2D::Font::getFont(5), Game2D::Freetype::getLength(Game2D::Font::getFont(5), "Tie") / -2.0, 20, "Tie");
+			Game2D::Freetype::print(Game2D::Font::getFont(3), Game2D::Freetype::getLength(Game2D::Font::getFont(3), "Click to continue") /-2.0, 10, "Click to continue");
 			break;
 		case EXIT:
 			break;

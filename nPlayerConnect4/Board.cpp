@@ -336,7 +336,7 @@ void Board::draw()
 			y = 0 - ((segDim) * ((height-1)/2.0));
 			for(int j = 0; j < height; j++){
 				if(board[j][i] != -1){
-					float fontWidth = freetype::getLength(playerNoFont,"%d",board[j][i]+1);
+					float fontWidth = Game2D::Freetype::getLength(playerNoFont,"%d",board[j][i]+1);
 					Game2D::Colour tempColour;
 					if(board[j][i] < playerColours.size()){
 						tempColour = playerColours[board[j][i]];
@@ -349,7 +349,7 @@ void Board::draw()
 					} else {
 						Game2D::Colour::Black.draw();
 					}
-					freetype::print(playerNoFont,x-(fontWidth/2.0f),y-(fontHight/2.0f),"%d",board[j][i]+1);
+					Game2D::Freetype::print(playerNoFont,x-(fontWidth/2.0f),y-(fontHight/2.0f),"%d",board[j][i]+1);
 				}
 				y += segDim;
 			}
@@ -358,6 +358,6 @@ void Board::draw()
 	}
 	Game2D::ScreenCoord::alignLeft();
 	Game2D::Colour(1, 1, 1).draw();
-	freetype::print(Game2D::Font::getFont(5), 1, 44, "Player %d's turn", currentPlayer + 1);
+	Game2D::Freetype::print(Game2D::Font::getFont(5), 1, 44, "Player %d's turn", currentPlayer + 1);
 	Game2D::ScreenCoord::alignCentre();
 }

@@ -12,13 +12,15 @@
 #include <Timer.h>
 #include <functional>
 
+//TODO resizing the window can make the text go fucky
+//TODO that bloody Game2D::Freetype is an arse
+//TODO make it so you can click and hold arrows in the single player menu
+//TODO set sliders based on the given colour from the server
 //TODO add a wakeup to the server
 //TODO identify memory leak in client and possibly server
 //TODO fix memory leak caused by board and image loader and possibly other things
-//TODO that bloody freetype is an arse
 //TODO add message to the user if they don't connect to the server
 //TODO gravity toggle?
-//TODO fix crash when server is already running on that port
 //TODO add options button either put it next to quit or make it the same width as single player
 //TODO add pause menu to multiplayer
 //TODO show player number over piece on board for colourblind people
@@ -101,18 +103,18 @@ public:
 	inline uint32_t getBoardHeight() const { return boardHeight; }
 	inline void setConnectLength(unsigned int length) {
 		lineLength = length;
-		connectLengthLabels.width = freetype::getLength(Game2D::Font::getFont(connectLengthLabels.fontSize), connectLengthLabels.text.c_str(), lineLength);
+		connectLengthLabels.width = Game2D::Freetype::getLength(Game2D::Font::getFont(connectLengthLabels.fontSize), connectLengthLabels.text.c_str(), lineLength);
 
 	}
 	inline void setBoardWidth(unsigned int width) {
 		boardWidth = width;
-		boardDimLabels.width = freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
+		boardDimLabels.width = Game2D::Freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
 												   boardDimLabels.text.c_str(), boardWidth, boardHeight);
 
 	}
 	inline void setBoardHeight(unsigned int height) {
 		boardHeight = height;
-		boardDimLabels.width = freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
+		boardDimLabels.width = Game2D::Freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
 												   boardDimLabels.text.c_str(), boardWidth, boardHeight);
 
 	}

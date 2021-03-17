@@ -22,12 +22,12 @@ void ConnectMenu::init()
 	connectText.fontSize = 5;
 	connectText.pos = Game2D::Pos2(0,35);
 	connectText.text = "Connect";
-	connectText.width = freetype::getLength(Game2D::Font::getFont(connectText.fontSize), connectText.text.c_str());
+	connectText.width = Game2D::Freetype::getLength(Game2D::Font::getFont(connectText.fontSize), connectText.text.c_str());
 
 	hostText.fontSize = 5;
 	hostText.pos = Game2D::Pos2(0,35);
 	hostText.text = "Host";
-	hostText.width = freetype::getLength(Game2D::Font::getFont(connectText.fontSize), connectText.text.c_str());
+	hostText.width = Game2D::Freetype::getLength(Game2D::Font::getFont(connectText.fontSize), connectText.text.c_str());
 
 	Game2D::Sprite normalSprite, hoverSprite, clickSprite;
 	Game2D::Rect tempRect = Game2D::Rect(15,-40,10,5);
@@ -97,8 +97,8 @@ void ConnectMenu::init()
 
 void ConnectMenu::resize()
 {
-	connectText.width = freetype::getLength(Game2D::Font::getFont(connectText.fontSize), connectText.text.c_str());
-	hostText.width = freetype::getLength(Game2D::Font::getFont(hostText.fontSize), hostText.text.c_str());
+	connectText.width = Game2D::Freetype::getLength(Game2D::Font::getFont(connectText.fontSize), connectText.text.c_str());
+	hostText.width = Game2D::Freetype::getLength(Game2D::Font::getFont(hostText.fontSize), hostText.text.c_str());
 }
 
 int ConnectMenu::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseState)
@@ -150,13 +150,13 @@ void ConnectMenu::draw()
 	port.draw();
 
 	if(isHost){
-		freetype::print(Game2D::Font::getFont(hostText.fontSize), (hostText.width/-2.0f),
+		Game2D::Freetype::print(Game2D::Font::getFont(hostText.fontSize), (hostText.width/-2.0f),
 				hostText.pos.y,hostText.text.c_str());
 	} else {
-		freetype::print(Game2D::Font::getFont(connectText.fontSize), (connectText.width / -2.0f),
+		Game2D::Freetype::print(Game2D::Font::getFont(connectText.fontSize), (connectText.width / -2.0f),
 						connectText.pos.y, connectText.text.c_str());
 	}
 
-	if(!isHost) { freetype::print(Game2D::Font::getFont(4),-30,-2,"IP:"); }
-	freetype::print(Game2D::Font::getFont(4),-35,-12,"Port:");
+	if(!isHost) { Game2D::Freetype::print(Game2D::Font::getFont(4),-30,-2,"IP:"); }
+	Game2D::Freetype::print(Game2D::Font::getFont(4),-35,-12,"Port:");
 }

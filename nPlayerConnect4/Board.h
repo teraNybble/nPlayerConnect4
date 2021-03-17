@@ -31,7 +31,7 @@ private:
 
 	float GetSegDim();
 
-	freetype::font_data playerNoFont;
+	Game2D::Freetype playerNoFont;
 
 protected:
 	unsigned int numPlayers;

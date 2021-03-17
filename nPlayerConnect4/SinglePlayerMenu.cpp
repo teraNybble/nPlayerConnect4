@@ -130,51 +130,51 @@ void SinglePlayerMenu::resize()
 
 	noPlayers.fontSize = 3;
 	noPlayers.text = "No. Players";
-	noPlayers.width = freetype::getLength(Game2D::Font::getFont(noPlayers.fontSize), noPlayers.text.c_str());
+	noPlayers.width = Game2D::Freetype::getLength(Game2D::Font::getFont(noPlayers.fontSize), noPlayers.text.c_str());
 	boardDims.fontSize = 3;
 	boardDims.text = "Board size";
-	boardDims.width = freetype::getLength(Game2D::Font::getFont(boardDims.fontSize), boardDims.text.c_str());
+	boardDims.width = Game2D::Freetype::getLength(Game2D::Font::getFont(boardDims.fontSize), boardDims.text.c_str());
 
 	playerCount.fontSize = 4;
 	playerCount.text = "%d";
-	playerCount.width = freetype::getLength(Game2D::Font::getFont(playerCount.fontSize), playerCount.text.c_str(), numPlayers);
+	playerCount.width = Game2D::Freetype::getLength(Game2D::Font::getFont(playerCount.fontSize), playerCount.text.c_str(), numPlayers);
 
 	boardDimLabels.fontSize = 4;
 	boardDimLabels.text = "%d x %d";
-	boardDimLabels.width = freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize), boardDimLabels.text.c_str(), boardWidth, boardHeight);
+	boardDimLabels.width = Game2D::Freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize), boardDimLabels.text.c_str(), boardWidth, boardHeight);
 }
 
 int SinglePlayerMenu::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseState)
 {
 	if (playersPlus.update(mousePos, mouseState, 1) == Game2D::ClickableObject::ClickState::CLICK) {
 		numPlayers++;
-		playerCount.width = freetype::getLength(Game2D::Font::getFont(playerCount.fontSize), playerCount.text.c_str(), numPlayers);
+		playerCount.width = Game2D::Freetype::getLength(Game2D::Font::getFont(playerCount.fontSize), playerCount.text.c_str(), numPlayers);
 	}
 	if (playersMinus.update(mousePos, mouseState, 1) == Game2D::ClickableObject::ClickState::CLICK) {
 		if (--numPlayers < 2) {
 			numPlayers = 2;
 		}
-		playerCount.width = freetype::getLength(Game2D::Font::getFont(playerCount.fontSize), playerCount.text.c_str(), numPlayers);
+		playerCount.width = Game2D::Freetype::getLength(Game2D::Font::getFont(playerCount.fontSize), playerCount.text.c_str(), numPlayers);
 	}
 	if (boardWidthPlus.update(mousePos, mouseState, 1) == Game2D::ClickableObject::ClickState::CLICK) {
 		boardWidth++;
-		boardDimLabels.width = freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize), boardDimLabels.text.c_str(), boardWidth, boardHeight);
+		boardDimLabels.width = Game2D::Freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize), boardDimLabels.text.c_str(), boardWidth, boardHeight);
 	}
 	if (boardWidthMinus.update(mousePos, mouseState, 1) == Game2D::ClickableObject::ClickState::CLICK) {
 		if (--boardWidth < lineLength) {
 			boardWidth = lineLength;
 		}
-		boardDimLabels.width = freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize), boardDimLabels.text.c_str(), boardWidth, boardHeight);
+		boardDimLabels.width = Game2D::Freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize), boardDimLabels.text.c_str(), boardWidth, boardHeight);
 	}
 	if (boardHeightPlus.update(mousePos, mouseState, 1) == Game2D::ClickableObject::ClickState::CLICK) {
 		boardHeight++;
-		boardDimLabels.width = freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize), boardDimLabels.text.c_str(), boardWidth, boardHeight);
+		boardDimLabels.width = Game2D::Freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize), boardDimLabels.text.c_str(), boardWidth, boardHeight);
 	}
 	if (boardHeightMinus.update(mousePos, mouseState, 1) == Game2D::ClickableObject::ClickState::CLICK) {
 		if (--boardHeight < lineLength) {
 			boardHeight = lineLength;
 		}
-		boardDimLabels.width = freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize), boardDimLabels.text.c_str(), boardWidth, boardHeight);
+		boardDimLabels.width = Game2D::Freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize), boardDimLabels.text.c_str(), boardWidth, boardHeight);
 	}
 	//as the start button is aligned to the right of the screen the mouse coordinats need to be aligned right as well
 	Game2D::Pos2 mousePosAlignedRight = Game2D::Pos2((mousePos.x - Game2D::ScreenCoord::getAspectRatio() * 50), mousePos.y);
@@ -210,8 +210,8 @@ void SinglePlayerMenu::draw() const
 
 	Game2D::ScreenCoord::alignCentre();
 	Game2D::Colour::White.draw();
-	freetype::print(Game2D::Font::getFont(playerCount.fontSize), (playerCount.width / -2.0f) - 38, -41, playerCount.text.c_str(), numPlayers);
-	freetype::print(Game2D::Font::getFont(noPlayers.fontSize), (noPlayers.width / -2.0f) - 38, -35, noPlayers.text.c_str());
-	freetype::print(Game2D::Font::getFont(boardDims.fontSize), (boardDims.width / -2.0f), -35, boardDims.text.c_str());
-	freetype::print(Game2D::Font::getFont(boardDimLabels.fontSize), (boardDimLabels.width / -2.0f), -41, boardDimLabels.text.c_str(), boardWidth, boardHeight);
+	Game2D::Freetype::print(Game2D::Font::getFont(playerCount.fontSize), (playerCount.width / -2.0f) - 38, -41, playerCount.text.c_str(), numPlayers);
+	Game2D::Freetype::print(Game2D::Font::getFont(noPlayers.fontSize), (noPlayers.width / -2.0f) - 38, -35, noPlayers.text.c_str());
+	Game2D::Freetype::print(Game2D::Font::getFont(boardDims.fontSize), (boardDims.width / -2.0f), -35, boardDims.text.c_str());
+	Game2D::Freetype::print(Game2D::Font::getFont(boardDimLabels.fontSize), (boardDimLabels.width / -2.0f), -41, boardDimLabels.text.c_str(), boardWidth, boardHeight);
 }

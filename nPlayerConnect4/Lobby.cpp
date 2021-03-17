@@ -199,28 +199,28 @@ void Lobby::init()
 	arrowFuncs.push_back(
 		[&](){
 			boardWidth++;
-			boardDimLabels.width = freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
+			boardDimLabels.width = Game2D::Freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
 													   boardDimLabels.text.c_str(), boardWidth, boardHeight);
 		}
 	);
 	arrowFuncs.push_back(
 		[&](){
 			if (--boardWidth < lineLength) { boardWidth = lineLength; }
-			boardDimLabels.width = freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
+			boardDimLabels.width = Game2D::Freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
 													   boardDimLabels.text.c_str(), boardWidth, boardHeight);
 		}
 	);
 	arrowFuncs.push_back(
 		[&](){
 			boardHeight++;
-			boardDimLabels.width = freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
+			boardDimLabels.width = Game2D::Freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
 													   boardDimLabels.text.c_str(), boardWidth, boardHeight);
 		}
 	);
 	arrowFuncs.push_back(
 		[&](){
 			if (--boardHeight < lineLength) { boardHeight = lineLength; }
-			boardDimLabels.width = freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
+			boardDimLabels.width = Game2D::Freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
 													   boardDimLabels.text.c_str(), boardWidth, boardHeight);
 		}
 	);
@@ -228,7 +228,7 @@ void Lobby::init()
 	arrowFuncs.push_back(
 		[&](){
 			lineLength++;
-			connectLengthLabels.width = freetype::getLength(Game2D::Font::getFont(connectLengthLabels.fontSize), connectLengthLabels.text.c_str(), lineLength);
+			connectLengthLabels.width = Game2D::Freetype::getLength(Game2D::Font::getFont(connectLengthLabels.fontSize), connectLengthLabels.text.c_str(), lineLength);
 			bool recalculateTextLength = false;
 			if(boardHeight < lineLength) {
 				boardHeight = lineLength;
@@ -239,7 +239,7 @@ void Lobby::init()
 				recalculateTextLength = true;
 			}
 			if(recalculateTextLength){
-				boardDimLabels.width = freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
+				boardDimLabels.width = Game2D::Freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
 														   boardDimLabels.text.c_str(), boardWidth, boardHeight);
 			}
 		}
@@ -248,7 +248,7 @@ void Lobby::init()
 		[&](){
 			if(lineLength > 0){
 				lineLength--;
-				connectLengthLabels.width = freetype::getLength(Game2D::Font::getFont(connectLengthLabels.fontSize), connectLengthLabels.text.c_str(), lineLength);
+				connectLengthLabels.width = Game2D::Freetype::getLength(Game2D::Font::getFont(connectLengthLabels.fontSize), connectLengthLabels.text.c_str(), lineLength);
 			}
 		}
 	);
@@ -260,19 +260,19 @@ void Lobby::resize()
 {
 	boardDims.fontSize = 3;
 	boardDims.text = "Board size";
-	boardDims.width = freetype::getLength(Game2D::Font::getFont(boardDims.fontSize), boardDims.text.c_str());
+	boardDims.width = Game2D::Freetype::getLength(Game2D::Font::getFont(boardDims.fontSize), boardDims.text.c_str());
 
 	boardDimLabels.fontSize = 4;
 	boardDimLabels.text = "%d x %d";
-	boardDimLabels.width = freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize), boardDimLabels.text.c_str(), boardWidth, boardHeight);
+	boardDimLabels.width = Game2D::Freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize), boardDimLabels.text.c_str(), boardWidth, boardHeight);
 
 	connectLength.fontSize = 3;
 	connectLength.text = "Connect length";
-	connectLength.width = freetype::getLength(Game2D::Font::getFont(connectLength.fontSize), connectLength.text.c_str());
+	connectLength.width = Game2D::Freetype::getLength(Game2D::Font::getFont(connectLength.fontSize), connectLength.text.c_str());
 
 	connectLengthLabels.fontSize = 4;
 	connectLengthLabels.text = "%d";
-	connectLengthLabels.width = freetype::getLength(Game2D::Font::getFont(connectLengthLabels.fontSize), connectLengthLabels.text.c_str(), lineLength);
+	connectLengthLabels.width = Game2D::Freetype::getLength(Game2D::Font::getFont(connectLengthLabels.fontSize), connectLengthLabels.text.c_str(), lineLength);
 }
 
 int Lobby::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseState)
@@ -409,15 +409,15 @@ void Lobby::draw()
 
 	Game2D::ScreenCoord::alignCentre();
 	Game2D::Colour::White.draw();
-	freetype::print(Game2D::Font::getFont(boardDims.fontSize), (boardDims.width/-2.0f), -35, boardDims.text.c_str());
-	freetype::print(Game2D::Font::getFont(boardDimLabels.fontSize), (boardDimLabels.width/-2.0f), -41, boardDimLabels.text.c_str(), boardWidth,boardHeight);
-	freetype::print(Game2D::Font::getFont(connectLength.fontSize), (connectLength.width/-2.0f) + 35.5, -35, connectLength.text.c_str());
-	freetype::print(Game2D::Font::getFont(connectLengthLabels.fontSize), (connectLengthLabels.width / -2.0f) + 35.5, -41, connectLengthLabels.text.c_str(), lineLength);
+	Game2D::Freetype::print(Game2D::Font::getFont(boardDims.fontSize), (boardDims.width/-2.0f), -35, boardDims.text.c_str());
+	Game2D::Freetype::print(Game2D::Font::getFont(boardDimLabels.fontSize), (boardDimLabels.width/-2.0f), -41, boardDimLabels.text.c_str(), boardWidth,boardHeight);
+	Game2D::Freetype::print(Game2D::Font::getFont(connectLength.fontSize), (connectLength.width/-2.0f) + 35.5, -35, connectLength.text.c_str());
+	Game2D::Freetype::print(Game2D::Font::getFont(connectLengthLabels.fontSize), (connectLengthLabels.width / -2.0f) + 35.5, -41, connectLengthLabels.text.c_str(), lineLength);
 	if(winningPlayer == -1){
-		float width = freetype::getLength(Game2D::Font::getFont(4),"Tie");
-		freetype::print(Game2D::Font::getFont(4),-width/2.0,40,"Tie");
+		float width = Game2D::Freetype::getLength(Game2D::Font::getFont(4),"Tie");
+		Game2D::Freetype::print(Game2D::Font::getFont(4),-width/2.0,40,"Tie");
 	} else if(winningPlayer >= 0) {
-		float width = freetype::getLength(Game2D::Font::getFont(4),"Player %d wins",winningPlayer+1);
-		freetype::print(Game2D::Font::getFont(4),-width/2.0,40,"Player %d wins",winningPlayer+1);
+		float width = Game2D::Freetype::getLength(Game2D::Font::getFont(4),"Player %d wins",winningPlayer+1);
+		Game2D::Freetype::print(Game2D::Font::getFont(4),-width/2.0,40,"Player %d wins",winningPlayer+1);
 	}
 }

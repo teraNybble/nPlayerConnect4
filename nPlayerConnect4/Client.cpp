@@ -242,8 +242,8 @@ void Client::draw()
 		case PLAYING: {
 			board.draw();
 			Game2D::ScreenCoord::alignRight();
-			float width = freetype::getLength(Game2D::Font::getFont(5), "You are Player %d", playerNo + 1);
-			freetype::print(Game2D::Font::getFont(5), -width - 1, 44, "You are Player %d", playerNo + 1);
+			float width = Game2D::Freetype::getLength(Game2D::Font::getFont(5), "You are Player %d", playerNo + 1);
+			Game2D::Freetype::print(Game2D::Font::getFont(5), -width - 1, 44, "You are Player %d", playerNo + 1);
 			Game2D::ScreenCoord::alignCentre();
 			break;
 		}
@@ -254,14 +254,14 @@ void Client::draw()
 			tempSprite.draw();
 			Game2D::Colour::White.draw();
 			if (winningPlayer == -1) {
-				float width = freetype::getLength(Game2D::Font::getFont(5), "Tie");
-				freetype::print(Game2D::Font::getFont(5), -width / 2.0, 35, "Tie");
+				float width = Game2D::Freetype::getLength(Game2D::Font::getFont(5), "Tie");
+				Game2D::Freetype::print(Game2D::Font::getFont(5), -width / 2.0, 35, "Tie");
 			} else if (winningPlayer >= 0) {
-				float width = freetype::getLength(Game2D::Font::getFont(5), "Player %d wins", winningPlayer + 1);
-				freetype::print(Game2D::Font::getFont(5), -width / 2.0, 35, "Player %d wins", winningPlayer + 1);
+				float width = Game2D::Freetype::getLength(Game2D::Font::getFont(5), "Player %d wins", winningPlayer + 1);
+				Game2D::Freetype::print(Game2D::Font::getFont(5), -width / 2.0, 35, "Player %d wins", winningPlayer + 1);
 			}
-			float width = freetype::getLength(Game2D::Font::getFont(3), "Click to continue");
-			freetype::print(Game2D::Font::getFont(3), -width/2.0f, 0, "Click to continue");
+			float width = Game2D::Freetype::getLength(Game2D::Font::getFont(3), "Click to continue");
+			Game2D::Freetype::print(Game2D::Font::getFont(3), -width/2.0f, 0, "Click to continue");
 			break;
 		}
 	}

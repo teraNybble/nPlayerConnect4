@@ -82,11 +82,11 @@ void MainMenu::resize()
 	Game2D::ScreenCoord::alignCentre();
 	title.fontSize = 5;
 	title.text = "n Player Connect x";
-	title.width = freetype::getLength(Game2D::Font::getFont(title.fontSize), title.text.c_str());
+	title.width = Game2D::Freetype::getLength(Game2D::Font::getFont(title.fontSize), title.text.c_str());
 
 	version.fontSize = 3;
 	version.text = "%d.%d.%d";
-	version.width = freetype::getLength(Game2D::Font::getFont(version.fontSize),version.text.c_str(),GameVer.ver,GameVer.verMajor,GameVer.verMinor);
+	version.width = Game2D::Freetype::getLength(Game2D::Font::getFont(version.fontSize),version.text.c_str(),GameVer.ver,GameVer.verMajor,GameVer.verMinor);
 }
 
 void MainMenu::update()
@@ -124,8 +124,8 @@ void MainMenu::draw()
 	quit.draw();
 	Game2D::ScreenCoord::alignRight();
 
-	freetype::print(Game2D::Font::getFont(version.fontSize),-1 - version.width , -49 ,version.text.c_str(),GameVer.ver,GameVer.verMajor,GameVer.verMinor);
+	Game2D::Freetype::print(Game2D::Font::getFont(version.fontSize),-1 - version.width , -49 ,version.text.c_str(),GameVer.ver,GameVer.verMajor,GameVer.verMinor);
 	Game2D::ScreenCoord::alignCentre();
 
-	freetype::print(Game2D::Font::getFont(title.fontSize), title.width/-2.0f, 25, title.text.c_str());
+	Game2D::Freetype::print(Game2D::Font::getFont(title.fontSize), title.width/-2.0f, 25, title.text.c_str());
 }

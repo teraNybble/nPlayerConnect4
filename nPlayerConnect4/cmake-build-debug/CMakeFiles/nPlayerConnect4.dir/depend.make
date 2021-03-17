@@ -10,11 +10,14 @@ CMakeFiles/nPlayerConnect4.dir/Board.cpp.o: /home/dan/CLionProjects/Game2D/Pos2.
 CMakeFiles/nPlayerConnect4.dir/Board.cpp.o: /home/dan/CLionProjects/Game2D/Rect.h
 CMakeFiles/nPlayerConnect4.dir/Board.cpp.o: /home/dan/CLionProjects/Game2D/ScreenCoord.h
 CMakeFiles/nPlayerConnect4.dir/Board.cpp.o: /home/dan/CLionProjects/Game2D/Sprite.h
+CMakeFiles/nPlayerConnect4.dir/Board.cpp.o: /home/dan/CLionProjects/Game2D/Timer.h
 CMakeFiles/nPlayerConnect4.dir/Board.cpp.o: /home/dan/CLionProjects/Game2D/freetype.h
 CMakeFiles/nPlayerConnect4.dir/Board.cpp.o: /home/dan/CLionProjects/Game2D/glew.h
 CMakeFiles/nPlayerConnect4.dir/Board.cpp.o: ../Board.cpp
 CMakeFiles/nPlayerConnect4.dir/Board.cpp.o: ../Board.h
 CMakeFiles/nPlayerConnect4.dir/Board.cpp.o: ../ImageLoder.h
+CMakeFiles/nPlayerConnect4.dir/Board.cpp.o: ../Options.h
+CMakeFiles/nPlayerConnect4.dir/Board.cpp.o: ../TextureManager.h
 CMakeFiles/nPlayerConnect4.dir/Board.cpp.o: /usr/include/freetype2/freetype/config/ftheader.h
 CMakeFiles/nPlayerConnect4.dir/Board.cpp.o: /usr/include/freetype2/freetype/freetype.h
 CMakeFiles/nPlayerConnect4.dir/Board.cpp.o: /usr/include/freetype2/freetype/fterrdef.h
@@ -40,6 +43,7 @@ CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: /home/dan/CLionProjects/Game2D/Rect
 CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: /home/dan/CLionProjects/Game2D/ScreenCoord.h
 CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: /home/dan/CLionProjects/Game2D/Slider.h
 CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: /home/dan/CLionProjects/Game2D/Sprite.h
+CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: /home/dan/CLionProjects/Game2D/Timer.h
 CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: /home/dan/CLionProjects/Game2D/freetype.h
 CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: /home/dan/CLionProjects/Game2D/glew.h
 CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: /home/dan/CLionProjects/asio/net.h
@@ -56,6 +60,7 @@ CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: ../FontInfo.h
 CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: ../ImageLoder.h
 CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: ../Lobby.h
 CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: ../Message.h
+CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: ../Options.h
 CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: ../Version.h
 CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: /usr/include/freetype2/freetype/config/ftheader.h
 CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: /usr/include/freetype2/freetype/freetype.h
@@ -89,6 +94,7 @@ CMakeFiles/nPlayerConnect4.dir/ConnectMenu.cpp.o: ../ConnectMenu.cpp
 CMakeFiles/nPlayerConnect4.dir/ConnectMenu.cpp.o: ../ConnectMenu.h
 CMakeFiles/nPlayerConnect4.dir/ConnectMenu.cpp.o: ../FontInfo.h
 CMakeFiles/nPlayerConnect4.dir/ConnectMenu.cpp.o: ../ImageLoder.h
+CMakeFiles/nPlayerConnect4.dir/ConnectMenu.cpp.o: ../TextureManager.h
 CMakeFiles/nPlayerConnect4.dir/ConnectMenu.cpp.o: /usr/include/freetype2/freetype/config/ftheader.h
 CMakeFiles/nPlayerConnect4.dir/ConnectMenu.cpp.o: /usr/include/freetype2/freetype/freetype.h
 CMakeFiles/nPlayerConnect4.dir/ConnectMenu.cpp.o: /usr/include/freetype2/freetype/fterrdef.h
@@ -135,7 +141,10 @@ CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: ../ImageLoder.h
 CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: ../Lobby.h
 CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: ../MainMenu.h
 CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: ../Message.h
+CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: ../Options.h
 CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: ../Server.h
+CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: ../SinglePlayerMenu.h
+CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: ../TextureManager.h
 CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: ../Version.h
 CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: ../glew.h
 CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: /home/dan/glfw/include/GLFW/glfw3.h
@@ -152,9 +161,9 @@ CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: /usr/include/freetype2/freetype/ftt
 CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: /usr/include/freetype2/freetype/fttypes.h
 CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: /usr/include/freetype2/ft2build.h
 
-CMakeFiles/nPlayerConnect4.dir/ImageLoder.cpp.o: /home/dan/CLionProjects/Game2D/glew.h
 CMakeFiles/nPlayerConnect4.dir/ImageLoder.cpp.o: ../ImageLoder.cpp
 CMakeFiles/nPlayerConnect4.dir/ImageLoder.cpp.o: ../ImageLoder.h
+CMakeFiles/nPlayerConnect4.dir/ImageLoder.cpp.o: ../glew.h
 
 CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.o: /home/dan/CLionProjects/Game2D/AnimatedSprite.h
 CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.o: /home/dan/CLionProjects/Game2D/Button.h
@@ -168,12 +177,14 @@ CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.o: /home/dan/CLionProjects/Game2D/Rect.
 CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.o: /home/dan/CLionProjects/Game2D/ScreenCoord.h
 CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.o: /home/dan/CLionProjects/Game2D/Slider.h
 CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.o: /home/dan/CLionProjects/Game2D/Sprite.h
+CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.o: /home/dan/CLionProjects/Game2D/Timer.h
 CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.o: /home/dan/CLionProjects/Game2D/freetype.h
 CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.o: /home/dan/CLionProjects/Game2D/glew.h
 CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.o: ../FontInfo.h
 CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.o: ../ImageLoder.h
 CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.o: ../Lobby.cpp
 CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.o: ../Lobby.h
+CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.o: ../TextureManager.h
 CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.o: /usr/include/freetype2/freetype/config/ftheader.h
 CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.o: /usr/include/freetype2/freetype/freetype.h
 CMakeFiles/nPlayerConnect4.dir/Lobby.cpp.o: /usr/include/freetype2/freetype/fterrdef.h
@@ -198,13 +209,15 @@ CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: /home/dan/CLionProjects/Game2D/Po
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: /home/dan/CLionProjects/Game2D/Rect.h
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: /home/dan/CLionProjects/Game2D/ScreenCoord.h
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: /home/dan/CLionProjects/Game2D/Sprite.h
+CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: /home/dan/CLionProjects/Game2D/Timer.h
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: /home/dan/CLionProjects/Game2D/freetype.h
+CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: /home/dan/CLionProjects/Game2D/glew.h
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: ../FontInfo.h
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: ../ImageLoder.h
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: ../MainMenu.cpp
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: ../MainMenu.h
+CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: ../TextureManager.h
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: ../Version.h
-CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: ../glew.h
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: /usr/include/freetype2/freetype/config/ftheader.h
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: /usr/include/freetype2/freetype/freetype.h
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: /usr/include/freetype2/freetype/fterrdef.h
@@ -217,6 +230,9 @@ CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: /usr/include/freetype2/freetype/f
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: /usr/include/freetype2/freetype/fttrigon.h
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: /usr/include/freetype2/freetype/fttypes.h
 CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o: /usr/include/freetype2/ft2build.h
+
+CMakeFiles/nPlayerConnect4.dir/Options.cpp.o: ../Options.cpp
+CMakeFiles/nPlayerConnect4.dir/Options.cpp.o: ../Options.h
 
 CMakeFiles/nPlayerConnect4.dir/Server.cpp.o: /home/dan/CLionProjects/Game2D/Colour.h
 CMakeFiles/nPlayerConnect4.dir/Server.cpp.o: /home/dan/CLionProjects/Game2D/glew.h
@@ -231,6 +247,43 @@ CMakeFiles/nPlayerConnect4.dir/Server.cpp.o: ../Message.h
 CMakeFiles/nPlayerConnect4.dir/Server.cpp.o: ../Server.cpp
 CMakeFiles/nPlayerConnect4.dir/Server.cpp.o: ../Server.h
 CMakeFiles/nPlayerConnect4.dir/Server.cpp.o: ../Version.h
+
+CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.o: /home/dan/CLionProjects/Game2D/AnimatedSprite.h
+CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.o: /home/dan/CLionProjects/Game2D/Button.h
+CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.o: /home/dan/CLionProjects/Game2D/ClickableObject.h
+CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.o: /home/dan/CLionProjects/Game2D/Colour.h
+CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.o: /home/dan/CLionProjects/Game2D/DrawableObject.h
+CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.o: /home/dan/CLionProjects/Game2D/Fonts.h
+CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.o: /home/dan/CLionProjects/Game2D/KeyState.h
+CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.o: /home/dan/CLionProjects/Game2D/Pos2.h
+CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.o: /home/dan/CLionProjects/Game2D/Rect.h
+CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.o: /home/dan/CLionProjects/Game2D/ScreenCoord.h
+CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.o: /home/dan/CLionProjects/Game2D/Sprite.h
+CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.o: /home/dan/CLionProjects/Game2D/Timer.h
+CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.o: /home/dan/CLionProjects/Game2D/freetype.h
+CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.o: ../FontInfo.h
+CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.o: ../ImageLoder.h
+CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.o: ../SinglePlayerMenu.cpp
+CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.o: ../SinglePlayerMenu.h
+CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.o: ../Version.h
+CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.o: ../glew.h
+CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.o: /usr/include/freetype2/freetype/config/ftheader.h
+CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.o: /usr/include/freetype2/freetype/freetype.h
+CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.o: /usr/include/freetype2/freetype/fterrdef.h
+CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.o: /usr/include/freetype2/freetype/fterrors.h
+CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.o: /usr/include/freetype2/freetype/ftglyph.h
+CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.o: /usr/include/freetype2/freetype/ftimage.h
+CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.o: /usr/include/freetype2/freetype/ftmoderr.h
+CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.o: /usr/include/freetype2/freetype/ftoutln.h
+CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.o: /usr/include/freetype2/freetype/ftsystem.h
+CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.o: /usr/include/freetype2/freetype/fttrigon.h
+CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.o: /usr/include/freetype2/freetype/fttypes.h
+CMakeFiles/nPlayerConnect4.dir/SinglePlayerMenu.cpp.o: /usr/include/freetype2/ft2build.h
+
+CMakeFiles/nPlayerConnect4.dir/TextureManager.cpp.o: /home/dan/CLionProjects/Game2D/glew.h
+CMakeFiles/nPlayerConnect4.dir/TextureManager.cpp.o: ../ImageLoder.h
+CMakeFiles/nPlayerConnect4.dir/TextureManager.cpp.o: ../TextureManager.cpp
+CMakeFiles/nPlayerConnect4.dir/TextureManager.cpp.o: ../TextureManager.h
 
 CMakeFiles/nPlayerConnect4.dir/main.cpp.o: /home/dan/CLionProjects/Game2D/AnimatedSprite.h
 CMakeFiles/nPlayerConnect4.dir/main.cpp.o: /home/dan/CLionProjects/Game2D/Button.h
@@ -264,7 +317,9 @@ CMakeFiles/nPlayerConnect4.dir/main.cpp.o: ../ImageLoder.h
 CMakeFiles/nPlayerConnect4.dir/main.cpp.o: ../Lobby.h
 CMakeFiles/nPlayerConnect4.dir/main.cpp.o: ../MainMenu.h
 CMakeFiles/nPlayerConnect4.dir/main.cpp.o: ../Message.h
+CMakeFiles/nPlayerConnect4.dir/main.cpp.o: ../Options.h
 CMakeFiles/nPlayerConnect4.dir/main.cpp.o: ../Server.h
+CMakeFiles/nPlayerConnect4.dir/main.cpp.o: ../SinglePlayerMenu.h
 CMakeFiles/nPlayerConnect4.dir/main.cpp.o: ../Version.h
 CMakeFiles/nPlayerConnect4.dir/main.cpp.o: ../glew.h
 CMakeFiles/nPlayerConnect4.dir/main.cpp.o: ../main.cpp
