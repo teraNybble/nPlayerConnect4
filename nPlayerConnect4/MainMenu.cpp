@@ -3,7 +3,7 @@
 
 void MainMenu::init()
 {
-	mainMenuTex = TextureManager::getText(0);
+	mainMenuTex = TextureManager::getTexture(0);
 	//set the sprites colour
 
 	Game2D::Rect tempRect;
@@ -57,7 +57,7 @@ void MainMenu::init()
 	join.addStateSprites(tempNormal,tempHover,tempClick,tempClick,tempNormal);
 	join.alignToDrawableObject();
 
-	tempRect = Game2D::Rect(0,-26,10,5);
+	tempRect = Game2D::Rect(5.5,-26,10,5);
 	tempNormal.setTextureCoords(Game2D::Rect(0.75f, 0.875f, 0.25f, 0.125f));
 	tempHover.setTextureCoords(Game2D::Rect(0.75f, 0.75f, 0.25f, 0.125f));
 	tempClick.setTextureCoords(Game2D::Rect(0.75f, 0.625f, 0.25f, 0.125f));
@@ -73,6 +73,25 @@ void MainMenu::init()
 	quit.setRect(tempRect);
 	quit.addStateSprites(tempNormal,tempHover,tempClick,tempClick,tempNormal);
 	quit.alignToDrawableObject();
+
+	tempRect = Game2D::Rect(-5.5,-26,10,5);
+
+	tempNormal.setTextureCoords(Game2D::Rect(0.25f, 0.5f, 0.25f, 0.125f));
+	tempHover.setTextureCoords(Game2D::Rect(0.50f, 0.5f, 0.25f, 0.125f));
+	tempClick.setTextureCoords(Game2D::Rect(0.75f, 0.5f, 0.25f, 0.125f));
+
+	tempNormal.setRect(tempRect);
+	tempHover.setRect(tempRect);
+	tempClick.setRect(tempRect);
+
+	tempNormal.setColour(Game2D::Colour::White);
+	tempHover.setColour(Game2D::Colour::White);
+	tempClick.setColour(Game2D::Colour::White);
+
+	options.setRect(tempRect);
+	options.addStateSprites(tempNormal,tempHover,tempClick,tempClick,tempNormal);
+	options.alignToDrawableObject();
+
 
 	resize();
 }
@@ -97,6 +116,9 @@ int MainMenu::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseS
 {
 	//as the start button is aligned to the right of the screen the mouse coordinats need to be aligned right as well
 	Game2D::Pos2 mousePosAlignedRight = Game2D::Pos2((mousePos.x - Game2D::ScreenCoord::getAspectRatio() * 50), mousePos.y);
+	if (options.update(mousePos, mouseState, 1) == Game2D::ClickableObject::ClickState::CLICK) {
+		return 5;
+	}
 	if (start.update(mousePos, mouseState, 1) == Game2D::ClickableObject::ClickState::CLICK) {
 		return 4;
 	}
@@ -122,6 +144,7 @@ void MainMenu::draw()
 	join.draw();
 	start.draw();
 	quit.draw();
+	options.draw();
 	Game2D::ScreenCoord::alignRight();
 
 	Game2D::Freetype::print(Game2D::Font::getFont(version.fontSize),-1 - version.width , -49 ,version.text.c_str(),GameVer.ver,GameVer.verMajor,GameVer.verMinor);

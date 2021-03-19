@@ -12,6 +12,7 @@ Engine::State Engine::currentState;
 MainMenu Engine::mainMenu;
 ConnectMenu Engine::connectMenu;
 SinglePlayerMenu Engine::singlePlayerMenu;
+OptionsMenu Engine::optionsMenu;
 Board Engine::singlePlayerBoard;
 unsigned int Engine::winningPlayer;
 Game2D::Colour Engine::playerColour;
@@ -24,6 +25,15 @@ bool Engine::heatBeat;
 
 Engine::Engine()
 {
+}
+
+void Engine::resize(float width, float height)
+{
+	glfwSetWindowSize(window, width, height);
+	glViewport(0, 0, width, height);
+	Game2D::ScreenCoord::init(width,height);
+	Game2D::ScreenCoord::alignCentre();
+	display();
 }
 
 void Engine::resizeCallback(GLFWwindow* window, int width, int height)
@@ -115,6 +125,9 @@ void Engine::display()
 		case PLAYING_SOLO:
 			singlePlayerBoard.draw();
 			break;
+		case OPTIONS:
+			optionsMenu.draw();
+			break;
 		case WIN:
 			singlePlayerBoard.draw();
 			temp.setColour(Game2D::Colour(0, 0, 0, 0.5));
@@ -181,6 +194,8 @@ void Engine::init()
 	connectMenu.resize();
 	singlePlayerMenu.init();
 	singlePlayerMenu.resize();
+	optionsMenu.init();
+	optionsMenu.resize();
 
 	std::vector<Game2D::Colour> playerColours = {
 			Game2D::Colour::Red, Game2D::Colour::Yellow,
@@ -225,7 +240,9 @@ void Engine::processMouse()
 				case 4://Solo game
 					currentState = SOLO_MENU;
 					break;
-
+				case 5://Options menu
+					currentState = OPTIONS;
+					break;
 			}
 			break;
 		case CONNECT:
@@ -298,6 +315,14 @@ void Engine::processMouse()
 					break;
 				case 1:
 					currentState = WIN;
+					break;
+			}
+			break;
+		case OPTIONS:
+			optionsMenu.processMouse(mousePos,mouseState);
+			switch(optionsMenu.getResult(resize)) {
+				case 2: //back
+					currentState = MENU;
 					break;
 			}
 			break;

@@ -48,6 +48,8 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 
 					msg >> defaultColour;
 
+					lobby.setColour(defaultColour);
+
 					net::Message<GameMsg> outMsg;
 					outMsg.header.id = GameMsg::PLAYER_COLOUR;
 					outMsg << defaultColour;

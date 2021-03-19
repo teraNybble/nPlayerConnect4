@@ -13,6 +13,7 @@
 #include "MainMenu.h"
 #include "ConnectMenu.h"
 #include "SinglePlayerMenu.h"
+#include "OptionsMenu.h"
 
 class Engine
 {
@@ -29,6 +30,7 @@ private:
 	static MainMenu mainMenu;
 	static ConnectMenu connectMenu;
 	static SinglePlayerMenu singlePlayerMenu;
+	static OptionsMenu optionsMenu;
 
 	static Board singlePlayerBoard;
 	static unsigned int winningPlayer;
@@ -41,6 +43,7 @@ private:
 	static bool stopServer;
 	static bool heatBeat;
 
+	static void resize(float width, float height);
 	static void resizeCallback(GLFWwindow* window, int width, int height);
 	static void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 	static void charCallback(GLFWwindow* window, unsigned int codepoint);

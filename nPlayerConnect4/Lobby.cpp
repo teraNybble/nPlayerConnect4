@@ -5,8 +5,8 @@ void Lobby::init()
 {	
 	playerList.clear();
 	winningPlayer = -2;
-	m_menuTex = TextureManager::getText(0);
-	m_circleTex = TextureManager::getText(1);
+	m_menuTex = TextureManager::getTexture(0);
+	m_circleTex = TextureManager::getTexture(1);
 
 	Game2D::Sprite normalSprite, hoverSprite, clickSprite, disabledSprite;
 	Game2D::Rect tempRect = Game2D::Rect(15,-40,10,5);

@@ -10,7 +10,7 @@ class TextureManager
 private:
 	static inline std::vector<GLuint> textures;
 public:
-	static GLuint getText(size_t i) { 
+	static GLuint getTexture(size_t i) {
 		try {
 			return textures.at(i);
 		} catch (std::exception e) {

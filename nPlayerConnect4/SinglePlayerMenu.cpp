@@ -54,6 +54,16 @@ void SinglePlayerMenu::init()
 	boardWidthPlus.addStateSprites(normalSprite, hoverSprite, clickSprite, clickSprite, normalSprite);
 	boardWidthPlus.alignToDrawableObject();
 
+	tempRect = Game2D::Rect(37,-45,2.5,2.5);
+
+	normalSprite.setRect(tempRect);
+	hoverSprite.setRect(tempRect);
+	clickSprite.setRect(tempRect);
+
+	lineLengthPlus.setRect(tempRect);
+	lineLengthPlus.addStateSprites(normalSprite, hoverSprite, clickSprite, clickSprite, normalSprite);
+	lineLengthPlus.alignToDrawableObject();
+
 	tempRect = Game2D::Rect(-37, -45, 2.5, 2.5);
 
 	normalSprite.setRect(tempRect);
@@ -77,6 +87,16 @@ void SinglePlayerMenu::init()
 	boardWidthMinus.setRect(tempRect);
 	boardWidthMinus.addStateSprites(normalSprite, hoverSprite, clickSprite, clickSprite, normalSprite);
 	boardWidthMinus.alignToDrawableObject();
+
+	tempRect = Game2D::Rect(34.5,-45,2.5,2.5);
+
+	normalSprite.setRect(tempRect);
+	hoverSprite.setRect(tempRect);
+	clickSprite.setRect(tempRect);
+
+	lineLengthMinus.setRect(tempRect);
+	lineLengthMinus.addStateSprites(normalSprite, hoverSprite, clickSprite, clickSprite, normalSprite);
+	lineLengthMinus.alignToDrawableObject();
 
 	tempRect = Game2D::Rect(-39.5, -45, 2.5, 2.5);
 
@@ -121,6 +141,91 @@ void SinglePlayerMenu::init()
 	boardHeight = 6;
 	numPlayers = 2;
 
+	delayTime = 1000;//ms
+	arrowDown = false;
+
+	arrowButtons.clear();
+	arrowButtons.push_back(&playersPlus);
+	arrowButtons.push_back(&playersMinus);
+	arrowButtons.push_back(&boardWidthPlus);
+	arrowButtons.push_back(&boardWidthMinus);
+	arrowButtons.push_back(&boardHeightPlus);
+	arrowButtons.push_back(&boardHeightMinus);
+	arrowButtons.push_back(&lineLengthPlus);
+	arrowButtons.push_back(&lineLengthMinus);
+
+	arrowFuncs.clear();
+	arrowFuncs.push_back(
+			[&](){
+				numPlayers++;
+				playerCount.width = Game2D::Freetype::getLength(Game2D::Font::getFont(playerCount.fontSize), playerCount.text.c_str(), numPlayers);
+			}
+	);
+	arrowFuncs.push_back(
+			[&](){
+				if(numPlayers > 2){
+					numPlayers--;
+					playerCount.width = Game2D::Freetype::getLength(Game2D::Font::getFont(playerCount.fontSize), playerCount.text.c_str(), numPlayers);
+				}
+			}
+	);
+	arrowFuncs.push_back(
+			[&](){
+				boardWidth++;
+				boardDimLabels.width = Game2D::Freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
+																   boardDimLabels.text.c_str(), boardWidth, boardHeight);
+			}
+	);
+	arrowFuncs.push_back(
+			[&](){
+				if (--boardWidth < lineLength) { boardWidth = lineLength; }
+				boardDimLabels.width = Game2D::Freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
+																   boardDimLabels.text.c_str(), boardWidth, boardHeight);
+			}
+	);
+	arrowFuncs.push_back(
+			[&](){
+				boardHeight++;
+				boardDimLabels.width = Game2D::Freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
+																   boardDimLabels.text.c_str(), boardWidth, boardHeight);
+			}
+	);
+	arrowFuncs.push_back(
+			[&](){
+				if (--boardHeight < lineLength) { boardHeight = lineLength; }
+				boardDimLabels.width = Game2D::Freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
+																   boardDimLabels.text.c_str(), boardWidth, boardHeight);
+			}
+	);
+
+	arrowFuncs.push_back(
+			[&](){
+				lineLength++;
+				connectLengthLabels.width = Game2D::Freetype::getLength(Game2D::Font::getFont(connectLengthLabels.fontSize), connectLengthLabels.text.c_str(), lineLength);
+				bool recalculateTextLength = false;
+				if(boardHeight < lineLength) {
+					boardHeight = lineLength;
+					recalculateTextLength = true;
+				}
+				if(boardWidth < lineLength) {
+					boardWidth = lineLength;
+					recalculateTextLength = true;
+				}
+				if(recalculateTextLength){
+					boardDimLabels.width = Game2D::Freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize),
+																	   boardDimLabels.text.c_str(), boardWidth, boardHeight);
+				}
+			}
+	);
+	arrowFuncs.push_back(
+			[&](){
+				if(lineLength > 0){
+					lineLength--;
+					connectLengthLabels.width = Game2D::Freetype::getLength(Game2D::Font::getFont(connectLengthLabels.fontSize), connectLengthLabels.text.c_str(), lineLength);
+				}
+			}
+	);
+
 	resize();
 }
 
@@ -142,39 +247,51 @@ void SinglePlayerMenu::resize()
 	boardDimLabels.fontSize = 4;
 	boardDimLabels.text = "%d x %d";
 	boardDimLabels.width = Game2D::Freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize), boardDimLabels.text.c_str(), boardWidth, boardHeight);
+
+	connectLength.fontSize = 3;
+	connectLength.text = "Connect length";
+	connectLength.width = Game2D::Freetype::getLength(Game2D::Font::getFont(connectLength.fontSize), connectLength.text.c_str());
+
+	connectLengthLabels.fontSize = 4;
+	connectLengthLabels.text = "%d";
+	connectLengthLabels.width = Game2D::Freetype::getLength(Game2D::Font::getFont(connectLengthLabels.fontSize), connectLengthLabels.text.c_str(), lineLength);
 }
 
 int SinglePlayerMenu::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseState)
 {
-	if (playersPlus.update(mousePos, mouseState, 1) == Game2D::ClickableObject::ClickState::CLICK) {
-		numPlayers++;
-		playerCount.width = Game2D::Freetype::getLength(Game2D::Font::getFont(playerCount.fontSize), playerCount.text.c_str(), numPlayers);
-	}
-	if (playersMinus.update(mousePos, mouseState, 1) == Game2D::ClickableObject::ClickState::CLICK) {
-		if (--numPlayers < 2) {
-			numPlayers = 2;
+	for(int i = 0; i < arrowButtons.size(); i++){
+		Game2D::ClickableObject::ClickState tempClickState = arrowButtons[i]->update(mousePos,mouseState,1);
+		if(tempClickState == Game2D::ClickableObject::MOUSEDOWN){
+			if(!arrowDown) {
+				timer.start();
+				delayCount = delayTime;
+				arrowDown = true;
+				return -1;
+			} else {
+				if(timer.elapsedTime<Game2D::Timer::miliseconds>() >= delayCount){
+					delayCount *= 0.9;
+					timer.start();
+
+					arrowFuncs[i]();
+					//if i is less than 4 then we are changing board detentions else we are changing the connect length
+					return -1;
+				} else {
+					return -1;
+				}
+			}
+		} else if(tempClickState == Game2D::ClickableObject::CLICK) {
+			arrowDown = false;
+			arrowFuncs[i]();
+			//if i is less than 4 then we are changing board detentions else we are changing the connect length
+			if(i < 4){
+				return 4;
+			} else {
+				return 5;
+			}
+		} else if(mouseState == Game2D::KeyState::UP && arrowDown) {
+			arrowDown = false;
+			return 5;
 		}
-		playerCount.width = Game2D::Freetype::getLength(Game2D::Font::getFont(playerCount.fontSize), playerCount.text.c_str(), numPlayers);
-	}
-	if (boardWidthPlus.update(mousePos, mouseState, 1) == Game2D::ClickableObject::ClickState::CLICK) {
-		boardWidth++;
-		boardDimLabels.width = Game2D::Freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize), boardDimLabels.text.c_str(), boardWidth, boardHeight);
-	}
-	if (boardWidthMinus.update(mousePos, mouseState, 1) == Game2D::ClickableObject::ClickState::CLICK) {
-		if (--boardWidth < lineLength) {
-			boardWidth = lineLength;
-		}
-		boardDimLabels.width = Game2D::Freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize), boardDimLabels.text.c_str(), boardWidth, boardHeight);
-	}
-	if (boardHeightPlus.update(mousePos, mouseState, 1) == Game2D::ClickableObject::ClickState::CLICK) {
-		boardHeight++;
-		boardDimLabels.width = Game2D::Freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize), boardDimLabels.text.c_str(), boardWidth, boardHeight);
-	}
-	if (boardHeightMinus.update(mousePos, mouseState, 1) == Game2D::ClickableObject::ClickState::CLICK) {
-		if (--boardHeight < lineLength) {
-			boardHeight = lineLength;
-		}
-		boardDimLabels.width = Game2D::Freetype::getLength(Game2D::Font::getFont(boardDimLabels.fontSize), boardDimLabels.text.c_str(), boardWidth, boardHeight);
 	}
 	//as the start button is aligned to the right of the screen the mouse coordinats need to be aligned right as well
 	Game2D::Pos2 mousePosAlignedRight = Game2D::Pos2((mousePos.x - Game2D::ScreenCoord::getAspectRatio() * 50), mousePos.y);
@@ -205,6 +322,8 @@ void SinglePlayerMenu::draw() const
 	boardHeightMinus.draw();
 	boardWidthPlus.draw();
 	boardWidthMinus.draw();
+	lineLengthPlus.draw();
+	lineLengthMinus.draw();
 	Game2D::ScreenCoord::alignRight();
 	startButton.draw();
 
@@ -214,4 +333,6 @@ void SinglePlayerMenu::draw() const
 	Game2D::Freetype::print(Game2D::Font::getFont(noPlayers.fontSize), (noPlayers.width / -2.0f) - 38, -35, noPlayers.text.c_str());
 	Game2D::Freetype::print(Game2D::Font::getFont(boardDims.fontSize), (boardDims.width / -2.0f), -35, boardDims.text.c_str());
 	Game2D::Freetype::print(Game2D::Font::getFont(boardDimLabels.fontSize), (boardDimLabels.width / -2.0f), -41, boardDimLabels.text.c_str(), boardWidth, boardHeight);
+	Game2D::Freetype::print(Game2D::Font::getFont(connectLength.fontSize), (connectLength.width/-2.0f) + 35.5, -35, connectLength.text.c_str());
+	Game2D::Freetype::print(Game2D::Font::getFont(connectLengthLabels.fontSize), (connectLengthLabels.width / -2.0f) + 35.5, -41, connectLengthLabels.text.c_str(), lineLength);
 }

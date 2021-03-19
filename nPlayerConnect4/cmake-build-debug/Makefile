@@ -339,6 +339,33 @@ Options.cpp.s:
 	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/Options.cpp.s
 .PHONY : Options.cpp.s
 
+OptionsMenu.o: OptionsMenu.cpp.o
+
+.PHONY : OptionsMenu.o
+
+# target to build an object file
+OptionsMenu.cpp.o:
+	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/OptionsMenu.cpp.o
+.PHONY : OptionsMenu.cpp.o
+
+OptionsMenu.i: OptionsMenu.cpp.i
+
+.PHONY : OptionsMenu.i
+
+# target to preprocess a source file
+OptionsMenu.cpp.i:
+	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/OptionsMenu.cpp.i
+.PHONY : OptionsMenu.cpp.i
+
+OptionsMenu.s: OptionsMenu.cpp.s
+
+.PHONY : OptionsMenu.s
+
+# target to generate assembly for a file
+OptionsMenu.cpp.s:
+	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/OptionsMenu.cpp.s
+.PHONY : OptionsMenu.cpp.s
+
 Server.o: Server.cpp.o
 
 .PHONY : Server.o
@@ -480,6 +507,9 @@ help:
 	@echo "... Options.o"
 	@echo "... Options.i"
 	@echo "... Options.s"
+	@echo "... OptionsMenu.o"
+	@echo "... OptionsMenu.i"
+	@echo "... OptionsMenu.s"
 	@echo "... Server.o"
 	@echo "... Server.i"
 	@echo "... Server.s"

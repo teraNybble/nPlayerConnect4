@@ -54,7 +54,7 @@ void Board::setClickboxes()
 
 void Board::initBoard()
 {
-	circleTex = TextureManager::getText(1);
+	circleTex = TextureManager::getTexture(1);
 	circleSprite.setTextureCoords(Game2D::Rect(0, 0, 1, 1));
 	highlightSprite.setTextureCoords(Game2D::Rect(0, 0, 1, 1));
 	board.clear();

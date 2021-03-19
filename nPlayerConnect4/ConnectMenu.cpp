@@ -17,7 +17,7 @@ void ConnectMenu::setHost(bool host){
 
 void ConnectMenu::init()
 {
-	m_menuTex = TextureManager::getText(0);
+	m_menuTex = TextureManager::getTexture(0);
 
 	connectText.fontSize = 5;
 	connectText.pos = Game2D::Pos2(0,35);

@@ -7,6 +7,7 @@
 #include "ScreenCoord.h"
 #include "FontInfo.h"
 #include "Version.h"
+#include <functional>
 
 class SinglePlayerMenu
 {
@@ -23,6 +24,8 @@ private:
 	Game2D::Button boardHeightMinus;
 
 	unsigned int lineLength;
+	Game2D::Button lineLengthPlus;
+	Game2D::Button lineLengthMinus;
 
 	Game2D::Button startButton;
 	Game2D::Button backButton;
@@ -32,8 +35,18 @@ private:
 	TextInfo boardDims;
 	TextInfo playerCount;
 	TextInfo boardDimLabels;
+	TextInfo connectLength;
+	TextInfo connectLengthLabels;
+
+	Game2D::Timer timer;
+	int delayTime;//ms
+	int delayCount;//ms
+	bool arrowDown;
 
 	GLuint mainMenuTex;
+
+	std::vector<Game2D::Button*> arrowButtons;
+	std::vector<std::function<void()>> arrowFuncs;
 public:
 	void init();
 

@@ -12,16 +12,12 @@
 #include <Timer.h>
 #include <functional>
 
-//TODO resizing the window can make the text go fucky
-//TODO that bloody Game2D::Freetype is an arse
-//TODO make it so you can click and hold arrows in the single player menu
-//TODO set sliders based on the given colour from the server
+//TODO sort out option menu textures
 //TODO add a wakeup to the server
 //TODO identify memory leak in client and possibly server
 //TODO fix memory leak caused by board and image loader and possibly other things
 //TODO add message to the user if they don't connect to the server
 //TODO gravity toggle?
-//TODO add options button either put it next to quit or make it the same width as single player
 //TODO add pause menu to multiplayer
 //TODO show player number over piece on board for colourblind people
 

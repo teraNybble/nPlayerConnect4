@@ -15,6 +15,7 @@ private:
 	Game2D::Button start;
 	Game2D::Button host;
 	Game2D::Button join;
+	Game2D::Button options;
 	GLuint mainMenuTex;
 	TextInfo title;
 	TextInfo version;
