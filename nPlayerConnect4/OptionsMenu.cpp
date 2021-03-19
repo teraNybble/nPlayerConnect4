@@ -27,10 +27,10 @@ void OptionsMenu::init()
 	apply = Game2D::Button(Game2D::Rect(-15, -40, 20, 10));
 	back = Game2D::Button(Game2D::Rect(20, -40, 20, 10));
 
-	Game2D::Rect texRect(Game2D::Rect(0, 0, 0.1455f, 0.0762f));
+	Game2D::Rect texRect(Game2D::Rect(0, 0, 0.125f, 0.0625f));
 
 	Game2D::AnimatedSprite playSprites(Game2D::Rect(0, -10, 20, 10));
-	for (int i = 0; i < 4; i++) {
+	for (int i = 3; i >= 0; i--) {
 		Game2D::Sprite tempSprite(Game2D::Rect(0, -10, 20, 10));
 		tempSprite.setColour(Game2D::Colour::White);
 		Game2D::Rect tempRect = texRect;
@@ -45,14 +45,14 @@ void OptionsMenu::init()
 	int temp[5] = { 0,1,2,3,4 };
 	play.addAnims(playSprites, temp);
 
-	Game2D::AnimatedSprite backSprites(Game2D::Rect(20, -40, 20, 10));
-	for (int i = 0; i < 4; i++) {
-		Game2D::Sprite tempSprite(Game2D::Rect(20, -40, 20, 10));
+	Game2D::AnimatedSprite backSprites(Game2D::Rect(20, -40, 10, 5));
+	for (int i = 3; i >= 0; i--) {
+		Game2D::Sprite tempSprite(Game2D::Rect(20, -40, 10, 5));
 		tempSprite.setColour(Game2D::Colour::White);
 		Game2D::Rect tempRect = texRect;
 		//the back buton is the 1st sprite along on the second row
-		tempRect.pos.x = 0 * texRect.width;
-		tempRect.pos.y = (i + 4) * texRect.height;
+		tempRect.pos.x = 3 * texRect.width;
+		tempRect.pos.y = i * texRect.height;
 		tempSprite.setTextureCoords(tempRect);
 		backSprites.addFrame(tempSprite);
 	}
@@ -61,14 +61,14 @@ void OptionsMenu::init()
 
 	back.addAnims(backSprites, tempFrames);
 
-	Game2D::AnimatedSprite applySprites(Game2D::Rect(-15, -40, 20, 10));
-	for (int i = 0; i < 4; i++) {
-		Game2D::Sprite tempSprite(Game2D::Rect(-15, -40, 20, 10));
+	Game2D::AnimatedSprite applySprites(Game2D::Rect(-15, -40, 10, 5));
+	for (int i = 3; i >= 0; i--) {
+		Game2D::Sprite tempSprite(Game2D::Rect(-15, -40, 10, 5));
 		tempSprite.setColour(Game2D::Colour::White);
 		Game2D::Rect tempRect = texRect;
 		//the back buton is the 1st sprite along on the second row
-		tempRect.pos.x = 1 * texRect.width;
-		tempRect.pos.y = (i + 4) * texRect.height;
+		tempRect.pos.x = 6 * texRect.width;
+		tempRect.pos.y = i * texRect.height;
 		tempSprite.setTextureCoords(tempRect);
 		applySprites.addFrame(tempSprite);
 	}

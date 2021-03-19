@@ -10,9 +10,9 @@ void MainMenu::init()
 	Game2D::Sprite tempNormal, tempHover, tempClick;
 	tempRect = Game2D::Rect(0,-14,21,5);
 
-	tempNormal.setTextureCoords(Game2D::Rect(0, 0.875f, 0.525f, 0.125f));
-	tempHover.setTextureCoords(Game2D::Rect(0, 0.750f, 0.525f, 0.125f));
-	tempClick.setTextureCoords(Game2D::Rect(0, 0.625f, 0.525f, 0.125f));
+	tempNormal.setTextureCoords(Game2D::Rect(0, 0.4375f, 0.2625f, 0.0625f));
+	tempHover.setTextureCoords(Game2D::Rect(0, 0.3750f, 0.2625f, 0.0625f));
+	tempClick.setTextureCoords(Game2D::Rect(0, 0.3125f, 0.2625f, 0.0625f));
 
 	tempNormal.setRect(tempRect);
 	tempHover.setRect(tempRect);
@@ -28,9 +28,9 @@ void MainMenu::init()
 
 	tempRect = Game2D::Rect(5.5,-20,10,5);
 
-	tempNormal.setTextureCoords(Game2D::Rect(0.25f, 0.375f, 0.25f, 0.125f));
-	tempHover.setTextureCoords(Game2D::Rect(0.25f, 0.25f, 0.25f, 0.125f));
-	tempClick.setTextureCoords(Game2D::Rect(0.25f, 0.125f, 0.25f, 0.125f));
+	tempNormal.setTextureCoords(Game2D::Rect(0.125f, 0.1875f, 0.125f, 0.0625f));
+	tempHover.setTextureCoords(Game2D::Rect(0.125f, 0.1250f, 0.125f, 0.0625f));
+	tempClick.setTextureCoords(Game2D::Rect(0.125f, 0.0625f, 0.125f, 0.0625f));
 
 	tempNormal.setRect(tempRect);
 	tempHover.setRect(tempRect);
@@ -41,9 +41,9 @@ void MainMenu::init()
 	host.alignToDrawableObject();
 
 	tempRect = Game2D::Rect(-5.5,-20,10,5);
-	tempNormal.setTextureCoords(Game2D::Rect(0.50f, 0.375f, 0.25f, 0.125f));
-	tempHover.setTextureCoords(Game2D::Rect(0.50f, 0.25f, 0.25f, 0.125f));
-	tempClick.setTextureCoords(Game2D::Rect(0.50f, 0.125f, 0.25f, 0.125f));
+	tempNormal.setTextureCoords(Game2D::Rect(0.250f, 0.1875f, 0.125f, 0.0625f));
+	tempHover.setTextureCoords(Game2D::Rect(0.250f, 0.1250f, 0.125f, 0.0625f));
+	tempClick.setTextureCoords(Game2D::Rect(0.250f, 0.0625f, 0.125f, 0.0625f));
 
 	tempNormal.setRect(tempRect);
 	tempHover.setRect(tempRect);
@@ -58,9 +58,9 @@ void MainMenu::init()
 	join.alignToDrawableObject();
 
 	tempRect = Game2D::Rect(5.5,-26,10,5);
-	tempNormal.setTextureCoords(Game2D::Rect(0.75f, 0.875f, 0.25f, 0.125f));
-	tempHover.setTextureCoords(Game2D::Rect(0.75f, 0.75f, 0.25f, 0.125f));
-	tempClick.setTextureCoords(Game2D::Rect(0.75f, 0.625f, 0.25f, 0.125f));
+	tempNormal.setTextureCoords(Game2D::Rect(0.500f, 0.1875f, 0.125f, 0.0625f));
+	tempHover.setTextureCoords(Game2D::Rect(0.500f, 0.1250f, 0.125f, 0.0625f));
+	tempClick.setTextureCoords(Game2D::Rect(0.500f, 0.0625f, 0.125f, 0.0625f));
 
 	tempNormal.setRect(tempRect);
 	tempHover.setRect(tempRect);
@@ -76,9 +76,9 @@ void MainMenu::init()
 
 	tempRect = Game2D::Rect(-5.5,-26,10,5);
 
-	tempNormal.setTextureCoords(Game2D::Rect(0.25f, 0.5f, 0.25f, 0.125f));
-	tempHover.setTextureCoords(Game2D::Rect(0.50f, 0.5f, 0.25f, 0.125f));
-	tempClick.setTextureCoords(Game2D::Rect(0.75f, 0.5f, 0.25f, 0.125f));
+	tempNormal.setTextureCoords(Game2D::Rect(0.625f, 0.1875f, 0.125f, 0.0625f));
+	tempHover.setTextureCoords(Game2D::Rect(0.625f, 0.1250f, 0.125f, 0.0625f));
+	tempClick.setTextureCoords(Game2D::Rect(0.625f, 0.0625f, 0.125f, 0.0625f));
 
 	tempNormal.setRect(tempRect);
 	tempHover.setRect(tempRect);

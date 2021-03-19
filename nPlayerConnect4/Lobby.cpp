@@ -11,10 +11,10 @@ void Lobby::init()
 	Game2D::Sprite normalSprite, hoverSprite, clickSprite, disabledSprite;
 	Game2D::Rect tempRect = Game2D::Rect(15,-40,10,5);
 
-	disabledSprite.setTextureCoords(Game2D::Rect(0.75f,0.500f,0.25f,0.125f));
-	normalSprite.setTextureCoords(Game2D::Rect(0.75f,0.375f,0.25f,0.125f));
-	hoverSprite.setTextureCoords(Game2D::Rect(0.75f,0.250f,0.25f,0.125f));
-	clickSprite.setTextureCoords(Game2D::Rect(0.75f,0.125f,0.25f,0.125f));
+	disabledSprite.setTextureCoords(Game2D::Rect(0.375f, 0.500f, 0.125f, 0.0625f));
+	normalSprite.setTextureCoords(Game2D::Rect(0.375f, 0.1875f, 0.125f, 0.0625f));
+	hoverSprite.setTextureCoords(Game2D::Rect(0.375f, 0.1250f, 0.125f, 0.0625f));
+	clickSprite.setTextureCoords(Game2D::Rect(0.375f, 0.0625f, 0.125f, 0.0625f));
 
 	normalSprite.setRect(tempRect);
 	hoverSprite.setRect(tempRect);
@@ -31,9 +31,9 @@ void Lobby::init()
 
 	tempRect = Game2D::Rect(8.5,30,5,5);
 
-	normalSprite.setTextureCoords(Game2D::Rect(0.375f,0.0f,0.125f,0.125f));
-	hoverSprite.setTextureCoords(Game2D::Rect(0.500f,0.0f,0.125f,0.125f));
-	clickSprite.setTextureCoords(Game2D::Rect(0.625f,0.0f,0.125f,0.125f));
+	normalSprite.setTextureCoords(Game2D::Rect(0.1875f, 0, 0.0625f, 0.0625f));
+	hoverSprite.setTextureCoords(Game2D::Rect(0.2500f, 0, 0.0625f, 0.0625f));
+	clickSprite.setTextureCoords(Game2D::Rect(0.3125f, 0, 0.0625f, 0.0625f));
 
 	normalSprite.setRect(tempRect);
 	hoverSprite.setRect(tempRect);
@@ -50,19 +50,14 @@ void Lobby::init()
 	hoverSprite.setRect(tempRect);
 	clickSprite.setRect(tempRect);
 
-	disabledSprite.setTextureCoords(Game2D::Rect(0.0f,0.500f,0.25f,0.125f));
-	normalSprite.setTextureCoords(Game2D::Rect(0.0f,0.375f,0.25f,0.125f));
-	hoverSprite.setTextureCoords(Game2D::Rect(0.0f,0.250f,0.25f,0.125f));
-	clickSprite.setTextureCoords(Game2D::Rect(0.0f,0.125f,0.25f,0.125f));
+	disabledSprite.setTextureCoords(Game2D::Rect(0.0f, 0.250f, 0.125f, 0.0625f));
+	normalSprite.setTextureCoords(Game2D::Rect(0.0f, 0.1875f, 0.125f, 0.0625f));
+	hoverSprite.setTextureCoords(Game2D::Rect(0.0f, 0.1250f, 0.125f, 0.0625f));
+	clickSprite.setTextureCoords(Game2D::Rect(0.0f, 0.0625f, 0.125f, 0.0625f));
 
 	startButton.setRect(tempRect);
 	startButton.addStateSprites(normalSprite,hoverSprite,clickSprite,clickSprite,disabledSprite);
 	startButton.alignToDrawableObject();
-
-	disabledSprite.setTextureCoords(Game2D::Rect(0.75f,0.500f,0.25f,0.125f));
-	normalSprite.setTextureCoords(Game2D::Rect(0.75f,0.375f,0.25f,0.125f));
-	hoverSprite.setTextureCoords(Game2D::Rect(0.75f,0.250f,0.25f,0.125f));
-	clickSprite.setTextureCoords(Game2D::Rect(0.75f,0.125f,0.25f,0.125f));
 
 	tempRect = Game2D::Rect(11,40,1,2);
 
@@ -106,9 +101,9 @@ void Lobby::init()
 	blueSlider.setValue(0.0f);
 	
 	tempRect = Game2D::Rect(1.25,-45,2.5,2.5);
-	normalSprite.setTextureCoords(Game2D::Rect(0, 0, 0.125f, 0.125f));
-	hoverSprite.setTextureCoords(Game2D::Rect(0.125f, 0, 0.125f, 0.125f));
-	clickSprite.setTextureCoords(Game2D::Rect(0.250f, 0, 0.125f, 0.125f));
+	normalSprite.setTextureCoords(Game2D::Rect(0, 0, 0.0625f, 0.0625f));
+	hoverSprite.setTextureCoords(Game2D::Rect(0.0625f, 0, 0.0625f, 0.0625f));
+	clickSprite.setTextureCoords(Game2D::Rect(0.1250f, 0, 0.0625f, 0.0625f));
 
 	normalSprite.setRect(tempRect);
 	hoverSprite.setRect(tempRect);

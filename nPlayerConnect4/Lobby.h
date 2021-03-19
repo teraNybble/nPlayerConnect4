@@ -12,6 +12,11 @@
 #include <Timer.h>
 #include <functional>
 
+//TODO make the menu texture bigger (again) to put the apply texture ...
+//TODO and move the options to a more logical place ...
+//TODO and add texture for the dropdown menus ...
+//TODO and add checkbox for the colour blind option
+//TODO make it so that the option menu returns an int for which state to return to
 //TODO sort out option menu textures
 //TODO add a wakeup to the server
 //TODO identify memory leak in client and possibly server
@@ -19,6 +24,7 @@
 //TODO add message to the user if they don't connect to the server
 //TODO gravity toggle?
 //TODO add pause menu to multiplayer
+//TODO pause menu should have 3 options back to lobby, options, and quit
 //TODO show player number over piece on board for colourblind people
 
 class Lobby
