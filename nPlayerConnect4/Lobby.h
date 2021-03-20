@@ -12,9 +12,6 @@
 #include <Timer.h>
 #include <functional>
 
-//TODO make the menu texture bigger (again) to put the apply texture ...
-//TODO and move the options to a more logical place ...
-//TODO and add texture for the dropdown menus ...
 //TODO and add checkbox for the colour blind option
 //TODO make it so that the option menu returns an int for which state to return to
 //TODO sort out option menu textures

@@ -111,9 +111,11 @@ CMakeFiles/nPlayerConnect4.dir/ConnectMenu.cpp.o
 CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o
  /home/dan/CLionProjects/Game2D/AnimatedSprite.h
  /home/dan/CLionProjects/Game2D/Button.h
+ /home/dan/CLionProjects/Game2D/Checkbox.h
  /home/dan/CLionProjects/Game2D/ClickableObject.h
  /home/dan/CLionProjects/Game2D/Colour.h
  /home/dan/CLionProjects/Game2D/DrawableObject.h
+ /home/dan/CLionProjects/Game2D/Dropdown.h
  /home/dan/CLionProjects/Game2D/Fonts.h
  /home/dan/CLionProjects/Game2D/KeyMap.h
  /home/dan/CLionProjects/Game2D/KeyState.h
@@ -143,6 +145,7 @@ CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/MainMenu.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Message.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Options.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/OptionsMenu.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Server.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/SinglePlayerMenu.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/TextureManager.h
@@ -234,6 +237,40 @@ CMakeFiles/nPlayerConnect4.dir/MainMenu.cpp.o
 CMakeFiles/nPlayerConnect4.dir/Options.cpp.o
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Options.cpp
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Options.h
+CMakeFiles/nPlayerConnect4.dir/OptionsMenu.cpp.o
+ /home/dan/CLionProjects/Game2D/AnimatedSprite.h
+ /home/dan/CLionProjects/Game2D/Button.h
+ /home/dan/CLionProjects/Game2D/Checkbox.h
+ /home/dan/CLionProjects/Game2D/ClickableObject.h
+ /home/dan/CLionProjects/Game2D/Colour.h
+ /home/dan/CLionProjects/Game2D/DrawableObject.h
+ /home/dan/CLionProjects/Game2D/Dropdown.h
+ /home/dan/CLionProjects/Game2D/Fonts.h
+ /home/dan/CLionProjects/Game2D/KeyState.h
+ /home/dan/CLionProjects/Game2D/Pos2.h
+ /home/dan/CLionProjects/Game2D/Rect.h
+ /home/dan/CLionProjects/Game2D/ScreenCoord.h
+ /home/dan/CLionProjects/Game2D/Sprite.h
+ /home/dan/CLionProjects/Game2D/Timer.h
+ /home/dan/CLionProjects/Game2D/freetype.h
+ /home/dan/CLionProjects/Game2D/glew.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/FontInfo.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ImageLoder.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/OptionsMenu.cpp
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/OptionsMenu.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/TextureManager.h
+ /usr/include/freetype2/freetype/config/ftheader.h
+ /usr/include/freetype2/freetype/freetype.h
+ /usr/include/freetype2/freetype/fterrdef.h
+ /usr/include/freetype2/freetype/fterrors.h
+ /usr/include/freetype2/freetype/ftglyph.h
+ /usr/include/freetype2/freetype/ftimage.h
+ /usr/include/freetype2/freetype/ftmoderr.h
+ /usr/include/freetype2/freetype/ftoutln.h
+ /usr/include/freetype2/freetype/ftsystem.h
+ /usr/include/freetype2/freetype/fttrigon.h
+ /usr/include/freetype2/freetype/fttypes.h
+ /usr/include/freetype2/ft2build.h
 CMakeFiles/nPlayerConnect4.dir/Server.cpp.o
  /home/dan/CLionProjects/Game2D/Colour.h
  /home/dan/CLionProjects/Game2D/glew.h
@@ -288,9 +325,11 @@ CMakeFiles/nPlayerConnect4.dir/TextureManager.cpp.o
 CMakeFiles/nPlayerConnect4.dir/main.cpp.o
  /home/dan/CLionProjects/Game2D/AnimatedSprite.h
  /home/dan/CLionProjects/Game2D/Button.h
+ /home/dan/CLionProjects/Game2D/Checkbox.h
  /home/dan/CLionProjects/Game2D/ClickableObject.h
  /home/dan/CLionProjects/Game2D/Colour.h
  /home/dan/CLionProjects/Game2D/DrawableObject.h
+ /home/dan/CLionProjects/Game2D/Dropdown.h
  /home/dan/CLionProjects/Game2D/Fonts.h
  /home/dan/CLionProjects/Game2D/KeyMap.h
  /home/dan/CLionProjects/Game2D/KeyState.h
@@ -319,8 +358,10 @@ CMakeFiles/nPlayerConnect4.dir/main.cpp.o
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/MainMenu.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Message.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Options.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/OptionsMenu.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Server.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/SinglePlayerMenu.h
+ /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/TextureManager.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Version.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/glew.h
  /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/main.cpp

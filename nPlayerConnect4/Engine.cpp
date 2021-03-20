@@ -179,6 +179,7 @@ void Engine::init()
 	Game2D::Font::insert(4*1.2f);
 	Game2D::Font::insert(4);
 	Game2D::Font::insert(3);
+	Game2D::Font::insert(2);
 	Game2D::Font::initFonts();
 
 	TextureManager::loadTex("Images/menu.png");

@@ -78,7 +78,7 @@ void OptionsMenu::init()
 	Game2D::Rect tempRect = Game2D::Rect(-10, 10, 25, 5);
 	Game2D::AnimatedSprite resolutionSprite(tempRect);
 	for (int i = 0; i < 4; i++) {
-		Game2D::Colour colourArr[4] = { Game2D::Colour::White, Game2D::Colour::Yellow, Game2D::Colour::Red, Game2D::Colour::White };
+		Game2D::Colour colourArr[4] = { Game2D::Colour::White, Game2D::Colour(0.90f,0.95f,1.0f), Game2D::Colour(0.90f,0.93f,0.95f), Game2D::Colour::White };
 		Game2D::Sprite tempSptrie(tempRect);
 		tempSptrie.setColour(colourArr[i]);
 		resolutionSprite.addFrame(tempSptrie);
@@ -96,7 +96,7 @@ void OptionsMenu::init()
 	tempRect = Game2D::Rect(-40, 10, 25, 5);
 	Game2D::AnimatedSprite aspectSprite(tempRect);
 	for (int i = 0; i < 4; i++) {
-		Game2D::Colour colourArr[4] = { Game2D::Colour::White, Game2D::Colour::Yellow, Game2D::Colour::Red, Game2D::Colour::White };
+		Game2D::Colour colourArr[4] = { Game2D::Colour::White, Game2D::Colour(0.90f,0.95f,1.0f), Game2D::Colour(0.90f,0.93f,0.95f), Game2D::Colour::White };
 		Game2D::Sprite tempSptrie(tempRect);
 		tempSptrie.setColour(colourArr[i]);
 		aspectSprite.addFrame(tempSptrie);
@@ -119,6 +119,44 @@ void OptionsMenu::init()
 	resolutions.setText(std::to_string(Game2D::ScreenCoord::getWidth()) + " x " +
 						std::to_string(Game2D::ScreenCoord::getHeight()));
 
+
+	tempRect = Game2D::Rect(20,10,5,5);
+	colourblind.setRect(tempRect);
+
+	texRect = Game2D::Rect(0,0,0.0625f,0.0625f);
+
+	Game2D::AnimatedSprite checkBoxSprites(tempRect);
+	for (int i = 0; i < 3; i++) {
+		Game2D::Sprite tempSprite(tempRect);
+		tempSprite.setColour(Game2D::Colour::White);
+		Game2D::Rect tempRect = texRect;
+		//the back buton is the 1st sprite along on the second row
+		tempRect.pos.x = (i+6) * texRect.width;
+		tempRect.pos.y = 0 * texRect.height;
+		tempSprite.setTextureCoords(tempRect);
+		checkBoxSprites.addFrame(tempSprite);
+	}
+	checkBoxSprites.setFrameTime(0);
+
+	colourblind.setUncheckedSprites(checkBoxSprites);
+
+	Game2D::AnimatedSprite checkBoxSprites2(tempRect);
+	for (int i = 0; i < 3; i++) {
+		Game2D::Sprite tempSprite(tempRect);
+		tempSprite.setColour(Game2D::Colour::White);
+		Game2D::Rect tempRect = texRect;
+		//the back buton is the 1st sprite along on the second row
+		tempRect.pos.x = (i+9) * texRect.width;
+		tempRect.pos.y = 0 * texRect.height;
+		tempSprite.setTextureCoords(tempRect);
+		checkBoxSprites2.addFrame(tempSprite);
+	}
+	checkBoxSprites2.setFrameTime(0);
+//	checkBoxSprites.getSize();
+
+	colourblind.setCheckedSprites(checkBoxSprites2);
+	colourblind.setPartialcheckedSprites(checkBoxSprites2);
+	colourblind.reset();
 }
 
 void OptionsMenu::resize()
@@ -136,13 +174,15 @@ void OptionsMenu::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mo
 	apply.update(rightMousePos, mouseState, 1);
 	resolutions.update(mousePos, mouseState, 1);
 	aspectRatio.update(mousePos, mouseState, 1);
-	std::cout << "\n";
+	colourblind.update(mousePos,mouseState,1);
+	//std::cout << "\n";
 }
 
 int OptionsMenu::getResult(void(resize(float, float)))
 {
 	if (back.getState() == Game2D::ClickableObject::CLICK)		return 2;
 	if (apply.getState() == Game2D::ClickableObject::CLICK) {
+		Options::showPlayerNums = colourblind.getState();
 		std::string res = resolutions.getText();
 		std::string w = res.substr(0, res.find("x"));
 		std::string h = res.substr(res.find("x")+1, res.size()-1);
@@ -178,7 +218,11 @@ void OptionsMenu::draw()
 	Game2D::ScreenCoord::alignRight();
 	apply.draw();
 	Game2D::ScreenCoord::alignCentre();
+	colourblind.draw();
 
 	resolutions.draw();
 	aspectRatio.draw();
+
+	Game2D::Colour::White.draw();
+	Game2D::Freetype::print(Game2D::Font::getFont(2),25,10-(Game2D::Freetype::getHeight(Game2D::Font::getFont(2))/4.0f),"Show player number over pieces");
 }
