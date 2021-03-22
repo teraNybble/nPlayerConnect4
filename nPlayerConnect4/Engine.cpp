@@ -8,6 +8,7 @@ int Engine::screenWidth = 1280;
 int Engine::screenHeight = 720;
 Game2D::Pos2 Engine::mousePos;
 Game2D::KeyState::State Engine::mouseState;
+Game2D::KeyState::State Engine::escState;
 Engine::State Engine::currentState;
 MainMenu Engine::mainMenu;
 ConnectMenu Engine::connectMenu;
@@ -61,6 +62,19 @@ void Engine::keyCallback(GLFWwindow* window, int key, int scancode, int action, 
 			connectMenu.backspace();
 		}
 	}
+	if(key == GLFW_KEY_ESCAPE){
+		if(action == GLFW_PRESS){
+			escState = Game2D::KeyState::State::DOWN;
+		}
+		else if(action == GLFW_RELEASE){
+			if(escState == Game2D::KeyState::State::DOWN) {
+				escState = Game2D::KeyState::State::RELEASED;
+			}
+			else{
+				escState = Game2D::KeyState::State::UP;
+			}
+		}
+	}
 }
 
 void Engine::charCallback(GLFWwindow *window, unsigned int codepoint)
@@ -95,6 +109,42 @@ void Engine::mouseCallback(GLFWwindow* window, double xpos, double ypos)
 void Engine::setWindowTitle(std::string title)
 {
 	glfwSetWindowTitle(window,title.c_str());
+}
+
+void Engine::loadOptions()
+{
+	std::ifstream inFile("options.opt");
+
+	if(!inFile){
+		screenWidth = 1280;
+		screenHeight = 720;
+		Options::showPlayerNums = false;
+	} else {
+		inFile >> screenWidth;
+		inFile >> screenHeight;
+		inFile >> Options::showPlayerNums;
+
+		//std::cout << screenWidth << "\n" << screenHeight << "\n" << Options::showPlayerNums << "\n";
+
+		inFile.close();
+	}
+}
+
+void Engine::writeOptions()
+{
+	std::ofstream outFile("options.opt");
+
+	if(!outFile){
+		std::cerr << "Error: couldn't open options file\n";
+	}
+
+	outFile << screenWidth << "\n";
+	outFile << screenHeight << "\n";
+	outFile << Options::showPlayerNums << "\n";
+
+	if(outFile.is_open()){
+		outFile.close();
+	}
 }
 
 void Engine::display()
@@ -187,7 +237,7 @@ void Engine::init()
 
 	Game2D::ScreenCoord::init(screenWidth, screenHeight);
 
-	Options::showPlayerNums = false;
+	//Options::showPlayerNums = false;
 
 	mainMenu.init();
 	mainMenu.resize();
@@ -208,7 +258,8 @@ void Engine::init()
 
 	singlePlayerBoard.setPlayerColours(playerColours);
 
-	playerColour = Game2D::Colour::Red;
+	//playerColour = Game2D::Colour::Red;
+	playerColour = Game2D::Colour(0,0,0,0);
 
 	currentState = MENU;
 	serverLoop = true;
@@ -219,7 +270,15 @@ void Engine::init()
 
 void Engine::processKeys()
 {
+	switch (currentState) {
+		case PLAYING_MULTI:
+			if(client) { client->processKeyboard(escState); }
+			break;
+	}
 
+	if(escState == Game2D::KeyState::State::RELEASED){
+		escState = Game2D::KeyState::State::UP;
+	}
 }
 
 void Engine::processMouse()
@@ -242,6 +301,7 @@ void Engine::processMouse()
 					currentState = SOLO_MENU;
 					break;
 				case 5://Options menu
+					optionsMenu.setReturnState((int)MENU);
 					currentState = OPTIONS;
 					break;
 			}
@@ -286,6 +346,13 @@ void Engine::processMouse()
 					stopServer = true;
 					currentState = CONNECT;
 					break;
+				case 2://Options
+					optionsMenu.setReturnState(PLAYING_MULTI);
+					currentState = OPTIONS;
+					break;
+				case 3:
+					currentState = EXIT;
+					break;
 			}
 			break;
 		case SOLO_MENU:
@@ -320,10 +387,14 @@ void Engine::processMouse()
 			}
 			break;
 		case OPTIONS:
+			//should allow us to process messages in the background
+			if(optionsMenu.getReturnState() == PLAYING_MULTI){
+				if(client) { client->processMouse(mousePos,mouseState,setWindowTitle); }
+			}
 			optionsMenu.processMouse(mousePos,mouseState);
 			switch(optionsMenu.getResult(resize)) {
 				case 2: //back
-					currentState = MENU;
+					currentState = (State)optionsMenu.getReturnState();
 					break;
 			}
 			break;
@@ -378,6 +449,8 @@ bool Engine::createWindow()
 
 int Engine::mainLoop()
 {
+	loadOptions();
+
 	if(!createWindow())
 		return -1;
 
@@ -436,10 +509,13 @@ int Engine::mainLoop()
 		if(currentState == EXIT) { break; }
 	}
 
+	if(client) { delete client; }
 	serverLoop = false;
 	if(serverThread.joinable()) { serverThread.join();}
 
 	glfwTerminate();
+
+	writeOptions();
 
 	return 0;
 }

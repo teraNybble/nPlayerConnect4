@@ -12,14 +12,12 @@
 #include <Timer.h>
 #include <functional>
 
-//TODO make it so that the option menu returns an int for which state to return to
-//TODO sort out option menu textures
 //TODO add a wakeup to the server
 //TODO add message to the user if they don't connect to the server
 //TODO gravity toggle? (done by clicking the game name on the menu)
 //TODO add pause menu to multiplayer
 //TODO pause menu should have 3 options back to lobby, options, and quit
-//TODO add file I/O for saving and loading options
+
 class Lobby
 {
 private:
@@ -41,6 +39,7 @@ private:
 	Game2D::Slider redSlider;
 	Game2D::Slider greenSlider;
 	Game2D::Slider blueSlider;
+	float alpha;
 	Game2D::Sprite exampleColour;
 
 	unsigned int boardWidth;
@@ -85,12 +84,13 @@ public:
 	void setPlayerColour(int id, Game2D::Colour colour);
 	void removePlayer(int id);
 	inline Game2D::Colour getColour() const {
-		return Game2D::Colour(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue());
+		return Game2D::Colour(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue(),alpha);
 	}
 	inline void setColour(Game2D::Colour colour){
 		redSlider.setValue(colour.getR());
 		greenSlider.setValue(colour.getG());
 		blueSlider.setValue(colour.getB());
+		alpha = colour.getA();
 	}
 
 	inline uint32_t getConnectLength() const {return lineLength; }

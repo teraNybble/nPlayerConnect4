@@ -14,6 +14,7 @@
 #include "ConnectMenu.h"
 #include "SinglePlayerMenu.h"
 #include "OptionsMenu.h"
+#include <fstream>
 
 class Engine
 {
@@ -24,6 +25,7 @@ private:
 	static int screenWidth, screenHeight;
 	static Game2D::Pos2 mousePos;
 	static Game2D::KeyState::State mouseState;
+	static Game2D::KeyState::State escState;
 
 	static State currentState;
 
@@ -51,6 +53,9 @@ private:
 	static void mouseCallback(GLFWwindow* window, double xpos, double ypos);
 
 	static void setWindowTitle(std::string title);
+
+	static void loadOptions();
+	static void writeOptions();
 public:
 	Engine();
 

@@ -21,10 +21,13 @@ private:
 
 	Game2D::Checkbox colourblind;
 
+	int returnState;
 	void setResolutions(float ratio);
 public:
 	void init();
 
+	inline void setReturnState(int state) { returnState = state; }
+	inline int getReturnState() const { return returnState; }
 	void resize();
 
 	void update();

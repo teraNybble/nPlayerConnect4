@@ -13,6 +13,7 @@
 #include "Board.h"
 #include <algorithm>
 #include "Version.h"
+#include "TextureManager.h"
 
 class Client : public net::ClientInterface<GameMsg>
 {
@@ -26,6 +27,11 @@ private:
 	State currentState;
 	int32_t playerNo;
 	int32_t winningPlayer;
+
+	bool paused;
+	Game2D::Button back;
+	Game2D::Button options;
+	Game2D::Button quit;
 protected:
 public:
 	virtual net::Message<GameMsg> sendClientCheck() override
@@ -49,6 +55,11 @@ public:
 	inline void reset() { currentState = LOBBY; lobby.reset(); }
 	inline void resize() { board.resize(); }
 
+	inline void processKeyboard(Game2D::KeyState::State escState) {
+		if(escState == Game2D::KeyState::State::RELEASED){
+			paused = !paused;
+		}
+	}
 	int processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseState, void(*winTitle)(std::string) = NULL);
 
 	inline void setHost(bool host = false) { isHost = host; lobby.setHost(host); }

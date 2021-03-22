@@ -157,6 +157,9 @@ void OptionsMenu::init()
 	colourblind.setCheckedSprites(checkBoxSprites2);
 	colourblind.setPartialcheckedSprites(checkBoxSprites2);
 	colourblind.reset();
+	colourblind.setState(Options::showPlayerNums);
+
+	returnState = -1;
 }
 
 void OptionsMenu::resize()
