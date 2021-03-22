@@ -155,6 +155,7 @@ public:
 	}
 
 	~Server(){
+		m_qMessagesIn.wake_up();
 #if _WIN32
 		m_deqConnections.clear();
 		//std::cout << "Cleard the deq\n";

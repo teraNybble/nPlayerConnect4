@@ -15,8 +15,7 @@
 //TODO add a wakeup to the server
 //TODO add message to the user if they don't connect to the server
 //TODO gravity toggle? (done by clicking the game name on the menu)
-//TODO add pause menu to multiplayer
-//TODO pause menu should have 3 options back to lobby, options, and quit
+//TODO change back button to resume button and add a button that quits a game in progress (host only?)
 
 class Lobby
 {

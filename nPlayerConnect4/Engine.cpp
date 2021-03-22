@@ -486,7 +486,7 @@ int Engine::mainLoop()
 					stopServer = false;
 				}
 				if(server){
-					server->update();
+					server->update(-1,true);
 				}
 			}
 			if(server) {delete server;}
