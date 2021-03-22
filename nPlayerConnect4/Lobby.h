@@ -16,7 +16,7 @@
 //TODO sort out option menu textures
 //TODO add a wakeup to the server
 //TODO add message to the user if they don't connect to the server
-//TODO gravity toggle?
+//TODO gravity toggle? (done by clicking the game name on the menu)
 //TODO add pause menu to multiplayer
 //TODO pause menu should have 3 options back to lobby, options, and quit
 //TODO add file I/O for saving and loading options
