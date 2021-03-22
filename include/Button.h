@@ -1,10 +1,11 @@
 #ifndef BUTTON_H
 #define BUTTON_H
 
-//#include "freetype.h"
+#include "freetype.h"
 #include "ClickableObject.h"
 #include "AnimatedSprite.h"
 #include <string>
+#include <chrono>
 
 namespace Game2D
 {

@@ -19,7 +19,7 @@ namespace Game2D
 		Dropdown(Rect r);
 
 		inline void addAnims(AnimatedSprite anims, int stateFrames[5]) { mainButton.addAnims(anims, stateFrames); }
-		inline void addStateSprites(Sprite none, Sprite hover, Sprite mouseDown, Sprite click, Sprite disable) { mainButton.addStateSprites(none, hover, mouseDown, click, disable); }
+		inline void addStateSprites(Sprite none, Sprite hover, Sprite mouseDown, Sprite click, Sprite disable) { mainButton.addStateSprites(none, hover, mouseDown, click, disable); mainButton.setFrameTime(0); }
 
 		ClickableObject::ClickState update(Pos2 mousePos, KeyState::State state, float time);
 

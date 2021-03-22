@@ -181,13 +181,13 @@ void Engine::init()
 	Game2D::Font::insert(3);
 	Game2D::Font::insert(2);
 	Game2D::Font::initFonts();
-
+	
 	TextureManager::loadTex("Images/menu.png");
 	TextureManager::loadTex("Images/circle.png");
 
 	Game2D::ScreenCoord::init(screenWidth, screenHeight);
 
-	Options::showPlayerNums = true;
+	Options::showPlayerNums = false;
 
 	mainMenu.init();
 	mainMenu.resize();

@@ -4,6 +4,8 @@
 #include "freetype.h"
 #include <map>
 
+#include <iomanip>
+
 #ifndef GAME2D_FONT_PATHS
 #define GAME2D_FONT_PATHS
 
@@ -32,16 +34,25 @@ namespace Game2D
 	class Font
 	{
 	private:
-		static std::map<float, freetype::font_data> fonts;
+		//static std::map<float, freetype::font_data> fonts;
+		static std::map<float, Game2D::Freetype> fonts;
 		static int screenHeight;
 		static bool inited;
 	public:
 		//~Font() { std::cout << "fontDestructor\n"; fonts.clear(); }
 		//inline static void clear() { fonts.clear(); std::cout << fonts.size() << "\n"; }
 
+		~Font(){
+			for(auto& it : fonts){
+				it.second.clean();
+			}
+		}
+
 		inline static void insert(float h) {
-			freetype::font_data temp;
-			fonts.emplace(h, temp);
+			Game2D::Freetype temp;
+			//std::pair<float, Game2D::Freetype> test(h,temp);
+			//fonts.insert(h,temp);
+			fonts.emplace(h,temp);
 		}
 		inline static void init(int screenHeight) {
 			Font::screenHeight = screenHeight;
@@ -66,14 +77,15 @@ namespace Game2D
 			glGetFloatv(GL_PROJECTION_MATRIX, &projectionMatScreen[0][0]);
 			for (auto& it : fonts) {
 				float temp = it.first;
-				temp = (((temp * projectionMatMine[1][1]) + projectionMatMine[3][1]) / projectionMatScreen[1][1]);
+				//std::cout << temp << " " << projectionMatMine[1][1] << " " << projectionMatMine[3][1] << " " << projectionMatScreen[1][1] << "\n";
+				temp = (((temp * projectionMatMine[1][1]) + (projectionMatMine[3][1]*0)) / projectionMatScreen[1][1]);
 				//if this function has been called then clean the font before reiniting it
 				//it.second.clean();
 				it.second.init(_SysFont, temp/*it.first/* * (screenHeight / 480)*/);
 			}
 			inited = true;
 		}
-		inline static const freetype::font_data& getFont(float h) {
+		inline static const Freetype& getFont(float h) {
 			if (!inited) { std::cerr << "Error: accesing fonts before initalisation" << std::endl; }
 			return fonts.find(h)->second;
 		}

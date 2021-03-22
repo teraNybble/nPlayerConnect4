@@ -28,7 +28,7 @@ namespace Game2D
 		AnimatedSprite(Sprite s);
 
 		inline void addFrame(Sprite frame) { anim.push_back(frame); }
-		inline void clearFrames() { anim.empty(); }
+		inline void clearFrames() { anim.clear(); }
 
 		inline void setFrame(unsigned int frame) {if(frame < anim.size()) currentFrame = frame; }
 		inline unsigned int getFrame() const { return currentFrame; }

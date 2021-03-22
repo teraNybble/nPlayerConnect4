@@ -3,6 +3,7 @@
 
 #include "Rect.h"
 #include "KeyState.h"
+#include "Timer.h"
 
 namespace Game2D
 {
@@ -26,8 +27,8 @@ namespace Game2D
 
 		inline Rect getClickRegion() const { return clickRegion; }
 
-		virtual inline void move(Pos2 p)     { clickRegion.pos += p; }
-		virtual inline void setPos(Pos2 p)   { clickRegion.pos = p; }
+		virtual inline void move(Pos2 p)    { clickRegion.pos += p; }
+		virtual inline void setPos(Pos2 p)  { clickRegion.pos = p; }
 		virtual inline void setRect(Rect r) { clickRegion = r; }
 		virtual void setDimentions(float w, float h);
 
