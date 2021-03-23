@@ -50,6 +50,6 @@ inline bool operator>= (const Version& lhs, const Version& rhs){
 	return !(lhs < rhs);
 }
 
-const Version GameVer(0,3,0);
+const Version GameVer(0,4,0);
 
 #endif //VERSION_H

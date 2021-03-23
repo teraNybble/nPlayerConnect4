@@ -33,12 +33,7 @@ namespace net
 			disconnect();
 		}
 
-		virtual Message<T> sendClientCheck() { 
-#ifdef _WIN32
-			return Message<T>();
-#endif // _WIN32
-
-		}
+		virtual Message<T> sendClientCheck() { return net::Message<T>(); }
 
 		bool connect(const std::string& host, const uint16_t port){
 			try{

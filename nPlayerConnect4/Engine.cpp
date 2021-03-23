@@ -486,7 +486,7 @@ int Engine::mainLoop()
 					stopServer = false;
 				}
 				if(server){
-					server->update(-1,true);
+					server->update(-1,false);
 				}
 			}
 			if(server) {delete server;}
@@ -509,8 +509,14 @@ int Engine::mainLoop()
 		if(currentState == EXIT) { break; }
 	}
 
-	if(client) { delete client; }
+	stopServer = true;
 	serverLoop = false;
+
+	if(client) { 
+		client->leave();
+		delete client; 
+	}
+	
 	if(serverThread.joinable()) { serverThread.join();}
 
 	glfwTerminate();
