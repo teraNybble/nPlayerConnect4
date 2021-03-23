@@ -24,6 +24,8 @@ private:
 	Game2D::TextInput port;
 
 	bool isHost;
+	std::string errorMessage;
+	float errorMessageWidth;
 protected:
 public:
 	ConnectMenu();
@@ -42,6 +44,9 @@ public:
 	std::string getAddress() const { return address.getText(); }
 	uint16_t getPort() const { return std::stoul(port.getText()); }
 	bool getHost() const { return isHost; }
+
+	void setErrorMessage(std::string message);
+	inline void clearErrorMessage() { errorMessage.clear(); errorMessageWidth = 0; }
 
 
 	void draw();

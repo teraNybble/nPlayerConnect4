@@ -24,6 +24,8 @@ bool Engine::startServer;
 bool Engine::stopServer;
 bool Engine::heatBeat;
 int Engine::serverError;
+std::condition_variable Engine::cvBlocking;
+std::mutex Engine::muxBlocking;
 
 Engine::Engine()
 {
@@ -312,6 +314,7 @@ void Engine::processMouse()
 			switch (connectMenu.processMouse(mousePos,mouseState)) {
 				case 1://back
 					if(client && client->isConnected()) { client->disconnect(); }
+					connectMenu.clearErrorMessage();
 					currentState = MENU;
 					break;
 				case 2://connect to server (either self host or online)
@@ -320,11 +323,11 @@ void Engine::processMouse()
 						serverPort = connectMenu.getPort();
 						startServer = true;
 						//wait to see if the server has started of failed
-						while (serverError == -1) {
-							if(serverError != -1) break;
-						}
+						std::unique_lock<std::mutex> ul(muxBlocking);
+						cvBlocking.wait(ul);
 						if(serverError == 1) {
 							serverError = -1;
+							connectMenu.setErrorMessage("Error: couldn't start server");
 							break;
 						}
 						serverError = -1;
@@ -339,6 +342,7 @@ void Engine::processMouse()
 					client->setHost(connectMenu.getHost());
 					client->connect(connectMenu.getAddress(),connectMenu.getPort());
 					if(client->isConnected()) {
+						connectMenu.clearErrorMessage();
 						currentState = PLAYING_MULTI;
 					}
 					break;
@@ -347,7 +351,7 @@ void Engine::processMouse()
 			break;
 		case PLAYING_MULTI:
 			heatBeat = true;
-			switch (client->processMouse(mousePos,mouseState,setWindowTitle)) {
+			switch (client->processMessages(setWindowTitle)) {
 				case 1://back
 					if(client) {
 						playerColour = client->getColour();
@@ -357,13 +361,29 @@ void Engine::processMouse()
 					stopServer = true;
 					currentState = CONNECT;
 					break;
-				case 2://Options
-					optionsMenu.setReturnState(PLAYING_MULTI);
-					currentState = OPTIONS;
+				case 2://rejected
 					break;
-				case 3:
-					currentState = EXIT;
+				default:{
+					switch (client->processMouse(mousePos,mouseState)) {
+						case 1://back
+							if(client) {
+								playerColour = client->getColour();
+								client->leave();
+							}
+							//stop the server
+							stopServer = true;
+							currentState = CONNECT;
+							break;
+						case 2://Options
+							optionsMenu.setReturnState(PLAYING_MULTI);
+							currentState = OPTIONS;
+							break;
+						case 3:
+							currentState = EXIT;
+							break;
+					}
 					break;
+				}
 			}
 			break;
 		case SOLO_MENU:
@@ -400,7 +420,7 @@ void Engine::processMouse()
 		case OPTIONS:
 			//should allow us to process messages in the background
 			if(optionsMenu.getReturnState() == PLAYING_MULTI){
-				if(client) { client->processMouse(mousePos,mouseState,setWindowTitle); }
+				if(client) { client->processMessages(setWindowTitle); }
 			}
 			optionsMenu.processMouse(mousePos,mouseState);
 			switch(optionsMenu.getResult(resize)) {
@@ -483,6 +503,8 @@ int Engine::mainLoop()
 						std::cerr << e.what() << "\n";
 						serverError = 1;
 					}
+					std::unique_lock<std::mutex> ul(muxBlocking);
+					cvBlocking.notify_one();
 					startServer = false;
 				}
 				if(heatBeat){

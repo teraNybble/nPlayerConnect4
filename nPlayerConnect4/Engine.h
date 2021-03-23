@@ -45,6 +45,8 @@ private:
 	static bool stopServer;
 	static bool heatBeat;
 	static int serverError;
+	static std::condition_variable cvBlocking;
+	static std::mutex muxBlocking;
 
 	static void resize(float width, float height);
 	static void resizeCallback(GLFWwindow* window, int width, int height);

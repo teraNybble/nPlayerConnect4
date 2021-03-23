@@ -131,6 +131,12 @@ void ConnectMenu::processCodepoint(unsigned int codepoint)
 	port.update(codepoint);
 }
 
+void ConnectMenu::setErrorMessage(std::string message)
+{
+	errorMessage = message;
+	errorMessageWidth = Game2D::Freetype::getLength(Game2D::Font::getFont(3),errorMessage.c_str());
+}
+
 void ConnectMenu::draw()
 {
 	glBindTexture(GL_TEXTURE_2D, m_menuTex);
@@ -159,4 +165,8 @@ void ConnectMenu::draw()
 
 	if(!isHost) { Game2D::Freetype::print(Game2D::Font::getFont(4),-30,-2,"IP:"); }
 	Game2D::Freetype::print(Game2D::Font::getFont(4),-35,-12,"Port:");
+
+	if(errorMessageWidth > 0){
+		Game2D::Freetype::print(Game2D::Font::getFont(3),-errorMessageWidth/2.0f,10,errorMessage.c_str());
+	}
 }

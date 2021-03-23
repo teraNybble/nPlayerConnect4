@@ -320,12 +320,6 @@ png.h
 cstring
 -
 
-/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Lobby.cpp
-Lobby.h
-/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Lobby.h
-TextureManager.h
-/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/TextureManager.h
-
 /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Lobby.h
 freetype.h
 -
@@ -403,10 +397,6 @@ map
 -
 Version.h
 /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Version.h
-
-/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/SinglePlayerMenu.cpp
-SinglePlayerMenu.h
-/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/SinglePlayerMenu.h
 
 /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/SinglePlayerMenu.h
 Button.h

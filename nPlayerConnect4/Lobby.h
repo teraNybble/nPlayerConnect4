@@ -12,6 +12,8 @@
 #include <Timer.h>
 #include <functional>
 
+//TODO seperate process mouse and process message for clients
+//TODO put limits on message sizes so they can't be abused
 //TODO add message to the user if they don't connect to the server
 //TODO gravity toggle? (done by clicking the game name on the menu)
 //TODO change back button to resume button and add a button that quits a game in progress (host only?)

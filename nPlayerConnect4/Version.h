@@ -9,9 +9,9 @@ struct Version{
 		verMinor = minor;
 	}
 
-	int ver;
-	int verMajor;
-	int verMinor;
+	int32_t ver;
+	int32_t verMajor;
+	int32_t verMinor;
 };
 
 inline std::ostream& operator<< (std::ostream& os, const Version& v){

@@ -62,7 +62,7 @@ void Client::init()
 	back.alignToDrawableObject();
 }
 
-int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseState, void(*winTitle)(std::string))
+int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseState)
 {
 	if(currentState == GAME_END && mouseState == Game2D::KeyState::State::RELEASED){
 		//if the player has clicked on the victory screen send them to the lobby
@@ -70,6 +70,83 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 	}
 	int result = -1;
 
+	if(!paused) {
+		switch (currentState) {
+			case LOBBY:
+				result = lobby.processMouse(mousePos, mouseState);
+				break;
+			case PLAYING:
+				if (board.getCurrentPlayer() == playerNo) {
+					unsigned int winningPlayer;
+					int x;
+					switch (board.processMouse(mousePos, mouseState, winningPlayer, &x)) {
+						case -2://no move made
+							break;
+						default:
+							net::Message<GameMsg> msg;
+							msg.header.id = GameMsg::PLAYER_MOVE;
+							msg << (int32_t) x;
+							msg << playerNo;
+							send(msg);
+							break;
+					}
+				}
+				break;
+		}
+	} else {
+		//process the pause menu buttons
+		if(back.update(mousePos,mouseState,1) == Game2D::ClickableObject::CLICK){
+			paused = false;
+		}
+		if(options.update(mousePos,mouseState,1) == Game2D::ClickableObject::CLICK){
+			return 2;
+		}
+		if(quit.update(mousePos,mouseState,1) == Game2D::ClickableObject::CLICK){
+			return 3;
+		}
+	}
+
+
+	switch (result) {
+		case 2: {//player colour confirm button click
+			net::Message<GameMsg> msg;
+			msg.header.id = GameMsg::PLAYER_COLOUR;
+			msg << lobby.getColour();
+			send(msg);
+			break;
+		}
+		case 3: {//start the game
+			net::Message<GameMsg> msg;
+			msg.header.id = GameMsg::GAME_START;
+			msg << lobby.getConnectLength();
+			msg << lobby.getBoardHeight();
+			msg << lobby.getBoardWidth();
+			send(msg);
+			break;
+		}
+		case 5:{//connect length change
+			net::Message<GameMsg> msg;
+			msg.header.id = GameMsg::CONNECT_LENGTH;
+			msg << lobby.getConnectLength();
+			send(msg);
+		}
+		case 4: {//board size change
+			net::Message<GameMsg> msg;
+			msg.header.id = GameMsg::BOARD_SIZE;
+			msg << lobby.getBoardHeight();
+			msg << lobby.getBoardWidth();
+			send(msg);
+			break;
+		}
+		default:
+			return result;
+	}
+
+	return -1;
+}
+
+int Client::processMessages(void(*winTitle)(std::string))
+{
 	if(isConnected()){
 		if(!incoming().empty()){
 			auto msg = incoming().pop_front().msg;
@@ -118,6 +195,23 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 
 					send(outMsg);
 					//tell the server to tell every client what my colour is
+					break;
+				}
+				case GameMsg::SERVER_DENY: {
+					//std::cout << "Server Deny\n";
+					uint8_t msgSize;
+					msg >> msgSize;
+					std::string msgStr;
+					msgStr.resize(msgSize);
+
+					for(int i = 0; i < msg.size(); i++){
+						char tempChar;
+						msg >> tempChar;
+						msgStr.push_back(tempChar);
+					}
+
+					std::cout << msgStr << "\n";
+
 					break;
 				}
 				case GameMsg::PLAYER_COLOUR: {
@@ -230,80 +324,30 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 			}
 		}
 	} else {
-		return 1;//go back
-	}
+		//TODO use a for loop to look for deny msgs
+		while (!(incoming().empty())){
+			auto msg = incoming().pop_front().msg;
+			if(msg.header.id == GameMsg::SERVER_DENY){
+				//std::cout << "Server Deny\n";
+				//using uint8_t so the max message length is 255
+				uint8_t msgSize;
+				msg >> msgSize;
+				std::cout << msgSize << "\n";
+				std::string msgStr;
+				msgStr.resize(msgSize);
 
-
-	if(!paused) {
-		switch (currentState) {
-			case LOBBY:
-				result = lobby.processMouse(mousePos, mouseState);
-				break;
-			case PLAYING:
-				if (board.getCurrentPlayer() == playerNo) {
-					unsigned int winningPlayer;
-					int x;
-					switch (board.processMouse(mousePos, mouseState, winningPlayer, &x)) {
-						case -2://no move made
-							break;
-						default:
-							net::Message<GameMsg> msg;
-							msg.header.id = GameMsg::PLAYER_MOVE;
-							msg << (int32_t) x;
-							msg << playerNo;
-							send(msg);
-							break;
-					}
+				for(int i = 0; i < msgSize; i++){
+					char tempChar;
+					msg >> tempChar;
+					msgStr.push_back(tempChar);
 				}
-				break;
-		}
-	} else {
-		//process the pause menu buttons
-		if(back.update(mousePos,mouseState,1) == Game2D::ClickableObject::CLICK){
-			paused = false;
-		}
-		if(options.update(mousePos,mouseState,1) == Game2D::ClickableObject::CLICK){
-			return 2;
-		}
-		if(quit.update(mousePos,mouseState,1) == Game2D::ClickableObject::CLICK){
-			return 3;
-		}
-	}
 
+				std::cout << msgStr << "\n";
 
-	switch (result) {
-		case 2: {//player colour confirm button click
-			net::Message<GameMsg> msg;
-			msg.header.id = GameMsg::PLAYER_COLOUR;
-			msg << lobby.getColour();
-			send(msg);
-			break;
+			}
 		}
-		case 3: {//start the game
-			net::Message<GameMsg> msg;
-			msg.header.id = GameMsg::GAME_START;
-			msg << lobby.getConnectLength();
-			msg << lobby.getBoardHeight();
-			msg << lobby.getBoardWidth();
-			send(msg);
-			break;
-		}
-		case 5:{//connect length change
-			net::Message<GameMsg> msg;
-			msg.header.id = GameMsg::CONNECT_LENGTH;
-			msg << lobby.getConnectLength();
-			send(msg);
-		}
-		case 4: {//board size change
-			net::Message<GameMsg> msg;
-			msg.header.id = GameMsg::BOARD_SIZE;
-			msg << lobby.getBoardHeight();
-			msg << lobby.getBoardWidth();
-			send(msg);
-			break;
-		}
-		default:
-			return result;
+
+		return 1;//go back
 	}
 
 	return -1;

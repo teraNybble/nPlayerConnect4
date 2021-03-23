@@ -60,7 +60,8 @@ public:
 			paused = !paused;
 		}
 	}
-	int processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseState, void(*winTitle)(std::string) = NULL);
+	int processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseState);
+	int processMessages(void(*winTitle)(std::string) = NULL);
 
 	inline void setHost(bool host = false) { isHost = host; lobby.setHost(host); }
 

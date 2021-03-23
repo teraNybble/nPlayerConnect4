@@ -27,10 +27,21 @@ private:
 			Game2D::Colour(1,0.75f,0.8f),
 	};
 protected:
-	virtual bool onClientConnect(std::shared_ptr<net::Connection<GameMsg>> client) override {
+	virtual bool onClientConnect(std::shared_ptr<net::Connection<GameMsg>> client, net::Message<GameMsg>& denyMsg) override {
 
 	//if the game has started reject the connection
-	if(inGame){
+
+	denyMsg.header.id = GameMsg::SERVER_DENY;
+
+	std::string denyMsgStr = "Game in progress";
+	if(inGame) {
+
+		for (int i = denyMsgStr.size() - 1; i >= 0; i--) {
+			denyMsg << denyMsgStr[i];
+		}
+
+		denyMsg << (uint8_t)denyMsgStr.size();
+
 		return false;
 	}
 
@@ -145,7 +156,14 @@ protected:
 
 		return (temp == GameVer);
 
-		return true;
+		if(temp==GameVer){
+			return true;
+		} else {
+			//TODO send the incorrect game ver msg
+			return false;
+		}
+
+
 	}
 public:
 	Server(uint16_t port) : net::ServerInterface<GameMsg>(port){
