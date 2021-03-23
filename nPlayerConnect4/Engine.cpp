@@ -23,6 +23,7 @@ bool Engine::serverLoop;
 bool Engine::startServer;
 bool Engine::stopServer;
 bool Engine::heatBeat;
+int Engine::serverError;
 
 Engine::Engine()
 {
@@ -266,6 +267,7 @@ void Engine::init()
 	startServer = false;
 	stopServer = false;
 	heatBeat = false;
+	serverError = -1;
 }
 
 void Engine::processKeys()
@@ -317,6 +319,15 @@ void Engine::processMouse()
 						//the user is a host so start the server
 						serverPort = connectMenu.getPort();
 						startServer = true;
+						//wait to see if the server has started of failed
+						while (serverError == -1) {
+							if(serverError != -1) break;
+						}
+						if(serverError == 1) {
+							serverError = -1;
+							break;
+						}
+						serverError = -1;
 					}
 					if(client) {
 						playerColour = client->getColour();
@@ -467,8 +478,10 @@ int Engine::mainLoop()
 					try {
 						server = new Server(serverPort);
 						server->start();
+						serverError = 0;
 					} catch (std::exception e){
 						std::cerr << e.what() << "\n";
+						serverError = 1;
 					}
 					startServer = false;
 				}
@@ -512,11 +525,11 @@ int Engine::mainLoop()
 	stopServer = true;
 	serverLoop = false;
 
-	if(client) { 
+	if(client) {
 		client->leave();
-		delete client; 
+		delete client;
 	}
-	
+
 	if(serverThread.joinable()) { serverThread.join();}
 
 	glfwTerminate();

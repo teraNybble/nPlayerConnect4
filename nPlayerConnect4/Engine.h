@@ -44,6 +44,7 @@ private:
 	static bool startServer;
 	static bool stopServer;
 	static bool heatBeat;
+	static int serverError;
 
 	static void resize(float width, float height);
 	static void resizeCallback(GLFWwindow* window, int width, int height);

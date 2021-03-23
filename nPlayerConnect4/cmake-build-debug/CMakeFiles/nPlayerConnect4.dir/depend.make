@@ -61,6 +61,7 @@ CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: ../ImageLoder.h
 CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: ../Lobby.h
 CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: ../Message.h
 CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: ../Options.h
+CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: ../TextureManager.h
 CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: ../Version.h
 CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: /usr/include/freetype2/freetype/config/ftheader.h
 CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: /usr/include/freetype2/freetype/freetype.h
@@ -255,6 +256,7 @@ CMakeFiles/nPlayerConnect4.dir/OptionsMenu.cpp.o: /home/dan/CLionProjects/Game2D
 CMakeFiles/nPlayerConnect4.dir/OptionsMenu.cpp.o: /home/dan/CLionProjects/Game2D/glew.h
 CMakeFiles/nPlayerConnect4.dir/OptionsMenu.cpp.o: ../FontInfo.h
 CMakeFiles/nPlayerConnect4.dir/OptionsMenu.cpp.o: ../ImageLoder.h
+CMakeFiles/nPlayerConnect4.dir/OptionsMenu.cpp.o: ../Options.h
 CMakeFiles/nPlayerConnect4.dir/OptionsMenu.cpp.o: ../OptionsMenu.cpp
 CMakeFiles/nPlayerConnect4.dir/OptionsMenu.cpp.o: ../OptionsMenu.h
 CMakeFiles/nPlayerConnect4.dir/OptionsMenu.cpp.o: ../TextureManager.h
