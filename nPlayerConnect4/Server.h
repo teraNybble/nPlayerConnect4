@@ -6,6 +6,7 @@
 #include <Colour.h>
 #include <map>
 #include "Version.h"
+#include <sstream>
 
 class Server : public net::ServerInterface<GameMsg>
 {
@@ -149,21 +150,35 @@ protected:
 		}
 	}
 
-	virtual bool checkClient(net::Message<GameMsg> msg, std::shared_ptr<net::Connection<GameMsg>> client) override {
+	virtual bool checkClient(net::Message<GameMsg> msg,bool& sendMsg, net::Message<GameMsg>& outMsg) override {
+		sendMsg = true;//we'll close the connection
 		Version temp;
 
 		msg >> temp;
 
-		return (temp == GameVer);
+		//return (temp == GameVer);
 
-		if(temp==GameVer){
-			return true;
-		} else {
+		if(temp!=GameVer){
+			std::cout << "Rejecting\n";
+			//net::Message<GameMsg> outMsg;
+			outMsg.header.id = GameMsg::SERVER_DENY;
+			std::string denyMsgStr;
+			std::stringstream denyMsgStream;
+			denyMsgStream << "Error incorrect game version (";
+			denyMsgStream << GameVer;
+			denyMsgStream << ") required";
+			denyMsgStr = denyMsgStream.str();
+			for (int i = denyMsgStr.size() - 1; i >= 0; i--) {
+				outMsg << denyMsgStr[i];
+			}
+
+			outMsg << (uint8_t)denyMsgStr.size();
 			//TODO send the incorrect game ver msg
+			//client->closeConnWithMsg(outMsg);
 			return false;
 		}
 
-
+		return true;
 	}
 public:
 	Server(uint16_t port) : net::ServerInterface<GameMsg>(port){
