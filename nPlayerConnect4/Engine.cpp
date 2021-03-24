@@ -349,11 +349,14 @@ void Engine::processMouse()
 
 			}
 			break;
-		case PLAYING_MULTI:
+		case PLAYING_MULTI: {
 			heatBeat = true;
-			switch (client->processMessages(setWindowTitle)) {
+			std::string errorMessage;
+			switch (client->processMessages(errorMessage, setWindowTitle)) {
+				case 2://rejected
+					connectMenu.setErrorMessage(errorMessage);
 				case 1://back
-					if(client) {
+					if (client) {
 						playerColour = client->getColour();
 						client->leave();
 					}
@@ -361,12 +364,10 @@ void Engine::processMouse()
 					stopServer = true;
 					currentState = CONNECT;
 					break;
-				case 2://rejected
-					break;
-				default:{
-					switch (client->processMouse(mousePos,mouseState)) {
+				default: {
+					switch (client->processMouse(mousePos, mouseState)) {
 						case 1://back
-							if(client) {
+							if (client) {
 								playerColour = client->getColour();
 								client->leave();
 							}
@@ -386,6 +387,7 @@ void Engine::processMouse()
 				}
 			}
 			break;
+		}
 		case SOLO_MENU:
 			switch (singlePlayerMenu.processMouse(mousePos, mouseState)) {
 			case 1://back
@@ -420,7 +422,8 @@ void Engine::processMouse()
 		case OPTIONS:
 			//should allow us to process messages in the background
 			if(optionsMenu.getReturnState() == PLAYING_MULTI){
-				if(client) { client->processMessages(setWindowTitle); }
+				std::string str;
+				if(client) { client->processMessages(str,setWindowTitle); }
 			}
 			optionsMenu.processMouse(mousePos,mouseState);
 			switch(optionsMenu.getResult(resize)) {

@@ -145,7 +145,7 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 	return -1;
 }
 
-int Client::processMessages(void(*winTitle)(std::string))
+int Client::processMessages(std::string& message, void(*winTitle)(std::string))
 {
 	if(isConnected()){
 		if(!incoming().empty()){
@@ -324,7 +324,7 @@ int Client::processMessages(void(*winTitle)(std::string))
 			}
 		}
 	} else {
-		//TODO use a for loop to look for deny msgs
+		bool foundMessage = false;
 		while (!(incoming().empty())){
 			auto msg = incoming().pop_front().msg;
 			if(msg.header.id == GameMsg::SERVER_DENY){
@@ -332,9 +332,9 @@ int Client::processMessages(void(*winTitle)(std::string))
 				//using uint8_t so the max message length is 255
 				uint8_t msgSize;
 				msg >> msgSize;
-				std::cout << msgSize << "\n";
+				//std::cout << msgSize << "\n";
 				std::string msgStr;
-				msgStr.resize(msgSize);
+				//msgStr.resize(msgSize);
 
 				for(int i = 0; i < msgSize; i++){
 					char tempChar;
@@ -342,12 +342,18 @@ int Client::processMessages(void(*winTitle)(std::string))
 					msgStr.push_back(tempChar);
 				}
 
-				std::cout << msgStr << "\n";
+				message = msgStr;
 
+				foundMessage = true;
+				break;
 			}
 		}
 
-		return 1;//go back
+		if(!foundMessage){
+			//provide generic message
+			message = "An error occurred";
+		}
+		return 2;//go back
 	}
 
 	return -1;
