@@ -48,6 +48,8 @@ public:
 	void setErrorMessage(std::string message);
 	inline void clearErrorMessage() { errorMessage.clear(); errorMessageWidth = 0; }
 
+	void disableConnect() { connectButton.disable(); }
+	void enableConnect() { connectButton.enable(); }
 
 	void draw();
 };

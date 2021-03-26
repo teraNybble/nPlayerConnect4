@@ -29,7 +29,7 @@ void ConnectMenu::init()
 	hostText.text = "Host";
 	hostText.width = Game2D::Freetype::getLength(Game2D::Font::getFont(connectText.fontSize), connectText.text.c_str());
 
-	Game2D::Sprite normalSprite, hoverSprite, clickSprite;
+	Game2D::Sprite normalSprite, hoverSprite, clickSprite, disabledSprite;
 	Game2D::Rect tempRect = Game2D::Rect(15,-40,10,5);
 
 	normalSprite.setTextureCoords(Game2D::Rect(0.375f, 0.1875f, 0.125f, 0.0625f));
@@ -40,6 +40,7 @@ void ConnectMenu::init()
 	hoverSprite.setRect(tempRect);
 	clickSprite.setRect(tempRect);
 
+	disabledSprite.setColour(Game2D::Colour::White);
 	normalSprite.setColour(Game2D::Colour::White);
 	hoverSprite.setColour(Game2D::Colour::White);
 	clickSprite.setColour(Game2D::Colour::White);
@@ -50,6 +51,7 @@ void ConnectMenu::init()
 
 	tempRect = Game2D::Rect(-15,-40,10,5);
 
+	disabledSprite.setTextureCoords(Game2D::Rect(0.25f, 0.25f, 0.125f, 0.0625f));
 	normalSprite.setTextureCoords(Game2D::Rect(0.25f, 0.1875f, 0.125f, 0.0625f));
 	hoverSprite.setTextureCoords(Game2D::Rect(0.25f, 0.1250f, 0.125f, 0.0625f));
 	clickSprite.setTextureCoords(Game2D::Rect(0.25f, 0.0625f, 0.125f, 0.0625f));

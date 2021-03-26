@@ -195,6 +195,7 @@ int Client::processMessages(std::string& message, void(*winTitle)(std::string))
 
 					send(outMsg);
 					//tell the server to tell every client what my colour is
+					return 3;
 					break;
 				}
 				case GameMsg::SERVER_DENY: {
@@ -210,7 +211,7 @@ int Client::processMessages(std::string& message, void(*winTitle)(std::string))
 						msgStr.push_back(tempChar);
 					}
 
-					std::cout << msgStr << "\n";
+					//std::cout << msgStr << "\n";
 
 					break;
 				}

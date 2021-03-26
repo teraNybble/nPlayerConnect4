@@ -166,6 +166,7 @@ void Engine::display()
 		case MENU:
 			mainMenu.draw();
 			break;
+		case CONNECTING:
 		case CONNECT:
 			connectMenu.draw();
 			break;
@@ -310,6 +311,22 @@ void Engine::processMouse()
 					break;
 			}
 			break;
+		case CONNECTING:{
+			std::string errorMessage;
+			switch (client->processMessages(errorMessage,setWindowTitle)) {
+				case 3://accept
+					currentState = PLAYING_MULTI;
+					connectMenu.enableConnect();
+					break;
+				case 2://reject
+					connectMenu.setErrorMessage(errorMessage);
+				case 1://back
+					currentState = CONNECT;
+					connectMenu.enableConnect();
+					break;
+			}
+			//break;
+		}
 		case CONNECT:
 			switch (connectMenu.processMouse(mousePos,mouseState)) {
 				case 1://back
@@ -343,7 +360,8 @@ void Engine::processMouse()
 					client->connect(connectMenu.getAddress(),connectMenu.getPort());
 					if(client->isConnected()) {
 						connectMenu.clearErrorMessage();
-						currentState = PLAYING_MULTI;
+						currentState = CONNECTING;
+						connectMenu.disableConnect();
 					}
 					break;
 
