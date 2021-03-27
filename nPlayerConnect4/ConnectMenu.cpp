@@ -46,7 +46,7 @@ void ConnectMenu::init()
 	clickSprite.setColour(Game2D::Colour::White);
 
 	backButton.setRect(tempRect);
-	backButton.addStateSprites(normalSprite,hoverSprite,clickSprite,clickSprite,normalSprite);
+	backButton.addStateSprites(normalSprite,hoverSprite,clickSprite,clickSprite,disabledSprite);
 	backButton.alignToDrawableObject();
 
 	tempRect = Game2D::Rect(-15,-40,10,5);
