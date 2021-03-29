@@ -17,6 +17,7 @@ class Board
 private:
 	int width, height;
 	int lineLength;
+	bool gravity;
 
 	std::vector<std::vector<int>> board;
 
@@ -46,6 +47,9 @@ public:
 	inline void setPlayerColours(std::vector<Game2D::Colour>& colours) { this->playerColours = colours; }
 	inline void setNumPlayers(unsigned int num) { this->numPlayers = num; }
 	inline unsigned int getCurrentPlayer() const { return currentPlayer; }
+	inline void setGravity(bool grav) { gravity = grav; }
+	inline bool getGravity() const { return gravity; }
+
 
 	void initBoard();
 	void resize();

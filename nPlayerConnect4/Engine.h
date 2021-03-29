@@ -36,6 +36,7 @@ private:
 
 	static Board singlePlayerBoard;
 	static unsigned int winningPlayer;
+	static bool gravity;
 
 	static Client* client;
 	static Game2D::Colour playerColour;

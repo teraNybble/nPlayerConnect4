@@ -27,6 +27,7 @@ private:
 	State currentState;
 	int32_t playerNo;
 	int32_t winningPlayer;
+	bool gravity;
 
 	bool paused;
 	Game2D::Button back;
@@ -64,6 +65,7 @@ public:
 	int processMessages(std::string& message,void(*winTitle)(std::string) = NULL);
 
 	inline void setHost(bool host = false) { isHost = host; lobby.setHost(host); }
+	inline void setGravity(bool grav) { gravity = grav; }
 
 	Game2D::Colour getColour() const { return lobby.getColour(); }
 	inline void setColour(Game2D::Colour colour) { lobby.setColour(colour); }

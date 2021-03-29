@@ -16,9 +16,12 @@ private:
 	Game2D::Button host;
 	Game2D::Button join;
 	Game2D::Button options;
+	Game2D::Button gravButt;
 	GLuint mainMenuTex;
 	TextInfo title;
 	TextInfo version;
+
+	bool gravity;
 public:
 	void init();
 

@@ -25,12 +25,30 @@ void Board::setClickboxes()
 
 	float segDim = GetSegDim();
 
-	float clickHeight = (segDim + 2) * height;
-	for (float i = 0, x = (0 - ((segDim) * (width - 1)) / 2.0f); i < width; i++, x+=(segDim)) {
-		Game2D::ClickableObject temp;
-		temp.setRect(Game2D::Rect(x,0, segDim,((segDim) * (height))));
-		clickboxes.push_back(temp);
-		clickboxes.back().alignToDrawableObject();
+	if(gravity) {
+		float clickHeight = (segDim + 2) * height;
+		for (float i = 0, x = (0 - ((segDim) * (width - 1)) / 2.0f); i < width; i++, x += (segDim)) {
+			Game2D::ClickableObject temp;
+			temp.setRect(Game2D::Rect(x, 0, segDim, ((segDim) * (height))));
+			clickboxes.push_back(temp);
+			clickboxes.back().alignToDrawableObject();
+		}
+	} else {
+		float x = (0 - ((segDim) * (width-1)) / 2.0f);
+		float y = -50 + (segDim/2.0f)+2;
+
+		for(int i = 0; i < width; i++){
+			y = 0 - ((segDim) * ((height-1)/2.0));
+			for(int j = 0; j < height; j++){
+				Game2D::ClickableObject temp;
+				temp.setRect(Game2D::Rect(x, y, segDim, (segDim)));
+				clickboxes.push_back(temp);
+				clickboxes.back().alignToDrawableObject();
+
+				y += segDim;// + 2;
+			}
+			x += segDim; //+ 2;
+		}
 	}
 
 	float projectionMatMine[4][4];
@@ -68,6 +86,7 @@ void Board::initBoard()
 
 	currentPlayer = 0;//so it starts as player 1
 	nextInsertPos = Game2D::Pos2(-1,-1);
+	//gravity = false;
 }
 
 int Board::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseState, unsigned int& winningPlayer, int* x)
@@ -89,9 +108,9 @@ int Board::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseStat
 				nextInsertPos = Game2D::Pos2(-1,-1);
 			}
 		}
-
 		i++;
 	}
+	std::cout << "\n";
 	if(!newHighlight){
 		nextInsertPos = Game2D::Pos2(-1,-1);
 	}
@@ -142,21 +161,33 @@ int Board::makeMove(int x, int playerNum, unsigned int& winningPlayer)
 
 bool Board::insertPice(int x, int playerNum,Game2D::Pos2& insertPos)
 {
-	for(int i = height - 1; i >=0; i--){
-		if (board[i][x] != -1) {
-			if (i == height - 1) {
-				return false;
+	if(gravity) {
+		for (int i = height - 1; i >= 0; i--) {
+			if (board[i][x] != -1) {
+				if (i == height - 1) {
+					return false;
+				}
+				board[i + 1][x] = playerNum;
+				insertPos.x = x;
+				insertPos.y = i + 1;
+				//std::cout << "i\t" << i << " x\t" << insertPos.x << " y\t" << insertPos.y << "\n";
+				return true;
 			}
-			board[i + 1][x] = playerNum;
-			insertPos.x = x;
-			insertPos.y = i + 1;
-			return true;
+			if (i == 0) {
+				board[i][x] = playerNum;
+				insertPos.x = x;
+				insertPos.y = i;
+				return true;
+			}
 		}
-		if (i == 0) {
-			board[i][x] = playerNum;
-			insertPos.x = x;
-			insertPos.y = i;
+	} else {
+		insertPos.x = x/height;
+		insertPos.y = x%height;
+		if(board[insertPos.y][insertPos.x] == -1) {
+			board[insertPos.y][insertPos.x] = playerNum;
 			return true;
+		} else {
+			return false;
 		}
 	}
 
@@ -223,7 +254,7 @@ bool Board::checkDiag(Game2D::Pos2 pos)
 		}
 	}
 
-	if(line.size() < 4)
+	if(line.size() < lineLength)
 		return false;
 
 	int count = 1;

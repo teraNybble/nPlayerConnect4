@@ -124,12 +124,14 @@ protected:
 				uint32_t width;
 				uint32_t height;
 				uint32_t connectLentgh;
+				bool gravity;
 
 				msg >> width;
 				msg >> height;
 				msg >> connectLentgh;
+				msg >> gravity;
 
-				startGame(width,height,connectLentgh);
+				startGame(width,height,connectLentgh,gravity);
 				break;
 			}
 			case GameMsg::GAME_WIN: {
@@ -159,7 +161,7 @@ protected:
 		//return (temp == GameVer);
 
 		if(temp!=GameVer){
-			std::cout << "Rejecting\n";
+			//std::cout << "Rejecting\n";
 			//net::Message<GameMsg> outMsg;
 			outMsg.header.id = GameMsg::SERVER_DENY;
 			std::string denyMsgStr;
@@ -178,6 +180,9 @@ protected:
 			return false;
 		}
 
+		//bool grav;
+
+
 		return true;
 	}
 public:
@@ -195,13 +200,14 @@ public:
 #endif
 	}
 
-	void startGame(uint32_t boardWidth, uint32_t boardHeight, uint32_t connectLength)
+	void startGame(uint32_t boardWidth, uint32_t boardHeight, uint32_t connectLength, bool gravity)
 	{
 		int i = 0;
 		for(auto& player : m_deqConnections){
 			net::Message<GameMsg> msg;
 			msg.header.id = GameMsg::GAME_START;
 			//cast all the values to uint32 so they are the same size regardless of platform
+			msg << gravity;
 			msg << connectLength;
 			msg << boardHeight;
 			msg << boardWidth;

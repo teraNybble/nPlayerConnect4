@@ -16,6 +16,7 @@ SinglePlayerMenu Engine::singlePlayerMenu;
 OptionsMenu Engine::optionsMenu;
 Board Engine::singlePlayerBoard;
 unsigned int Engine::winningPlayer;
+bool Engine::gravity;
 Game2D::Colour Engine::playerColour;
 Client* Engine::client;
 uint16_t Engine::serverPort;
@@ -242,6 +243,7 @@ void Engine::init()
 	Game2D::ScreenCoord::init(screenWidth, screenHeight);
 
 	//Options::showPlayerNums = false;
+	gravity = true;
 
 	mainMenu.init();
 	mainMenu.resize();
@@ -309,6 +311,14 @@ void Engine::processMouse()
 					optionsMenu.setReturnState((int)MENU);
 					currentState = OPTIONS;
 					break;
+				case 6://grav toggle
+					gravity = !gravity;
+					if(gravity){
+						setWindowTitle("n Player Connect x");
+					} else {
+						setWindowTitle("n Player x Sized Naughts & Crosses");
+					}
+					break;
 			}
 			break;
 		case CONNECTING:{
@@ -355,6 +365,7 @@ void Engine::processMouse()
 					}
 					client = new Client();
 					client->init();
+					client->setGravity(gravity);
 					client->setColour(playerColour);
 					client->setHost(connectMenu.getHost());
 					client->connect(connectMenu.getAddress(),connectMenu.getPort());
@@ -412,13 +423,21 @@ void Engine::processMouse()
 				currentState = MENU;
 				break;
 			case 2://start
+				singlePlayerBoard.setGravity(gravity);
 				singlePlayerBoard.setBoardDims(singlePlayerMenu.getBoardWidth(),singlePlayerMenu.getBoardHeight());
 				singlePlayerBoard.setLineLength(singlePlayerMenu.getLineLength());
 				singlePlayerBoard.setNumPlayers(singlePlayerMenu.getNumPlayers());
 				std::string tempString;
 				tempString += std::to_string(singlePlayerMenu.getNumPlayers());
-				tempString += " Player Connect ";
+				if(singlePlayerBoard.getGravity()) {
+					tempString += " Player Connect ";
+				} else {
+					tempString += " Player ";
+				}
 				tempString += std::to_string(singlePlayerMenu.getLineLength());
+				if(!singlePlayerBoard.getGravity()){
+					tempString += " Sized Naughts & Crosses";
+				}
 				setWindowTitle(tempString);
 				singlePlayerBoard.initBoard();
 
@@ -452,7 +471,11 @@ void Engine::processMouse()
 			break;
 		case WIN:
 		case TIE:
-			setWindowTitle("n Player Connect x");
+			if(singlePlayerBoard.getGravity()) {
+				setWindowTitle("n Player Connect x");
+			} else {
+				setWindowTitle("n Player x Sized Naughts & Crosses");
+			}
 			if (mouseState == Game2D::KeyState::DOWN) {
 				currentState = SOLO_MENU;
 			}

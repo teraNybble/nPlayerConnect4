@@ -4,6 +4,7 @@ void Client::init()
 {
 	lobby.init();
 	paused = false;
+	gravity  = true;
 
 	Game2D::Rect tempRect;
 	Game2D::Sprite tempNormal, tempHover, tempClick;
@@ -118,6 +119,7 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 		case 3: {//start the game
 			net::Message<GameMsg> msg;
 			msg.header.id = GameMsg::GAME_START;
+			msg << gravity;
 			msg << lobby.getConnectLength();
 			msg << lobby.getBoardHeight();
 			msg << lobby.getBoardWidth();
@@ -247,6 +249,8 @@ int Client::processMessages(std::string& message, void(*winTitle)(std::string))
 					break;
 				}
 				case GameMsg::GAME_START:{
+					//TODO add gravity
+					bool gravity;
 					uint32_t noPlayers;
 					uint32_t width, height;
 					uint32_t connectLength;
@@ -264,7 +268,9 @@ int Client::processMessages(std::string& message, void(*winTitle)(std::string))
 					msg >> width;
 					msg >> height;
 					msg >> connectLength;
+					msg >> gravity;
 					//set up the board
+					board.setGravity(gravity);
 					board.setLineLength(connectLength);
 					board.setBoardDims(width,height);
 					board.setNumPlayers(noPlayers);
@@ -273,8 +279,15 @@ int Client::processMessages(std::string& message, void(*winTitle)(std::string))
 
 					if(winTitle){
 						std::string tempStr = std::to_string(noPlayers);
-						tempStr += " Player Connect ";
-						tempStr += std::to_string(connectLength);
+						if(board.getGravity()){
+							tempStr += " Player Connect ";
+							tempStr += std::to_string(connectLength);
+						} else {
+							tempStr += " Player ";
+							tempStr += std::to_string(connectLength);
+							tempStr += " Sized Naughts & Crosses";
+						}
+
 						winTitle(tempStr);
 					}
 
@@ -283,7 +296,12 @@ int Client::processMessages(std::string& message, void(*winTitle)(std::string))
 				}
 				case GameMsg::GAME_OVER:{
 					if(winTitle){
-						std::string tempStr = "n Player Connect x";
+						std::string tempStr;
+						if(board.getGravity()) {
+							tempStr = "n Player Connect x";
+						} else {
+							tempStr = "n Player x Sized Naughts & Crosses";
+						}
 						winTitle(tempStr);
 					}
 					msg >> winningPlayer;

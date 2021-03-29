@@ -26,6 +26,20 @@ void MainMenu::init()
 	start.addStateSprites(tempNormal,tempHover,tempClick,tempClick,tempNormal);
 	start.alignToDrawableObject();
 
+	tempRect = Game2D::Rect(0,27.5,58,6);
+
+	tempNormal.setRect(tempRect);
+	tempHover.setRect(tempRect);
+	tempClick.setRect(tempRect);
+
+	tempNormal.setColour(Game2D::Colour::Black);
+	tempHover.setColour(Game2D::Colour::Red);
+	tempClick.setColour(Game2D::Colour::Blue);
+
+	gravButt.setRect(tempRect);
+	gravButt.addStateSprites(tempNormal,tempHover,tempClick,tempClick,tempNormal);
+	gravButt.alignToDrawableObject();
+
 	tempRect = Game2D::Rect(5.5,-20,10,5);
 
 	tempNormal.setTextureCoords(Game2D::Rect(0.125f, 0.1875f, 0.125f, 0.0625f));
@@ -35,6 +49,10 @@ void MainMenu::init()
 	tempNormal.setRect(tempRect);
 	tempHover.setRect(tempRect);
 	tempClick.setRect(tempRect);
+
+	tempNormal.setColour(Game2D::Colour::White);
+	tempHover.setColour(Game2D::Colour::White);
+	tempClick.setColour(Game2D::Colour::White);
 
 	host.setRect(tempRect);
 	host.addStateSprites(tempNormal,tempHover,tempClick,tempClick,tempNormal);
@@ -92,6 +110,7 @@ void MainMenu::init()
 	options.addStateSprites(tempNormal,tempHover,tempClick,tempClick,tempNormal);
 	options.alignToDrawableObject();
 
+	gravity = true;
 
 	resize();
 }
@@ -100,8 +119,16 @@ void MainMenu::resize()
 {
 	Game2D::ScreenCoord::alignCentre();
 	title.fontSize = 5;
-	title.text = "n Player Connect x";
+	if(gravity){
+		title.text = "n Player Connect x";
+	} else {
+		title.text = "n Player x Sized Naughts & Crosses";
+	}
 	title.width = Game2D::Freetype::getLength(Game2D::Font::getFont(title.fontSize), title.text.c_str());
+
+	std::cout << title.width << "\n";
+	gravButt.setRect(Game2D::Rect(0,27.5,title.width,6));
+	gravButt.alignToDrawableObject();
 
 	version.fontSize = 3;
 	version.text = "%d.%d.%d";
@@ -131,6 +158,11 @@ int MainMenu::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseS
 	if(quit.update(mousePos,mouseState,1) == Game2D::ClickableObject::ClickState::CLICK){
 		return 1;
 	}
+	if(gravButt.update(mousePos,mouseState,1) == Game2D::ClickableObject::ClickState::CLICK){
+		gravity = !gravity;
+		resize();
+		return 6;
+	}
 
 	return 0;
 }
@@ -140,6 +172,7 @@ void MainMenu::draw()
 	glBindTexture(GL_TEXTURE_2D, mainMenuTex);
 	Game2D::Colour(1, 1, 1).draw();
 
+	//gravButt.draw(); //only drawn for debugging
 	host.draw();
 	join.draw();
 	start.draw();
