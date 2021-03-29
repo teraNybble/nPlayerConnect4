@@ -249,7 +249,6 @@ int Client::processMessages(std::string& message, void(*winTitle)(std::string))
 					break;
 				}
 				case GameMsg::GAME_START:{
-					//TODO add gravity
 					bool gravity;
 					uint32_t noPlayers;
 					uint32_t width, height;
