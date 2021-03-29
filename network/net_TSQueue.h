@@ -4,8 +4,14 @@
 #include "net_common.h"
 #include "net_message.h"
 
+#ifdef _WIN32
+#if _MSVC_LANG < 201703L
+#error This lib needs C++17 or greater
+#endif
+#else
 #if __cplusplus < 201703L
-//#error This lib needs C++17 or greater
+#error This lib needs C++17 or greater
+#endif
 #endif
 
 namespace net

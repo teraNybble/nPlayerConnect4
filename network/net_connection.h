@@ -192,12 +192,18 @@ namespace net
 			asio::async_read(m_socket, asio::buffer(&m_clientCheckMsg.header, sizeof(MessageHeader<T>)),
 				[this,server](std::error_code ec, std::size_t length) {
 					if (!ec) {
+						bool sendMsg = false;
+						Message<T> outMsg;
 						if (m_clientCheckMsg.header.size > 0) {
 							m_clientCheckMsg.body.resize(m_clientCheckMsg.header.size);
 							readClientCheckBody(server);
-						} else if (!server->checkClient(m_clientCheckMsg)) {
+						} else if (!server->checkClient(m_clientCheckMsg, sendMsg, outMsg)) {
 							std::cout << "Client disconnected (ClientCheck Fail)\n";
-							m_socket.close();
+							if(sendMsg) {
+								closeConnWithMsg(outMsg);
+							} else {
+								m_socket.close();
+							}
 						} else {
 							std::cout << "Client Validated\n";
 							server->onClientValidated(this->shared_from_this());
@@ -216,11 +222,16 @@ namespace net
 			asio::async_read(m_socket, asio::buffer(m_clientCheckMsg.body.data(), m_clientCheckMsg.body.size()),
 				[this,server](std::error_code ec, std::size_t length) {
 					if (!ec) {
-						//TODO fix it so that the client check will get called if there is no message body
+						bool sendMsg = false;
+						Message<T> outMsg;
 						//check the message to see if it passes
-						if (!server->checkClient(m_clientCheckMsg)) {
+						if (!server->checkClient(m_clientCheckMsg, sendMsg, outMsg)) {
 							 std::cout << "Client disconnected (ClientCheck Fail)\n";
-							 m_socket.close();
+							if(sendMsg) {
+								closeConnWithMsg(outMsg);
+							} else {
+								m_socket.close();
+							}
 						} else {
 							std::cout << "Client Validated\n";
 							server->onClientValidated(this->shared_from_this());
@@ -355,6 +366,25 @@ namespace net
 			if(isConnected()){
 				asio::post(m_asioContext, [this]() { m_socket.close(); });
 			}
+		}
+
+		void closeConnWithMsg(const Message<T>& msg){
+			asio::async_write(m_socket, asio::buffer(&msg.header, sizeof(MessageHeader<T>)),
+				[this,msg](std::error_code ec, std::size_t length) {
+					if (!ec) {
+						//write body
+						if (msg.body.size() > 0) {
+							asio::async_write(m_socket, asio::buffer(msg.body.data(), msg.body.size()),
+								[this, msg](std::error_code ec, std::size_t length) {
+									m_socket.close();
+								}
+							);
+						}
+					} else {
+						m_socket.close();
+					}
+				}
+			);
 		}
 
 		bool isConnected() const {

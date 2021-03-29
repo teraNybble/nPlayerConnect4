@@ -29,7 +29,7 @@ namespace net
 		uint32_t nIDCounter = 100000;
 
 		//called when client connects will disconnect the client if this function returns false
-		virtual bool onClientConnect(std::shared_ptr<Connection<T>> client){
+		virtual bool onClientConnect(std::shared_ptr<Connection<T>> client, Message<T>& denyMsg){
 			return false;
 		}
 
@@ -79,8 +79,8 @@ namespace net
 
 		}
 
-		//this is the function that can do things like ver checking
-		virtual bool checkClient(Message<T> msg, std::shared_ptr<Connection<T>> client = nullptr){
+		//this is the function that can do things like ver checking (sendMsg is defaulted to false)
+		virtual bool checkClient(Message<T> msg, bool& sendMsg,Message<T>& outMsg){
 			return true;
 		}
 
@@ -96,12 +96,16 @@ namespace net
 										std::move(socket), m_qMessagesIn);
 						//gives the user the option of rejecting a connection
 
-						if(onClientConnect(newConn)){
+						Message<T> msg;
+
+						if(onClientConnect(newConn, msg)){
 							m_deqConnections.push_back(std::move(newConn));
 							m_deqConnections.back()->connectToClient(this, nIDCounter++);
 
 							std::cout << "[" << m_deqConnections.back()->getID() << "] Connection Approved\n";
 						} else {
+							m_deqConnections.push_back(std::move(newConn));
+							m_deqConnections.back()->closeConnWithMsg(msg);
 							std::cout << "[------] Connection Denied\n";
 						}
 					} else {

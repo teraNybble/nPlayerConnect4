@@ -33,7 +33,7 @@ namespace net
 			disconnect();
 		}
 
-		virtual Message<T> sendClientCheck() { return net::Message<T>(); }
+		virtual Message<T> sendClientCheck() { return Message<T>(); }
 
 		bool connect(const std::string& host, const uint16_t port){
 			try{
