@@ -81,6 +81,7 @@ void ConnectMenu::init()
 	address.addNumbersToList();
 	address.addCharToList('.');
 	address.setText("127.0.0.1");//default to local host
+	address.setPadding(1,-0.5);
 
 	tempRect = Game2D::Rect(0,-10,45,8);
 
@@ -94,6 +95,7 @@ void ConnectMenu::init()
 	port.setCharListModeWhitelist();
 	port.addNumbersToList();
 	port.setText("60000");//default to port 60000
+	port.setPadding(1,-0.5);
 }
 
 

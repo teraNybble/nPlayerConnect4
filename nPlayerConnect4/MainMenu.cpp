@@ -126,7 +126,6 @@ void MainMenu::resize()
 	}
 	title.width = Game2D::Freetype::getLength(Game2D::Font::getFont(title.fontSize), title.text.c_str());
 
-	std::cout << title.width << "\n";
 	gravButt.setRect(Game2D::Rect(0,27.5,title.width,6));
 	gravButt.alignToDrawableObject();
 
