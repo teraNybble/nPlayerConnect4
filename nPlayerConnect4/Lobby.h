@@ -15,7 +15,6 @@
 //TODO V1.0.0
 //TODO add kick and ban functinality
 //TODO add fall back font and location?
-//TODO change back button to resume button and add a button that quits a game in progress (host only?)
 //TODO V1.1.0
 //TODO add chess clock feature
 //TODO V1.2.0
