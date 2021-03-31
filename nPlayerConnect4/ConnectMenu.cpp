@@ -170,7 +170,6 @@ void ConnectMenu::draw()
 	if(!isHost) { Game2D::Freetype::print(Game2D::Font::getFont(4),-30,-2,"IP:"); }
 	Game2D::Freetype::print(Game2D::Font::getFont(4),-35,-12,"Port:");
 
-	//std::cout << errorMessageWidth << " " << errorMessage << "\n";
 	if(errorMessageWidth > 0){
 		Game2D::Freetype::print(Game2D::Font::getFont(3),-errorMessageWidth/2.0f,10,errorMessage.c_str());
 	}

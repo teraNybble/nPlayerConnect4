@@ -110,7 +110,6 @@ int Board::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseStat
 		}
 		i++;
 	}
-	std::cout << "\n";
 	if(!newHighlight){
 		nextInsertPos = Game2D::Pos2(-1,-1);
 	}

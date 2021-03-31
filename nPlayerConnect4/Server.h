@@ -7,6 +7,7 @@
 #include <map>
 #include "Version.h"
 #include <sstream>
+#include <numeric>
 
 class Server : public net::ServerInterface<GameMsg>
 {
@@ -203,6 +204,10 @@ public:
 	void startGame(uint32_t boardWidth, uint32_t boardHeight, uint32_t connectLength, bool gravity)
 	{
 		int i = 0;
+		//generate random list of numbers
+		std::vector<int32_t> playerOrder(m_deqConnections.size());//generate a vector the size of the amount of players
+		std::iota(std::begin(playerOrder),std::end(playerOrder),0);//initalise list with acending numbers
+		std::random_shuffle(playerOrder.begin(),playerOrder.end());//randomise the player order
 		for(auto& player : m_deqConnections){
 			net::Message<GameMsg> msg;
 			msg.header.id = GameMsg::GAME_START;
@@ -211,9 +216,12 @@ public:
 			msg << connectLength;
 			msg << boardHeight;
 			msg << boardWidth;
-			msg << (int32_t)i++;//player number
-			for(auto it : playerColours){
+			msg << playerOrder.at(i++);//player number
+			/*for(auto it : playerColours){
 				msg << it.second;
+			}*/
+			for(auto it : playerOrder){
+				msg << playerColours.at(m_deqConnections.at(it)->getID());
 			}
 			msg << (uint32_t)playerColours.size();
 			player->send(msg);

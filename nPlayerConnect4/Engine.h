@@ -14,12 +14,13 @@
 #include "ConnectMenu.h"
 #include "SinglePlayerMenu.h"
 #include "OptionsMenu.h"
+#include "PauseMenu.h"
 #include <fstream>
 
 class Engine
 {
 private:
-	enum State { MENU, CONNECT, CONNECTING, OPTIONS, SOLO_MENU, PLAYING_SOLO, PLAYING_MULTI, WIN, TIE, EXIT };
+	enum State { MENU, CONNECT, CONNECTING, OPTIONS, SOLO_MENU, PLAYING_SOLO, PLAYING_MULTI, PAUSED, WIN, TIE, EXIT };
 
 	static GLFWwindow* window;
 	static int screenWidth, screenHeight;
@@ -33,6 +34,7 @@ private:
 	static ConnectMenu connectMenu;
 	static SinglePlayerMenu singlePlayerMenu;
 	static OptionsMenu optionsMenu;
+	static PauseMenu pauseMenu;
 
 	static Board singlePlayerBoard;
 	static unsigned int winningPlayer;

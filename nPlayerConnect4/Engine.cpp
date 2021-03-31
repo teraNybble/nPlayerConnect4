@@ -14,6 +14,7 @@ MainMenu Engine::mainMenu;
 ConnectMenu Engine::connectMenu;
 SinglePlayerMenu Engine::singlePlayerMenu;
 OptionsMenu Engine::optionsMenu;
+PauseMenu Engine::pauseMenu;
 Board Engine::singlePlayerBoard;
 unsigned int Engine::winningPlayer;
 bool Engine::gravity;
@@ -128,8 +129,6 @@ void Engine::loadOptions()
 		inFile >> screenHeight;
 		inFile >> Options::showPlayerNums;
 
-		//std::cout << screenWidth << "\n" << screenHeight << "\n" << Options::showPlayerNums << "\n";
-
 		inFile.close();
 	}
 }
@@ -176,6 +175,10 @@ void Engine::display()
 			break;
 		case PLAYING_MULTI:
 			client->draw();
+			break;
+		case PAUSED:
+			singlePlayerBoard.draw();
+			pauseMenu.draw();
 			break;
 		case PLAYING_SOLO:
 			singlePlayerBoard.draw();
@@ -253,6 +256,8 @@ void Engine::init()
 	singlePlayerMenu.resize();
 	optionsMenu.init();
 	optionsMenu.resize();
+	pauseMenu.init();
+	pauseMenu.resize();
 
 	std::vector<Game2D::Colour> playerColours = {
 			Game2D::Colour::Red, Game2D::Colour::Yellow,
@@ -280,6 +285,16 @@ void Engine::processKeys()
 	switch (currentState) {
 		case PLAYING_MULTI:
 			if(client) { client->processKeyboard(escState); }
+			break;
+		case PLAYING_SOLO:
+			if(escState==Game2D::KeyState::State::RELEASED){
+				currentState = PAUSED;
+			}
+			break;
+		case PAUSED:
+			if(escState==Game2D::KeyState::State::RELEASED){
+				currentState = PLAYING_SOLO;
+			}
 			break;
 	}
 
@@ -453,6 +468,20 @@ void Engine::processMouse()
 					break;
 				case 1:
 					currentState = WIN;
+					break;
+			}
+			break;
+		case PAUSED:
+			switch (pauseMenu.processMouse(mousePos,mouseState)) {
+				case 1://unpause
+					currentState = PLAYING_SOLO;
+					break;
+				case 2://options
+					optionsMenu.setReturnState(PAUSED);
+					currentState = OPTIONS;
+					break;
+				case 3://quit
+					currentState = EXIT;
 					break;
 			}
 			break;

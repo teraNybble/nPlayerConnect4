@@ -5,62 +5,7 @@ void Client::init()
 	lobby.init();
 	paused = false;
 	gravity  = true;
-
-	Game2D::Rect tempRect;
-	Game2D::Sprite tempNormal, tempHover, tempClick;
-
-	tempRect = Game2D::Rect(0,-22,10,5);
-	tempNormal.setTextureCoords(Game2D::Rect(0.500f, 0.1875f, 0.125f, 0.0625f));
-	tempHover.setTextureCoords(Game2D::Rect(0.500f, 0.1250f, 0.125f, 0.0625f));
-	tempClick.setTextureCoords(Game2D::Rect(0.500f, 0.0625f, 0.125f, 0.0625f));
-
-	tempNormal.setRect(tempRect);
-	tempHover.setRect(tempRect);
-	tempClick.setRect(tempRect);
-
-	tempNormal.setColour(Game2D::Colour::White);
-	tempHover.setColour(Game2D::Colour::White);
-	tempClick.setColour(Game2D::Colour::White);
-
-	quit.setRect(tempRect);
-	quit.addStateSprites(tempNormal,tempHover,tempClick,tempClick,tempNormal);
-	quit.alignToDrawableObject();
-
-	tempRect = Game2D::Rect(0,-16,10,5);
-
-	tempNormal.setTextureCoords(Game2D::Rect(0.625f, 0.1875f, 0.125f, 0.0625f));
-	tempHover.setTextureCoords(Game2D::Rect(0.625f, 0.1250f, 0.125f, 0.0625f));
-	tempClick.setTextureCoords(Game2D::Rect(0.625f, 0.0625f, 0.125f, 0.0625f));
-
-	tempNormal.setRect(tempRect);
-	tempHover.setRect(tempRect);
-	tempClick.setRect(tempRect);
-
-	tempNormal.setColour(Game2D::Colour::White);
-	tempHover.setColour(Game2D::Colour::White);
-	tempClick.setColour(Game2D::Colour::White);
-
-	options.setRect(tempRect);
-	options.addStateSprites(tempNormal,tempHover,tempClick,tempClick,tempNormal);
-	options.alignToDrawableObject();
-
-	tempRect = Game2D::Rect(0,-10,10,5);
-
-	tempNormal.setTextureCoords(Game2D::Rect(0.375f, 0.1875f, 0.125f, 0.0625f));
-	tempHover.setTextureCoords(Game2D::Rect(0.375f, 0.1250f, 0.125f, 0.0625f));
-	tempClick.setTextureCoords(Game2D::Rect(0.375f, 0.0625f, 0.125f, 0.0625f));
-
-	tempNormal.setRect(tempRect);
-	tempHover.setRect(tempRect);
-	tempClick.setRect(tempRect);
-
-	tempNormal.setColour(Game2D::Colour::White);
-	tempHover.setColour(Game2D::Colour::White);
-	tempClick.setColour(Game2D::Colour::White);
-
-	back.setRect(tempRect);
-	back.addStateSprites(tempNormal,tempHover,tempClick,tempClick,tempNormal);
-	back.alignToDrawableObject();
+	pauseMenu .init();
 }
 
 int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseState)
@@ -95,15 +40,14 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 				break;
 		}
 	} else {
-		//process the pause menu buttons
-		if(back.update(mousePos,mouseState,1) == Game2D::ClickableObject::CLICK){
-			paused = false;
-		}
-		if(options.update(mousePos,mouseState,1) == Game2D::ClickableObject::CLICK){
-			return 2;
-		}
-		if(quit.update(mousePos,mouseState,1) == Game2D::ClickableObject::CLICK){
-			return 3;
+		int pauseResult = pauseMenu.processMouse(mousePos,mouseState);
+		switch (pauseResult) {
+			case 1:
+				paused = !paused;
+				break;
+			default:
+				return pauseResult;
+				break;
 		}
 	}
 
@@ -201,7 +145,6 @@ int Client::processMessages(std::string& message, void(*winTitle)(std::string))
 					break;
 				}
 				case GameMsg::SERVER_DENY: {
-					//std::cout << "Server Deny\n";
 					uint8_t msgSize;
 					msg >> msgSize;
 					std::string msgStr;
@@ -212,8 +155,6 @@ int Client::processMessages(std::string& message, void(*winTitle)(std::string))
 						msg >> tempChar;
 						msgStr.push_back(tempChar);
 					}
-
-					//std::cout << msgStr << "\n";
 
 					break;
 				}
@@ -346,11 +287,9 @@ int Client::processMessages(std::string& message, void(*winTitle)(std::string))
 		while (!(incoming().empty())){
 			auto msg = incoming().pop_front().msg;
 			if(msg.header.id == GameMsg::SERVER_DENY){
-				//std::cout << "Server Deny\n";
 				//using uint8_t so the max message length is 255
 				uint8_t msgSize;
 				msg >> msgSize;
-				//std::cout << msgSize << "\n";
 				std::string msgStr;
 				//msgStr.resize(msgSize);
 
@@ -412,17 +351,6 @@ void Client::draw()
 	}
 
 	if(paused){
-		glBindTexture(GL_TEXTURE_2D,TextureManager::getTexture(0));
-		Game2D::Sprite tempSprite(Game2D::Rect(0, 0, 200, 200));
-		tempSprite.setColour(Game2D::Colour(0, 0, 0, 0.5f));
-		tempSprite.draw();
-		//draw the pause menu buttons
-		back.draw();
-		options.draw();
-		quit.draw();
-		Game2D::Colour::White.draw();
-		float width = Game2D::Freetype::getLength(Game2D::Font::getFont(5), "Paused");
-		Game2D::Freetype::print(Game2D::Font::getFont(5), -width / 2.0, 35, "Paused");
-
+		pauseMenu.draw();
 	}
 }

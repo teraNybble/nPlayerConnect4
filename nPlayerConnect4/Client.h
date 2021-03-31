@@ -14,6 +14,7 @@
 #include <algorithm>
 #include "Version.h"
 #include "TextureManager.h"
+#include "PauseMenu.h"
 
 class Client : public net::ClientInterface<GameMsg>
 {
@@ -30,9 +31,7 @@ private:
 	bool gravity;
 
 	bool paused;
-	Game2D::Button back;
-	Game2D::Button options;
-	Game2D::Button quit;
+	PauseMenu pauseMenu;
 protected:
 public:
 	virtual net::Message<GameMsg> sendClientCheck() override

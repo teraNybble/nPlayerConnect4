@@ -147,6 +147,12 @@
 		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/OptionsMenu.h">
 			<Option target="nPlayerConnect4"/>
 		</Unit>
+		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/PauseMenu.cpp">
+			<Option target="nPlayerConnect4"/>
+		</Unit>
+		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/PauseMenu.h">
+			<Option target="nPlayerConnect4"/>
+		</Unit>
 		<Unit filename="/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Server.cpp">
 			<Option target="nPlayerConnect4"/>
 		</Unit>

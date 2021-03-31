@@ -366,6 +366,33 @@ OptionsMenu.cpp.s:
 	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/OptionsMenu.cpp.s
 .PHONY : OptionsMenu.cpp.s
 
+PauseMenu.o: PauseMenu.cpp.o
+
+.PHONY : PauseMenu.o
+
+# target to build an object file
+PauseMenu.cpp.o:
+	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/PauseMenu.cpp.o
+.PHONY : PauseMenu.cpp.o
+
+PauseMenu.i: PauseMenu.cpp.i
+
+.PHONY : PauseMenu.i
+
+# target to preprocess a source file
+PauseMenu.cpp.i:
+	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/PauseMenu.cpp.i
+.PHONY : PauseMenu.cpp.i
+
+PauseMenu.s: PauseMenu.cpp.s
+
+.PHONY : PauseMenu.s
+
+# target to generate assembly for a file
+PauseMenu.cpp.s:
+	$(MAKE) -f CMakeFiles/nPlayerConnect4.dir/build.make CMakeFiles/nPlayerConnect4.dir/PauseMenu.cpp.s
+.PHONY : PauseMenu.cpp.s
+
 Server.o: Server.cpp.o
 
 .PHONY : Server.o
@@ -510,6 +537,9 @@ help:
 	@echo "... OptionsMenu.o"
 	@echo "... OptionsMenu.i"
 	@echo "... OptionsMenu.s"
+	@echo "... PauseMenu.o"
+	@echo "... PauseMenu.i"
+	@echo "... PauseMenu.s"
 	@echo "... Server.o"
 	@echo "... Server.i"
 	@echo "... Server.s"
