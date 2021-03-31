@@ -5,7 +5,8 @@ void Client::init()
 	lobby.init();
 	paused = false;
 	gravity  = true;
-	pauseMenu .init();
+	pauseMenu.init();
+	pauseMenu.setLobbyEnabled(false);
 }
 
 int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseState)
@@ -44,6 +45,18 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 		switch (pauseResult) {
 			case 1:
 				paused = !paused;
+				break;
+			case 4:
+				if(currentState != LOBBY){
+					net::Message<GameMsg> msg;
+					msg.header.id = GameMsg::GAME_WIN;
+
+					msg << -2;//return to lobby
+
+					send(msg);
+
+					paused = false;
+				}
 				break;
 			default:
 				return pauseResult;
@@ -190,6 +203,7 @@ int Client::processMessages(std::string& message, void(*winTitle)(std::string))
 					break;
 				}
 				case GameMsg::GAME_START:{
+					pauseMenu.setLobbyEnabled(true);
 					bool gravity;
 					uint32_t noPlayers;
 					uint32_t width, height;
@@ -235,6 +249,7 @@ int Client::processMessages(std::string& message, void(*winTitle)(std::string))
 					break;
 				}
 				case GameMsg::GAME_OVER:{
+					pauseMenu.setLobbyEnabled(false);
 					if(winTitle){
 						std::string tempStr;
 						if(board.getGravity()) {

@@ -483,6 +483,9 @@ void Engine::processMouse()
 				case 3://quit
 					currentState = EXIT;
 					break;
+				case 4://back
+					currentState = SOLO_MENU;
+					break;
 			}
 			break;
 		case OPTIONS:
