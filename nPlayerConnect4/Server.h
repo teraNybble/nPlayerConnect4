@@ -8,6 +8,8 @@
 #include "Version.h"
 #include <sstream>
 #include <numeric>
+#include <algorithm>
+#include <random>
 
 class Server : public net::ServerInterface<GameMsg>
 {
@@ -207,7 +209,8 @@ public:
 		//generate random list of numbers
 		std::vector<int32_t> playerOrder(m_deqConnections.size());//generate a vector the size of the amount of players
 		std::iota(std::begin(playerOrder),std::end(playerOrder),0);//initalise list with acending numbers
-		std::random_shuffle(playerOrder.begin(),playerOrder.end());//randomise the player order
+		//std::random_shuffle(playerOrder.begin(),playerOrder.end());//randomise the player order
+		std::shuffle(playerOrder.begin(), playerOrder.end(), std::default_random_engine(std::chrono::high_resolution_clock::now().time_since_epoch().count()));
 		for(auto& player : m_deqConnections){
 			net::Message<GameMsg> msg;
 			msg.header.id = GameMsg::GAME_START;

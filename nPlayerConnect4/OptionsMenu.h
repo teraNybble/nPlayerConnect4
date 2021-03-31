@@ -1,6 +1,7 @@
 #ifndef OPTIONSMENU_H
 #define OPTIONSMENU_H
 
+#include <Checkbox.h>
 #include "TextureManager.h"
 #include <Button.h>
 #include <Dropdown.h>
@@ -8,7 +9,6 @@
 #include "ImageLoder.h"
 #include "ScreenCoord.h"
 #include "FontInfo.h"
-#include <Checkbox.h>
 #include "Options.h"
 
 class OptionsMenu
