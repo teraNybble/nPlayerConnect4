@@ -13,9 +13,9 @@
 #include <functional>
 
 //TODO V1.0.0
+//TODO V1.1.0
 //TODO add kick and ban functinality
 //TODO add fall back font and location?
-//TODO V1.1.0
 //TODO add chess clock feature
 //TODO V1.2.0
 //TODO add ability to spectate online
@@ -32,6 +32,7 @@ private:
 	Game2D::Button backButton;
 	Game2D::Button colourAccept;
 	Game2D::Button startButton;
+	Game2D::Button kickButton;
 
 	std::map<int,Game2D::Colour> playerList;
 

@@ -29,23 +29,23 @@ private:
 			Game2D::Colour(1,0.75f,0.8f),
 	};
 protected:
-	virtual bool onClientConnect(std::shared_ptr<net::Connection<GameMsg>> client, net::Message<GameMsg>& denyMsg) override {
+	virtual bool onClientConnect(std::shared_ptr<net::Connection<GameMsg>> client, net::Message<GameMsg>& denyMsg) override
+	{
+		//if the game has started reject the connection
 
-	//if the game has started reject the connection
+		denyMsg.header.id = GameMsg::SERVER_DENY;
 
-	denyMsg.header.id = GameMsg::SERVER_DENY;
+		std::string denyMsgStr = "Game in progress";
+		if (inGame) {
 
-	std::string denyMsgStr = "Game in progress";
-	if(inGame) {
+			for (int i = denyMsgStr.size() - 1; i >= 0; i--) {
+				denyMsg << denyMsgStr[i];
+			}
 
-		for (int i = denyMsgStr.size() - 1; i >= 0; i--) {
-			denyMsg << denyMsgStr[i];
+			denyMsg << (uint8_t) denyMsgStr.size();
+
+			return false;
 		}
-
-		denyMsg << (uint8_t)denyMsgStr.size();
-
-		return false;
-	}
 
 		//send the player their player number
 		net::Message<GameMsg> msg;
@@ -56,7 +56,7 @@ protected:
 		msg << boardheight;
 		msg << boardWidth;
 
-		for(auto& it : playerColours){
+		for (auto& it : playerColours) {
 			//push the colour then the ID
 			msg << it.second << it.first;
 		}
@@ -149,6 +149,27 @@ protected:
 					garbageIDs.push_back(client->getID());
 				}
 				break;
+			}
+			case GameMsg::SERVER_DENY:{
+				uint32_t playerId;
+				msg >> playerId;
+
+				net::Message<GameMsg> kickMsg;
+				kickMsg.header.id = GameMsg::SERVER_DENY;
+
+				std::string denyMsgStr = "You have been kicked";
+
+				for (int i = denyMsgStr.size() - 1; i >= 0; i--) {
+					kickMsg << denyMsgStr[i];
+				}
+
+				kickMsg << (uint8_t)denyMsgStr.size();
+
+				for(auto& it : m_deqConnections) {
+					if(it->getID() == playerId) {
+						it->closeConnWithMsg(kickMsg);
+					}
+				}
 			}
 		}
 	}

@@ -64,6 +64,14 @@ int Client::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseSta
 		}
 	}
 
+	if(result > 10000){//player ID should always be over this number
+		net::Message<GameMsg> msg;
+		msg.header.id = GameMsg::SERVER_DENY;
+		msg << (uint32_t)result;
+		send(msg);
+
+		return -1;
+	}
 
 	switch (result) {
 		case 2: {//player colour confirm button click

@@ -29,6 +29,27 @@ void Lobby::init()
 	backButton.addStateSprites(normalSprite,hoverSprite,clickSprite,clickSprite,normalSprite);
 	backButton.alignToDrawableObject();
 
+	tempRect = Game2D::Rect(0,0,10,5);
+
+	disabledSprite.setColour(Game2D::Colour(1,1,1,0));
+
+	disabledSprite.setTextureCoords(Game2D::Rect(0.875f,0.5000f,0.125f,0.0625f));
+	normalSprite.setTextureCoords(Game2D::Rect(0.875f,0.4375f, 0.125f, 0.0625f));
+	hoverSprite.setTextureCoords(Game2D::Rect(0.875f, 0.3750f, 0.125f, 0.0625f));
+	clickSprite.setTextureCoords(Game2D::Rect(0.875f, 0.3125f, 0.125f, 0.0625f));
+
+	disabledSprite.setRect(tempRect);
+	normalSprite.setRect(tempRect);
+	hoverSprite.setRect(tempRect);
+	clickSprite.setRect(tempRect);
+
+	kickButton.setRect(tempRect);
+	kickButton.addStateSprites(normalSprite, hoverSprite, clickSprite, clickSprite, disabledSprite);
+	kickButton.alignToDrawableObject();
+	kickButton.disable();
+
+	disabledSprite.setColour(Game2D::Colour::White);
+
 	tempRect = Game2D::Rect(8.5,30,5,5);
 
 	normalSprite.setTextureCoords(Game2D::Rect(0.1875f, 0, 0.0625f, 0.0625f));
@@ -278,6 +299,45 @@ int Lobby::processMouse(Game2D::Pos2 mousePos, Game2D::KeyState::State mouseStat
 	//as the start button is aligned to the right of the screen the mouse coordinats need to be aligned right as well
 	Game2D::Pos2 mousePosAlignedLeft = Game2D::Pos2((mousePos.x + Game2D::ScreenCoord::getAspectRatio() * 50), mousePos.y);
 
+	if(isHost) {
+		bool playerClicked = false;
+		float startX = ((float) (((playerList.size() - 1) * 7.5) + (playerList.size() - 1)) / 2.0f);
+		Game2D::Sprite tempSprite;
+		tempSprite.setRect(Game2D::Rect(0, 0, 0, 0));
+		tempSprite.setColour(Game2D::Colour(1, 1, 1, 0));
+		Game2D::Button tempButton;
+		tempButton.setRect(Game2D::Rect(-startX, 0, 7.5, 7.5));
+		tempButton.addStateSprites(tempSprite, tempSprite, tempSprite, tempSprite, tempSprite);
+		tempButton.alignToDrawableObject();
+		for (auto it : playerList) {
+			//check to see if it has been clicked
+			if(tempButton.update(mousePos,mouseState,1) == Game2D::ClickableObject::CLICK){
+				playerClicked = true;
+				kickButton.setID(it.first);//so if it is click we know who to kick
+				Game2D::Pos2 newPos(tempButton.getClickRegion().pos.x+tempButton.getClickRegion().width/2.0f,tempButton.getClickRegion().pos.y-tempButton.getClickRegion().height/2.0f);
+				//std::cout << "newPos:\t" << newPos << "\n";
+				kickButton.setAnimPoss(newPos);
+				kickButton.setPos(newPos);
+				kickButton.alignToDrawableObject();
+				kickButton.enable();
+				//show kick button
+			}
+			tempButton.move(Game2D::Pos2(tempButton.getClickRegion().width + 1, 0));
+		}
+
+
+		if(kickButton.update(mousePos,mouseState,1) == Game2D::ClickableObject::CLICK){
+			//tell server to kick player
+			int result = kickButton.getID();
+			kickButton.disable();
+			return result;
+		}
+		if(!playerClicked && mouseState == Game2D::KeyState::RELEASED){
+			//something has been clicked and it wasn't any player so hide the kick button
+			kickButton.disable();
+		}
+	}
+
 	if(backButton.update(mousePosAlignedLeft,mouseState,1) == Game2D::ClickableObject::CLICK){
 		return 1;
 	}
@@ -348,12 +408,23 @@ void Lobby::setPlayerColour(int id, Game2D::Colour colour)
 	//if the insert function returned false the player already exsists
 	if(!ret.second){
 		ret.first->second = colour;
+	} else {
+		kickButton.move(Game2D::Pos2(-4.25,0));
+		Game2D::Pos2 newPos = kickButton.getClickRegion().pos;
+		newPos.x+=kickButton.getClickRegion().width/2.0f;
+		newPos.y+=kickButton.getClickRegion().height/2.0f;
+		kickButton.setAnimPoss(newPos);
 	}
 }
 
 void Lobby::removePlayer(int id)
 {
 	playerList.erase(playerList.find(id));
+	kickButton.move(Game2D::Pos2(+4.25,0));
+	Game2D::Pos2 newPos = kickButton.getClickRegion().pos;
+	newPos.x+=kickButton.getClickRegion().width/2.0f;
+	newPos.y+=kickButton.getClickRegion().height/2.0f;
+	kickButton.setAnimPoss(newPos);
 }
 
 void Lobby::draw()
@@ -379,6 +450,7 @@ void Lobby::draw()
 		boardHeightMinus.draw();
 		lineLengthPlus.draw();
 		lineLengthMinus.draw();
+		kickButton.draw();
 	}
 
 	//get the width of all the players plus spacing and divied by two so they will all be aligned to the centre
