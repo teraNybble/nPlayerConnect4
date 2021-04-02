@@ -30,6 +30,8 @@ namespace Game2D
 
 		Button button;
 		bool selected;
+		float paddingX;
+		float paddingY;
 	public:
 		TextInput();
 		TextInput(Pos2 pos);
@@ -55,6 +57,9 @@ namespace Game2D
 		inline void setMaxLength(unsigned int max) { maxLength = max; }
 		inline void setText(std::string text) { this->text = text; }
 		inline void setSelected(bool selected) { this->selected = selected; }
+		inline void setPadding(float x, float y) { paddingX = x; paddingY = y; }
+		inline float getXPadding() const { return paddingX; }
+		inline float getYPadding() const { return paddingY; }
 
 		void processMouse(Pos2 mosePos,KeyState::State state, float time);
 		void update(unsigned int codepoint);

@@ -22,12 +22,8 @@ namespace Game2D
 
 		int update(Pos2 mousePos, KeyState::State mouseState, float time);
 
-		inline bool setTriState(bool triState) { this->triState; }
-		inline void setState(int state) {
-			this->state = state;
-			if(this->state > 2) { this->state = 2; }
-			if(!triState && this->state == 1) { this->state = 2;}
-		}
+		inline void setTriState(bool triState) { this->triState; }
+		void setState(int state);
 		inline int getState() const	{ return state; };
 
 		inline void setUncheckedSprites(AnimatedSprite animatedSprite){
@@ -46,7 +42,7 @@ namespace Game2D
 			box.addAnims(uncheckedSprites,tempArr);
 		}
 
-		inline int getCurrentFrame() const { box.getCurrentFrame(); }
+		inline int getCurrentFrame() const { return box.getCurrentFrame(); }
 
 		inline void draw() const { box.draw(); }
 	};
