@@ -14,7 +14,7 @@
 
 //TODO V1.0.0
 //TODO V1.1.0
-//TODO add kick and ban functinality
+//TODO add ban functionality
 //TODO add fall back font and location?
 //TODO add chess clock feature
 //TODO V1.2.0
