@@ -126,14 +126,6 @@ freetype/ftoutln.h
 freetype/fttrigon.h
 -
 
-/home/dan/CLionProjects/Game2D/glew.h
-stddef.h
--
-OpenGL/glu.h
--
-GL/glu.h
--
-
 /home/dan/CLionProjects/asio/net.h
 net_client.h
 /home/dan/CLionProjects/asio/net_client.h
@@ -243,6 +235,8 @@ Version.h
 /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Version.h
 TextureManager.h
 /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/TextureManager.h
+PauseMenu.h
+/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/PauseMenu.h
 
 /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ConnectMenu.h
 freetype.h
@@ -259,16 +253,6 @@ FontInfo.h
 /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/FontInfo.h
 TextInput.h
 -
-
-/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Engine.cpp
-Engine.h
-/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Engine.h
-iostream
--
-iomanip
--
-TextureManager.h
-/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/TextureManager.h
 
 /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Engine.h
 net.h
@@ -297,6 +281,8 @@ SinglePlayerMenu.h
 /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/SinglePlayerMenu.h
 OptionsMenu.h
 /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/OptionsMenu.h
+PauseMenu.h
+/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/PauseMenu.h
 fstream
 -
 
@@ -359,6 +345,8 @@ cstdint
 /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Options.h
 
 /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/OptionsMenu.h
+Checkbox.h
+-
 TextureManager.h
 /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/TextureManager.h
 Button.h
@@ -373,14 +361,16 @@ ScreenCoord.h
 /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/ScreenCoord.h
 FontInfo.h
 /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/FontInfo.h
-Checkbox.h
--
 Options.h
 /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Options.h
 
-/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Server.cpp
-Server.h
-/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Server.h
+/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/PauseMenu.h
+Button.h
+-
+Fonts.h
+-
+TextureManager.h
+/home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/TextureManager.h
 
 /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Server.h
 net.h
@@ -394,6 +384,12 @@ map
 Version.h
 /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/Version.h
 sstream
+-
+numeric
+-
+algorithm
+-
+random
 -
 
 /home/dan/CLionProjects/nPlayerConnect4/nPlayerConnect4/SinglePlayerMenu.h

@@ -61,6 +61,7 @@ CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: ../ImageLoder.h
 CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: ../Lobby.h
 CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: ../Message.h
 CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: ../Options.h
+CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: ../PauseMenu.h
 CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: ../TextureManager.h
 CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: ../Version.h
 CMakeFiles/nPlayerConnect4.dir/Client.cpp.o: /usr/include/freetype2/freetype/config/ftheader.h
@@ -146,6 +147,7 @@ CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: ../MainMenu.h
 CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: ../Message.h
 CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: ../Options.h
 CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: ../OptionsMenu.h
+CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: ../PauseMenu.h
 CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: ../Server.h
 CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: ../SinglePlayerMenu.h
 CMakeFiles/nPlayerConnect4.dir/Engine.cpp.o: ../TextureManager.h
@@ -273,6 +275,35 @@ CMakeFiles/nPlayerConnect4.dir/OptionsMenu.cpp.o: /usr/include/freetype2/freetyp
 CMakeFiles/nPlayerConnect4.dir/OptionsMenu.cpp.o: /usr/include/freetype2/freetype/fttypes.h
 CMakeFiles/nPlayerConnect4.dir/OptionsMenu.cpp.o: /usr/include/freetype2/ft2build.h
 
+CMakeFiles/nPlayerConnect4.dir/PauseMenu.cpp.o: /home/dan/CLionProjects/Game2D/AnimatedSprite.h
+CMakeFiles/nPlayerConnect4.dir/PauseMenu.cpp.o: /home/dan/CLionProjects/Game2D/Button.h
+CMakeFiles/nPlayerConnect4.dir/PauseMenu.cpp.o: /home/dan/CLionProjects/Game2D/ClickableObject.h
+CMakeFiles/nPlayerConnect4.dir/PauseMenu.cpp.o: /home/dan/CLionProjects/Game2D/Colour.h
+CMakeFiles/nPlayerConnect4.dir/PauseMenu.cpp.o: /home/dan/CLionProjects/Game2D/DrawableObject.h
+CMakeFiles/nPlayerConnect4.dir/PauseMenu.cpp.o: /home/dan/CLionProjects/Game2D/Fonts.h
+CMakeFiles/nPlayerConnect4.dir/PauseMenu.cpp.o: /home/dan/CLionProjects/Game2D/KeyState.h
+CMakeFiles/nPlayerConnect4.dir/PauseMenu.cpp.o: /home/dan/CLionProjects/Game2D/Pos2.h
+CMakeFiles/nPlayerConnect4.dir/PauseMenu.cpp.o: /home/dan/CLionProjects/Game2D/Rect.h
+CMakeFiles/nPlayerConnect4.dir/PauseMenu.cpp.o: /home/dan/CLionProjects/Game2D/Sprite.h
+CMakeFiles/nPlayerConnect4.dir/PauseMenu.cpp.o: /home/dan/CLionProjects/Game2D/Timer.h
+CMakeFiles/nPlayerConnect4.dir/PauseMenu.cpp.o: /home/dan/CLionProjects/Game2D/freetype.h
+CMakeFiles/nPlayerConnect4.dir/PauseMenu.cpp.o: /home/dan/CLionProjects/Game2D/glew.h
+CMakeFiles/nPlayerConnect4.dir/PauseMenu.cpp.o: ../PauseMenu.cpp
+CMakeFiles/nPlayerConnect4.dir/PauseMenu.cpp.o: ../PauseMenu.h
+CMakeFiles/nPlayerConnect4.dir/PauseMenu.cpp.o: ../TextureManager.h
+CMakeFiles/nPlayerConnect4.dir/PauseMenu.cpp.o: /usr/include/freetype2/freetype/config/ftheader.h
+CMakeFiles/nPlayerConnect4.dir/PauseMenu.cpp.o: /usr/include/freetype2/freetype/freetype.h
+CMakeFiles/nPlayerConnect4.dir/PauseMenu.cpp.o: /usr/include/freetype2/freetype/fterrdef.h
+CMakeFiles/nPlayerConnect4.dir/PauseMenu.cpp.o: /usr/include/freetype2/freetype/fterrors.h
+CMakeFiles/nPlayerConnect4.dir/PauseMenu.cpp.o: /usr/include/freetype2/freetype/ftglyph.h
+CMakeFiles/nPlayerConnect4.dir/PauseMenu.cpp.o: /usr/include/freetype2/freetype/ftimage.h
+CMakeFiles/nPlayerConnect4.dir/PauseMenu.cpp.o: /usr/include/freetype2/freetype/ftmoderr.h
+CMakeFiles/nPlayerConnect4.dir/PauseMenu.cpp.o: /usr/include/freetype2/freetype/ftoutln.h
+CMakeFiles/nPlayerConnect4.dir/PauseMenu.cpp.o: /usr/include/freetype2/freetype/ftsystem.h
+CMakeFiles/nPlayerConnect4.dir/PauseMenu.cpp.o: /usr/include/freetype2/freetype/fttrigon.h
+CMakeFiles/nPlayerConnect4.dir/PauseMenu.cpp.o: /usr/include/freetype2/freetype/fttypes.h
+CMakeFiles/nPlayerConnect4.dir/PauseMenu.cpp.o: /usr/include/freetype2/ft2build.h
+
 CMakeFiles/nPlayerConnect4.dir/Server.cpp.o: /home/dan/CLionProjects/Game2D/Colour.h
 CMakeFiles/nPlayerConnect4.dir/Server.cpp.o: /home/dan/CLionProjects/Game2D/glew.h
 CMakeFiles/nPlayerConnect4.dir/Server.cpp.o: /home/dan/CLionProjects/asio/net.h
@@ -360,6 +391,7 @@ CMakeFiles/nPlayerConnect4.dir/main.cpp.o: ../MainMenu.h
 CMakeFiles/nPlayerConnect4.dir/main.cpp.o: ../Message.h
 CMakeFiles/nPlayerConnect4.dir/main.cpp.o: ../Options.h
 CMakeFiles/nPlayerConnect4.dir/main.cpp.o: ../OptionsMenu.h
+CMakeFiles/nPlayerConnect4.dir/main.cpp.o: ../PauseMenu.h
 CMakeFiles/nPlayerConnect4.dir/main.cpp.o: ../Server.h
 CMakeFiles/nPlayerConnect4.dir/main.cpp.o: ../SinglePlayerMenu.h
 CMakeFiles/nPlayerConnect4.dir/main.cpp.o: ../TextureManager.h
