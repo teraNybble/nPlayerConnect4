@@ -46,7 +46,6 @@
 				<Compiler>
 					<Add directory="/home/dan/CLionProjects/Game2D"/>
 					<Add directory="/home/dan/CLionProjects/asio"/>
-					<Add directory="/home/dan/glfw/include"/>
 					<Add directory="/usr/include/freetype2"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/../../../../include/c++/10.1.0"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/../../../../include/c++/10.1.0/x86_64-pc-linux-gnu"/>
@@ -72,7 +71,6 @@
 				<Compiler>
 					<Add directory="/home/dan/CLionProjects/Game2D"/>
 					<Add directory="/home/dan/CLionProjects/asio"/>
-					<Add directory="/home/dan/glfw/include"/>
 					<Add directory="/usr/include/freetype2"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/../../../../include/c++/10.1.0"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/../../../../include/c++/10.1.0/x86_64-pc-linux-gnu"/>

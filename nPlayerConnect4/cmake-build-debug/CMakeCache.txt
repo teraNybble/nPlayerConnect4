@@ -256,6 +256,12 @@ GLEW_STATIC_LIBRARY_DEBUG:FILEPATH=GLEW_STATIC_LIBRARY_DEBUG-NOTFOUND
 //Path to a library.
 GLEW_STATIC_LIBRARY_RELEASE:FILEPATH=GLEW_STATIC_LIBRARY_RELEASE-NOTFOUND
 
+//Path to a file.
+GLFW3_INCLUDE_DIR:PATH=/usr/include
+
+//Path to a library.
+GLFW3_LIBRARY:FILEPATH=/usr/lib/libglfw.so
+
 //Path to a library.
 GLFW_LIBRARY:FILEPATH=/home/dan/glfw/glfw-build/src/libglfw3.a
 
@@ -683,6 +689,8 @@ CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 FIND_PACKAGE_MESSAGE_DETAILS_Freetype:INTERNAL=[/usr/lib/libfreetype.so][/usr/include/freetype2][v2.10.4()]
 //Details about finding GLEW
 FIND_PACKAGE_MESSAGE_DETAILS_GLEW:INTERNAL=[/usr/include][/usr/lib/libGLEW.so][v2.2.0()]
+//Details about finding GLFW3
+FIND_PACKAGE_MESSAGE_DETAILS_GLFW3:INTERNAL=[/usr/lib/libglfw.so][/usr/include][v()]
 //Details about finding OpenGL
 FIND_PACKAGE_MESSAGE_DETAILS_OpenGL:INTERNAL=[/usr/lib/libOpenGL.so][/usr/lib/libGLX.so][/usr/include][c ][v()]
 //Details about finding PNG

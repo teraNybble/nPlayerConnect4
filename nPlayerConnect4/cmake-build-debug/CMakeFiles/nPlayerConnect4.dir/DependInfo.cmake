@@ -25,7 +25,6 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/home/dan/CLionProjects/Game2D"
   "/home/dan/CLionProjects/asio"
-  "/home/dan/glfw/include"
   "/usr/include/freetype2"
   )
 

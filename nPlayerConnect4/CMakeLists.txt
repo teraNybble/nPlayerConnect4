@@ -5,6 +5,9 @@ set(CMAKE_CXX_STANDARD 17)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/../cmake")
 
+#tell it to look for libs in the working directory
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-rpath='$ORIGIN'")
+
 include_directories(/home/dan/CLionProjects/Game2D)
 link_directories(/home/dan/CLionProjects/Game2D/cmake-build-debug/)
 
